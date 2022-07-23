@@ -1,0 +1,216 @@
+<app-breadcrumb [breadcrumbList]="breadcrumbList"></app-breadcrumb>
+
+
+<div class="w3-display-bottomleft w3-padding" style="position: fixed;z-index: 9999">
+    <button mat-fab color="primary" class="w3-large" routerLink="/student/create" style="margin: 5px">
+        <span class="fa fa-plus"></span>
+    </button>
+</div>
+
+<!--
+<div class="box box-primary  table-responsive" >
+  <div class="box-header">
+
+
+
+    <button *ngIf="showRemoveButton" (click)="removeResources()" class="btn btn-danger" style="margin: 5px"  >
+      <span class="fa fa-trash" ></span>
+    </button>
+  </div>
+  <br>
+
+</div>
+    -->
+
+<button mat-raised-button class="w3-green" (click)="$('#importExcelModal').modal('show')">{{ "import from excel" | trans
+    }}</button>
+
+<br>
+<div class="row">
+    <div class="col-md-3">
+        <label for="">{{ "search" | trans }}</label>
+        <input type="text" class="w3-input w3-block form-control" placeholder="{{ 'search' | trans }}" (change)="loadResources()" [(ngModel)]="search.search_key">
+    </div>
+
+    <div class="col-md-3">
+        <label for="">{{ "level" | trans }}</label>
+        <select class="form-control" (change)="loadResources()" [(ngModel)]="search.level_id">
+            <option value="">{{ "all" | trans }}</option>
+            <option *ngFor="let item of levels" value="{{item.id}}">{{ item.name }}</option>
+        </select>
+    </div>
+
+    <div class="col-md-3">
+        <label for="">{{ "division" | trans }}</label>
+        <select class="form-control" (change)="loadResources()" [(ngModel)]="search.division_id">
+            <option value="">{{ "all" | trans }}</option>
+            <option *ngFor="let item of applicationSettings.DIVISIONS" value="{{item.id}}">{{ item.name }}</option>
+        </select>
+    </div>
+
+    <div class="col-md-3">
+        <label for="">{{ "case_constraint" | trans }}</label>
+        <select class="form-control" (change)="loadResources()" [(ngModel)]="search.case_constraint_id">
+            <option value="">{{ "all" | trans }}</option>
+            <option *ngFor="let item of applicationSettings.CASE_CONSTRAINTS" value="{{item.id}}">{{ item.name }}
+            </option>
+        </select>
+    </div>
+</div>
+
+<!-- <input type="text" class="w3-input w3-block form-control" placeholder="{{ 'search' | trans }}" (change)="loadResources()" [(ngModel)]="search.search_key"> -->
+<br>
+
+<div class="w3-row student-container nicescroll" style="padding: 5px;">
+    <div *ngIf="isLoad" class="w3-block text-center w3-padding">
+        <i class="fa fa-spin fa-refresh w3-jumbo w3-text-indigo"></i>
+    </div>
+    <ng-container *ngFor="let item of resources.data">
+        <div class="{{ col }} student-list-col">
+            <div class="media material-shadow w3-white w3-padding w3-display-container student-list-item w3-round">
+                <div class="w3-display-topleft w3-padding">
+                    <div class="text-left">
+                        <a href="#" [routerLink]="['/student/', item.id]" style="margin: 5px"><i
+                                class="material-shadow fa fa-edit btn btn-warning btn-sm"></i></a>
+
+                        <a href="#" [routerLink]="['/student/show/', item.id]" style="margin: 5px"><i
+                                class="material-shadow fa fa-desktop btn btn-success btn-sm"></i></a>
+
+                        <button (click)="showStudentPayments(item)" style="margin: 5px" class="material-shadow fa fa-money btn w3-indigo btn-sm"> {{ "student payments" | trans }}
+                        </button>
+
+                        <button class="btn btn-info btn-sm">
+                            <b>{{ item.paid_value }}</b><b>جنيه</b>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="media-left">
+                    <a>
+                        <img class="media-object w3-round" [src]="item.image" style="width: 100px;max-height: 210;">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h5 class="media-heading">{{ item.name }}..</h5>
+                    <table class="w3-tiny">
+                        <tr>
+                            <th>{{ "code" | trans }}</th>
+                            <td>{{ item.code }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ "level" | trans }}</th>
+                            <td>{{ item.level? item.level.name : '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ "academic_year" | trans }}</th>
+                            <td>{{ item.academic_year? item.academic_year.name : '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ "department" | trans }}</th>
+                            <td>{{ item.department? item.department.name : '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ "qualification" | trans }}</th>
+                            <td>{{ item.qualification? item.qualification.name : '' }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>{{ "division" | trans }}</th>
+                            <td>{{ item.division? item.division.name : '' }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>{{ "set number" | trans }}</th>
+                            <td>{{ item.set_number? item.set_number : '' }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>{{ "room" | trans }}</th>
+                            <td>{{ item.commission_id? item.commission.name : '' }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>{{ "theater" | trans }}</th>
+                            <td>{{ item.theater_id? item.theater.name : '' }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>{{ "case_constraint" | trans }}</th>
+                            <td>{{ item.case_constraint? item.case_constraint.name : '' }}</td>
+                        </tr>
+
+
+                        <tr>
+                            <th>{{ "registeration_status" | trans }}</th>
+                            <td>{{ item.registeration_status? item.registeration_status.name : '' }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>{{ "notes" | trans }}</th>
+                            <td>{{ item.notes }}</td>
+                        </tr>
+                        <tr>
+                            <th>لقاح كورونا</th>
+
+                            <td><input (click)='corona(item.id)' type="checkbox" class="custom-control-input" id="customSwitch{{item.id}}" [checked]="item.iscorona == 1"></td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+    </ng-container>
+
+
+
+</div>
+<br>
+<div class="text-center w3-center">
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            <li>
+                <a class="" [ngClass]="{'disabled': !resources.prev_page}" (click)="loadResources(resources.prev_page)" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li *ngFor="let item of resources.pages_arr">
+                <a class="" [ngClass]="{'active': resources.current_page == item}" (click)="loadResources(item)">{{ item
+                    }}</a>
+            </li>
+            <li>
+                <a class="" [ngClass]="{'disabled': !resources.next_page}" (click)="loadResources(resources.next_page)" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+
+<!-- remove modal -->
+<div class="w3-modal w3-block" *ngIf="showRemoveModal" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">{{ "remove applications" | trans }}</h4>
+            </div>
+            <div class="modal-body text-center">
+                <i class="fa fa-spinner fa-spin w3-jumbo w3-text-indigo w3-center"></i>
+                <br> {{ trashList.size() }} - {{ "removed" | trans }} {{ trashList.size() + removed.length }}
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+
+<!-- student payments modal -->
+<app-student-payment [payments]="selectedItem.payment_details? selectedItem.payment_details : []"></app-student-payment>
+
+
+<app-import-excel [apiUrl]="'import-student'" [action]="loadResources"></app-import-excel>
