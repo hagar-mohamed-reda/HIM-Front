@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" >
     <div class="w3-block">
         <div class="w3-white material-shadow safe-box">
             <div class="safe-box-header w3-large" style="padding: 5px!important">
@@ -170,13 +170,7 @@
                                             <ng-template #content> الساعات التي تم تسجيلها / {{ response.registerHours}}</ng-template> -->
 
                                     </div>
-<!-- 
-    <div *ngIf="isValid;then content else other_content">here is ignored</div>
-<ng-template #content>content here...</ng-template>
-<ng-template #other_content>other content here...</ng-template>
-*ngIf='response.studentInfo[0].code == 202110173'
-response.registerHours
- -->
+
                                     <div class="col-xs-4">
                                         <h6 style="text-align: center !important;font-size: 13px !important;font-weight: bolder !important;">أسم الطالب / {{response.studentInfo[0].name}}</h6>
                                         <h6 style="text-align: center !important;font-size: 13px !important;font-weight: bolder !important;">المستوي / {{ response.studentInfo[0].level_name }}</h6>
@@ -232,6 +226,7 @@ response.registerHours
                                     </tr>
                                 </tbody>
                             </table>
+                            
                             <div *ngIf='response.studentInfo[0].case_constraint_id != 6 && response.studentInfo[0].case_constraint_id != 8 && response.studentInfo[0].code != 202110433 && response.studentInfo[0].case_constraint_id != 7' style="background-color:rgba(0,0,0,.5) !important;text-align: center;margin-bottom: 10px;">نتيجة الطالب عقب إعلان الفصل الدراسي الأول &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; معدل فصلي &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ response.student_gpa_fasly_Term1
                                 }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             </div><br>
@@ -396,9 +391,9 @@ response.registerHours
                 <div class="custom-panel w3-display-container w3-round application-panel student-info-panel">
                     <div class="custom-panel-body table-responsive w3-padding">
                         <button mat-raised-button color="primary" [disabled]="isSubmitted" (click)="loadData()" style="margin: 5px">
-        <i *ngIf="isSubmitted" class="fa fa-spin fa-spinner"></i>
-        <span *ngIf="!isSubmitted">{{ "update" | trans }} </span>
-      </button>
+                    <i *ngIf="isSubmitted" class="fa fa-spin fa-spinner"></i>
+                    <span *ngIf="!isSubmitted">{{ "update" | trans }} </span>
+                       </button>
 
                         <button mat-raised-button color="primary" class="w3-margin-left w3-black" (click)="print()"> <i class="fa fa-print" ></i> {{ "print" | trans }}</button>
 

@@ -23,10 +23,22 @@ export class ReportServiceService {
    * get services from api
    *
    */
-     public getWithTermAndYear(data) {
+      public getWithTermAndYear(data)
+      {
       return this.http.get('academic/report/get-student-result?api_token=' + Auth.getApiToken()+"&"+this.$.param(data));
-    }
-    public getWithTermAndYearStudents(data) {
+      }
+
+      
+      //START NEW API/////////////////////////////////////////////
+      public getWithStatus(data)
+      {
+      return this.http.get('academic/report/get-student-status?api_token=' + Auth.getApiToken()+"&"+this.$.param(data));
+      }
+      //END NEW API/////////////////////////////////////////////
+
+
+      public getWithTermAndYearStudents(data) 
+      {
       return this.http.get('academic/report/get-all_students-result?api_token=' + Auth.getApiToken()+"&"+this.$.param(data));
-    }
+      }
 }

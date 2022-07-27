@@ -4,9 +4,14 @@ import { Helper } from 'src/app/shared/helper';
 import { Message } from 'src/app/shared/message';
 import { Request } from 'src/app/shared/request';
 import { GlobalService } from 'src/app/shared/services/global.service';
-import { ApplicationSettingService } from '../../../adminision/services/application-setting.service';
-import { LevelService } from '../../../account/services/level.service';
-
+import { ApplicationSettingService } from 'src/app/adminision/services/application-setting.service';
+import { LevelService } from 'src/app/account/services/level.service';
+import { HashTable } from 'angular-hashtable';
+import { AcademicSettingService } from 'src/app/academic/services/academic-setting.service';
+import { CourseService } from 'src/app/academic/services/course.service';
+import { ReportServiceService } from 'src/app/academic/services/report-service.service';
+import { StudentAccountService } from 'src/app/account/services/student-account.service';
+import { TermService } from 'src/app/account/services/term.service';
 @Component({
   selector: 'app-student-affair-report3',
   templateUrl: './student-affair-report3.component.html',
@@ -14,26 +19,56 @@ import { LevelService } from '../../../account/services/level.service';
 })
 export class StudentAffairReport3Component implements OnInit {
 
-  filter: any = {};
   $: any = $;
+  doc: any = document;
+  isSubmitted = false;
+  canShowResult = false;
+  searchData: any = {};
+  response: any = null;
+  student: any = {};
+  password = null;
+  searchCourseKey = null;
+  currentPage = 1;
+  filter: any = {};
   applicationService: any = ApplicationSettingService;
+  terms: any = [];
   levels: any = [];
   divisions: any = [];
+  courses: any = [];
   academicYears: any = [];
-  doc: any = document;
   start_number: any;
   level_id: any;
 
+  selectedDivisions = new HashTable();
+  selectedLevels = new HashTable();
+  academicSetting = new HashTable();
+  selectedCourses = new HashTable();
+    //
+    public searchKey: string;
+    public studentSearchDialogShow = false;
+    public studentSearchDialogLoader = false;
+    public isWait = false;
+    public timeoutId;
+    public students: any = [];
 
   constructor(
+    private courseService: CourseService,
+    private studentAcountService: StudentAccountService,
+    private academicSettingService: AcademicSettingService,
+    private reportService: ReportServiceService,
+    private applicationSetting: ApplicationSettingService,
     private globalService: GlobalService,
     private applicationSettingService: ApplicationSettingService) {
       this.applicationSettingService.queueRequests();
       var self = this;
       Request.fire(false, () => {
       });
+          
 
-
+    }
+    ngOnInit() {
+      this.levels = Cache.get(LevelService.LEVEL_PREFIX);
+      
     }
   calculateCount() {
     this.$('#count').text(this.$('#reportContent tbody tr').length);
@@ -85,12 +120,16 @@ export class StudentAffairReport3Component implements OnInit {
       })
     }
   }
-
+  print() {
+    Helper.print();
+  }
+  excel() {
+    console.log("excel button clicked");
+    this.doc.exportExcel('الطلبة' , '#reportContent');
+  }
   printContent() {
     this.doc.printJs();
   }
 
-  ngOnInit() {
-    this.levels = Cache.get(LevelService.LEVEL_PREFIX);
-  }
+
 }

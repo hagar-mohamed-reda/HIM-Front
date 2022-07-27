@@ -20,6 +20,7 @@ import { StudentAffairReport11Component } from './report/student-affair-report11
 import { Report21Component } from './report/report21/report21.component';
 import { StudentAffairReport14Component } from './report/student-affair-report14/student-affair-report14.component';
 import { StudentAffairReport15Component } from './report/student-affair-report15/student-affair-report15.component';
+import { StudentAffairStudentStatusComponent } from './report/student-affair-student-status/student-affair-student-status.component';
 
 const routes: Routes = [
    {
@@ -98,6 +99,10 @@ const routes: Routes = [
       {
         path: 'report/report14',
         component: StudentAffairReport14Component
+      },
+      {
+        path: 'report/student-status',
+        component: StudentAffairStudentStatusComponent
       },
     ]
   },

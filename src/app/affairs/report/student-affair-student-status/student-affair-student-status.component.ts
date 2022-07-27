@@ -1,38 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import { HashTable } from 'angular-hashtable';
-import { LevelService } from 'src/app/account/services/level.service';
-import { StudentAccountService } from 'src/app/account/services/student-account.service';
-import { TermService } from 'src/app/account/services/term.service';
-import { ApplicationSettingService } from 'src/app/adminision/services/application-setting.service';
 import { Cache } from 'src/app/shared/cache';
 import { Helper } from 'src/app/shared/helper';
 import { Message } from 'src/app/shared/message';
 import { Request } from 'src/app/shared/request';
-import { AcademicSettingService } from '../../services/academic-setting.service';
-import { CourseService } from '../../services/course.service';
-import { ReportServiceService } from '../../services/report-service.service';
+import { GlobalService } from 'src/app/shared/services/global.service';
+import { ApplicationSettingService } from 'src/app/adminision/services/application-setting.service';
+import { LevelService } from 'src/app/account/services/level.service';
+import { HashTable } from 'angular-hashtable';
+import { AcademicSettingService } from 'src/app/academic/services/academic-setting.service';
+import { CourseService } from 'src/app/academic/services/course.service';
+import { ReportServiceService } from 'src/app/academic/services/report-service.service';
+import { StudentAccountService } from 'src/app/account/services/student-account.service';
+import { TermService } from 'src/app/account/services/term.service';
 @Component({
-  selector: 'app-one-studen-result',
-  templateUrl: './one-studen-result.component.html',
-  styleUrls: ['./one-studen-result.component.scss']
+  selector: 'app-student-affair-student-status',
+  templateUrl: './student-affair-student-status.component.html',
+  styleUrls: ['./student-affair-student-status.component.scss']
 })
-export class OneStudenResultComponent implements OnInit {
+export class StudentAffairStudentStatusComponent implements OnInit {
 
   $: any = $;
   doc: any = document;
   isSubmitted = false;
   canShowResult = false;
   searchData: any = {};
-  response: any = {};
+  response: any = null;
   student: any = {};
   password = null;
   searchCourseKey = null;
   currentPage = 1;
-
   filter: any = {};
   applicationService: any = ApplicationSettingService;
   terms: any = [];
-
   levels: any = [];
   divisions: any = [];
   courses: any = [];
@@ -68,6 +67,23 @@ export class OneStudenResultComponent implements OnInit {
     this.loadSettings();
   }
 
+  filterCourses(term){
+    if(! this.response) return []
+    return this.response.registerCourses.filter(c => c.term_id == term)
+  }
+
+  getTermGpa(term){
+    if(! this.response) return 0
+    var gpa = this.response.student_gpa_fasly.filter(g => g.term_id == term)[0].gpa
+    return gpa
+  }
+
+  getStdCode(){
+    if(! this.response) return 0
+    var code  = this.response.studentInfo[0].code
+    return code
+    
+  }
   preSettings() {
     Request.addToQueue({observer: this.courseService.get(), action: (res: any)=>{
       this.courses = res;
@@ -93,14 +109,20 @@ export class OneStudenResultComponent implements OnInit {
     this.searchData.levels = this.selectedLevels.getKeys();
     this.searchData.divisions = this.selectedDivisions.getKeys();
     this.searchData.page = this.currentPage;
-    this.searchData.term_id = this.filter.term_id;
     this.searchData.year_id = this.filter.year_id;
     this.isSubmitted = true;
-    this.reportService.getWithTermAndYear(this.searchData).subscribe((res) => {
-      this.response = res;
-      this.prePagniation();
-      this.isSubmitted = false;
-    });
+
+    
+    // console.log( this.searchData);
+    
+    if(this.filter.year_id){
+      this.reportService.getWithStatus(this.searchData).subscribe((res) => {
+        this.response = res;
+        this.prePagniation();
+        this.isSubmitted = false;
+      });
+    }
+    
   }
 
   login() {
@@ -154,7 +176,8 @@ export class OneStudenResultComponent implements OnInit {
     Helper.print();
   }
 
-  exportExcel() {
+  exportExcel() 
+  {
     const filename = "مدفوعات الطلاب-"+new Date().toLocaleTimeString();
     this.doc.exportExcel(filename);
   }

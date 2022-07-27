@@ -15,8 +15,8 @@ import { StudentAffairReport6Component } from './report/student-affair-report6/s
 import { StudentAffairReport10Component } from './report/student-affair-report10/student-affair-report10.component';
 import { StudentAffairReport11Component } from './report/student-affair-report11/student-affair-report11.component';
 import { StudentAffairReport14Component } from './report/student-affair-report14/student-affair-report14.component';
-import { StudentAffairReport15Component } from './report/student-affair-report15/student-affair-report15.component';
-import { Report21Component } from './report/report21/report21.component';
+import { StudentAffairReport15Component } from './report/student-affair-report15/student-affair-report15.component';import { Report21Component } from './report/report21/report21.component';
+import { StudentAffairStudentStatusComponent } from './report/student-affair-student-status/student-affair-student-status.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +32,8 @@ import { Report21Component } from './report/report21/report21.component';
     StudentAffairReport14Component,
     StudentAffairReport15Component,
     Report21Component,
+   StudentAffairStudentStatusComponent,
+    
   ],
   imports: [
     CommonModule,

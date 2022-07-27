@@ -109,26 +109,33 @@
                                     <input class="form-control" type="date" [(ngModel)]="filter.to_date">
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-3">
-                                <button class="btn btn-default w3-round" (click)="load()" style='margin-top: 26px !important;'>{{ "search" | trans }}</button>
-                            </div>
-                            <div class="col-lg-3 col-md-3">
-                                <span class="w3-xlarge w3-text-green" id="count">
-
-                              </span>
-                            </div>
+                         
+                         
 
 
                         </div>
+                        <div class="col-lg-3 col-md-3" >
+                            <button  (click)="load()" style='margin-left: 10px !important;'>{{ "search" | trans }}</button>
+                            <button mat-raised-button color="primary" style='margin-left: 10px !important;'
+                             (click)="print()"> <i class="fa fa-print" ></i> {{ "print" | trans }}</button>
+                            <button class="btn btn-default w3-round" (click)="excel()">{{ "excel" | trans }}</button>
 
+                            
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <span class="w3-xlarge w3-text-green" id="count">
+
+                          </span>طالب
+                        </div>
                     </div>
                 </div>
             </div>
+           
             <div class="">
                 <div class="custom-panel w3-display-container w3-round application-panel student-info-panel" id="printable">
 
                     <div class="custom-panel-body table-responsive w3-padding" id="reportContent">
-
+ 
 
                     </div>
                 </div>
