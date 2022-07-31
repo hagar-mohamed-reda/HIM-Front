@@ -25,6 +25,7 @@ import { AttendanceReportComponent } from './components/attendance-report/attend
 import { CoursesStatsComponent } from './components/courses-stats/courses-stats.component';
 import { MinistryCumulativeReportComponent } from './components/ministry-cumulative-report/ministry-cumulative-report.component';
 import { StudentResultsComponent } from './components/student-results/student-results.component';
+import { PrerequsiteComponent } from './components/prerequsite/prerequsite.component';
 const routes: Routes = [
   {
     path: 'plan',
@@ -115,6 +116,12 @@ const routes: Routes = [
     canActivate: [AuthGuestService],
     data: {can: Auth.can('control_report')},
     component: ResultStatsComponent
+  },
+  {
+    path: 'prerequsite',
+    canActivate: [AuthGuestService],
+    data: {can: Auth.can('control_report')},
+    component: PrerequsiteComponent
   },
   {
     path: 'courses-stats',
