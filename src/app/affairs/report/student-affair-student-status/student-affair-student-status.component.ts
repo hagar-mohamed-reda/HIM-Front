@@ -38,7 +38,7 @@ export class StudentAffairStudentStatusComponent implements OnInit {
 
 
 
-  
+
   selectedDivisions = new HashTable();
   selectedLevels = new HashTable();
   academicSetting = new HashTable();
@@ -82,7 +82,7 @@ export class StudentAffairStudentStatusComponent implements OnInit {
     if(! this.response) return 0
     var code  = this.response.studentInfo[0].code
     return code
-    
+
   }
   preSettings() {
     Request.addToQueue({observer: this.courseService.get(), action: (res: any)=>{
@@ -112,9 +112,9 @@ export class StudentAffairStudentStatusComponent implements OnInit {
     this.searchData.year_id = this.filter.year_id;
     this.isSubmitted = true;
 
-    
+
     // console.log( this.searchData);
-    
+
     if(this.filter.year_id){
       this.reportService.getWithStatus(this.searchData).subscribe((res) => {
         this.response = res;
@@ -122,7 +122,7 @@ export class StudentAffairStudentStatusComponent implements OnInit {
         this.isSubmitted = false;
       });
     }
-    
+
   }
 
   login() {
@@ -173,10 +173,26 @@ export class StudentAffairStudentStatusComponent implements OnInit {
   }
 
   print() {
-    Helper.print();
+    var check = 0;
+    var array = this.student.payments;
+    for(let i = 0 ; i < array.length ; i++){
+      if(array[i].model_object.id == 16){
+        check = 1;
+      }
+    }
+    if(check == 1) {
+      Helper.print();
+    } else {
+      let password = prompt("يجب تسديد مبلغ الخدمة وقيمته 50 للأستثناء ادخل الرقم السري : ");
+      if (password == '556677') {
+        Helper.print();
+      } else {
+        alert('error');
+      }
+    }
   }
 
-  exportExcel() 
+  exportExcel()
   {
     const filename = "مدفوعات الطلاب-"+new Date().toLocaleTimeString();
     this.doc.exportExcel(filename);
