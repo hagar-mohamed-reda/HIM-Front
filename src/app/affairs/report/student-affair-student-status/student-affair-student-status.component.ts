@@ -187,7 +187,7 @@ export class StudentAffairStudentStatusComponent implements OnInit {
       if (password == '556677') {
         Helper.print();
       } else {
-        alert('error');
+        alert('الرقم السري غير صحيح');
       }
     }
   }
