@@ -33,6 +33,9 @@ import { MinistryCumulativeReportComponent } from './components/ministry-cumulat
 import { StudentResultsComponent } from './components/student-results/student-results.component';
 import { PrerequsiteComponent } from './components/prerequsite/prerequsite.component';
 import { MedtermComponent } from './components/medterm/medterm.component';
+import { LevelsPipe } from './levels.pipe';
+import { TermPipe } from './term.pipe';
+import { DivisionPipe } from './division.pipe';
 
 @NgModule({
   declarations: [
@@ -65,7 +68,10 @@ import { MedtermComponent } from './components/medterm/medterm.component';
     CoursesStatsComponent,
     StudentResultsComponent,
     PrerequsiteComponent,
-    MedtermComponent
+    MedtermComponent,
+    LevelsPipe,
+    DivisionPipe,
+    TermPipe
   ],
   imports: [
     SharedModule,

@@ -123,7 +123,7 @@
                                                     <th>{{ "notes" | trans }}</th>
                                                     <th></th>
                                                 </tr>
-                                                <ng-container *ngFor="let item of row.courses index as i">
+                                                <ng-container *ngFor="let item of row.courses|term:term_id|levels:level_id|division:division_id; index as i">
                                                     <tr *ngIf="item.name.indexOf(search.key) >= 0 || !search.key">
                                                         <td>{{ i + 1 }}</td>
                                                         <td>{{ item.name }}</td>

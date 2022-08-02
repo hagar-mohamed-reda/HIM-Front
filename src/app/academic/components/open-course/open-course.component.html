@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="">{{ "term" | trans }}</label>
-                    <select class="form-control" [(ngModel)]="filter.term">
+                    <select class="form-control" [(ngModel)]="filter.term" id="term_id">
                     <option value="0">{{"all" | trans}}</option>
                   <option  *ngFor="let item of terms" value="{{item.id}}">{{ item.name }}</option>
               </select>
@@ -63,7 +63,7 @@
                                     <th></th>
                                 </tr>
 
-                                <ng-container *ngFor="let course of item.courses index as counter">
+                                <ng-container *ngFor="let course of item.courses|term:term_id; index as counter">
                                     <tr *ngIf="(course.term == filter.term || filter.term == 0) && course.stage == filter.stage || filter.stage == 0 && (course.division_id == filter.division_id || filter.division_id == 0)" (click)="course.selected = course.selected? false : true" class="w3-hover-light-gray"
                                         style="cursor: pointer">
                                         <td>{{ counter + 1 }}</td>

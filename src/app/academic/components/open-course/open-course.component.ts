@@ -24,7 +24,7 @@ export class OpenCourseComponent implements OnInit {
   filter: any = {};
   terms: any = [];
   stages: any = ["الاولي", "الثانيه"];
-
+  term_id:any;
 
   constructor(private courseService: CourseService,private termService:TermService) { }
 
@@ -34,6 +34,9 @@ export class OpenCourseComponent implements OnInit {
     this.filter.stage = 0;
     this.filter.division_id = 0;
     this.loadCourses();
+    $('#term_id').on('change',()=>{
+      this.term_id =$('#term_id').val();
+    })
   }
 
   loadCourses() {
