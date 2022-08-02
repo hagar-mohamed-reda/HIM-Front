@@ -51,7 +51,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-3 col-md-3">
+                            <!-- <div class="col-lg-3 col-md-3">
                                 <div class="form-group">
                                     <label for="">الماده</label>
                                     <select class="form-control" id="course_id" name="filter.course_id" [(ngModel)]="filter.course_id">
@@ -59,7 +59,7 @@
               <option *ngFor="let item of courses|level:level_id|term:term_id|division:division_id" value="{{ item.id }}">{{item.name}}</option>
             </select>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-lg-3 col-md-3">
                                 <div class="form-group">
                                     <label for="">التقديرات</label>
@@ -72,9 +72,9 @@
                             </div>
                             <div class="col-lg-3 col-md-3">
                                 <button style="margin-right: 10px ;" class="btn btn-default w3-round" (click)="load()">{{ "search" | trans }}</button>
-                                <button style="margin-right: 23px ;" class="btn btn-default w3-round" (click)="printContent()">{{ "print" | trans }}</button>
+                                <button style="margin-right: 10px ;" class="btn btn-default w3-round" (click)="printContent()">{{ "print" | trans }}</button>
                             </div>
-                               <br> <button style="margin-right: -17px ;" class="btn btn-default w3-round" (click)="excel()">{{ "excel" | trans }}</button>
+                               <br> <button style="margin-left:50px !important;" class="btn btn-default w3-round" (click)="excel()">{{ "excel" | trans }}</button>
 
 
                         </div>

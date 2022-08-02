@@ -32,6 +32,8 @@ import { CoursesStatsComponent } from './components/courses-stats/courses-stats.
 import { MinistryCumulativeReportComponent } from './components/ministry-cumulative-report/ministry-cumulative-report.component';
 import { StudentResultsComponent } from './components/student-results/student-results.component';
 import { PrerequsiteComponent } from './components/prerequsite/prerequsite.component';
+import { MedtermComponent } from './components/medterm/medterm.component';
+
 @NgModule({
   declarations: [
     MinistryCumulativeReportComponent,
@@ -62,7 +64,8 @@ import { PrerequsiteComponent } from './components/prerequsite/prerequsite.compo
     AttendanceReportComponent,
     CoursesStatsComponent,
     StudentResultsComponent,
-    PrerequsiteComponent
+    PrerequsiteComponent,
+    MedtermComponent
   ],
   imports: [
     SharedModule,

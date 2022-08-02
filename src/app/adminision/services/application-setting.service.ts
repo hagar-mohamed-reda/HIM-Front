@@ -32,6 +32,7 @@ export class ApplicationSettingService {
   public static LOADED: any = false;
 
   public requestQueue = [];
+  static TERMS: any;
 
   constructor(private http: HttpClient) {
     this.queueRequests();

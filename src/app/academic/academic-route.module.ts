@@ -26,6 +26,7 @@ import { CoursesStatsComponent } from './components/courses-stats/courses-stats.
 import { MinistryCumulativeReportComponent } from './components/ministry-cumulative-report/ministry-cumulative-report.component';
 import { StudentResultsComponent } from './components/student-results/student-results.component';
 import { PrerequsiteComponent } from './components/prerequsite/prerequsite.component';
+import { MedtermComponent } from './components/medterm/medterm.component';
 const routes: Routes = [
   {
     path: 'plan',
@@ -122,6 +123,12 @@ const routes: Routes = [
     canActivate: [AuthGuestService],
     data: {can: Auth.can('control_report')},
     component: PrerequsiteComponent
+  },
+  {
+    path: 'medterm',
+    canActivate: [AuthGuestService],
+    data: {can: Auth.can('control_report')},
+    component: MedtermComponent
   },
   {
     path: 'courses-stats',

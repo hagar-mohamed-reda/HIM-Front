@@ -17,20 +17,68 @@
                         <div class="custom-panel-body table-responsive">
 
                             <table class="table table-bordered">
+                                <!-- <div class="col-lg-3 col-md-3">
+                                    <div class="form-group">
+                                        <label for="">الماده</label>
+                                        <select class="form-control" id="course_id" name="filter.course_id" [(ngModel)]="filter.course_id">
+                                        <option value="">الكل</option>
+                                        <option *ngFor="let item of courses|level:level_id|term:term_id" value="{{ item.id }}">{{item.name}}</option>
+                                        </select>
+                                    </div>
+                                 </div>
+                                  <div class="col-lg-3 col-md-4">
+                                      <div class="form-group">
+                                          <label for="">{{ "academic year" | trans }}</label>
+                                          <select name="filter.year_id" class="form-control" [(ngModel)]="filter.year_id">
+                                          <option value="">الكل</option>
+                                          <option *ngFor="let item of applicationService.ACADEMIC_YEARS" value="{{ item.id }}">{{item.name}}</option>
+                                          </select>
+                                      </div>
+                                  </div> -->
                                 <tr>
                                     <th>{{ "course category" | trans }}</th>
                                     <td>
                                         <select class="w3-round-xxlarge select2 form-control filter-category" multiple>
-                    <option *ngFor="let item of categories" value="{{ item.id }}">{{ item.name }}</option>
-                  </select>
+                                        <option *ngFor="let item of categories" value="{{ item.id }}">{{ item.name }}</option>
+                                        </select>
                                     </td>
                                 </tr>
+                                
+                                <tr>
+                                    <th>{{ "المستوى"}}</th>
+                                    <td>
+                                        <select id="level_id" name="filter.level_id" class="form-control" [(ngModel)]="level_id">
+                                            <option value="">الكل</option>
+                                      <option *ngFor="let item of levels" value="{{ item.id }}">{{item.name}}</option>
+                                    </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>{{ "التخصص"}}</th>
+                                    <td>
+                                              <select id="division_id" name="filter.division_id" class="form-control" [(ngModel)]="division_id">
+                            <option value="">الكل</option>
+                      <option *ngFor="let item of divisions" value="{{ item.id }}">{{item.name}}</option>
+                    </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>{{ "الفصل الدراسى"}}</th>
+                                    <td>
+                                        <select id="term_id" name="filter.term_id" class="form-control" [(ngModel)]="term_id">
+                                            <option value="">الكل</option>
+                                      <option *ngFor="let item of terms" value="{{ item.id }}">{{item.name}}</option>
+                                    </select>
+                                    </td>
+                                </tr>
+                                
                                 <tr>
                                     <th>{{ "search" | trans }}</th>
                                     <td>
                                         <input type="text" class="form-control" [(ngModel)]="search.key">
                                     </td>
                                 </tr>
+
                                 <tr>
                                     <td>
                                         <button mat-raised-button color="primary" (click)="filter()" style="margin: 5px"> {{ "search" | trans}} </button>

@@ -46,7 +46,7 @@
                                 <div class="form-group">
                                     <label for="">الماده</label>
                                     <select class="form-control" id="course_id" name="filter.course_id" [(ngModel)]="filter.course_id">
-                      <option value="">الكل</option>
+                      <option value="0">الكل</option>
                 <option *ngFor="let item of courses|level:level_id|term:term_id|division:division_id" value="{{ item.id }}">{{item.name}}</option>
               </select>
                                 </div>
@@ -55,9 +55,9 @@
                                 <div class="form-group">
                                     <label for="">الحضور</label>
                                     <select class="form-control" id="attendance" name="filter.attendance" [(ngModel)]="filter.attendance">
-                              <option value="">الكل</option>
+                              <option value="10">الكل</option>
                               <option value="1">حضور</option>
-                              <option value="0">غياب</option>
+                              <option value="2">غياب</option>
               </select>
                                 </div>
                             </div>
