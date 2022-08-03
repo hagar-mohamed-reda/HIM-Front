@@ -41,6 +41,7 @@
                         <option value="">الترم</option>
                         <option value="1">الفصل الدراسي الأول</option>
                         <option value="2">الفصل الدراسي الثاني</option>
+                        <option value="3">الفصل الدراسي الصيفي</option>
                 </select>
                     </div>
 
@@ -48,7 +49,7 @@
                         <label for="">{{ "courses" | trans }}</label>
                         <select id="course_id" class="form-control input-sm select2 course_id" [(ngModel)]="course_id">
                           <option value="">{{ "courses" | trans }}</option>
-                  <option *ngFor="let item of courses|level:level_id|term:term_id|division:division_id" value="{{ item.id }}">{{item.name}}-{{item.code}}</option>
+                  <option *ngFor="let item of courses|level:level_id|term:term_id|division:division_id|year:year_id" value="{{ item.course_id }}">{{item.course_name}}</option>
                 </select>
                     </div>
 
@@ -93,7 +94,7 @@
                         <div class="text">
                             <h6>وزارة التعليم العالي</h6>
                             <h6>المعهد العالي للإدارة بالمحلة الكبري</h6>
-                            <h6>{{printCourse[0].name}}</h6>
+                            <h6>{{(printCourse[0].name != '' || printCourse[0].name != null || printCourse[0].name != undefined ) ? printCourse[0].name : 'المادة' }}</h6>
                         </div>
                         <div class="image">
                             <img width="100px" style="margin: auto" src="http://him.msa-bns.com/logo.png" alt="">

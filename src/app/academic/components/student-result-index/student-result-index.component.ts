@@ -39,7 +39,7 @@ export class StudentResultIndexComponent implements OnInit {
   excelClick2: any = false;
   applicationService: any = ApplicationSettingService;
   printCourse: any;
-
+  
   constructor(
     private titleService: Title,
     private studentResultService: StudentResultService, private courseService: CourseService) {
@@ -118,8 +118,13 @@ export class StudentResultIndexComponent implements OnInit {
   }
 
   loadCourses() {
-    this.courseService.get().subscribe((res) => {
+    this.courseService.getopenCourses().subscribe((res) => {
       this.courses = res;
+   
+      
+
+      console.log(res);
+      
     });
   }
 

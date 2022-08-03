@@ -47,7 +47,7 @@ export class SectionCourseComponent implements OnInit {
     var self = this;
     Request.fire(false, () => {
     });
-    this.courseService.get().subscribe((res)=> {
+    this.courseService.getopenCourses().subscribe((res)=> {
       this.courses = res;
     });
     this.terms = Cache.get(TermService.TERPM_PREFIX);

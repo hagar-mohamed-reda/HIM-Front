@@ -19,8 +19,10 @@ export class CourseService {
   public get() {
     return this.http.get('academic/courses?api_token=' + Auth.getApiToken());
   }
-
-
+  public getopenCourses() {
+    return this.http.get('academic/all_open_courses?api_token=' + Auth.getApiToken());
+  }
+  
   /**
    * store new service
    */
@@ -74,6 +76,7 @@ export class CourseService {
     return this.http.get('academic/available_courses?api_token=' + Auth.getApiToken()+"&"+$.param(data));
   }
 
+ 
 
   /**
    * get open courses api

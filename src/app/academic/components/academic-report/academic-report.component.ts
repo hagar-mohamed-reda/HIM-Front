@@ -47,7 +47,7 @@ export class AcademicReportComponent implements OnInit {
         this.groups = res;
       })
 
-      this.courses = this.courseService.get().subscribe((res: any) => {
+      this.courses = this.courseService.getopenCourses().subscribe((res: any) => {
         this.courses = res;
       })
     this.titleService.setTitle("HIM"+ " - " + Helper.trans('print result'))

@@ -37,6 +37,7 @@ import { LevelsPipe } from './levels.pipe';
 import { TermPipe } from './term.pipe';
 import { DivisionPipe } from './division.pipe';
 import { TermsefyComponent } from './components/termsefy/termsefy.component';
+import { YearPipe } from './year.pipe';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { TermsefyComponent } from './components/termsefy/termsefy.component';
     LevelsPipe,
     DivisionPipe,
     TermPipe,
-    TermsefyComponent
+    TermsefyComponent,
+    YearPipe
   ],
   imports: [
     SharedModule,
