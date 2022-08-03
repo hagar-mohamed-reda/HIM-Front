@@ -235,20 +235,21 @@ export class StudentRegisterCourseComponent implements OnInit {
     var check = 0;
     var array = this.student.payments;
     for(let i = 0 ; i < array.length ; i++){
-      console.log(array[i].model_object.id);
       if(array[i].model_object.id == 17){
-        console.log(array[i].model_object.id);
-        console.log(array[i])
         check = check + array[i].service_count;
-        console.log(check);
       }
     }
-    console.log(this.registerCourses.getAll().length);
-    console.log(check);
     if(this.registerCourses.getAll().length < check) {
       this.registerCourses.put(course.id, course);
     } else {
-      return Message.error("الطالب لم يسدد رسوم هذة المادة");
+      let password = prompt("يجب تسديد مبلغ الخدمة  للأستثناء ادخل الرقم السري : ");
+      if (password == '556677') {
+        this.registerCourses.put(course.id, course);
+      } else {
+        alert('الرقم السري غير صحيح');
+      }
+      // return Message.error("الطالب لم يسدد رسوم هذة المادة");
+
     }
     }
   }
