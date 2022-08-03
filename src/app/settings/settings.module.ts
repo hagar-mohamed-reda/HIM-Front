@@ -21,6 +21,7 @@ import { RelationComponent } from './components/relation/relation.component';
 import { StudentCodeSeriesComponent } from './components/student-code-series/student-code-series.component';
 import { PermissionComponent } from './components/permission/permission.component';
 import { CommissionTypesComponent } from './components/commission-types/commission-types.component';
+import { TermComponent } from './components/term/term.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { CommissionTypesComponent } from './components/commission-types/commissi
     RelationComponent,
     StudentCodeSeriesComponent,
     PermissionComponent,
-    CommissionTypesComponent
+    CommissionTypesComponent,
+    TermComponent
   ],
   imports: [
     CommonModule,

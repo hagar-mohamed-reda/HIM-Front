@@ -36,6 +36,7 @@ import { MedtermComponent } from './components/medterm/medterm.component';
 import { LevelsPipe } from './levels.pipe';
 import { TermPipe } from './term.pipe';
 import { DivisionPipe } from './division.pipe';
+import { TermsefyComponent } from './components/termsefy/termsefy.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { DivisionPipe } from './division.pipe';
     MedtermComponent,
     LevelsPipe,
     DivisionPipe,
-    TermPipe
+    TermPipe,
+    TermsefyComponent
   ],
   imports: [
     SharedModule,

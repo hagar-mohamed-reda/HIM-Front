@@ -22,7 +22,12 @@ export class SettingService {
   public get(data: any={}) {
     return this.http.get(this.baseUrl + '?api_token=' + Auth.getApiToken() + "&" + this.$.param(data));
   }
-
+  public getTerm(data: any={}) {
+    return this.http.get('/system-setting' + '?api_token=' + Auth.getApiToken(), data);
+  }
+  public updateTermActive(data: any) {
+    return this.http.post(this.baseUrl  + '?api_token=' + Auth.getApiToken(), data);
+  }
   /**
    * store new service
    */

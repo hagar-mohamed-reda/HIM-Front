@@ -18,6 +18,7 @@ import { StudentCodeSeriesComponent } from './components/student-code-series/stu
 import { PermissionComponent } from './components/permission/permission.component';
 import { Auth } from '../shared/auth';
 import { AuthGuestService } from '../shared/middlewares/auth-guest.service';
+import { TermComponent } from './components/term/term.component';
 
 const routes: Routes = [
   {
@@ -78,6 +79,12 @@ const routes: Routes = [
         canActivate: [AuthGuestService],
         data: {can: Auth.can('registeration_status')},
         component: RegisterationStatusComponent
+      },
+      {
+        path: "term",
+        canActivate: [AuthGuestService],
+        data: {can: Auth.can('registeration_status')},
+        component: TermComponent
       },
       {
         path: "translations",

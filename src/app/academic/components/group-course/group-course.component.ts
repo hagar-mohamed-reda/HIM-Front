@@ -41,7 +41,7 @@ export class GroupCourseComponent implements OnInit {
   }
 
   load() {
-    if (!Helper.validator(this.filter, ['level_id', 'division_id', 'academic_year_id'])) {
+    if (!Helper.validator(this.filter, ['level_id' , 'academic_year_id'])) {
       return Message.error(Helper.trans('please choose all filters'));
     }
 
@@ -53,9 +53,9 @@ export class GroupCourseComponent implements OnInit {
   creategroup() {
     $('#beforeLoading').hide();
     $('#buttonLoading').show();
-    var objectSend = { name: this.filter.name , term_id: this.filter.term_id , level_id: this.filter.level_id , year_id: this.filter.academic_id , division_id: this.filter.division_id};
+    var objectSend = { name: this.filter.name , term_id: this.filter.term_id , level_id: this.filter.level_id , year_id: this.filter.academic_id };
     console.log(objectSend)
-    if (this.filter.name == undefined || this.filter.name == null || this.filter.name == '' || this.filter.term_id == undefined || this.filter.term_id == null || this.filter.term_id == '' || this.filter.academic_id == undefined || this.filter.academic_id == null || this.filter.academic_id == '' || this.filter.level_id == undefined || this.filter.level_id == null || this.filter.level_id == '' || this.filter.division_id == undefined || this.filter.division_id == null || this.filter.division_id == '' ) {
+    if (this.filter.name == undefined || this.filter.name == null || this.filter.name == '' || this.filter.term_id == undefined || this.filter.term_id == null || this.filter.term_id == '' || this.filter.academic_id == undefined || this.filter.academic_id == null || this.filter.academic_id == '' || this.filter.level_id == undefined || this.filter.level_id == null || this.filter.level_id == '' ) {
       $('#alertNumber').slideDown(300);
       $('#beforeLoading').show();
       $('#buttonLoading').hide();
@@ -105,10 +105,10 @@ export class GroupCourseComponent implements OnInit {
 
     $('#beforeLoading').hide();
     $('#buttonLoading').show();
-    var objectSend = { name: this.filterUpdate.name, id: this.currentgroupId , term_id: this.filterUpdate.term_id , level_id: this.filterUpdate['level_id'] , year_id: this.filterUpdate.academic_id , division_id: this.filterUpdate.division_id};
+    var objectSend = { name: this.filterUpdate.name, id: this.currentgroupId , term_id: this.filterUpdate.term_id , level_id: this.filterUpdate['level_id'] , year_id: this.filterUpdate.academic_id };
 
     console.log(objectSend)
-    if (this.filterUpdate.name == undefined || this.currentgroupId == undefined || this.filterUpdate.name == null || this.currentgroupId == null || this.filterUpdate.name == '' || this.currentgroupId == '' || this.filterUpdate.division_id == undefined || this.filterUpdate.division_id == null || this.filterUpdate.division_id == '') {
+    if (this.filterUpdate.name == undefined || this.currentgroupId == undefined || this.filterUpdate.name == null || this.currentgroupId == null || this.filterUpdate.name == '' || this.currentgroupId == '' ) {
       $('#alertNumber').slideDown(300);
       $('#beforeLoading').show();
       $('#buttonLoading').hide();
@@ -180,6 +180,7 @@ export class GroupCourseComponent implements OnInit {
     // });
     this.applicationSettingService.groups().subscribe((res: any) => {
       this.prevgroups = res;
+      console.log(res);
     })
   }
 }

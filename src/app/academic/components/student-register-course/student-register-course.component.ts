@@ -232,8 +232,24 @@ export class StudentRegisterCourseComponent implements OnInit {
         if (!this.validate())
           return;
       }
-
+    var check = 0;
+    var array = this.student.payments;
+    for(let i = 0 ; i < array.length ; i++){
+      console.log(array[i].model_object.id);
+      if(array[i].model_object.id == 17){
+        console.log(array[i].model_object.id);
+        console.log(array[i])
+        check = check + array[i].service_count;
+        console.log(check);
+      }
+    }
+    console.log(this.registerCourses.getAll().length);
+    console.log(check);
+    if(this.registerCourses.getAll().length < check) {
       this.registerCourses.put(course.id, course);
+    } else {
+      return Message.error("الطالب لم يسدد رسوم هذة المادة");
+    }
     }
   }
 

@@ -16,77 +16,61 @@
                         <div class="custom-panel-title">{{ "filter" | trans }}</div>
                         <div class="custom-panel-body table-responsive">
 
-                            <table class="table table-bordered">
-                                <!-- <div class="col-lg-3 col-md-3">
-                                    <div class="form-group">
-                                        <label for="">الماده</label>
-                                        <select class="form-control" id="course_id" name="filter.course_id" [(ngModel)]="filter.course_id">
-                                        <option value="">الكل</option>
-                                        <option *ngFor="let item of courses|level:level_id|term:term_id" value="{{ item.id }}">{{item.name}}</option>
-                                        </select>
-                                    </div>
-                                 </div>
-                                  <div class="col-lg-3 col-md-4">
-                                      <div class="form-group">
-                                          <label for="">{{ "academic year" | trans }}</label>
-                                          <select name="filter.year_id" class="form-control" [(ngModel)]="filter.year_id">
-                                          <option value="">الكل</option>
-                                          <option *ngFor="let item of applicationService.ACADEMIC_YEARS" value="{{ item.id }}">{{item.name}}</option>
-                                          </select>
-                                      </div>
-                                  </div> -->
-                                <tr>
-                                    <th>{{ "course category" | trans }}</th>
-                                    <td>
-                                        <select class="w3-round-xxlarge select2 form-control filter-category" multiple>
-                                        <option *ngFor="let item of categories" value="{{ item.id }}">{{ item.name }}</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                
-                                <tr>
-                                    <th>{{ "المستوى"}}</th>
-                                    <td>
-                                        <select id="level_id" name="filter.level_id" class="form-control" [(ngModel)]="level_id">
-                                            <option value="">الكل</option>
-                                      <option *ngFor="let item of levels" value="{{ item.id }}">{{item.name}}</option>
-                                    </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>{{ "التخصص"}}</th>
-                                    <td>
-                                              <select id="division_id" name="filter.division_id" class="form-control" [(ngModel)]="division_id">
-                            <option value="">الكل</option>
-                      <option *ngFor="let item of divisions" value="{{ item.id }}">{{item.name}}</option>
-                    </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>{{ "الفصل الدراسى"}}</th>
-                                    <td>
-                                        <select id="term_id" name="filter.term_id" class="form-control" [(ngModel)]="term_id">
-                                            <option value="">الكل</option>
-                                      <option *ngFor="let item of terms" value="{{ item.id }}">{{item.name}}</option>
-                                    </select>
-                                    </td>
-                                </tr>
-                                
-                                <tr>
-                                    <th>{{ "search" | trans }}</th>
-                                    <td>
-                                        <input type="text" class="form-control" [(ngModel)]="search.key">
-                                    </td>
-                                </tr>
+                            <div class="row">
 
-                                <tr>
-                                    <td>
-                                        <button mat-raised-button color="primary" (click)="filter()" style="margin: 5px"> {{ "search" | trans}} </button>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </table>
+
+
+                                <!-- <div class="col-md-3">
+                                    <label for="">{{ "course category" | trans }}</label>
+
+                                    <select class="w3-round-xxlarge select2  filter-category" multiple>
+                                        <option *ngFor="let item of categories" value="{{ item.id }}">{{ item.name }}
+                                        </option>
+                                    </select>
+                                </div> -->
+                                <div class="col-md-3 " >
+                                    <label for="">{{ "المستوى"}}</label><br>
+
+                                    <select style='height: 32px !important; width: 100% !important;' id="level_id" name="filter.level_id" class="" [(ngModel)]="level_id">
+                                        <option value="">الكل</option>
+                                        <option *ngFor="let item of levels" value="{{ item.id }}">{{item.name}}</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label for="">{{ "التخصص"}}</label>
+                                    <select style='height: 32px !important; width: 100% !important;' id="division_id" name="filter.division_id" class=""
+                                        [(ngModel)]="division_id">
+                                        <option value="">الكل</option>
+                                        <option *ngFor="let item of divisions" value="{{ item.id }}">{{item.name}}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label for="">{{ "الفصل الدراسى"}}</label>
+                                    <select style='height: 32px !important; width: 100% !important;' id="term_id" name="filter.term_id" class="" [(ngModel)]="term_id">
+                                        <option value="">الكل</option>
+                                        <option *ngFor="let item of terms" value="{{ item.id }}">{{item.name}}</option>
+                                    </select>
+                                </div>
+
+
+
+                                <div class="col-md-3" >
+                                    <label for="">{{ "بحث بالاسم
+                                        "  }}</label>
+
+                                    <input style='height: 32px !important; width: 100% !important;' type="text" class="" [(ngModel)]="search.key" placeholder="بحث بالاسم">
+                                </div>
+
+
+                                <!-- <div>
+                                    <button mat-raised-button color="primary" (click)="filter()" style="margin: 5px"> {{
+                                        "search" | trans}} </button>
+                                </div> -->
+
+                            </div>
                         </div>
                     </div>
 
@@ -96,9 +80,9 @@
                             <table class="table-bordered text-center w3-tiny" style="width: 100%">
                                 <ng-container *ngFor="let row of categories index as counter">
                                     <tr class="w3-light-gray category-row category-{{ row.id }}">
-                                        <th>{{ counter + 1 }}</th>
+                                        <!-- <th>{{ counter + 1 }}</th> -->
                                         <th>{{ row.name }}</th>
-                                        <th>{{ row.required_hours }}</th>
+                                        <!-- <th>{{ row.required_hours }}</th> -->
                                     </tr>
                                     <tr class="category-row category-{{ row.id }}">
                                         <td colspan="3">
@@ -123,7 +107,8 @@
                                                     <th>{{ "notes" | trans }}</th>
                                                     <th></th>
                                                 </tr>
-                                                <ng-container *ngFor="let item of row.courses|term:term_id|levels:level_id|division:division_id; index as i">
+                                                <ng-container
+                                                    *ngFor="let item of row.courses|term:term_id|levels:level_id|division:division_id; index as i">
                                                     <tr *ngIf="item.name.indexOf(search.key) >= 0 || !search.key">
                                                         <td>{{ i + 1 }}</td>
                                                         <td>{{ item.name }}</td>
@@ -137,12 +122,16 @@
                                                         <td>{{ item.small_degree }}</td>
                                                         <td>{{ item.large_degree }}</td>
                                                         <td>
-                                                            <i *ngIf="item.has_project" class="fa fa-check-square w3-text-green"></i>
-                                                            <i *ngIf="!item.has_project" class="fa fa-window-close-o w3-text-red"></i>
+                                                            <i *ngIf="item.has_project"
+                                                                class="fa fa-check-square w3-text-green"></i>
+                                                            <i *ngIf="!item.has_project"
+                                                                class="fa fa-window-close-o w3-text-red"></i>
                                                         </td>
                                                         <td>
-                                                            <i *ngIf="item.is_required" class="fa fa-check-square w3-text-green"></i>
-                                                            <i *ngIf="!item.is_required" class="fa fa-window-close-o w3-text-red"></i>
+                                                            <i *ngIf="item.is_required"
+                                                                class="fa fa-check-square w3-text-green"></i>
+                                                            <i *ngIf="!item.is_required"
+                                                                class="fa fa-window-close-o w3-text-red"></i>
                                                         </td>
                                                         <td>{{ item.book_price }}</td>
                                                         <td>{{ item.failed_degree }}</td>
@@ -150,9 +139,12 @@
                                                         <td>{{ item.notes }}</td>
                                                         <td>
                                                             <div style="width: 100px">
-                                                                <i class="fa fa-edit w3-text-orange btn" (click)="showCourseForm(item)"></i>
+                                                                <i class="fa fa-edit w3-text-orange btn"
+                                                                    (click)="showCourseForm(item)"></i>
 
-                                                                <i *ngIf="item.can_delete" (click)="remove('COURSE', item, i)" class="fa fa-trash w3-text-red btn"></i>
+                                                                <i *ngIf="item.can_delete"
+                                                                    (click)="remove('COURSE', item, i)"
+                                                                    class="fa fa-trash w3-text-red btn"></i>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -173,13 +165,19 @@
                     <!-- course categories panel -->
                     <div class="custom-panel w3-display-container w3-round application-panel student-info-panel">
                         <div class="custom-panel-body table-responsive w3-padding">
-                            <button mat-raised-button color="primary" (click)="showCourseForm()" style="margin: 5px"><i class="fa fa-send-o"></i> {{ "create course" | trans }} </button>
+                            <button mat-raised-button color="primary" (click)="showCourseForm()" style="margin: 5px"><i
+                                    class="fa fa-send-o"></i> {{ "create course" | trans }} </button>
 
-                            <button mat-raised-button color="primary" (click)="showCourseCategoryForm()" style="margin: 5px"><i class="fa fa-send-o"></i> {{ "create course category" | trans }} </button>
+                            <button mat-raised-button color="primary" (click)="showCourseCategoryForm()"
+                                style="margin: 5px"><i class="fa fa-send-o"></i> {{ "create course category" | trans }}
+                            </button>
 
-                            <button mat-raised-button color="primary" (click)="showDegreeMapForm()" style="margin: 5px"><i class="fa fa-send-o"></i> {{ "create degree map" | trans}} </button>
+                            <button mat-raised-button color="primary" (click)="showDegreeMapForm()"
+                                style="margin: 5px"><i class="fa fa-send-o"></i> {{ "create degree map" | trans}}
+                            </button>
 
-                            <button mat-raised-button color="primary" (click)="$('#importExcelModal').modal('show')" style="margin: 5px">  {{ "import from excel" | trans}} </button>
+                            <button mat-raised-button color="primary" (click)="$('#importExcelModal').modal('show')"
+                                style="margin: 5px"> {{ "import from excel" | trans}} </button>
                         </div>
                     </div>
 
@@ -210,14 +208,17 @@
                                     <td>{{ item.required_hours }}</td>
                                     <td>
                                         <div style="width: 100px">
-                                            <i class="fa fa-edit w3-text-orange btn" (click)="showCourseCategoryForm(item)"></i>
+                                            <i class="fa fa-edit w3-text-orange btn"
+                                                (click)="showCourseCategoryForm(item)"></i>
 
-                                            <i *ngIf="item.can_delete" (click)="remove('COURSE_CATEGORY', item, i)" class="fa fa-trash w3-text-red btn"></i>
+                                            <i *ngIf="item.can_delete" (click)="remove('COURSE_CATEGORY', item, i)"
+                                                class="fa fa-trash w3-text-red btn"></i>
                                         </div>
                                     </td>
                                 </tr>
                             </table>
-                            <button class="btn btn-default w3-margin" class="w3-margin" (click)="showCourseCategoryForm(null)"><i class="fa fa-plus"></i></button>
+                            <button class="btn btn-default w3-margin" class="w3-margin"
+                                (click)="showCourseCategoryForm(null)"><i class="fa fa-plus"></i></button>
                         </div>
                     </div>
                     <br>
@@ -247,13 +248,16 @@
                                     <td>{{ item.name }}</td>
                                     <td>
                                         <div style="width: 100px">
-                                            <i class="fa fa-edit w3-text-orange btn" (click)="showDegreeMapForm(item)"></i>
-                                            <i *ngIf="item.can_delete" (click)="remove('DEGREE_MAP', item, i)" class="fa fa-trash w3-text-red btn"></i>
+                                            <i class="fa fa-edit w3-text-orange btn"
+                                                (click)="showDegreeMapForm(item)"></i>
+                                            <i *ngIf="item.can_delete" (click)="remove('DEGREE_MAP', item, i)"
+                                                class="fa fa-trash w3-text-red btn"></i>
                                         </div>
                                     </td>
                                 </tr>
                             </table>
-                            <button class="btn btn-default w3-margin" class="w3-margin" (click)="showDegreeMapForm(null)"><i class="fa fa-plus"></i></button>
+                            <button class="btn btn-default w3-margin" class="w3-margin"
+                                (click)="showDegreeMapForm(null)"><i class="fa fa-plus"></i></button>
                         </div>
                     </div>
 
@@ -273,7 +277,8 @@
 
 <app-create-degree-map-form [degreeMap]="degreeMap" [updateView]="updateView"></app-create-degree-map-form>
 
-<app-create-course-category-form [courseCategory]="courseCategory" [updateView]="updateView"></app-create-course-category-form>
+<app-create-course-category-form [courseCategory]="courseCategory" [updateView]="updateView">
+</app-create-course-category-form>
 
 
 <app-import-excel [apiUrl]="'import-course'" [action]="updateView"></app-import-excel>

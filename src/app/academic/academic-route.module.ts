@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Auth } from '../shared/auth';
 import { AuthGuestService } from '../shared/middlewares/auth-guest.service';
 import { AcademicPlanComponent } from './components/academic-plan/academic-plan.component';
+
 import { AcademicSettingComponent } from './components/academic-setting/academic-setting.component';
 import { ControlReportComponent } from './components/control-report/control-report.component';
 import { DoctorIndexComponent } from './components/doctor/doctor-index/doctor-index.component';
@@ -27,6 +28,7 @@ import { MinistryCumulativeReportComponent } from './components/ministry-cumulat
 import { StudentResultsComponent } from './components/student-results/student-results.component';
 import { PrerequsiteComponent } from './components/prerequsite/prerequsite.component';
 import { MedtermComponent } from './components/medterm/medterm.component';
+import { TermsefyComponent } from './components/termsefy/termsefy.component';
 const routes: Routes = [
   {
     path: 'plan',
@@ -34,6 +36,12 @@ const routes: Routes = [
     data: {can: Auth.canOr(['course_read', 'course_category_read', 'degree_map_read'])},
     component: AcademicPlanComponent
   },
+{
+  path: 'termsefy',
+  canActivate: [AuthGuestService],
+  data: {can: Auth.canOr(['course_read', 'course_category_read', 'degree_map_read'])},
+  component: TermsefyComponent
+},
   {
     path: 'setting',
     canActivate: [AuthGuestService],
