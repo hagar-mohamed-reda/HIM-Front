@@ -123,11 +123,12 @@ export class StudentAffairReport3Component implements OnInit {
   print() {
     Helper.print();
   }
-  excel() {
-    this.doc.exportExcel();
-  }
+
   printContent() {
     this.doc.printJs();
+  }
+  excel() {
+    this.doc.exportExcel();
   }
 //'الطلبة' , '#report3'
 

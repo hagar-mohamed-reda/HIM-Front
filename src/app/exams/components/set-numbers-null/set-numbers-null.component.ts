@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DivisionService } from 'src/app/account/services/division.service';
+import { LevelService } from 'src/app/account/services/level.service';
 import { ApplicationSettingService } from 'src/app/adminision/services/application-setting.service';
 import { Cache } from 'src/app/shared/cache';
 import { Helper } from 'src/app/shared/helper';
@@ -10,8 +12,11 @@ import { Request } from 'src/app/shared/request';
   templateUrl: './set-numbers-null.component.html',
   styleUrls: ['./set-numbers-null.component.scss']
 })
-export class SetNumbersNullComponent implements OnInit {
 
+export class SetNumbersNullComponent implements OnInit {
+  filter: any = {};
+  levels: any = [];
+  level_id: any;
   constructor(
     private applicationSettingService: ApplicationSettingService
   ) { }
@@ -29,6 +34,11 @@ export class SetNumbersNullComponent implements OnInit {
     });
   }
   ngOnInit() {
+    $('#level_id').on('change' , ()=>{
+      this.level_id = $('#level_id').val();
+    })
+    this.levels = Cache.get(LevelService.LEVEL_PREFIX);
+
   }
 
 }

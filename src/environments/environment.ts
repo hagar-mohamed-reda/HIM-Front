@@ -6,7 +6,7 @@ export const environment = {
 
 //NEW
    publicUrl: 'http://him.him-ma.org',
-    //  publicUrl: 'http://127.0.0.1:8000',
+      //publicUrl: 'http://127.0.0.1:8000',
 
   // publicUrl: 'http://him.msa-bns.com',
   // publicUrl: 'http://127.0.0.1:4200',
@@ -20,7 +20,7 @@ export const environment = {
   //apiUrl: window.location.origin + '/api',
 
     apiUrl: 'http://him.him-ma.org/api',
-      //  apiUrl: 'http://127.0.0.1:8000/api',
+       // apiUrl: 'http://127.0.0.1:8000/api',
 
 
   backEndPublicUrl: 'http://localhost:4000/',

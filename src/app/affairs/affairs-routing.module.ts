@@ -21,6 +21,7 @@ import { Report21Component } from './report/report21/report21.component';
 import { StudentAffairReport14Component } from './report/student-affair-report14/student-affair-report14.component';
 import { StudentAffairReport15Component } from './report/student-affair-report15/student-affair-report15.component';
 import { StudentAffairStudentStatusComponent } from './report/student-affair-student-status/student-affair-student-status.component';
+import { RegistrationComponent } from './report/registration/registration.component';
 
 const routes: Routes = [
    {
@@ -104,9 +105,13 @@ const routes: Routes = [
         path: 'report/student-status',
         component: StudentAffairStudentStatusComponent
       },
+      {
+        path: 'report/registration',
+        component: RegistrationComponent
+      },
     ]
   },
-
+  
   {
     path: '**',
     redirectTo: '/',

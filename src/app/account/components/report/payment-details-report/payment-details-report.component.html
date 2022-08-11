@@ -230,7 +230,7 @@
                                             <th>{{ "total" | trans }}</th>
                                         </tr>
 
-                                        <tr *ngFor="let item of payments.details.data index as i">
+                                        <tr *ngFor="let item of payments.details index as i">
                                             <td>{{ i + 1 }}</td>
                                             <td>{{ item.date }}</td>
                                             <td>{{ item.serial }}</td>

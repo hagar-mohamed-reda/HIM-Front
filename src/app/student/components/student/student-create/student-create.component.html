@@ -116,6 +116,9 @@
                           </ng-container>
 
                         </select>
+                        <p class="w3-text-red w3-tiny" *ngIf="application.percent > 0">
+                            {{ application.percent }} %
+                        </p>
                                             </td>
                                         </tr>
                                         <tr>

@@ -38,9 +38,9 @@
                               <div class="form-group">
                                   <label for="">{{ "term" | trans }}</label>
                                   <select id="term_id" name="filter.term_id" class="form-control" [(ngModel)]="filter.term_id">
-                          <option value="">الكل</option>
-                    <option *ngFor="let item of terms" value="{{ item.id }}">{{item.name}}</option>
-                  </select>
+                                  <option value="">الكل</option>
+                                  <option *ngFor="let item of terms" value="{{ item.id }}">{{item.name}}</option>
+                                  </select>
                               </div>
                           </div>
 

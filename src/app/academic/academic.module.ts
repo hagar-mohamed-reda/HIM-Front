@@ -38,6 +38,7 @@ import { TermPipe } from './term.pipe';
 import { DivisionPipe } from './division.pipe';
 import { TermsefyComponent } from './components/termsefy/termsefy.component';
 import { YearPipe } from './year.pipe';
+import { TaqderComponent } from './components/taqder/taqder.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { YearPipe } from './year.pipe';
     DivisionPipe,
     TermPipe,
     TermsefyComponent,
-    YearPipe
+    YearPipe,
+    TaqderComponent
   ],
   imports: [
     SharedModule,

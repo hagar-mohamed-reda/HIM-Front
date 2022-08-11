@@ -16,32 +16,47 @@
                       <div id="form" class="row">
 
                         <div class="col-lg-3 col-md-4">
-                          <div class="form-group">
-                              <label for="">{{ "level" | trans }}</label>
-                              <select id="level_id" name="filter.level_id" class="form-control" [(ngModel)]="filter.level_id">
-                        <option value="">الكل</option>
-                  <option *ngFor="let item of levels" value="{{ item.id }}">{{item.name}}</option>
-                </select>
-                          </div>
-                      </div>
-                          <div class="col-lg-3 col-md-4">
+                            <div class="form-group">
+                                <label for="">{{ "level" | trans }}</label>
+                                <select id="level_id" name="filter.level_id" class="form-control" [(ngModel)]="filter.level_id">
+                                <option value="">الكل</option>
+                                <option *ngFor="let item of levels" value="{{ item.id }}">{{item.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4">
                               <div class="form-group">
                                   <label for="">{{ "division" | trans }}</label>
                                   <select id="division_id" name="filter.division_id" class="form-control" [(ngModel)]="filter.division_id">
-                            <option value="">الكل</option>
-                      <option *ngFor="let item of divisions" value="{{ item.id }}">{{item.name}}</option>
-                    </select>
+                                  <option value="">الكل</option>
+                                  <option *ngFor="let item of divisions" value="{{ item.id }}">{{item.name}}</option>
+                                  </select>
                               </div>
-                          </div>
-                          <div class="col-lg-3 col-md-4">
+                        </div>
+
+                        <div class="col-lg-3 col-md-4">
+                            <div class="form-group">
+                                <label for="">{{ "academic year" | trans }}</label>
+                                <select name="filter.year_id" class="form-control" [(ngModel)]="filter.year_id">
+                                <option value="">الكل</option>
+                                <option *ngFor="let item of applicationService.ACADEMIC_YEARS" value="{{ item.id }}">{{item.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-3 col-md-4">
                               <div class="form-group">
                                   <label for="">{{ "term" | trans }}</label>
                                   <select id="term_id" name="filter.term_id" class="form-control" [(ngModel)]="filter.term_id">
-                          <option value="">الكل</option>
-                    <option *ngFor="let item of terms" value="{{ item.id }}">{{item.name}}</option>
-                  </select>
+                                  <option value="">الكل</option>
+                                  <option *ngFor="let item of terms" value="{{ item.id }}">{{item.name}}</option>
+                                  </select>
                               </div>
-                          </div>
+                        </div>
+
+                       
+
                           <div class="col-lg-3 col-md-4">
                             <div class="form-group">
                                 <label for="">{{ "course" | trans }}</label>
@@ -51,15 +66,9 @@
                   </select>
                             </div>
                         </div>
-                          <div class="col-lg-3 col-md-4">
-                              <div class="form-group">
-                                  <label for="">{{ "academic year" | trans }}</label>
-                                  <select name="filter.year_id" class="form-control" [(ngModel)]="filter.year_id">
-                        <option value="">الكل</option>
-                  <option *ngFor="let item of applicationService.ACADEMIC_YEARS" value="{{ item.id }}">{{item.name}}</option>
-                </select>
-                              </div>
-                          </div>
+
+                          
+
                           <div class="col-lg-3 col-md-4">
                             <div class="form-group">
                                 <label for="">سجل ام لم يسجل</label>

@@ -29,6 +29,7 @@ import { StudentResultsComponent } from './components/student-results/student-re
 import { PrerequsiteComponent } from './components/prerequsite/prerequsite.component';
 import { MedtermComponent } from './components/medterm/medterm.component';
 import { TermsefyComponent } from './components/termsefy/termsefy.component';
+import { TaqderComponent } from './components/taqder/taqder.component';
 const routes: Routes = [
   {
     path: 'plan',
@@ -95,6 +96,12 @@ const routes: Routes = [
     canActivate: [AuthGuestService],
     data: {can: Auth.can('control_report')},
     component: ControlAndResultsComponent
+  },
+  {
+    path: 'grade',
+    canActivate: [AuthGuestService],
+    data: {can: Auth.can('control_report')},
+    component: TaqderComponent
   },
   {
     path: 'attendance-report',

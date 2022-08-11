@@ -67,9 +67,9 @@
                                 <div class="form-group">
                                     <label>السكشن</label>
                                     <select id="section_id" class="form-control" name="section_id" [(ngModel)]="filter.section_id">
-                                      <option value="">السكشن</option>
-                                <option value="">الكل</option>
-                      <option *ngFor="let item of sections|group:group_id"  value="{{ item.id }}">{{ item.name }}</option>
+                                      <!-- <option value="">السكشن</option> |group:group_id-->
+                                      <option *ngFor="let item of sections"  value="{{ item.id }}">{{ item.name }}</option>
+                                      <option value="">الكل</option>
                     </select>
                                 </div>
                             </div>

@@ -15,7 +15,7 @@
 
                         <div id="form" class="row">
 
-                            <div class="col-lg-3 col-md-3">
+                            <div class="col-lg-4 col-md-3">
                                 <div class="form-group">
                                     <label>{{ "level" | trans }}</label>
                                     <select class="form-control" [(ngModel)]="filter.level_id">
@@ -24,7 +24,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-3 col-md-3">
+                            <div class="col-lg-4 col-md-3">
                                 <div class="form-group">
                                     <label>{{ "division" | trans }}</label>
                                     <select class="form-control" [(ngModel)]="filter.division_id">
@@ -33,25 +33,33 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-3 col-md-3">
+                            <div class="col-lg-4 col-md-3">
                                 <div class="form-group">
                                     <label>{{ "academic_year" | trans }}</label>
                                     <select class="form-control" [(ngModel)]="filter.academic_year_id">
-                                  <option *ngFor="let item of applicationService.ACADEMIC_YEARS"  value="{{ item.id }}">{{ item.name }}</option>
-                                </select>
+                                    <option *ngFor="let item of applicationService.ACADEMIC_YEARS"  value="{{ item.id }}">{{ item.name }}</option>
+                                    </select>
                                 </div>
                             </div>
-
-                            <div class="col-lg-3 col-md-3">
-                                <button class="btn btn-default w3-round" (click)="load()">{{ "search" | trans }}</button>
-                                <button style="margin: 0 5px;" class="btn btn-default w3-round" (click)="printContent()">{{ "print" | trans }}</button>
-                              <button class="btn btn-default w3-round" (click)="excel()">{{ "excel" | trans }}</button>
-
+                            
+                            <div class="col-lg-3 col-md-4">
+                                <div class="form-group">
+                                    <label for="">{{ "term" | trans }}</label>
+                                    <select id="term_id" name="filter.term_id" class="form-control" [(ngModel)]="filter.term_id">
+                                    <option value="">الكل</option>
+                                    <option *ngFor="let item of terms " value="{{ item.id }}">{{item.name}}</option>
+                                    </select>
+                                </div>
                             </div>
 
 
                         </div>
+                        <div class="col-lg-3 col-md-3">
+                            <button class="btn btn-default w3-round" (click)="load()">{{ "search" | trans }}</button>
+                            <button style="margin: 0 5px;" class="btn btn-default w3-round" (click)="printContent()">{{ "print" | trans }}</button>
+                          <button class="btn btn-default w3-round" (click)="excel()">{{ "excel" | trans }}</button>
 
+                        </div>
                     </div>
                 </div>
             </div>

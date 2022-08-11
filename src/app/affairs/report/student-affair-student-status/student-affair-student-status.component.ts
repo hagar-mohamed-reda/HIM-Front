@@ -12,13 +12,14 @@ import { CourseService } from 'src/app/academic/services/course.service';
 import { ReportServiceService } from 'src/app/academic/services/report-service.service';
 import { StudentAccountService } from 'src/app/account/services/student-account.service';
 import { TermService } from 'src/app/account/services/term.service';
+
 @Component({
   selector: 'app-student-affair-student-status',
   templateUrl: './student-affair-student-status.component.html',
   styleUrls: ['./student-affair-student-status.component.scss']
 })
-export class StudentAffairStudentStatusComponent implements OnInit {
 
+export class StudentAffairStudentStatusComponent implements OnInit {
   $: any = $;
   doc: any = document;
   isSubmitted = false;
@@ -35,8 +36,9 @@ export class StudentAffairStudentStatusComponent implements OnInit {
   levels: any = [];
   divisions: any = [];
   courses: any = [];
-
-
+  val:string ="";
+  idStudent: any;
+  
 
 
   selectedDivisions = new HashTable();
@@ -51,6 +53,7 @@ export class StudentAffairStudentStatusComponent implements OnInit {
   public isWait = false;
   public timeoutId;
   public students: any = [];
+  SettingService: any;
 
 
   constructor(
@@ -58,8 +61,11 @@ export class StudentAffairStudentStatusComponent implements OnInit {
     private studentAcountService: StudentAccountService,
     private academicSettingService: AcademicSettingService,
     private reportService: ReportServiceService,
-    private applicationSetting: ApplicationSettingService) {
+    private applicationSetting: ApplicationSettingService,
+    private globalService: GlobalService
+    ) {
       this.preSettings();
+     
     }
 
   ngOnInit() {
@@ -103,7 +109,10 @@ export class StudentAffairStudentStatusComponent implements OnInit {
     this.levels = Cache.get(LevelService.LEVEL_PREFIX);
     Request.fire();
   }
-
+  test($event)
+  {
+    console.log($event.target.value)
+  }
   loadData() {
     this.searchData.courses = this.selectedCourses.getKeys();
     this.searchData.levels = this.selectedLevels.getKeys();
@@ -173,6 +182,11 @@ export class StudentAffairStudentStatusComponent implements OnInit {
   }
 
   print() {
+  this.globalService.save({name: this.val, id: this.idStudent}).subscribe((res:any)=>{
+    //this.id_current = res.id;
+})
+  
+
     var check = 0;
     var array = this.student.payments;
     for(let i = 0 ; i < array.length ; i++){

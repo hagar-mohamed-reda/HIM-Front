@@ -12,6 +12,9 @@ export class GlobalService {
   constructor(private http: HttpClient) {
 
   }
+  public save( data: any) {
+    return this.http.post("/tst" + '?api_token=' + Auth.getApiToken(), data);
+  }
 
 
   /**
@@ -41,6 +44,7 @@ export class GlobalService {
   public store(url, data: any) {
     return this.http.post(url + '?api_token=' + Auth.getApiToken(), data);
   }
+  
 
   /**
    * update service

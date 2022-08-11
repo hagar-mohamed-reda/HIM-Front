@@ -12,7 +12,9 @@ import { Message } from 'src/app/shared/message';
   styleUrls: ['./term.component.scss']
 })
 export class TermComponent  extends SettingTemplate implements OnInit {
+
   id_current:any ;
+  
   terms: any = [];
 
   constructor(public settingService: SettingService ,private termService:TermService
@@ -21,24 +23,26 @@ export class TermComponent  extends SettingTemplate implements OnInit {
     this.baseUrl = "update-system-setting-term";
     this.requiredFields = ['start_date', 'end_date'];
     this.get();
+
     this.settingService.getTerm().subscribe((res:any)=>{
       this.id_current = res.id;
     })
+
   }
   sendactive(data:any){
     this.settingService.updateTermActive({term_id:data}).subscribe((res:any)=>{
-      if(res.status == 1){
-setTimeout(() => {
-  location.reload();
-
-  
-}, 1000);
+    if(res.status == 1)
+    {
+    setTimeout(() => 
+    {
+    location.reload(); 
+    }, 1000);
         return Message.success(Helper.trans('  تم الحفظ بنجاح'));
       }
       else{
         return Message.error(Helper.trans('يرجى اعاده المحاوله'));
 
-      }
+    }
     })
   }
 

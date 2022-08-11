@@ -159,7 +159,9 @@
                                                 *
                                             </th>
                                             <td>
-                                                <input (change)="watchLevel();calculatePercent()" type="text" [readOnly]="isAzhar" class="custom-input form-control input-sm w3-input input-sm" [ngClass]="{'border-bottom-dashed': application.grade, 'border-bottom-red': !application.grade}" [(ngModel)]="application.grade">
+                                                <input (change)="watchLevel();
+                                                calculatePercent()" type="text" [readOnly]="isAzhar" class="custom-input form-control input-sm w3-input input-sm" [ngClass]="{'border-bottom-dashed': application.grade, 'border-bottom-red': !application.grade}" [(ngModel)]="application.grade">
+                                               
                                                 <p *ngIf="gradeError" class="w3-text-red w3-tiny">
                                                     {{ gradeError }}
                                                 </p>

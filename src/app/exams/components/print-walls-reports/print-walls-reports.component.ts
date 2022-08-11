@@ -48,13 +48,15 @@ export class PrintWallsReportsComponent implements OnInit {
   printContent() {
     this.doc.printJs();
   }
-
+  excel() {
+    this.doc.exportExcel();
+  }
   ngOnInit() {
-    this.levels = Cache.get(LevelService.LEVEL_PREFIX);
-    this.applicationSettingService.commissions().subscribe((res)=>{
+      this.levels = Cache.get(LevelService.LEVEL_PREFIX);
+      this.divisions = Cache.get(DivisionService.DIVISION_PREFIX);
+      this.applicationSettingService.commissions().subscribe((res)=>{
       this.commissionsGet = res;
     })
-    this.divisions = Cache.get(DivisionService.DIVISION_PREFIX);
   }
 
 }

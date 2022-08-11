@@ -114,12 +114,11 @@
 
 
                         </div>
-                        <div class="col-lg-3 col-md-3" >
-                            <button  (click)="load()" style='margin-left: 10px !important;'>{{ "search" | trans }}</button>
-                            <button mat-raised-button color="primary" style='margin-left: 10px !important;'
-                             (click)="print()"> <i class="fa fa-print" ></i> {{ "print" | trans }}</button>
-                            <button class="btn btn-default w3-round" (click)="excel()" >{{ "excel" | trans }}</button>
-
+                         <div class="col-lg-3 col-md-3" >
+                            <button class="btn btn-default w3-round" (click)="load()" style='margin-left: 10px !important;'>{{ "search" | trans }}</button>
+                           <button class="btn btn-default w3-round"  style='margin-left: 10px !important;'
+                             (click)="printContent()"> {{ "print" | trans }}</button>
+                            <button class="btn btn-default w3-round " (click)="excel()" >{{ "excel" | trans }}</button>
                             
                         </div>
                         <div class="col-lg-3 col-md-3">
@@ -154,3 +153,4 @@
 <div id="alertNumberSuccess" class="alert alert-success" role="alert">
     تم وضع أرقام الجلوس لهذة السنة الدراسية بنجاح
 </div>
+<!--  <i class="fa fa-print " ></i> -->

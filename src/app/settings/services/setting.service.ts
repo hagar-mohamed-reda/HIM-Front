@@ -25,6 +25,9 @@ export class SettingService {
   public getTerm(data: any={}) {
     return this.http.get('/system-setting' + '?api_token=' + Auth.getApiToken(), data);
   }
+
+ 
+
   public updateTermActive(data: any) {
     return this.http.post(this.baseUrl  + '?api_token=' + Auth.getApiToken(), data);
   }

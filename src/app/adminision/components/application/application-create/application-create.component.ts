@@ -58,6 +58,7 @@ export class ApplicationCreateComponent implements OnInit {
     'registration_status_id',
     'academic_years_id',
     'grade',
+    'maxgrade',
     'qualification_date1',
     'qualification_types_id',
     'level_id'
@@ -191,21 +192,31 @@ export class ApplicationCreateComponent implements OnInit {
   calculatePercent() {
     var percent = 0;
     var total = 0;
+    var total2 = 0;
+
+
+
     console.log('in percent func');
     this.applicationSettings.QUALIFICATION_TYPES.forEach((element: any) => {
       if (this.application.qualification_types_id == element.id) {
-        total = element.total;
+        total = element.grade;
+        total2 = element.maxgrade;
+           console.log(total2);
       }
     });
-    /*
-    this.applicationSettings.QUALIFICATIONS.forEach(element => {
-      if (this.application.qualification_id == element.id) {
-        total = element.grade;
-      }
-    });*/
-    //
-    percent = (this.application.grade / total) * 100;
+    
+    // this.applicationSettings.QUALIFICATIONS.forEach(element => {
+    //   if (this.application.qualification_id == element.id) {
+    //     total = element.maxgrade;
+    //   }
+    // });
+    //maxgrade this.application.maxgrade
+    //console.log(this.application.maxgrade);
+    percent = (this.application.grade / 410) * 100;
     this.application.percent = percent.toFixed(2);
+    // console.log(this.application.maxgrade);
+    // console.log(total2);
+
   }
 
   validateOnRegisterationStatusDocument() {

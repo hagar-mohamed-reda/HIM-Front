@@ -17,6 +17,8 @@ import { StudentAffairReport11Component } from './report/student-affair-report11
 import { StudentAffairReport14Component } from './report/student-affair-report14/student-affair-report14.component';
 import { StudentAffairReport15Component } from './report/student-affair-report15/student-affair-report15.component';import { Report21Component } from './report/report21/report21.component';
 import { StudentAffairStudentStatusComponent } from './report/student-affair-student-status/student-affair-student-status.component';
+import { FormsModule } from '@angular/forms';
+import { RegistrationComponent } from './report/registration/registration.component'; 
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { StudentAffairStudentStatusComponent } from './report/student-affair-stu
     StudentAffairReport15Component,
     Report21Component,
    StudentAffairStudentStatusComponent,
+   RegistrationComponent,
     
   ],
   imports: [
@@ -41,7 +44,9 @@ import { StudentAffairStudentStatusComponent } from './report/student-affair-stu
     AffairsRoutingModule,
     StudentModule,
     AccountModule,
-    AdminisionModule
+    AdminisionModule,
+    FormsModule,
+    
   ]
 })
 export class AffairsModule { }

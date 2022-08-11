@@ -7,7 +7,8 @@ import { GlobalService } from 'src/app/shared/services/global.service';
 import { ApplicationSettingService } from '../../../adminision/services/application-setting.service';
 import { LevelService } from '../../../account/services/level.service';
 import { CourseService } from '../../../academic/services/course.service';
-
+import { DivisionService } from 'src/app/account/services/division.service';
+import { TermService } from 'src/app/account/services/term.service';
 @Component({
   selector: 'app-print-seating-numbers',
   templateUrl: './print-seating-numbers.component.html',
@@ -16,14 +17,17 @@ import { CourseService } from '../../../academic/services/course.service';
 export class PrintSeatingNumbersComponent implements OnInit {
   filter: any = {};
   $: any = $;
+  terms:any;
   applicationService: any = ApplicationSettingService;
   divisions: any = [];
   academicYears: any = [];
   doc: any = document;
   courses: any = [];
   levels: any = [];
+  level_id: any;
   commissionsGet: any;
-
+  division_id: any;
+  
   constructor(
     private courseService: CourseService,
     private globalService: GlobalService,
@@ -62,6 +66,9 @@ export class PrintSeatingNumbersComponent implements OnInit {
     this.applicationSettingService.commissions().subscribe((res)=>{
       this.commissionsGet = res;
     })
+    this.divisions = Cache.get(DivisionService.DIVISION_PREFIX);
+    this.terms = Cache.get(TermService.TERPM_PREFIX);
+
   }
 
 }

@@ -18,6 +18,7 @@ export class ApplicationSettingService {
   public static LANGUAGES: any = [];
   public static CITIES: any = [];
   public static GOVERNMENTS: any = [];
+  public static TAQDERS: any = [];
   public static COUNTRIES: any = [];
   public static MILITARY_STATUS: any = [];
   public static MILITARY_AREAS: any = [];
@@ -68,6 +69,9 @@ export class ApplicationSettingService {
 
     if (ApplicationSettingService.GOVERNMENTS.length <= 0)
       Request.addToQueue({ observer: this.getGovernments(), action: (res) => { ApplicationSettingService.GOVERNMENTS = res; } });
+
+    // if (ApplicationSettingService.TAQDERS.length <= 0)
+    //   Request.addToQueue({ observer: this.getTaqder(), action: (res) => { ApplicationSettingService.TAQDERS = res; } });
 
     if (ApplicationSettingService.COUNTRIES.length <= 0)
       Request.addToQueue({ observer: this.getCountries(), action: (res) => { ApplicationSettingService.COUNTRIES = res; } });
@@ -193,6 +197,9 @@ export class ApplicationSettingService {
   public getGovernments() {
     return this.http.get('adminision/get_governments?api_token=' + Auth.getApiToken());
   }
+  // public getTaqder() {
+  //   return this.http.get('adminision/get_aqder?api_token=' + Auth.getApiToken());
+  // }
 
   public getCountries() {
     return this.http.get('adminision/get_countries?api_token=' + Auth.getApiToken());
