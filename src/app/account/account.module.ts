@@ -63,6 +63,14 @@ import { CheckSheetComponent } from './components/worksheet/check-sheet/check-sh
 import { NgxPaginationModule } from 'ngx-pagination';
 import { InstallmentReport2Component } from './components/report/installment-report2/installment-report2.component';
 import { PaidPipe } from './paid.pipe'
+import { DivisionPipe } from './division.pipe';
+import { LevelsPipe } from './levels.pipe';
+import { SumPipe } from './pipes/sum-pipe.pipe';
+import { CompanyIndexComponent } from './components/company/company-index/company-index.component';
+import { CompanyFormComponent } from './components/company/company-form/company-form.component';
+import { PersonFormComponent } from './components/persons/person-form/person-form.component';
+import { PersonIndexComponent } from './components/persons/person-index/person-index.component';
+
 @NgModule({
   declarations: [
     ServiceIndexComponent,
@@ -115,6 +123,15 @@ import { PaidPipe } from './paid.pipe'
     CheckSheetComponent,
     InstallmentReport2Component,
     PaidPipe,
+    LevelsPipe,
+    DivisionPipe,
+    SumPipe,
+    CompanyIndexComponent,
+    CompanyFormComponent,
+    PersonFormComponent,
+    PersonIndexComponent,
+   
+
   ],
   imports: [
     SharedModule,

@@ -34,7 +34,13 @@
             {{element.person}}
           </td>
         </ng-container>
-
+        <!-- <ng-container matColumnDef="person_id" >
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ "الشركه أو الشخص"  }}</th>
+          <td mat-cell *matCellDef="let element">
+            {{element.person_id}}
+          </td>
+        </ng-container> -->
+        
         <!-- Position Column -->
         <ng-container matColumnDef="value" >
           <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ "value" | trans }}</th>

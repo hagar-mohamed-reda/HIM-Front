@@ -21,18 +21,19 @@ export class SectionCourseComponent implements OnInit {
   filter_search: any = {};
   $: any = $;
   applicationService: any = ApplicationSettingService;
-  levels: any = [];
   divisions: any = [];
   doc: any = document;
   section: any;
   prevsections: any;
   currentsectionName: any;
   currentsectionId: any;
-  terms: any = [];
   courses: any = [];
+  course_id:any;
   division_id: any;
   term_id: any;
+  terms: any = [];
   level_id: any;
+  levels: any = [];
   groups: any = [];
   isSubmitted: any;
   student_number: any;
@@ -56,7 +57,9 @@ export class SectionCourseComponent implements OnInit {
     this.applicationSettingService.groups().subscribe((res: any) => {
       this.groups = res;
     })
-
+    this.courses = this.courseService.get().subscribe((res: any) => {
+      this.courses = res;
+    })
   }
 
   load() {
@@ -222,5 +225,11 @@ export class SectionCourseComponent implements OnInit {
     $('#term_id').on('change' , ()=>{
       this.term_id = $('#term_id').val();
     })
+    this.courseService.get().subscribe((res)=>{
+      this.courses = res;
+    })
+    this.levels = Cache.get(LevelService.LEVEL_PREFIX);
+    this.divisions = Cache.get(DivisionService.DIVISION_PREFIX);
+    this.terms = Cache.get(TermService.TERPM_PREFIX); 
   }
 }

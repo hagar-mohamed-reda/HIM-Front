@@ -1,6 +1,6 @@
 <div class="container">
     <div class="w3-block">
-
+       
 
         <div class="w3-white material-shadow safe-box">
             <div class="safe-box-header w3-large" style="padding: 5px!important">{{ "تقرير حالات الطلاب "}}</div>
@@ -74,14 +74,29 @@
             <!-- <h1>{{val}}</h1> -->
             <br><br>
 
-            <div class="custom-panel w3-display-container w3-round application-panel student-info-panel"
+            <div class="custom-panel w3-display-container w3-round application-panel student-info-panel "
                 *ngIf="response != null">
-                <div class="custom-panel-body table-responsive w3-padding" id="printable">
+                <div class="custom-panel-body table-responsive w3-padding" >
 
                     <div>
+                        <div class="custom-panel w3-display-container w3-round application-panel student-info-panel">
+                            <div class="custom-panel-body table-responsive w3-padding">
+                                <button mat-raised-button color="primary" [disabled]="isSubmitted" (click)="loadData()"
+                                    style="margin: 5px">
+                                    <i *ngIf="isSubmitted" class="fa fa-spin fa-spinner"></i>
+                                    <span *ngIf="!isSubmitted">{{ "update" | trans }} </span>
+                                </button>
+                                <button mat-raised-button color="primary" class="w3-margin-left w3-black" (click)="print()"> <i
+                                        class="fa fa-print"></i> {{ "print" | trans }}</button>
+                                <!-- <button mat-raised-button color="primary" class="w3-margin-left w3-green" (click)="exportExcel()"> <i class="fa fa-file-excel-o" ></i> {{ "excel" | trans }}</button> -->
+                            </div>
+                        </div>
+                        <div class="all" id="printable">
 
+
+                        
                         <!-- =====first page=== -->
-                        <div class="container" style="height: 100vh;">
+                        <div class="container" style="height: 100vh;" >
                             <div class="container w-100" style="text-align: center !important;">
                                 <div class="row">
                                     <div class="col-xs-6">
@@ -389,8 +404,15 @@
                                     </div>
 
                                 </div>
+                               
+                                  
                             </div>
-                            <br>
+                          
+                            <p
+                        style="text-align: right !important;font-size: 13px !important;font-weight: bolder !important; margin-bottom: 50px !important;">
+                        تحريرا فى  : {{ today |date:' dd-MM-yyyy'}}
+                             
+                    </p>
                         </div>
                         <!-- =====first bian 7ala======= -->
                         <br>
@@ -411,10 +433,12 @@
                                 </div>
                             </div>
                             <div class="col-xs-12 "
-                                style="background-color: rgba(0,0,0,.5) !important;  margin-bottom: 30px !important;">
+                                style="background-color: rgba(0,0,0,.5) !important;  margin-bottom: 25px !important;">
                                 <h6 style="text-align: center !important; text-decoration: underline !important;font-size: 22px !important;font-weight:
-                                                bolder !important;">بيان حاله </h6>
+                                                bolder !important;">بيان حاله 
+                                </h6>
                             </div>
+                            <p style="text-align: center !important;font-size: 13px !important;font-weight: bolder !important;">    (2+2) المعهد بنظام الساعات المعتمده   </p>
                             <div class="col-xs-6">
                                 <h6
                                     style="text-align: center !important;font-size: 13px !important;font-weight: bolder !important;">
@@ -442,7 +466,7 @@
                                     المستوى / {{response.studentInfo[0].level_name}}</h6>
                                 <h6
                                     style="text-align: right !important;font-size: 13px !important;font-weight: bolder !important;">
-                                    العام الدراسى/ 2020-2021</h6>
+                                    العام الدراسى/ 2021-2022</h6>
                                 <h6
                                     style="text-align: right !important;font-size: 13px !important;font-weight: bolder !important;">
                                     المؤهل / {{ response.studentInfo[0].qualification_name }}</h6>
@@ -460,8 +484,8 @@
                             </div>
                             <div class="tst" style="overflow: hidden;">1</div><br>
                             <h5 class="test" style="margin-top: 5px !important; text-align: right !important;">الطالب
-                                قيد بالفرقه الاولى مستجد فى العام الدراسى 2021/2022 ونتيجته ناجح
-                                <br><br> وله حق القيد بالفرقه التانيه مستجد فى العام الدراسى2022/2023
+                                قيد بالمستوى الاول مستجد فى العام الدراسى 2021/2022 ونتيجته ناجح
+                                <br><br> وله حق القيد بالمستوى التاني مستجد فى العام الدراسى2022/2023
 
                                 <br><br>
                                 <b> وقد اعطى هذا البيان بناء على طلب الطالب لتقديمه الى / {{val}}
@@ -493,9 +517,7 @@
                                         <h6
                                             style="text-align: right !important;font-size: 13px !important;font-weight: bolder !important;">
                                             الموظف المختص </h6><br><br>
-                                        <h6
-                                            style="text-align: right !important;font-size: 13px !important;font-weight: bolder !important;">
-                                            تحريرا فى 28/9/2021</h6>
+                                       
                                     </div>
 
 
@@ -503,12 +525,18 @@
 
                                 </div>
                             </div>
+                            <br><br>
+                            <h6
+                                style="text-align: right !important;font-size: 13px !important;font-weight: bolder !important;">
+                                تحريرا فى  : {{ today |date:' dd-MM-yyyy'}}
+                                     
+                                  </h6> <br><br>
                         </div>
                         <!-- =====end first bian 7ala=== -->
                         <br>
                         <div class="border-bottom-dashed"></div>
                         <!-- =====second bian 7ala=== -->
-                        <div class="container" style="height: 100vh;">
+                        <div class="container" >
                             <div class="row">
 
                                 <div class="col-xs-6">
@@ -537,9 +565,8 @@
                                 <br>
                                 <p style="text-align: center !important">تحيه طيبه وبعد ...</p>
                                 نتشرف باحاطه سيادتكم علما بان الطالب / &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                {{response.studentInfo[0].name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                المقيد بمعهدنا <br> قد ابدى رغبته فى التحويل طرفكم - وليس لدينا مانع من تحويله - علما
+                                {{response.studentInfo[0].name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                                المقيد بمعهدنا قد ابدى رغبته فى التحويل طرفكم  علما
                                 بان بياناته كما يلى
                                 <hr>
                             </div>
@@ -582,7 +609,7 @@
                                             تخصص</td>
                                         <td
                                             style="text-align: center;font-weight: bolder;border: 1px solid black !important;padding: 2px !important;">
-                                            النتيجه</td>
+                                            المعدل التراكمي</td>
 
                                     </tr>
                                 </thead>
@@ -590,7 +617,7 @@
                                     <tr>
                                         <td
                                             style="text-align: center;font-weight: bolder;border: 1px solid black !important;padding: 2px !important;">
-                                            2020/2021</td>
+                                            2022/2021</td>
                                         <td
                                             style="text-align: center;font-weight: bolder;border: 1px solid black !important;padding: 2px !important;">
                                             مستجد</td>
@@ -602,16 +629,18 @@
                                             {{response.studentInfo[0].division_type}} </td>
                                         <td
                                             style="text-align: center;font-weight: bolder;border: 1px solid black !important;padding: 2px !important;">
-                                            (جيد)</td>
+                                            {{response.CGPA}}
+                                        </td>
 
                                     </tr>
                                 </tbody>
                             </table><br>
                             <div style="text-align: right !important; ">
-                                <h5>وطبقا لسجلات المعهد فان الطالب المذكور له حق القيد بالفرقه :
-                                    الثانيه&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تخصص:
+                                <h5>وطبقا لسجلات المعهد فان الطالب المذكور له حق القيد بالمستوى :
+                                الثاني<br>
+                                 تخصص:
                                     {{response.studentInfo[0].division_type}}</h5>
-                                <h5>وذلك للعام الدراسى : 2020/2021
+                                <h5>وذلك للعام الدراسى : 2022/2023
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -620,12 +649,13 @@
                                     الجهه الموجهه اليها فقط </h5>
                             </div>
                             <br><br><br>
-                            <h6
-                                style="text-align: right !important;font-size: 13px !important;font-weight: bolder !important;">
-                                تحريرا فى 28/9/2021</h6>
+                            
                             <div class="container" style="text-align: center !important;">
                                 <div class="row">
-                                    <div class="col-xs-3">
+
+                                    
+                                   
+                                    <div class="col-xs-4">
                                         <h6
                                             style="text-align: right !important;font-size: 13px !important;font-weight: bolder !important;">
                                             عميد المعهد</h6>
@@ -633,11 +663,7 @@
                                             style="text-align: right !important;font-size: 13px !important;font-weight: bolder !important;">
                                             أ.د / أحمد ابوالقمصان </h6>
                                     </div>
-                                    <!-- <div class="col-xs-3">
-                                        <h6 style="text-align: right !important;font-size: 13px !important;font-weight: bolder !important;"> مسئول الكنترول </h6>
-                                        <h6 style="text-align: right !important;font-size: 13px !important;font-weight: bolder !important;"> </h6>
-                                    </div> -->
-                                    <div class="col-xs-3">
+                                    <div class="col-xs-4">
                                         <h6
                                             style="text-align: right !important;font-size: 13px !important;font-weight: bolder !important;">
                                             مدير شئون الطلاب </h6>
@@ -645,7 +671,8 @@
                                             style="text-align: right !important;font-size: 13px !important;font-weight: bolder !important;">
                                         </h6>
                                     </div>
-                                    <div class="col-xs-3">
+                                   
+                                    <div class="col-xs-4">
                                         <h6
                                             style="text-align: right !important;font-size: 13px !important;font-weight: bolder !important;">
                                             الموظف المختص </h6>
@@ -653,27 +680,25 @@
                                             style="text-align: right !important;font-size: 13px !important;font-weight: bolder !important;">
                                         </h6>
                                     </div>
+                                    
                                 </div>
+                                <br><br>
+                                <h6
+                                style="text-align: right !important;font-size: 13px !important;font-weight: bolder !important;">
+                                تحريرا فى  : {{ today |date:' dd-MM-yyyy'}}
+                                     
+                                  </h6>
                             </div>
+                            
                         </div>
+                    </div>
                         <!-- =====end second bian 7ala=== -->
                         
                     </div>
                 </div>
             </div>
             <!-- eltba3aa -->
-            <div class="custom-panel w3-display-container w3-round application-panel student-info-panel">
-                <div class="custom-panel-body table-responsive w3-padding">
-                    <button mat-raised-button color="primary" [disabled]="isSubmitted" (click)="loadData()"
-                        style="margin: 5px">
-                        <i *ngIf="isSubmitted" class="fa fa-spin fa-spinner"></i>
-                        <span *ngIf="!isSubmitted">{{ "update" | trans }} </span>
-                    </button>
-                    <button mat-raised-button color="primary" class="w3-margin-left w3-black" (click)="print()"> <i
-                            class="fa fa-print"></i> {{ "print" | trans }}</button>
-                    <!-- <button mat-raised-button color="primary" class="w3-margin-left w3-green" (click)="exportExcel()"> <i class="fa fa-file-excel-o" ></i> {{ "excel" | trans }}</button> -->
-                </div>
-            </div>
+         
             <!-- ======== -->
         </div>
     </div>

@@ -72,6 +72,7 @@ export class CheckIndexComponent implements OnInit {
       'date',
       'number',
       'person',
+      // 'person_id',
       'notes',
       'value',
       'is_paid',

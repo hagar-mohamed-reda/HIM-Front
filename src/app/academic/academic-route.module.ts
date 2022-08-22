@@ -30,6 +30,8 @@ import { PrerequsiteComponent } from './components/prerequsite/prerequsite.compo
 import { MedtermComponent } from './components/medterm/medterm.component';
 import { TermsefyComponent } from './components/termsefy/termsefy.component';
 import { TaqderComponent } from './components/taqder/taqder.component';
+import { ToptenComponent } from './components/topten/topten.component';
+import { YearworkComponent } from './components/yearwork/yearwork.component';
 const routes: Routes = [
   {
     path: 'plan',
@@ -144,6 +146,18 @@ const routes: Routes = [
     canActivate: [AuthGuestService],
     data: {can: Auth.can('control_report')},
     component: MedtermComponent
+  },
+  {
+    path: 'topten',
+    canActivate: [AuthGuestService],
+    data: {can: Auth.can('control_report')},
+    component: ToptenComponent
+  },
+  {
+    path: 'yearwork',
+    canActivate: [AuthGuestService],
+    data: {can: Auth.can('control_report')},
+    component: YearworkComponent
   },
   {
     path: 'courses-stats',

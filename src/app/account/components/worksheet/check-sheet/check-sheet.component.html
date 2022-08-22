@@ -3,7 +3,7 @@
  <div class="col-lg-10 col-md-10" >
 
   <div class="row">
-    <div class="col-lg-3 col-md-3 col-sm- 6">
+    <div class="col-lg-4 col-md-3 col-sm- 6">
       <label>
         {{ "bank" | trans }}
       </label>
@@ -16,6 +16,37 @@
       <option *ngFor="let row of banks" value="{{ row.id }}">{{ row.name }}</option>
     </select>
     </div>
+    <div class="col-lg-4 col-md-3 col-sm- 6">
+      <label>
+        {{ "الشركه"  }}
+      </label>
+      <br>
+      <select
+        class="form-control input-sm select2 company_id"
+        style="border-radius: 5em;"
+        (change)="loadData()"
+        [(ngModel)]="filter.company_id">
+        <option value="">الكل</option>
+
+      <option *ngFor="let row of companies" value="{{ row.id }}">{{ row.name }}</option>
+    </select>
+    </div>
+    <div class="col-lg-4 col-md-3 col-sm- 6">
+      <label>
+        {{ "الشخص"  }}
+      </label>
+      <br>
+      <select
+      class="form-control input-sm select2 person_id"
+        style="border-radius: 5em;"
+        (change)="loadData()"
+        [(ngModel)]="filter.person_id">
+        <option value="">الكل</option>
+
+      <option *ngFor="let row of persons" value="{{ row.id }}">{{ row.name }}</option>
+    </select>
+    </div>
+    
     <div class="col-lg-3 col-md-3 col-sm- 6">
       <label>
         {{ "date_from" | trans }}
@@ -63,8 +94,9 @@
     <tr *ngIf="loading"  >
       <td class="w3-text-indigo text-center" colspan="8" ><i class="fa fa-spin fa-spinner"></i></td>
     </tr>
+    <!-- && filter.company_id && filter.person_id -->
     <ng-container *ngFor="let item of data index as i" >
-      <tr *ngIf="filter.bank_id !loading"  >
+      <tr *ngIf="filter.bank_id  !loading"  >
         <td>
           <input
           type="number"

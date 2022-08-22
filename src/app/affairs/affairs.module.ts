@@ -18,7 +18,9 @@ import { StudentAffairReport14Component } from './report/student-affair-report14
 import { StudentAffairReport15Component } from './report/student-affair-report15/student-affair-report15.component';import { Report21Component } from './report/report21/report21.component';
 import { StudentAffairStudentStatusComponent } from './report/student-affair-student-status/student-affair-student-status.component';
 import { FormsModule } from '@angular/forms';
-import { RegistrationComponent } from './report/registration/registration.component'; 
+import { RegistrationComponent } from './report/registration/registration.component';
+import { PatientsComponent } from './report/patients/patients.component';
+import { PatientreportComponent } from './report/patientreport/patientreport.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { RegistrationComponent } from './report/registration/registration.compon
     Report21Component,
    StudentAffairStudentStatusComponent,
    RegistrationComponent,
+   PatientsComponent,
+   PatientreportComponent,
     
   ],
   imports: [

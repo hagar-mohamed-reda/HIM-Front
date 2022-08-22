@@ -1,4 +1,3 @@
-
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HashTable } from 'angular-hashtable';
 import { AppModule } from '../../../../app.module';

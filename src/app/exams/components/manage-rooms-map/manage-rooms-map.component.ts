@@ -109,17 +109,28 @@ export class ManageRoomsMapComponent implements OnInit {
   printContent() {
     this.doc.printJs();
   }
-  submitData(){
-    Message.confirm(Helper.trans('are you sure'), () => {
-      this.applicationSettingService.student_distributions(1).subscribe((res)=>{
-        if(res == 1){
-          return Message.success(Helper.trans('done'));
-        } else {
-          return Message.error('تم التوزيع من قبل');
-        }
+
+  submitData()
+  {
+    // if (!Helper.validator(this.filter, [ 'year_id' ])) {
+    //   return Message.error(Helper.trans('اختر السنه اولا'));
+    // }
+    // else
+    //{
+      Message.confirm(Helper.trans('are you sure'), () =>
+     {
+      this.applicationSettingService.student_distributions(1).subscribe((res)=>
+      {
+        if(res == 1)
+              { return Message.success(Helper.trans('done'));} 
+        else  {return Message.error('تم التوزيع من قبل');}
       })
-    });
+     }
+     );
+   // }
+   
   }
+
   submitDataNo(){
     Message.confirm(Helper.trans('are you sure'), () => {
       this.applicationSettingService.student_distributionsNo(1).subscribe((res)=>{

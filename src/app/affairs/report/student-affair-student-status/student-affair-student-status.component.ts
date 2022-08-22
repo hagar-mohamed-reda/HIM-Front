@@ -12,7 +12,7 @@ import { CourseService } from 'src/app/academic/services/course.service';
 import { ReportServiceService } from 'src/app/academic/services/report-service.service';
 import { StudentAccountService } from 'src/app/account/services/student-account.service';
 import { TermService } from 'src/app/account/services/term.service';
-
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-student-affair-student-status',
   templateUrl: './student-affair-student-status.component.html',
@@ -38,8 +38,9 @@ export class StudentAffairStudentStatusComponent implements OnInit {
   courses: any = [];
   val:string ="";
   idStudent: any;
+  today = new Date();
+  changedDate = '';
   
-
 
   selectedDivisions = new HashTable();
   selectedLevels = new HashTable();
@@ -180,12 +181,12 @@ export class StudentAffairStudentStatusComponent implements OnInit {
     for(let i = 0; i < this.response.pages; i ++)
       this.response.pages_arr.push(i+1);
   }
+    //this.id_current = res.id;
 
   print() {
-  this.globalService.save({name: this.val, id: this.idStudent}).subscribe((res:any)=>{
-    //this.id_current = res.id;
-})
-  
+//   this.globalService.save({name: this.val, id: this.idStudent}).subscribe((res:any)=>{
+// })
+this.doc.printJs();
 
     var check = 0;
     var array = this.student.payments;

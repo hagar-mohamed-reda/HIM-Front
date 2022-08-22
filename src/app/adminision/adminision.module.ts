@@ -16,13 +16,15 @@ import { RequiredDocumentService } from './services/required-document.service';
 import { ApplicationSettingService } from './services/application-setting.service';
 import { MatButtonModule } from '../../../node_modules/@angular/material';
 import { AdminisionSettingComponent } from './components/adminision-setting/adminision-setting.component';
+import { RegistrationtypeComponent } from './components/registrationtype/registrationtype.component';
+import { RegistrationreportComponent } from './components/registrationreport/registrationreport.component';
 @NgModule({
   declarations: [
     AdminisionComponent,
     RequiredDocumentIndexComponent,
     RequiredDocumentCreateComponent,
     RequiredDocumentUpdateComponent, ApplicationCreateComponent, ApplicationIndexComponent ,
-    ApplicationShowComponent, ApplicationRequiredComponent, AdminisionSettingComponent
+    ApplicationShowComponent, ApplicationRequiredComponent, AdminisionSettingComponent, RegistrationtypeComponent, RegistrationreportComponent
 ],
   imports: [
     SharedModule,

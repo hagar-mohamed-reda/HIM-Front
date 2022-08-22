@@ -20,6 +20,7 @@
                         <th>{{ "store" | trans }} *</th>
                         <td>
                             <select class="form-control input-sm" [(ngModel)]="item.store_id" required>
+                                <option value="">الخزنه</option>
                   <option *ngFor="let row of stores" value="{{ row.id }}" >{{ row.name}}</option>
                 </select>
                         </td>

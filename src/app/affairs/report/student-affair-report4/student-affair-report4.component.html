@@ -43,23 +43,26 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-3 col-md-3">
-                                <div class="form-group">
-                                    <label>الماده</label>
-                                    <select id="course_id" (change)="loadSections()" class="form-control" name="course_id" [(ngModel)]="filter.course_id">
-                                      <option value="">المادة</option>
-                          <option *ngFor="let item of courses|level:level_id|division:division_id|term:currentTerm.id"  value="{{ item.id }}">{{ item.name }}</option>
-                        </select>
-                                </div>
-                            </div>
-
+                                    <div class="col-lg-3 col-md-3">
+                                        <div class="form-group">
+                                            <label>الماده</label>
+                                            <select id="course_id"  class="form-control" name="course_id" [(ngModel)]="filter.course_id">
+                                            <option value="">المادة</option>
+                                            <option *ngFor="let item of courses|level:level_id|division:division_id"  value="{{ item.id }}">{{ item.name }}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                   
+<!-- (change)="loadSections()" 
+|term:currentTerm.id
+-->
                             <div class="col-lg-3 col-md-3">
                                 <div class="form-group">
                                     <label>الجروب</label>
                                     <select id="group_id" class="form-control" name="group_id" [(ngModel)]="filter.group_id">
-                                      <option value="">الجروب</option>
-                        <option *ngFor="let item of groups"  value="{{ item.id }}">{{ item.name }}</option>
-                      </select>
+                                    <option value="">الجروب</option>
+                                    <option *ngFor="let item of groups"  value="{{ item.id }}">{{ item.name }}</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -67,12 +70,12 @@
                                 <div class="form-group">
                                     <label>السكشن</label>
                                     <select id="section_id" class="form-control" name="section_id" [(ngModel)]="filter.section_id">
-                                      <!-- <option value="">السكشن</option> |group:group_id-->
-                                      <option *ngFor="let item of sections"  value="{{ item.id }}">{{ item.name }}</option>
-                                      <option value="">الكل</option>
-                    </select>
+                                    <option value="">الكل</option>
+                                    <option *ngFor="let item of sections"  value="{{ item.id }}">{{ item.name }}</option>
+                                    </select>
                                 </div>
                             </div>
+<!-- <option value="">السكشن</option> |group:group_id-->
 
                             <div class="col-lg-3 col-md-3 buttons">
                                 <button class="btn btn-default w3-round" (click)="load()">{{ "search" | trans }}</button>

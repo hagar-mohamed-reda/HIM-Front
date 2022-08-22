@@ -24,7 +24,11 @@ export class CheckFormComponent implements OnInit {
 
   helper: any = Helper;
   banks: any = [];
-
+  companies: any =[];
+  persons: any =[];
+  $: any = $;
+  person_id:any;
+  company_id:any;
 
   constructor(private globalService: GlobalService) {
     this.reset();
@@ -40,15 +44,34 @@ export class CheckFormComponent implements OnInit {
 
   validate() {
     let valid = true;
-    if (!Helper.validator(this.item, ['date', 'number', 'value', 'bank_id']))
+    if (!Helper.validator(this.item, ['date', 'number', 'value', 'bank_id' ]))
       valid = false;
     return valid;
   }
 
   ngOnInit() {
+    var self = this;
+    // set select2
+    setTimeout(() => {
+      this.$('.select2').select2();
+    }, 500);
+    $('#person_id').on('select2:select', function (e: any) {
+      self.person_id = $('#person_id').val();
+    });
+    $('#company_id').on('select2:select', function (e: any) {
+      self.company_id = $('#company_id').val();
+    });
+    this.globalService.get('account/companies').subscribe((res) => {
+      this.companies = res;      
+    });
+    this.globalService.get('account/persons').subscribe((res) => {
+      this.persons = res;      
+    });
+    
     this.globalService.get('account/banks').subscribe((res) => {
       this.banks = res;
     });
+   
   }
 
   sendResource() {

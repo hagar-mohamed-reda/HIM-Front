@@ -81,7 +81,8 @@ export class BankFormComponent implements OnInit {
       return Message.error('please fill all data');
 
     this.isSubmitted = true;
-    this.globalService.update("account/banks/update", this.item).subscribe((res) => {
+    this.globalService.update("account/banks/update/"+ this.item.id ,Helper.toFormData(this.item)).subscribe((res) => {
+
       const r: any = res;
       if (r.status == 1) {
         Message.success(r.message);

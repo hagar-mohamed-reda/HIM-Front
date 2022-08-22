@@ -8,6 +8,8 @@ import { Message } from 'src/app/shared/message';
 import { Request } from 'src/app/shared/request';
 import { GlobalService } from 'src/app/shared/services/global.service';
 import { SystemSettingService } from 'src/app/core/services/system-setting.service';
+import { TermService } from 'src/app/account/services/term.service';
+import { DivisionService } from 'src/app/account/services/division.service';
 @Component({
   selector: 'app-student-affair-report4',
   templateUrl: './student-affair-report4.component.html',
@@ -18,18 +20,23 @@ export class StudentAffairReport4Component implements OnInit {
   filter: any = {};
   $: any = $;
   applicationService: any = ApplicationSettingService;
-  levels: any = [];
+  
   divisions: any = [];
   academicYears: any = [];
   doc: any = document;
   commissions: any;
-  courses:any = [];
   groups:any = [];
   sections:any = [];
+  section_id:any;
   level_id:any;
+  levels: any = [];
+  course_id:any;
+  courses:any = [];
   division_id:any;
   group_id:any;
   currentTerm: any = {};
+  terms: any = [];
+  term_id:any;
 
   constructor(
     private courseService:CourseService,
@@ -39,7 +46,9 @@ export class StudentAffairReport4Component implements OnInit {
       var self = this;
       Request.fire(false, () => {
       });
-
+ this.courses = this.courseService.get().subscribe((res: any) => {
+        this.courses = res;
+      })
 
     }
 
@@ -50,6 +59,7 @@ export class StudentAffairReport4Component implements OnInit {
 
     this.globalService.loadHtml("affair/report4", this.filter).subscribe((res) => {
       $('#reportContent').html(res);
+      
     });
   }
 
@@ -80,6 +90,9 @@ export class StudentAffairReport4Component implements OnInit {
     $('#group_id').on('change',()=>{
       this.group_id = $('#group_id').val();
     })
+    $('#section_id').on('change',()=>{
+      this.section_id= $('#section_id').val();
+    })
     this.applicationSettingService.groups().subscribe((res)=>{
       this.groups = res;
     })
@@ -90,5 +103,7 @@ export class StudentAffairReport4Component implements OnInit {
       this.currentTerm = res['current_term'];
     });
     this.levels = Cache.get(LevelService.LEVEL_PREFIX);
-  }
+    this.divisions = Cache.get(DivisionService.DIVISION_PREFIX);
+    this.terms = Cache.get(TermService.TERPM_PREFIX); 
+   }
 }

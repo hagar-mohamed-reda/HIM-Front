@@ -137,6 +137,10 @@
                             <a routerLink="/settings" class="dropdown-toggle" data-toggle="dropdown">{{ "main_settings"
                                 | trans }} </a>
                         </li>
+                        <!-- <li class="waves-effect waves-white" *ngIf="canAccessMainSettings()">
+                            <a routerLink="/settings" class="dropdown-toggle" data-toggle="dropdown">{{ "main_settings"
+                                | trans }} </a>
+                        </li> -->
                         <li class="waves-effect waves-white" *ngIf="canAccessMilitary()">
                             <a routerLink="/military" class="dropdown-toggle" data-toggle="dropdown">{{ "military" |
                                 trans }} </a>

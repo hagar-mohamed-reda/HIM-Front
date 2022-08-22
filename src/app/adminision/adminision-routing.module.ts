@@ -7,6 +7,7 @@ import { ApplicationIndexComponent } from './components/application/application-
 import { ApplicationShowComponent } from './components/application/application-show/application-show.component';
 import { ApplicationRequiredComponent } from './components/application-required/application-required.component';
 import { AdminisionSettingComponent } from './components/adminision-setting/adminision-setting.component';
+// import { RegistrationtypeComponent } from './components/registrationtype/registrationtype.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
         path: '',
         component: AdminisionSettingComponent
       },
+      // {
+      //   path: 'registrationtype',
+      //   component: RegistrationtypeComponent
+      // },
       {
         path: 'required_documents',
         component: RequiredDocumentIndexComponent

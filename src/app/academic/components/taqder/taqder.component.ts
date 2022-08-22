@@ -11,6 +11,7 @@ import { GlobalService } from 'src/app/shared/services/global.service';
 import { TermService } from 'src/app/account/services/term.service';
 import { AcademicYearService } from 'src/app/account/services/academic-year.service';
 import { DegreeMapService } from '../../services/degree-map.service';
+
 @Component({
   selector: 'app-taqder',
   templateUrl: './taqder.component.html',
@@ -45,6 +46,7 @@ export class TaqderComponent implements OnInit {
         this.degreeMaps = res;
       });
    }
+   
    load() {
     if (!Helper.validator(this.filter, ['level_id' , 'division_id' , 'year_id' ])) {
       return Message.error(Helper.trans('please choose all filters'));

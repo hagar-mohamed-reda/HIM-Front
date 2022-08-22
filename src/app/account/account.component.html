@@ -35,6 +35,7 @@
                             </a>
                         </a>
                     </li>
+                   
                     <li class="list-group-item" permission="check_read">
                         <a href="#" routerLink='/account/setting/checks'>
                             <b>{{ "checks" | trans }}</b>
@@ -139,6 +140,7 @@
                             </a>
                         </a>
                     </li>
+                  
                     <!-- <li class="list-group-item" permission="installment_report">
                       <a href="#" routerLink='/account/report/student-installment2'>
                           <b>{{ "students installment report" | trans }} 2</b>
@@ -147,7 +149,7 @@
                           </a>
                       </a>
                   </li> -->
-                    <li class="list-group-item" permission="student_discount_report">
+                    <li class="list-group-item" permission="check_read">
                         <a href="#" routerLink='/account/report/student-discount'>
                             <b>{{ "students discount report" | trans }}</b>
                             <a href="#" class="pull-left">
@@ -155,6 +157,24 @@
                             </a>
                         </a>
                     </li>
+                    <!--  permission="company_read" -->
+                    <li class="list-group-item" >
+                        <a href="#" routerLink='/account/setting/company'>
+                            <b>{{ "الشركات"}}</b>
+                            <a href="#" class="pull-left">
+                                <i class="fa fa-bank"></i>
+                            </a>
+                        </a>
+                    </li>
+                    <li class="list-group-item" >
+                        <a href="#" routerLink='/account/setting/person'>
+                            <b>{{ "الاشخاص "}}</b>
+                            <a href="#" class="pull-left">
+                                <i class="fa fa-bank"></i>
+                            </a>
+                        </a>
+                    </li>
+                    
                 </ul>
             </div>
             <!-- /.box-body -->

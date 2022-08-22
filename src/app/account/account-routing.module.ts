@@ -17,6 +17,7 @@ import { Auth } from '../shared/auth';
 import { AuthGuestService } from '../shared/middlewares/auth-guest.service';
 import { TreeIndexComponent } from './components/tree/tree-index/tree-index.component';
 import { BankIndexComponent } from './components/bank/bank-index/bank-index.component';
+import { CompanyIndexComponent } from './components/company/company-index/company-index.component';
 import { CheckIndexComponent } from './components/check/check-index/check-index.component';
 import { DailyIndexComponent } from './components/daily/daily-index/daily-index.component';
 import { TransformationIndexComponent } from './components/transformation/transformation-index/transformation-index.component';
@@ -31,6 +32,7 @@ import { BankBalanceSheetComponent } from './components/worksheet/bank-balance-s
 import { CustodySheetComponent } from './components/worksheet/custody-sheet/custody-sheet.component';
 import { CheckSheetComponent } from './components/worksheet/check-sheet/check-sheet.component';
 import { InstallmentReport2Component } from './components/report/installment-report2/installment-report2.component';
+import { PersonIndexComponent } from './components/persons/person-index/person-index.component';
 
 
 const routes: Routes = [
@@ -72,6 +74,7 @@ const routes: Routes = [
     data: {can: Auth.can('installment_report')},
     component: InstallmentReportComponent
   },
+ 
   {
     path: 'report/student-installment2',
     canActivate: [AuthGuestService],
@@ -84,6 +87,7 @@ const routes: Routes = [
     data: {can: Auth.can('student_discount_report')},
     component: StudentDiscountReportComponent
   },
+ 
   {
     path: "setting",
     component: AccountComponent,
@@ -129,6 +133,20 @@ const routes: Routes = [
         canActivate: [AuthGuestService],
         data: {can: Auth.can('bank_read')},
         component: BankIndexComponent
+      },
+      {
+        path: 'company',
+        component: CompanyIndexComponent,
+        //  canActivate: [AuthGuestService],
+        // data: {can: Auth.can('company_read')},
+        
+      },
+      {
+        path: 'person',
+        component: PersonIndexComponent,
+        //  canActivate: [AuthGuestService],
+        // data: {can: Auth.can('company_read')},
+        
       },
       {
         path: 'checks',
@@ -206,6 +224,7 @@ const routes: Routes = [
             data: {can: Auth.can('solfa_read')},
             component: SolfaSheetComponent
           }
+          
         ]
       },
     ]

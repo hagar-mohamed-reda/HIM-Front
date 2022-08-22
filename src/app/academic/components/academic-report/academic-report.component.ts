@@ -42,7 +42,8 @@ export class AcademicReportComponent implements OnInit {
     private termService:TermService,
     private titleService: Title,
     private globalService: GlobalService,
-    private applicationSettingService: ApplicationSettingService) {
+    private applicationSettingService: ApplicationSettingService)
+     {
       this.groups = this.applicationSettingService.groups().subscribe((res: any) => {
         this.groups = res;
       })

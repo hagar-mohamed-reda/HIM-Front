@@ -61,13 +61,16 @@ export class PrerequsiteComponent implements OnInit {
 load() {
   console.log(this.filter);
 
-  if (!Helper.validator(this.filter, ['year_id'])) {
+  if (!Helper.validator(this.filter, ['year_id']))
+   {
     return Message.error(Helper.trans('please choose all filters'));
-  }else{
+   }
+   else
+   {
     this.globalService.loadHtml("affair/prerequsite", this.filter).subscribe((res) => {
       $('#reportContent').html(res);
     });
-  }
+   }
 
 
 }

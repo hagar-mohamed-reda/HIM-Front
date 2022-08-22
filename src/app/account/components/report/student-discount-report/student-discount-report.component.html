@@ -10,7 +10,25 @@
         <div class="custom-panel-title" >{{ "filters" | trans }}</div>
         <div class="custom-panel-body"  >
           <div class="row">
-
+            
+            <div class="col-lg-3 col-md-4">
+              <div class="form-group">
+                  <label for="">{{ "level" | trans }}</label>
+                  <select id="level_id" name="filter.level_id" class="form-control" [(ngModel)]="filter.level_id">
+                  <option value="">الكل</option>
+                  <option *ngFor="let item of levels" value="{{ item.id }}">{{item.name}}</option>
+                  </select>
+              </div>
+            </div>
+           
+            <div class="col-md-3">
+              <label for="">{{ "التخصص"}}</label>
+              <select style='height: 32px !important; width: 100% !important;' id="division_id" name="filter.division_id" class=""
+                  [(ngModel)]="division_id">
+                  <option value="">الكل</option>
+                  <option *ngFor="let item of divisions" value="{{ item.id }}">{{item.name}}</option>
+              </select>
+          </div>
 
           </div>
         </div>
@@ -59,9 +77,8 @@
               <th>{{ "discount_count" | trans }}</th>
               <th>{{ "discounts" | trans }}</th>
             </tr>
-
             <ng-container *ngIf="!isSubmitted">
-              <tr *ngFor="let item of response.details index as i"  >
+              <tr *ngFor="let item of response.details|levels:level_id|division:division_id;  index as i"  >
                 <td>{{ i + 1 }}</td>
                 <td>{{ item.code }}</td>
                 <td>{{ item.name }}</td>
@@ -71,17 +88,27 @@
                 <td>{{ item.discount_total | currency: ' جنيه ' }}</td>
                 <td>{{ item.discount_count }}</td>
                 <td class="row" >
+                  
                   <div class="w3-display-container w3-tiny"
                   style="border-radius: 5em;padding: 3px;background-color: #fafafa;margin: 5px;float: right;border: 1px solid lightgray"
                   *ngFor="let row of item.discount_requests index as i" >
                     <ng-container *ngIf="row.value > 0" >
-                      <b class="w3-right {{ row.valid? 'w3-text-green' : 'w3-text-red' }}"  >{{ row.created_at | date: 'yyyy-mm-dd' }}</b>|
+                      <b class="w3-right {{ row.valid? 'w3-text-green' : 'w3-text-red' }}"  >
+                        {{ row.created_at | date: 'yyyy-mm-dd' }}
+                      </b>|
                       <b class="w3-left w3-text-dark-green" >{{ row.value | currency: ' جنيه '   }}</b>
                     </ng-container>
                   </div>
+
+
                 </td>
 
               </tr>
+            <!-- total row -->
+            <tr>
+              <td colspan="8">المجموع</td>
+              <td colspan="1">{{ response.details|levels:level_id|division:division_id | sum:'discount_total' }}</td>
+            </tr>
             </ng-container>
 
             <tr *ngIf="isSubmitted">
