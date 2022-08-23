@@ -70,6 +70,7 @@ import { CompanyIndexComponent } from './components/company/company-index/compan
 import { CompanyFormComponent } from './components/company/company-form/company-form.component';
 import { PersonFormComponent } from './components/persons/person-form/person-form.component';
 import { PersonIndexComponent } from './components/persons/person-index/person-index.component';
+import { CheckPipe } from './pipes/check.pipe';
 
 @NgModule({
   declarations: [
@@ -130,6 +131,7 @@ import { PersonIndexComponent } from './components/persons/person-index/person-i
     CompanyFormComponent,
     PersonFormComponent,
     PersonIndexComponent,
+    CheckPipe,
    
 
   ],

@@ -21,6 +21,7 @@ export class CheckSheetComponent implements OnInit {
   companies: any =[];
   person_id:any;
   company_id:any;
+  // comp:any;
   constructor(private globalService: GlobalService) {
     this.filter.bank_id = 0;
   }
@@ -50,10 +51,11 @@ export class CheckSheetComponent implements OnInit {
   }
 
   loadData() {
-    if (!this.filter.bank_id)
+    if (!this.filter.bank_id && !this.filter.person_id)
       return;
     this.loading = true;
     this.globalService.get('account/checks', this.filter).subscribe((res) =>{
+      this.company_id = "company_id";
       this.data = res;
       this.calculateTotal();
       this.create('');
@@ -81,7 +83,7 @@ export class CheckSheetComponent implements OnInit {
   }
 
   validate(object: any) {
-    return (this.filter.bank_id && object.bank_id && object.date && object.value);
+    return (this.filter.bank_id && object.bank_id && this.filter.person_id && object.person_id && object.date && object.value);
   }
 
   updateResource(object: any) {
@@ -106,6 +108,9 @@ export class CheckSheetComponent implements OnInit {
   create(text=null) {
     this.data.push({
       notes: text,
+      
+      person_id: this.filter.person_id,
+
       bank_id: this.filter.bank_id
     });
   }

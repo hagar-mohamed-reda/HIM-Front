@@ -25,9 +25,9 @@
         class="form-control input-sm select2 company_id"
         style="border-radius: 5em;"
         (change)="loadData()"
-        [(ngModel)]="filter.company_id">
+        [(ngModel)]="company_id">
         <option value="">الكل</option>
-
+<h1>{{company_id}}</h1>
       <option *ngFor="let row of companies" value="{{ row.id }}">{{ row.name }}</option>
     </select>
     </div>
@@ -94,9 +94,9 @@
     <tr *ngIf="loading"  >
       <td class="w3-text-indigo text-center" colspan="8" ><i class="fa fa-spin fa-spinner"></i></td>
     </tr>
-    <!-- && filter.company_id && filter.person_id -->
+    <!-- && filter.company_id && filter.person_id      -->
     <ng-container *ngFor="let item of data index as i" >
-      <tr *ngIf="filter.bank_id  !loading"  >
+      <tr *ngIf="filter.bank_id && !loading"  >
         <td>
           <input
           type="number"
