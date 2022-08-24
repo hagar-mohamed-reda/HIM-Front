@@ -41,6 +41,9 @@ import { YearPipe } from './year.pipe';
 import { TaqderComponent } from './components/taqder/taqder.component';
 import { ToptenComponent } from './components/topten/topten.component';
 import { YearworkComponent } from './components/yearwork/yearwork.component';
+import { AcademicNewComponent } from './components/academic-new/academic-new.component';
+
+
 
 @NgModule({
   declarations: [
@@ -81,7 +84,9 @@ import { YearworkComponent } from './components/yearwork/yearwork.component';
     YearPipe,
     TaqderComponent,
     ToptenComponent,
-    YearworkComponent
+    YearworkComponent,
+    AcademicNewComponent,
+
   ],
   imports: [
     SharedModule,

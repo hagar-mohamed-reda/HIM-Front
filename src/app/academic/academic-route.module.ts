@@ -32,6 +32,7 @@ import { TermsefyComponent } from './components/termsefy/termsefy.component';
 import { TaqderComponent } from './components/taqder/taqder.component';
 import { ToptenComponent } from './components/topten/topten.component';
 import { YearworkComponent } from './components/yearwork/yearwork.component';
+import { AcademicNewComponent } from './components/academic-new/academic-new.component';
 const routes: Routes = [
   {
     path: 'plan',
@@ -201,6 +202,13 @@ const routes: Routes = [
     data: {can: Auth.canOr(['course_read', 'course_category_read', 'degree_map_read'])},
     component: AcademicReportComponent
   },
+  {
+    path: 'academic-new',
+    canActivate: [AuthGuestService],
+    data: {can: Auth.canOr(['course_read', 'course_category_read', 'degree_map_read'])},
+    component: AcademicNewComponent
+  },
+  
   {
     path: 'exams-schedule',
     canActivate: [AuthGuestService],

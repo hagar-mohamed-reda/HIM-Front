@@ -32,11 +32,11 @@ export class CheckSheetComponent implements OnInit {
     setTimeout(() => {
       this.$('.select2').select2();
     }, 500);
-    $('#person_id').on('select2:select', function (e: any) {
-      self.person_id = $('#person_id').val();
+    $('.person_id').on('select2:select', function (e: any) {
+      self.person_id = $('.person_id').val();
     });
-    $('#company_id').on('select2:select', function (e: any) {
-      self.company_id = $('#company_id').val();
+    $('.company_id').on('select2:select', function (e: any) {
+      self.company_id = $('.company_id').val();
     });
     this.globalService.get('account/banks', this.filter).subscribe((res) =>{
       this.banks = res;
@@ -55,7 +55,6 @@ export class CheckSheetComponent implements OnInit {
       return;
     this.loading = true;
     this.globalService.get('account/checks', this.filter).subscribe((res) =>{
-      this.company_id = "company_id";
       this.data = res;
       this.calculateTotal();
       this.create('');
