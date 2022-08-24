@@ -20,6 +20,7 @@ import { TermService } from "src/app/account/services/term.service";
 export class PatientsComponent implements OnInit {
   illness_reason: any = "";
   attatchment:any;
+  
   $: any = $;
   doc: any = document;
   isSubmitted = false;
@@ -32,6 +33,8 @@ export class PatientsComponent implements OnInit {
   currentPage = 1;
   filter: any = {};
   loading: boolean = false;
+  item: any = {};
+  helper: any = Helper;
   applicationService: any = ApplicationSettingService;
   public studentSettings = ApplicationSettingService;
 
@@ -79,18 +82,10 @@ export class PatientsComponent implements OnInit {
     Helper.loadImage(event, 'image', this.resource);
   }
   storeAffair() {
+    this.item.student_id = this.student.id;
     this.loading = true;
-    // validation
-    if (!this.illness_reason) {
-      this.loading = false;
-      return Message.error("من فضلك قم بادخال جميع الحقول");
-    }
     this.globalService
-      .store("student/student_excuses/store", {
-        student_id: this.student.id,
-        attatchment:this.attatchment,
-        reason: this.illness_reason,
-      })
+      .store("student/student_excuses/store", Helper.toFormData(this.item))
       .subscribe(
         (res) => {
           this.loading = false;
@@ -184,7 +179,19 @@ export class PatientsComponent implements OnInit {
       }
     });
   }
+  load() {
+    console.log(this.filter);
 
+    if (!Helper.validator(this.filter, ["year_id"])) {
+      return Message.error(Helper.trans("please choose all filters"));
+    } else {
+      this.globalService
+        .loadHtml("student/student_excuses", this.filter)
+        .subscribe((res) => {
+          $("#reportContent").html(res);
+        });
+    }
+  }
   toggle(id, list = new HashTable()) {
     if (list.has(id)) {
       list.remove(id);

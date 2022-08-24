@@ -19,7 +19,15 @@
                             </a>
                         </a>
                     </li>
-                    <!-- <li class="list-group-item" permission="tree_read" >
+                    <li class="list-group-item" permission="tmwel"  >
+                        <a href="#" routerLink='/account/setting/worksheet_private'>
+                            <b>{{ "التمويل الخارجى "}}</b>
+                            <a href="#" class="pull-left">
+                                <i class="fa fa-bank"></i>
+                            </a>
+                        </a>
+                    </li>
+                    <!-- <li class="list-group-item" permission="tree_read" permission="tmwel">
             <a href="#" routerLink='/account/setting/trees' >
                 <b>{{ "trees" | trans }}</b>
                 <a href="#"  class="pull-left">
@@ -157,8 +165,8 @@
                             </a>
                         </a>
                     </li>
-                    <!--  permission="company_read" -->
-                    <li class="list-group-item" >
+                    <!--  permission="company_read" permission="company" permission="person"-->
+                    <li class="list-group-item" permission="company" >
                         <a href="#" routerLink='/account/setting/company'>
                             <b>{{ "الشركات"}}</b>
                             <a href="#" class="pull-left">
@@ -166,7 +174,7 @@
                             </a>
                         </a>
                     </li>
-                    <li class="list-group-item" >
+                    <li class="list-group-item" permission="person" >
                         <a href="#" routerLink='/account/setting/person'>
                             <b>{{ "الاشخاص "}}</b>
                             <a href="#" class="pull-left">
@@ -174,7 +182,7 @@
                             </a>
                         </a>
                     </li>
-                    
+                   
                 </ul>
             </div>
             <!-- /.box-body -->

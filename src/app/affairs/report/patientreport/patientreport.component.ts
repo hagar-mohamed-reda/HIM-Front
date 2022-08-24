@@ -66,7 +66,7 @@ export class PatientreportComponent implements OnInit {
       return Message.error(Helper.trans("please choose all filters"));
     } else {
       this.globalService
-        .loadHtml("affair/report28", this.filter)
+        .loadHtml("student/student_excuses", this.filter)
         .subscribe((res) => {
           $("#reportContent").html(res);
         });

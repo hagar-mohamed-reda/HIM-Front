@@ -82,7 +82,7 @@ export class RegistrationtypeComponent implements OnInit {
       return Message.error("من فضلك قم بادخال جميع الحقول");
     }
     this.globalService
-      .store("student/case_constraints/store", {
+      .store("students/case_constraints/store", {
         student_id: this.student.id,
         case_constraint_id: this.student.case_constraint_id,
         reason: this.illness_reason,

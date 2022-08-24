@@ -16,7 +16,7 @@
             current_balance_total
             current_balance
           -->
-                        <div style="padding: 4px;margin-bottom: 7px" class="w3-pale-red w3-round">
+                        <div permission="safe_student_payment" style="padding: 4px;margin-bottom: 7px" class="w3-pale-red w3-round">
                             اجمالى الرسوم المستحقة : {{ safeObject.current_balance | number}}
                             <span *ngIf="safeObject.payment_type == 'service' && safeObject.paid_value > 0">
               + {{ safeObject.paid_value }}
@@ -166,7 +166,7 @@
 
                         </div>
 
-                        <div class="custom-panel w3-display-container w3-round">
+                        <div permission="safe_student_payment" class="custom-panel w3-display-container w3-round">
                             <div class="custom-panel-title">{{ "payment info" | trans }}</div>
 
                             <div class="custom-panel-body">
@@ -232,7 +232,7 @@
                         </div>
                         <div class="custom-panel w3-display-container w3-round">
                             <div class="custom-panel-body">
-                                <button class="btn btn-default small-shadow w3-margin-left" [disabled]="!studentSearchId || safeObject.paid_value < 0 || !safeObject.paid_value && safeObject.payment_type != 'service'" (click)="performPay()">{{ "save & print" | trans }}</button>
+                                <button permission="safe_student_payment" class="btn btn-default small-shadow w3-margin-left" [disabled]="!studentSearchId || safeObject.paid_value < 0 || !safeObject.paid_value && safeObject.payment_type != 'service'" (click)="performPay()">{{ "save & print" | trans }}</button>
 
                                 <button class="btn btn-default small-shadow w3-margin-left" [disabled]="!studentSearchId" (click)="doc.jquery('#studentAvailableServices').modal('show')" permission="safe_service">{{ "services"
                 | trans }}</button>

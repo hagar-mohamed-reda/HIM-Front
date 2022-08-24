@@ -71,6 +71,11 @@ import { CompanyFormComponent } from './components/company/company-form/company-
 import { PersonFormComponent } from './components/persons/person-form/person-form.component';
 import { PersonIndexComponent } from './components/persons/person-index/person-index.component';
 import { CheckPipe } from './pipes/check.pipe';
+import { WorksheetPrivateComponent } from './components/worksheet-private/worksheet-private.component';
+import { WorkPrivateCheckComponent } from './components/work-private-check/work-private-check.component';
+import { WorkPrivateDepositesComponent } from './components/work-private-deposites/work-private-deposites.component';
+import { WorkPrivateBankComponent } from './components/work-private-bank/work-private-bank.component';
+import { BankPipe } from './pipes/bank.pipe';
 
 @NgModule({
   declarations: [
@@ -132,6 +137,11 @@ import { CheckPipe } from './pipes/check.pipe';
     PersonFormComponent,
     PersonIndexComponent,
     CheckPipe,
+    WorksheetPrivateComponent,
+    WorkPrivateCheckComponent,
+    WorkPrivateDepositesComponent,
+    WorkPrivateBankComponent,
+    BankPipe,
    
 
   ],

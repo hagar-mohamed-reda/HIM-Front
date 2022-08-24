@@ -45,7 +45,7 @@
           </button>
           </div>
         </ng-container>
-        <table class="table" *ngIf="safeObject.can_create_discount_request" >
+        <table class="table" *ngIf="safeObject.can_create_discount_request && id_user != 4 ">
             <tr>
               <td>
                 <b>{{ "نوع الخصم" }} *</b><br>
@@ -74,7 +74,7 @@
         <button type="button" mat-raised-button (click)="doc.jquery('#createDiscountRequestModal').modal('hide')"  >{{ "close" | trans }}</button>
 
         <button
-          *ngIf="safeObject.can_create_discount_request"
+          *ngIf="safeObject.can_create_discount_request && id_user != 4"
           mat-raised-button color="primary"
           [disabled]="isSubmitted"
           (click)="sendResource()" >

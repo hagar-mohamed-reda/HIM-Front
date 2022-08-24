@@ -11,7 +11,7 @@
           style="border-radius: 5em;"
           (change)="loadData();"
           [(ngModel)]="filter.bank_id">
-        <option *ngFor="let row of banks" value="{{ row.id }}">{{ row.name }}-{{ row.balance }}</option>
+        <option *ngFor="let row of banks |bank:1" value="{{ row.id }}">{{ row.name }}-{{ row.balance }}</option>
       </select>
       </div>
       <div class="col-lg-3 col-md-3 col-sm- 6">

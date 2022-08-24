@@ -33,6 +33,10 @@ import { CustodySheetComponent } from './components/worksheet/custody-sheet/cust
 import { CheckSheetComponent } from './components/worksheet/check-sheet/check-sheet.component';
 import { InstallmentReport2Component } from './components/report/installment-report2/installment-report2.component';
 import { PersonIndexComponent } from './components/persons/person-index/person-index.component';
+import { WorksheetPrivateComponent } from './components/worksheet-private/worksheet-private.component';
+import { WorkPrivateCheckComponent } from './components/work-private-check/work-private-check.component';
+import { WorkPrivateDepositesComponent } from './components/work-private-deposites/work-private-deposites.component';
+import { WorkPrivateBankComponent } from './components/work-private-bank/work-private-bank.component';
 
 
 const routes: Routes = [
@@ -137,15 +141,22 @@ const routes: Routes = [
       {
         path: 'company',
         component: CompanyIndexComponent,
-        //  canActivate: [AuthGuestService],
-        // data: {can: Auth.can('company_read')},
+        canActivate: [AuthGuestService],
+        data: {can: Auth.can('company')},
         
       },
       {
         path: 'person',
         component: PersonIndexComponent,
-        //  canActivate: [AuthGuestService],
-        // data: {can: Auth.can('company_read')},
+        // canActivate: [AuthGuestService],
+        // data: {can: Auth.can('person')},
+        
+      },
+      {
+        path: 'worksheet_private',
+        component: WorksheetPrivateComponent,
+        // canActivate: [AuthGuestService],
+        // data: {can: Auth.can('tmwel')},
         
       },
       {
@@ -166,6 +177,7 @@ const routes: Routes = [
         data: {can: Auth.can('transformation_read')},
         component: TransformationIndexComponent
       },
+      
       {
         path: "worksheet",
         component: WorksheetIndexComponent,
@@ -226,6 +238,24 @@ const routes: Routes = [
           }
           
         ]
+      },
+      {
+        path: 'check_private',
+        canActivate: [AuthGuestService],
+        data: {can: Auth.can('check_read')},
+        component: WorkPrivateCheckComponent
+      },
+      {
+        path: 'deposite_private',
+        canActivate: [AuthGuestService],
+        data: {can: Auth.can('check_read')},
+        component: WorkPrivateDepositesComponent
+      },
+      {
+        path: 'bank_private',
+        canActivate: [AuthGuestService],
+        data: {can: Auth.can('check_read')},
+        component: WorkPrivateBankComponent
       },
     ]
   },

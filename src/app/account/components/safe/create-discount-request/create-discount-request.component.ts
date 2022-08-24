@@ -19,6 +19,7 @@ export class CreateDiscountRequestComponent implements OnInit {
   isSubmitted: boolean = false;
   item: any = {};
   discountTypes: any = [];
+  id_user:any;
 
   @Input() safeObject: any;
   @Input() updateStudent: any;
@@ -32,7 +33,10 @@ export class CreateDiscountRequestComponent implements OnInit {
 
   constructor(
     private studentAccountService: StudentAccountService,
-    private discountTypeService: DiscountTypeService) { }
+    private discountTypeService: DiscountTypeService) {
+      var ob = JSON.parse(localStorage.getItem("samsa_user"));
+      this.id_user = ob.role_id;
+     }
 
   reset() {
     this.item = {};
