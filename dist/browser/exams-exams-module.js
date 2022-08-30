@@ -670,7 +670,7 @@ var PrintSeatingNumbersComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div permission=\"print_signs_reports\" class=\"container\">\r\n    <div class=\"w3-block w3-row\">\r\n        <div class=\"w3-white material-shadow safe-box w3-block\">\r\n            <div class=\"safe-box-header w3-large\" style=\"padding: 5px!important\">\r\n                طباعة كشوف توقيعات الطلاب\r\n            </div>\r\n            <div class=\"border-bottom-dashed\"></div>\r\n            <br>\r\n\r\n            <div class=\"\">\r\n\r\n                <div class=\"\">\r\n                    <div class=\"custom-panel w3-display-container w3-round application-panel student-info-panel\">\r\n\r\n                        <div class=\"custom-panel-body table-responsive w3-padding\">\r\n\r\n                            <div class=\"row\">\r\n                                <div class=\"col-lg-3 col-md-3\">\r\n                                    <div class=\"form-group\">\r\n                                        <label>{{ \"level\" | trans }}</label>\r\n                                        <select id=\"level_id\" class=\"form-control\" name=\"level_id\" [(ngModel)]=\"level_id\">\r\n                                      <option value=\"\">المستوي</option>\r\n                              <option *ngFor=\"let item of levels\"  value=\"{{ item.id }}\">{{ item.name }}</option>\r\n                            </select>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"col-lg-3 col-md-3\">\r\n                                    <div class=\"form-group\">\r\n                                        <label for=\"\">{{ \"division\" | trans }}</label>\r\n                                        <select id=\"divisionVal\" (change)=\"division($('#divisionVal').val())\" class=\"form-control input-sm course_id\" [(ngModel)]=\"filter.division_id\">\r\n                                          <option value=\"\">الشعبة</option>\r\n                <option *ngFor=\"let item of divisions\" value=\"{{ item.id }}\">{{item.name}}</option>\r\n              </select>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"col-lg-3 col-md-3\">\r\n                                    <div class=\"form-group\">\r\n                                        <!-- <label>اللجنة</label>\r\n                                  <select class=\"form-control\" [(ngModel)]=\"filter.commission_id\">\r\n                            <option *ngFor=\"let item of courses\"  value=\"{{ item.id }}\">{{ item.name }}</option>\r\n                          </select> -->\r\n                                        <label for=\"\">{{ \"courses\" | trans }}</label>\r\n                                        <select class=\"form-control input-sm course_id\" [(ngModel)]=\"filter.course_id\">\r\n                                        <option value=\"\">المقرر</option>\r\n                <option *ngFor=\"let item of courses|division:division_id|term:currentTerm.id|level:level_id \" value=\"{{ item.id }}\">{{item.name}}-{{item.code}}</option>\r\n              </select>\r\n                                    </div>\r\n                                </div>\r\n\r\n                                <div class=\"col-lg-3 col-md-3\">\r\n                                    <button style='margin-left: 84px;margin-top: 25px;' class=\"btn btn-default w3-round\" (click)=\"load()\">{{ \"search\" | trans }}</button>\r\n                                    <button style=\"margin-top: 20px;\" class=\"btn btn-default w3-round\" (click)=\"printContent()\">{{ \"print\" | trans }}</button>\r\n                                    <button style=\"margin-top: 20px;\" class=\"btn btn-default w3-round\" (click)=\"exportExcel()\">{{ \"excel\" | trans }}</button>\r\n                                </div>\r\n\r\n\r\n                            </div>\r\n\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"\">\r\n                    <div class=\"custom-panel w3-display-container w3-round application-panel student-info-panel\" id=\"printable\">\r\n\r\n                        <div dir=\"rtl\" class=\"custom-panel-body table-responsive w3-padding\" id=\"reportContent\">\r\n\r\n\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n\r\n\r\n\r\n            </div>\r\n\r\n\r\n        </div>\r\n    </div>\r\n</div>\r\n"
+module.exports = "<div permission=\"print_signs_reports\" class=\"container\">\r\n    <div class=\"w3-block w3-row\">\r\n        <div class=\"w3-white material-shadow safe-box w3-block\">\r\n            <div class=\"safe-box-header w3-large\" style=\"padding: 5px!important\">\r\n                طباعة كشوف توقيعات الطلاب\r\n            </div>\r\n            <div class=\"border-bottom-dashed\"></div>\r\n            <br>\r\n\r\n            <div class=\"\">\r\n\r\n                <div class=\"\">\r\n                    <div class=\"custom-panel w3-display-container w3-round application-panel student-info-panel\">\r\n\r\n                        <div class=\"custom-panel-body table-responsive w3-padding\">\r\n\r\n                            <div class=\"row\">\r\n\r\n                                <div class=\"col-lg-3 col-md-4\">\r\n                                    <div class=\"form-group\">\r\n                                        <label for=\"\">{{ \"level\" | trans }}</label>\r\n                                        <select id=\"level_id\" name=\"filter.level_id\" class=\"form-control\" [(ngModel)]=\"filter.level_id\">\r\n                                        <option value=\"\">الكل</option>\r\n                                        <option *ngFor=\"let item of levels\" value=\"{{ item.id }}\">{{item.name}}</option>\r\n                                        </select>\r\n                                    </div>\r\n                                </div>\r\n        \r\n                                <div class=\"col-lg-3 col-md-4\">\r\n                                      <div class=\"form-group\">\r\n                                          <label for=\"\">{{ \"division\" | trans }}</label>\r\n                                          <select id=\"division_id\" name=\"filter.division_id\" class=\"form-control\" [(ngModel)]=\"filter.division_id\">\r\n                                          <option value=\"\">الكل</option>\r\n                                          <option *ngFor=\"let item of divisions\" value=\"{{ item.id }}\">{{item.name}}</option>\r\n                                          </select>\r\n                                      </div>\r\n                                </div>\r\n\r\n                                <div class=\"col-lg-3 col-md-4\">\r\n                                    <div class=\"form-group\">\r\n                                        <label for=\"\">{{ \"course\" | trans }}</label>\r\n                                        <select name=\"filter.course_id\" class=\"form-control\" [(ngModel)]=\"filter.course_id\">\r\n                                        <option value=\"\">الكل</option>\r\n                                        <!-- |level:level_id|term:term_id|division:division_id|year:year_id -->\r\n                                        <option *ngFor=\"let item of courses|term:term_id|division:division_id\" value=\"{{ item.course_id }}\">{{item.course_name}}</option>\r\n                                        </select>\r\n                                    </div>\r\n                                </div>\r\n        \r\n\r\n                                <div class=\"col-lg-3 col-md-3\" style=\"padding-top: 22px!important;\">\r\n                                    <button  class=\"btn btn-default w3-round\" (click)=\"load()\">{{ \"search\" | trans }}</button>\r\n                                    <button  class=\"btn btn-default w3-round\" (click)=\"printContent()\">{{ \"print\" | trans }}</button>\r\n                                    <button  class=\"btn btn-default w3-round\" (click)=\"exportExcel()\">{{ \"excel\" | trans }}</button>\r\n                                </div>\r\n\r\n\r\n                            </div>\r\n\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"\">\r\n                    <div class=\"custom-panel w3-display-container w3-round application-panel student-info-panel\" id=\"printable\">\r\n\r\n                        <div dir=\"rtl\" class=\"custom-panel-body table-responsive w3-padding\" id=\"reportContent\">\r\n\r\n\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n\r\n\r\n\r\n            </div>\r\n\r\n\r\n        </div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -697,16 +697,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PrintSignsReportsComponent", function() { return PrintSignsReportsComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var src_app_shared_cache__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/shared/cache */ "./src/app/shared/cache.ts");
-/* harmony import */ var src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/shared/helper */ "./src/app/shared/helper.ts");
-/* harmony import */ var src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/shared/message */ "./src/app/shared/message.ts");
-/* harmony import */ var src_app_shared_request__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/shared/request */ "./src/app/shared/request.ts");
-/* harmony import */ var src_app_shared_services_global_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/shared/services/global.service */ "./src/app/shared/services/global.service.ts");
-/* harmony import */ var _adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../adminision/services/application-setting.service */ "./src/app/adminision/services/application-setting.service.ts");
-/* harmony import */ var _account_services_level_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../account/services/level.service */ "./src/app/account/services/level.service.ts");
-/* harmony import */ var _academic_services_course_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../academic/services/course.service */ "./src/app/academic/services/course.service.ts");
-/* harmony import */ var src_app_account_services_division_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! src/app/account/services/division.service */ "./src/app/account/services/division.service.ts");
-/* harmony import */ var src_app_core_services_system_setting_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! src/app/core/services/system-setting.service */ "./src/app/core/services/system-setting.service.ts");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+/* harmony import */ var src_app_academic_services_course_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/academic/services/course.service */ "./src/app/academic/services/course.service.ts");
+/* harmony import */ var src_app_account_services_academic_year_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/account/services/academic-year.service */ "./src/app/account/services/academic-year.service.ts");
+/* harmony import */ var src_app_account_services_division_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/account/services/division.service */ "./src/app/account/services/division.service.ts");
+/* harmony import */ var src_app_account_services_level_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/account/services/level.service */ "./src/app/account/services/level.service.ts");
+/* harmony import */ var src_app_account_services_term_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/account/services/term.service */ "./src/app/account/services/term.service.ts");
+/* harmony import */ var src_app_adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/adminision/services/application-setting.service */ "./src/app/adminision/services/application-setting.service.ts");
+/* harmony import */ var src_app_shared_cache__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/app/shared/cache */ "./src/app/shared/cache.ts");
+/* harmony import */ var src_app_shared_helper__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! src/app/shared/helper */ "./src/app/shared/helper.ts");
+/* harmony import */ var src_app_shared_message__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! src/app/shared/message */ "./src/app/shared/message.ts");
+/* harmony import */ var src_app_shared_request__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! src/app/shared/request */ "./src/app/shared/request.ts");
+/* harmony import */ var src_app_shared_services_global_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! src/app/shared/services/global.service */ "./src/app/shared/services/global.service.ts");
 
 
 
@@ -719,58 +721,80 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+// import { CourseService } from '../../services/course.service';
 var PrintSignsReportsComponent = /** @class */ (function () {
-    function PrintSignsReportsComponent(courseService, globalService, applicationSettingService, systemSetting) {
+    function PrintSignsReportsComponent(courseService, academicService, termService, titleService, globalService, applicationSettingService) {
         var _this = this;
         this.courseService = courseService;
+        this.academicService = academicService;
+        this.termService = termService;
+        this.titleService = titleService;
         this.globalService = globalService;
         this.applicationSettingService = applicationSettingService;
-        this.systemSetting = systemSetting;
         this.filter = {};
         this.$ = $;
-        this.applicationService = _adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_7__["ApplicationSettingService"];
-        this.divisions = [];
-        this.academicYears = [];
-        this.doc = document;
-        this.courses = [];
-        this.currentTerm = {};
+        this.applicationService = src_app_adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_8__["ApplicationSettingService"];
         this.levels = [];
-        this.applicationSettingService.queueRequests();
-        var self = this;
-        src_app_shared_request__WEBPACK_IMPORTED_MODULE_5__["Request"].fire(false, function () {
+        this.divisions = [];
+        this.courses = [];
+        this.groups = [];
+        this.sections = [];
+        this.academicYears = [];
+        this.filter_search = {};
+        this.doc = document;
+        this.terms = [];
+        this.data = [];
+        this.groups = this.applicationSettingService.groups().subscribe(function (res) {
+            _this.groups = res;
         });
-        this.courseService.get().subscribe(function (res) {
+        this.courses = this.courseService.getopenCourses().subscribe(function (res) {
             _this.courses = res;
         });
-    }
-    PrintSignsReportsComponent.prototype.exportExcel = function () {
-        this.doc.exportExcel('student_exams', "table");
-    };
-    PrintSignsReportsComponent.prototype.load = function () {
-        if (!src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].validator(this.filter, ['course_id', 'division_id'])) {
-            return src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].error(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].trans('please choose all filters'));
-        }
-        this.globalService.loadHtml("affair/report7", this.filter).subscribe(function (res) {
-            $('#reportContent').html(res);
+        this.titleService.setTitle("HIM" + " - " + src_app_shared_helper__WEBPACK_IMPORTED_MODULE_10__["Helper"].trans('print result'));
+        this.applicationSettingService.queueRequests();
+        var self = this;
+        src_app_shared_request__WEBPACK_IMPORTED_MODULE_12__["Request"].fire(false, function () {
         });
+    }
+    PrintSignsReportsComponent.prototype.load = function () {
+        console.log(this.filter);
+        if (!src_app_shared_helper__WEBPACK_IMPORTED_MODULE_10__["Helper"].validator(this.filter, ['division_id'])) {
+            return src_app_shared_message__WEBPACK_IMPORTED_MODULE_11__["Message"].error(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_10__["Helper"].trans('please choose all filters'));
+        }
+        else {
+            this.globalService.loadHtml("affair/report7", this.filter).subscribe(function (res) {
+                $('#reportContent').html(res);
+            });
+        }
+    };
+    PrintSignsReportsComponent.prototype.getSections = function () {
+        var _this = this;
+        this.sections = this.applicationSettingService.sections(this.filter).subscribe(function (res) {
+            _this.sections = res;
+        });
+    };
+    PrintSignsReportsComponent.prototype.excel = function () {
+        this.doc.exportExcel();
     };
     PrintSignsReportsComponent.prototype.printContent = function () {
         this.doc.printJs();
     };
-    PrintSignsReportsComponent.prototype.division = function (val) {
-        this.division_id = val;
-    };
     PrintSignsReportsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.divisions = src_app_shared_cache__WEBPACK_IMPORTED_MODULE_2__["Cache"].get(src_app_account_services_division_service__WEBPACK_IMPORTED_MODULE_10__["DivisionService"].DIVISION_PREFIX);
-        // set select2
-        setTimeout(function () {
-            _this.$('.select2').select2();
-        }, 500);
-        this.systemSetting.getSystemSetting().subscribe(function (res) {
-            _this.currentTerm = res['current_term'];
+        $('#division_id').on('change', function () {
+            _this.division_id = $('#division_id').val();
         });
-        this.levels = src_app_shared_cache__WEBPACK_IMPORTED_MODULE_2__["Cache"].get(_account_services_level_service__WEBPACK_IMPORTED_MODULE_8__["LevelService"].LEVEL_PREFIX);
+        $('#term_id').on('change', function () {
+            _this.term_id = $('#term_id').val();
+        });
+        $('#level_id').on('change', function () {
+            _this.level_id = $('#level_id').val();
+        });
+        this.levels = src_app_shared_cache__WEBPACK_IMPORTED_MODULE_9__["Cache"].get(src_app_account_services_level_service__WEBPACK_IMPORTED_MODULE_6__["LevelService"].LEVEL_PREFIX);
+        this.divisions = src_app_shared_cache__WEBPACK_IMPORTED_MODULE_9__["Cache"].get(src_app_account_services_division_service__WEBPACK_IMPORTED_MODULE_5__["DivisionService"].DIVISION_PREFIX);
+        this.terms = src_app_shared_cache__WEBPACK_IMPORTED_MODULE_9__["Cache"].get(src_app_account_services_term_service__WEBPACK_IMPORTED_MODULE_7__["TermService"].TERPM_PREFIX);
     };
     PrintSignsReportsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -778,9 +802,12 @@ var PrintSignsReportsComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./print-signs-reports.component.html */ "./src/app/exams/components/print-signs-reports/print-signs-reports.component.html"),
             styles: [__webpack_require__(/*! ./print-signs-reports.component.scss */ "./src/app/exams/components/print-signs-reports/print-signs-reports.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_academic_services_course_service__WEBPACK_IMPORTED_MODULE_9__["CourseService"],
-            src_app_shared_services_global_service__WEBPACK_IMPORTED_MODULE_6__["GlobalService"],
-            _adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_7__["ApplicationSettingService"], src_app_core_services_system_setting_service__WEBPACK_IMPORTED_MODULE_11__["SystemSettingService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_academic_services_course_service__WEBPACK_IMPORTED_MODULE_3__["CourseService"],
+            src_app_account_services_academic_year_service__WEBPACK_IMPORTED_MODULE_4__["AcademicYearService"],
+            src_app_account_services_term_service__WEBPACK_IMPORTED_MODULE_7__["TermService"],
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["Title"],
+            src_app_shared_services_global_service__WEBPACK_IMPORTED_MODULE_13__["GlobalService"],
+            src_app_adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_8__["ApplicationSettingService"]])
     ], PrintSignsReportsComponent);
     return PrintSignsReportsComponent;
 }());

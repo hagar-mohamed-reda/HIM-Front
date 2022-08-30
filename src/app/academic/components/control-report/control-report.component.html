@@ -11,7 +11,9 @@
                 <!-- password panel -->
                 <div class="custom-panel w3-display-container w3-round application-panel student-info-panel">
                     <div class="custom-panel-body table-responsive w3-padding w3-center">
-                        <input class="w3-round-xxlarge w3-white w3-input border-gray search-input w3-center" style="width: 90%!important" type="password" placeholder="{{ 'enter password of result' | trans }}" [(ngModel)]="password">
+                        <input class="w3-round-xxlarge w3-white w3-input border-gray search-input w3-center" 
+                        style="width: 90%!important" type="password" 
+                        placeholder="{{ 'enter password of result' | trans }}" [(ngModel)]="password">
                         <br>
                         <br>
                         <button class="btn w3-light-gray w3-round-xlarge" (click)="login()">{{ "show" | trans }}</button>

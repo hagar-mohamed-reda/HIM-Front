@@ -174,8 +174,8 @@ export class RegistrationComponent implements OnInit {
   }
   
   print() {
-    this.globalService.save({name: this.val, id: this.idStudent}).subscribe((res:any)=>{
-  })
+  //   this.globalService.save({name: this.val, id: this.idStudent}).subscribe((res:any)=>{
+  // })
     
   
       var check = 0;
@@ -192,13 +192,17 @@ export class RegistrationComponent implements OnInit {
        else 
       {
         let password = prompt("يجب تسديد مبلغ الخدمة وقيمته 50 للأستثناء ادخل الرقم السري : ");
-        if (password == '556677')
+        let resultPassword: any = this.academicSetting.get(13);
+
+        if (resultPassword.value == password)
          {
           Helper.print();
          }
           else 
         {
           alert('الرقم السري غير صحيح');
+          return;
+          
         }
       }
     }

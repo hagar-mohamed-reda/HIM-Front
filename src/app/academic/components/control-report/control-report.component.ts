@@ -103,7 +103,7 @@ export class ControlReportComponent implements OnInit {
       this.isSubmitted = false;
     });
   }
-
+// ========================
   login() {
     let resultPassword: any = this.academicSetting.get(12);
     if (!resultPassword)

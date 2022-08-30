@@ -13,7 +13,7 @@
         >
           <div class="custom-panel-body table-responsive w3-padding">
             <div id="form" class="row">
-              <div class="col-lg-3 col-md-4">
+              <div class="col-lg-4 col-md-4">
                 <div class="form-group">
                   <label for="">{{ "division" | trans }}</label>
                   <select
@@ -32,8 +32,16 @@
                   </select>
                 </div>
               </div>
-
-              <div class="col-lg-3 col-md-4">
+              <div class="col-lg-4 col-md-4">
+                <div class="form-group">
+                    <label for="">{{ "level" | trans }}</label>
+                    <select id="level_id" name="filter.level_id" class="form-control" [(ngModel)]="filter.level_id">
+                    <option value="">الكل</option>
+                    <option *ngFor="let item of levels" value="{{ item.id }}">{{item.name}}</option>
+                    </select>
+                </div>
+            </div>
+              <div class="col-lg-4 col-md-4">
                 <div class="form-group">
                   <label for="">{{ "academic year" | trans }}</label>
                   <select
@@ -52,7 +60,7 @@
                 </div>
               </div>
 
-              <div class="col-lg-3 col-md-4">
+              <div class="col-lg-4 col-md-4">
                 <div class="form-group">
                   <label for="">{{ "term" | trans }}</label>
                   <select
@@ -69,14 +77,18 @@
                 </div>
               </div>
 
-              <div class="col-lg-3 col-md-3">
+              <div class="col-lg-4 col-md-4">
                 <div class="form-group">
                   <label for="">{{ "نوع القيد" }}</label>
                   <select
-                    readonly
-                    class="custom-input form-control input-sm w3-input border-bottom-dashed input-sm"
-                    [(ngModel)]="student.case_constraint_id"
+                    id="case_constraint"
+                    name="filter.case_constraint_id"
+                    class="form-control"
+                    [(ngModel)]="filter.case_constraint_id"
+                    
+                    
                   >
+                  
                     <option
                       *ngFor="let item of studentSettings.CASE_CONSTRAINTS"
                       value="{{ item.id }}"
@@ -85,26 +97,27 @@
                     </option>
                   </select>
                 </div>
+               
               </div>
-
-              
+              <div  class="col-lg-4 col-md-4" style="margin-top:  20px!important">
+                <button class="btn btn-default w3-round" (click)="load()">
+                  {{ "search" | trans }}
+                </button>
+                <button
+                  style="margin: 0 5px"
+                  class="btn btn-default w3-round"
+                  (click)="printContent()"
+                >
+                  {{ "print" | trans }}
+                </button>
+                <button class="btn btn-default w3-round" (click)="excel()">
+                  {{ "excel" | trans }}
+                </button>
+              </div>
+             
               
             </div>
-            <div style="display: flex" class="col-lg-3 col-md-4">
-              <button class="btn btn-default w3-round" (click)="load()">
-                {{ "search" | trans }}
-              </button>
-              <button
-                style="margin: 0 5px"
-                class="btn btn-default w3-round"
-                (click)="printContent()"
-              >
-                {{ "print" | trans }}
-              </button>
-              <button class="btn btn-default w3-round" (click)="excel()">
-                {{ "excel" | trans }}
-              </button>
-            </div>
+           
           </div>
           
         </div>

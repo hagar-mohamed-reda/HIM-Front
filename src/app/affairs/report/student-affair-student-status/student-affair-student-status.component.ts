@@ -21,6 +21,7 @@ import { DatePipe } from '@angular/common';
 
 export class StudentAffairStudentStatusComponent implements OnInit {
   $: any = $;
+  
   doc: any = document;
   isSubmitted = false;
   canShowResult = false;
@@ -37,10 +38,11 @@ export class StudentAffairStudentStatusComponent implements OnInit {
   divisions: any = [];
   courses: any = [];
   val:string ="";
+  val2:string ="";
   idStudent: any;
   today = new Date();
   changedDate = '';
-  
+  birthdaytime:any;
 
   selectedDivisions = new HashTable();
   selectedLevels = new HashTable();
@@ -126,7 +128,9 @@ export class StudentAffairStudentStatusComponent implements OnInit {
     // console.log( this.searchData);
 
     if(this.filter.year_id){
+      
       this.reportService.getWithStatus(this.searchData).subscribe((res) => {
+        // this.birthdaytime = this.birthdaytime;
         this.response = res;
         this.prePagniation();
         this.isSubmitted = false;
@@ -135,14 +139,7 @@ export class StudentAffairStudentStatusComponent implements OnInit {
 
   }
 
-  login() {
-    let resultPassword: any = this.academicSetting.get(12);
-    if (!resultPassword)
-      return;
-    if (this.password == resultPassword.value) {
-      this.canShowResult = true;
-    }
-  }
+ 
 
   searchAboutCourse() {
     let self = this;
@@ -182,12 +179,23 @@ export class StudentAffairStudentStatusComponent implements OnInit {
       this.response.pages_arr.push(i+1);
   }
     //this.id_current = res.id;
-
-  print() {
 //   this.globalService.save({name: this.val, id: this.idStudent}).subscribe((res:any)=>{
 // })
-this.doc.printJs();
+// this.doc.printJs();
+// <div class="control-message" *ngIf="!canShowResult">
+// <div class="custom-panel w3-display-container w3-round application-panel student-info-panel">
+// <div class="custom-panel-body table-responsive w3-padding w3-center">
+// <input class="w3-round-xxlarge w3-white w3-input border-gray search-input w3-center" 
+// style="width: 90%!important" type="password" 
+// placeholder="{{ 'enter password of result' | trans }}" [(ngModel)]="password">
+// <br>
+// <br>
+// <button class="btn w3-light-gray w3-round-xlarge" (click)="login()">{{ "show" | trans }}</button>
+// </div>
+// </div>
+// </div>
 
+  print() {
     var check = 0;
     var array = this.student.payments;
     for(let i = 0 ; i < array.length ; i++){
@@ -199,13 +207,25 @@ this.doc.printJs();
       Helper.print();
     } else {
       let password = prompt("يجب تسديد مبلغ الخدمة وقيمته 50 للأستثناء ادخل الرقم السري : ");
-      if (password == '556677') {
+      let resultPassword: any = this.academicSetting.get(13);
+      console.log(resultPassword);
+      
+      if (resultPassword.value == password) {
         Helper.print();
       } else {
         alert('الرقم السري غير صحيح');
       }
     }
   }
+  login() {
+    let resultPassword: any = this.academicSetting.get(13);
+    if (!resultPassword)
+      return;
+    if (this.password == resultPassword.value) {
+      this.canShowResult = true;
+    }
+  }
+
 
   exportExcel()
   {

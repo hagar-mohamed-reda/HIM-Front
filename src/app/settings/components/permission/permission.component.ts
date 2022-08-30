@@ -26,7 +26,6 @@ export class PermissionComponent extends SettingTemplate  implements OnInit {
     this.permissions.baseUrl = "permissions";
     this.permissions.get();
 
-
   }
 
 

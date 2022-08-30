@@ -34,6 +34,7 @@ export class RegistrationreportComponent implements OnInit {
   level_id: any;
   division_id: any;
   term_id: any;
+  case_constraint:any;
   student: any = {};
 
   public studentSettings = ApplicationSettingService;
@@ -99,6 +100,10 @@ export class RegistrationreportComponent implements OnInit {
     $("#level_id").on("change", () => {
       this.level_id = $("#level_id").val();
     });
+    $("#case_constraint").on("change", () => {
+      this.case_constraint = $("#case_constraint").val();
+    });
+    
     this.levels = Cache.get(LevelService.LEVEL_PREFIX);
     this.divisions = Cache.get(DivisionService.DIVISION_PREFIX);
     this.terms = Cache.get(TermService.TERPM_PREFIX);

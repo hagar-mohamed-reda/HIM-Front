@@ -69,9 +69,21 @@
                     </div>
                 </div>
             </div>
-            <input [(ngModel)]="val" class="form-control " style="width: 50%!important"
-                placeholder="ادخل اسم المعهد المحول اليه">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <input [(ngModel)]="val" class="form-control " 
+                    placeholder="ادخل اسم المعهد المحول اليه">
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <label for="">ادخل التاريخ : </label>
+            <input [(ngModel)]="val2" type="date" id="birthdaytime" name="birthdaytime" >
+                </div>
+            </div>
+            
             <!-- <h1>{{val}}</h1> -->
+           
+
+   
             <br><br>
 
             <div class="custom-panel w3-display-container w3-round application-panel student-info-panel "
@@ -90,11 +102,13 @@
                                         class="fa fa-print"></i> {{ "print" | trans }}</button>
                                 <!-- <button mat-raised-button color="primary" class="w3-margin-left w3-green" (click)="exportExcel()"> <i class="fa fa-file-excel-o" ></i> {{ "excel" | trans }}</button> -->
                             </div>
+                   
                         </div>
                         <div class="all" id="printable">
 
 
-                        
+                            <!-- <a href="{{url("home/edit/$item->id")}}">Update</a> -->
+
                         <!-- =====first page=== -->
                         <div class="container" style="height: 100vh;" >
                             <div class="container w-100" style="text-align: center !important;">
@@ -380,6 +394,7 @@
                                         <h6
                                             style="text-align: center !important;font-size: 13px !important;font-weight: bolder !important;">
                                             أ.د / أحمد ابوالقمصان <br> عميد المعهد </h6>
+                                           
                                     </div>
 
                                     <div class="col-xs-4">
@@ -401,18 +416,20 @@
                                         <h6
                                             style="text-align: center !important;font-size: 13px !important;font-weight: bolder !important;">
                                             د / أحمد رضوان</h6>
+                                            <h6
+                                            style="text-align: right !important;font-size: 13px !important;font-weight: bolder !important; margin-bottom: 50px !important;">
+                                             تحريرا فى  :{{val2}}
+                          
+                                             </h6>
+                                     
                                     </div>
 
                                 </div>
-                               
+                              
                                   
                             </div>
                           
-                            <p
-                        style="text-align: right !important;font-size: 13px !important;font-weight: bolder !important; margin-bottom: 50px !important;">
-                        تحريرا فى  : {{ today |date:' dd-MM-yyyy'}}
-                             
-                    </p>
+                          
                         </div>
                         <!-- =====first bian 7ala======= -->
                         <br>
@@ -503,6 +520,7 @@
                                         <h6
                                             style="text-align: right !important;font-size: 13px !important;font-weight: bolder !important;">
                                             أ.د / أحمد ابوالقمصان </h6>
+                    
 
                                     </div>
                                     <div class="col-xs-4">
@@ -517,7 +535,11 @@
                                         <h6
                                             style="text-align: right !important;font-size: 13px !important;font-weight: bolder !important;">
                                             الموظف المختص </h6><br><br>
-                                       
+                                            <h6
+                                            style="text-align: right !important;font-size: 13px !important;font-weight: bolder !important; margin-bottom: 50px !important;">
+                                            تحريرا فى  :{{val2}} 
+                          
+                                    </h6>
                                     </div>
 
 
@@ -526,15 +548,11 @@
                                 </div>
                             </div>
                             <br><br>
-                            <h6
-                                style="text-align: right !important;font-size: 13px !important;font-weight: bolder !important;">
-                                تحريرا فى  : {{ today |date:' dd-MM-yyyy'}}
-                                     
-                                  </h6> <br><br>
+                             <br><br>
                         </div>
                         <!-- =====end first bian 7ala=== -->
                         <br>
-                        <div class="border-bottom-dashed"></div>
+                        <!-- <div class="border-bottom-dashed"></div> -->
                         <!-- =====second bian 7ala=== -->
                         <div class="container" >
                             <div class="row">
@@ -566,7 +584,7 @@
                                 <p style="text-align: center !important">تحيه طيبه وبعد ...</p>
                                 نتشرف باحاطه سيادتكم علما بان الطالب / &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 {{response.studentInfo[0].name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
-                                المقيد بمعهدنا قد ابدى رغبته فى التحويل طرفكم  علما
+                                المقيد بمعهدنا علما
                                 بان بياناته كما يلى
                                 <hr>
                             </div>
@@ -684,10 +702,10 @@
                                 </div>
                                 <br><br>
                                 <h6
-                                style="text-align: right !important;font-size: 13px !important;font-weight: bolder !important;">
-                                تحريرا فى  : {{ today |date:' dd-MM-yyyy'}}
-                                     
-                                  </h6>
+                                style="text-align: right !important;font-size: 13px !important;font-weight: bolder !important; margin-bottom: 50px !important;">
+                                تحريرا فى  :{{val2}} 
+              
+                        </h6>
                             </div>
                             
                         </div>
@@ -697,9 +715,6 @@
                     </div>
                 </div>
             </div>
-            <!-- eltba3aa -->
-         
-            <!-- ======== -->
         </div>
     </div>
 </div>

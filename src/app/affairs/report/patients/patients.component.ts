@@ -12,13 +12,14 @@ import { CourseService } from "src/app/academic/services/course.service";
 import { ReportServiceService } from "src/app/academic/services/report-service.service";
 import { StudentAccountService } from "src/app/account/services/student-account.service";
 import { TermService } from "src/app/account/services/term.service";
+import { DivisionService } from "src/app/account/services/division.service";
 @Component({
   selector: "app-patients",
   templateUrl: "./patients.component.html",
   styleUrls: ["./patients.component.scss"],
 })
 export class PatientsComponent implements OnInit {
-  illness_reason: any = "";
+  reason: any = "";
   attatchment:any;
   
   $: any = $;
@@ -35,17 +36,19 @@ export class PatientsComponent implements OnInit {
   loading: boolean = false;
   item: any = {};
   helper: any = Helper;
-  applicationService: any = ApplicationSettingService;
-  public studentSettings = ApplicationSettingService;
-
   terms: any = [];
   levels: any = [];
   divisions: any = [];
   courses: any = [];
   val: string = "";
   idStudent: any;
-  @Input() resource: any = {};
+  level_id:any;
+  division_id:any;
+  term_id:any;
+  applicationService: any = ApplicationSettingService;
+  public studentSettings = ApplicationSettingService;
 
+  @Input() resource: any = {};
   selectedDivisions = new HashTable();
   selectedLevels = new HashTable();
   academicSetting = new HashTable();
@@ -71,16 +74,28 @@ export class PatientsComponent implements OnInit {
   }
 
   ngOnInit() {
+    $('#division_id').on('change' , ()=>{
+      this.division_id = $('#division_id').val();
+    })
+    $('#term_id').on('change' , ()=>{
+      this.term_id = $('#term_id').val();
+    })
+    $('#level_id').on('change' , ()=>{
+      this.level_id = $('#level_id').val();
+    })
+    this.levels = Cache.get(LevelService.LEVEL_PREFIX);
+    this.divisions = Cache.get(DivisionService.DIVISION_PREFIX);
+    this.terms = Cache.get(TermService.TERPM_PREFIX);
     this.terms = Cache.get(TermService.TERPM_PREFIX);
     this.loadSettings();
   }
-  filterCourses(term) {
-    if (!this.response) return [];
-    return this.response.registerCourses.filter((c) => c.term_id == term);
-  }
-  viewImage(event) {
-    Helper.loadImage(event, 'image', this.resource);
-  }
+  // filterCourses(term) {
+  //   if (!this.response) return [];
+  //   return this.response.registerCourses.filter((c) => c.term_id == term);
+  // }
+  // viewImage(event) {
+  //   Helper.loadImage(event, 'image', this.resource);
+  // }
   storeAffair() {
     this.item.student_id = this.student.id;
     this.loading = true;
@@ -99,13 +114,13 @@ export class PatientsComponent implements OnInit {
       );
   }
 
-  getTermGpa(term) {
-    if (!this.response) return 0;
-    var gpa = this.response.student_gpa_fasly.filter(
-      (g) => g.term_id == term
-    )[0].gpa;
-    return gpa;
-  }
+  // getTermGpa(term) {
+  //   if (!this.response) return 0;
+  //   var gpa = this.response.student_gpa_fasly.filter(
+  //     (g) => g.term_id == term
+  //   )[0].gpa;
+  //   return gpa;
+  // }
 
   getStdCode() {
     if (!this.response) return 0;
@@ -139,9 +154,9 @@ export class PatientsComponent implements OnInit {
     this.levels = Cache.get(LevelService.LEVEL_PREFIX);
     Request.fire();
   }
-  test($event) {
-    console.log($event.target.value);
-  }
+  // test($event) {
+  //   console.log($event.target.value);
+  // }
   loadData() {
     this.searchData.courses = this.selectedCourses.getKeys();
     this.searchData.levels = this.selectedLevels.getKeys();
@@ -161,13 +176,13 @@ export class PatientsComponent implements OnInit {
     }
   }
 
-  login() {
-    let resultPassword: any = this.academicSetting.get(12);
-    if (!resultPassword) return;
-    if (this.password == resultPassword.value) {
-      this.canShowResult = true;
-    }
-  }
+  // login() {
+  //   let resultPassword: any = this.academicSetting.get(12);
+  //   if (!resultPassword) return;
+  //   if (this.password == resultPassword.value) {
+  //     this.canShowResult = true;
+  //   }
+  // }
   searchAboutCourse() {
     let self = this;
     if (!this.searchCourseKey) return this.$(".course-item").show();
@@ -181,17 +196,30 @@ export class PatientsComponent implements OnInit {
   }
   load() {
     console.log(this.filter);
-
-    if (!Helper.validator(this.filter, ["year_id"])) {
-      return Message.error(Helper.trans("please choose all filters"));
-    } else {
-      this.globalService
-        .loadHtml("student/student_excuses", this.filter)
-        .subscribe((res) => {
-          $("#reportContent").html(res);
-        });
+  
+    if (!Helper.validator(this.filter, ['year_id'])) {
+      return Message.error(Helper.trans('please choose all filters'));
+    }else{
+      this.globalService.loadHtml("student/student_excuses", this.filter).subscribe((res) => {
+        $('#reportContent').html(res);
+      });
     }
+  
+  
   }
+  // load() {
+  //   console.log(this.filter);
+
+  //   if (!Helper.validator(this.filter, ["year_id"])) {
+  //     return Message.error(Helper.trans("please choose all filters"));
+  //   } else {
+  //     this.globalService
+  //       .loadHtml("student/student_excuses", this.filter)
+  //       .subscribe((res) => {
+  //         $("#reportContent").html(res);
+  //       });
+  //   }
+  // }
   toggle(id, list = new HashTable()) {
     if (list.has(id)) {
       list.remove(id);
@@ -222,29 +250,7 @@ export class PatientsComponent implements OnInit {
   }
 
   print() {
-    this.globalService
-      .save({ name: this.val, id: this.idStudent })
-      .subscribe((res: any) => {});
-
-    var check = 0;
-    var array = this.student.payments;
-    for (let i = 0; i < array.length; i++) {
-      if (array[i].model_object.id == 16) {
-        check = 1;
-      }
-    }
-    if (check == 1) {
-      Helper.print();
-    } else {
-      let password = prompt(
-        "يجب تسديد مبلغ الخدمة وقيمته 50 للأستثناء ادخل الرقم السري : "
-      );
-      if (password == "556677") {
-        Helper.print();
-      } else {
-        alert("الرقم السري غير صحيح");
-      }
-    }
+    this.doc.printJs();
   }
   exportExcel() {
     const filename = "مدفوعات الطلاب-" + new Date().toLocaleTimeString();
@@ -276,7 +282,6 @@ export class PatientsComponent implements OnInit {
       }
     });
   }
-
   selectStudent(student) {
     if (student) {
       this.searchData.student_id = student.id;
