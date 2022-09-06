@@ -26,6 +26,8 @@ import { PatientsComponent } from "./report/patients/patients.component";
 import { RegistrationtypeComponent } from "../adminision/components/registrationtype/registrationtype.component";
 import { RegistrationreportComponent } from "../adminision/components/registrationreport/registrationreport.component";
 import { PatientreportComponent } from "./report/patientreport/patientreport.component";
+import { CreditHoursComponent } from "./report/credit-hours/credit-hours.component";
+import { ServiceComponent } from "./report/service/service.component";
 
 const routes: Routes = [
   {
@@ -129,6 +131,15 @@ const routes: Routes = [
         path: "report/patientreport",
         component: PatientreportComponent,
       },
+      {
+        path: "report/creditHour",
+        component: CreditHoursComponent,
+      },
+      {
+        path: "report/service",
+        component: ServiceComponent,
+      },
+      
     ],
   },
 

@@ -11,6 +11,10 @@ import { AppModule } from '../../../../app.module';
   styleUrls: ['./installment.component.scss']
 })
 export class InstallmentComponent implements OnInit {
+  current_model_id:any;
+  model_id:any;
+  commission_id:any;
+  item:any;
 
   public doc: any = AppModule.doc;
   public total1: number = 0;
@@ -30,6 +34,7 @@ export class InstallmentComponent implements OnInit {
 
   constructor(private studentAccountService: StudentAccountService) {
     this.calculatePaidInstallments();
+    console.log(this.model_id);
    }
 
   prepareInstallments() {
@@ -124,6 +129,14 @@ export class InstallmentComponent implements OnInit {
     // update data of the api
     this.buildInstallmentRequestData();
     this.studentAccountService.updateStudentInstallments(this.studentInstallmentData).subscribe((r) => {
+      // console.log(this.commission_id);
+      //item.paid == 0
+      // if(item.paid == 0)
+      // {
+
+      // }
+      //  this.model_id = this.model_id;
+
       const data: any = r;
       if (data.status == 1) {
         Message.success(data.message);
@@ -154,7 +167,10 @@ export class InstallmentComponent implements OnInit {
    * validate and update
    */
   performUpdate() {
-    console.log(this.studentInstallments);
+    // this.model_id = 0;
+    // console.log( this.currentInstallment);
+    
+    // console.log(this.studentInstallments);
     if (!this.validate())
       return Message.error(Helper.trans('please enter all data'));
     this.update();
@@ -167,7 +183,8 @@ export class InstallmentComponent implements OnInit {
     return {
       date: '',
       value: 0,
-      paid: 0
+      paid: 0,
+      model_id:this.student.current_model_id
     };
   }
 

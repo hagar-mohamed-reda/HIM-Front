@@ -21,6 +21,8 @@ import { FormsModule } from '@angular/forms';
 import { RegistrationComponent } from './report/registration/registration.component';
 import { PatientsComponent } from './report/patients/patients.component';
 import { PatientreportComponent } from './report/patientreport/patientreport.component';
+import { CreditHoursComponent } from './report/credit-hours/credit-hours.component';
+import { ServiceComponent } from './report/service/service.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { PatientreportComponent } from './report/patientreport/patientreport.com
    RegistrationComponent,
    PatientsComponent,
    PatientreportComponent,
+   CreditHoursComponent,
+   ServiceComponent,
     
   ],
   imports: [

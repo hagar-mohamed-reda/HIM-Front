@@ -20,7 +20,9 @@ import { ApplicationHelper } from '../application-helper';
   styleUrls: ['./application-create.component.scss']
 })
 export class ApplicationCreateComponent implements OnInit {
-
+  levels: any = [];
+  level_id:any;
+  filter: any = {};
   public doc: any = AppModule.doc;
   /**
    * application object
@@ -58,7 +60,7 @@ export class ApplicationCreateComponent implements OnInit {
     'registration_status_id',
     'academic_years_id',
     'grade',
-    'maxgrade',
+    // 'maxgrade',
     'qualification_date1',
     'qualification_types_id',
     'level_id'
@@ -182,8 +184,11 @@ export class ApplicationCreateComponent implements OnInit {
     let valid = true;
 
     this.required_field.forEach((element: any) => {
-      if (!this.application[element])
+      if (!this.application[element]){
+        console.log(element);
         valid = false;
+  
+      }     
     });
 
     return valid;
@@ -515,6 +520,10 @@ export class ApplicationCreateComponent implements OnInit {
   }
 
   ngOnInit() {
+    $('#level_id').on('change' , ()=>{
+      this.level_id = $('#level_id').val();
+    })
+    this.levels = Cache.get(LevelService.LEVEL_PREFIX);
   }
 
 }

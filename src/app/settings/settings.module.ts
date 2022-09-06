@@ -22,6 +22,7 @@ import { StudentCodeSeriesComponent } from './components/student-code-series/stu
 import { PermissionComponent } from './components/permission/permission.component';
 import { CommissionTypesComponent } from './components/commission-types/commission-types.component';
 import { TermComponent } from './components/term/term.component';
+import { YaerComponent } from './components/yaer/yaer.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { TermComponent } from './components/term/term.component';
     StudentCodeSeriesComponent,
     PermissionComponent,
     CommissionTypesComponent,
-    TermComponent
+    TermComponent,
+    YaerComponent
   ],
   imports: [
     CommonModule,

@@ -250,11 +250,11 @@
                                         <tr>
                                             <th>{{ "department" | trans }} *</th>
                                             <td>
-                                                <select class="custom-input form-control input-sm w3-input border-bottom-dashed input-sm" [(ngModel)]="application.department_id">
-                                              <ng-container *ngFor="let item of applicationSettings.DEPARTMENTS">
-                                                <option *ngIf="item.division_id == application.division_id && item.level_id == 1" value="{{ item.id }}" >{{ item.name }}</option>
-                                              </ng-container>
-                                              </select>
+                                                <select class="custom-input form-control input-sm w3-input border-bottom-dashed input-sm" [ngClass]="{'border-bottom-dashed': application.department_id, 'border-bottom-red': !application.department_id}" [(ngModel)]="application.department_id">
+                        <ng-container *ngFor="let item of applicationSettings.DEPARTMENTS">
+                          <option *ngIf="application.level_id == item.level_id" value="{{ item.id }}" >{{ item.name }}</option>
+                        </ng-container>
+                        </select>
                                             </td>
                                         </tr>
 

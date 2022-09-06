@@ -22,11 +22,16 @@ import { exit } from 'process';
 })
 export class AcademicYearIndexComponent implements OnInit {
 
+  filter : any = {};
+  
+  applicationService: any = ApplicationSettingService;
+
   // datatable options
   public dtOptions: any;
 
   // datable trigger
   dtTrigger: Subject<any> = new Subject();
+  
 
   // Rows list
   public academicYearExpense: any = {};
@@ -68,7 +73,7 @@ export class AcademicYearIndexComponent implements OnInit {
   constructor(private academicService: AcademicYearService,
     private storeService: StoreService,
     private studentService: StudentServiceService,
-    private applicationSetting: ApplicationSettingService) {
+    private applicationSetting: ApplicationSettingService,) {
     this.self = this;
 
     // init breadcrum
@@ -162,15 +167,27 @@ export class AcademicYearIndexComponent implements OnInit {
     return valid;
   }
 
+  handleYearChange(){
+
+    // const year_id = this.filter.year_id
+    // const filteredAcadimicYear = Object.assign({} , this.academicService)
+    // this.academicYearExpense.details.filter(r => false)
+    console.log(this.academicYearExpense.details);
+    
+  }
+
   loadAcademicYearExpenses() {
     if (!this.validate())
+    {
+      alert("not validated")
       return;
-    this.isLoad = true;
-    this.reset();
+    }this.isLoad = true;
+    this.reset();``
     let data = {
       level_id: this.level_id
     };
     this.academicService.get(data).subscribe( (res: any) => {
+      console.log(res);
       this.academicYearExpense = res;
       this.isLoad = false;
       console.log(this.academicYearExpense.details);

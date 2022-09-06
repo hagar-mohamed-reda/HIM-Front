@@ -25,7 +25,15 @@
                                         </select>
                                     </div>
                                 </div>
-        
+                                <div class="col-lg-3 col-md-4">
+                                    <div class="form-group">
+                                        <label for="">{{ "term" | trans }}</label>
+                                        <select id="term_id" name="filter.term_id" class="form-control" [(ngModel)]="filter.term_id">
+                                        <option value="">الكل</option>
+                                        <option *ngFor="let item of terms" value="{{ item.id }}">{{item.name}}</option>
+                                        </select>
+                                    </div>
+                              </div>
                                 <div class="col-lg-3 col-md-4">
                                       <div class="form-group">
                                           <label for="">{{ "division" | trans }}</label>
@@ -42,13 +50,13 @@
                                         <select name="filter.course_id" class="form-control" [(ngModel)]="filter.course_id">
                                         <option value="">الكل</option>
                                         <!-- |level:level_id|term:term_id|division:division_id|year:year_id -->
-                                        <option *ngFor="let item of courses|term:term_id|division:division_id" value="{{ item.course_id }}">{{item.course_name}}</option>
+                                        <option *ngFor="let item of courses|level:level_id|term:term_id|division:division_id" value="{{ item.course_id }}">{{item.course_name}}</option>
                                         </select>
                                     </div>
                                 </div>
         
 
-                                <div class="col-lg-3 col-md-3" style="padding-top: 22px!important;">
+                                <div class="col-lg-3 col-md-3" style="padding: 15px!important;">
                                     <button  class="btn btn-default w3-round" (click)="load()">{{ "search" | trans }}</button>
                                     <button  class="btn btn-default w3-round" (click)="printContent()">{{ "print" | trans }}</button>
                                     <button  class="btn btn-default w3-round" (click)="exportExcel()">{{ "excel" | trans }}</button>

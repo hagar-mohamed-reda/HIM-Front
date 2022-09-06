@@ -25,7 +25,7 @@ export class StudentDetailsReportComponent implements OnInit {
   selectedPayment: any = {};
   discountRequests: any = [];
   installment_details: any;
-
+  current_model_id:any;
 
   //
   public searchKey: string;
@@ -93,9 +93,16 @@ export class StudentDetailsReportComponent implements OnInit {
   loadStuentInfo(id) {
     this.studentAcountService.getStudentAccount(id).subscribe((res: any) => {
       this.student = res;
-      this.installment_details = res.academic_year_expense_detail;
+      this.installment_details = res.installments;
+      // this.current_model_id = res.current_model_id;
     });
   }
+  // loadStuentInfo(id) {
+  //   this.studentAcountService.getStudentAccount(id).subscribe((res: any) => {
+  //     this.student = res;
+  //     this.installment_details = res.academic_year_expense_detail;
+  //   });
+  // }
 
   loadPayments() {
     this.reportService.get(this.searchData).subscribe((res: any) => {
@@ -173,9 +180,9 @@ export class StudentDetailsReportComponent implements OnInit {
   }
 
   performDiscount(item) {
-    if (item.installment_id <= 0 || item.value <= 0 ) {
-      return Message.error('من فضلك اختر القسط  و قيمة المبلغ');
-    }
+    // if (item.installment_id <= 0 || item.value <= 0 ) {
+    //   return Message.error('من فضلك اختر القسط  و قيمة المبلغ');
+    // }
     this.studentAcountService.createDiscount(item).subscribe((res: any) => {
       if (res.status == 1) {
         Message.success(res.message);

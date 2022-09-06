@@ -331,7 +331,7 @@
                         <th>{{ "student_affairs_notes" | trans }}</th>
                         <th>{{ "user" | trans }}</th>
                         <th>الاقساط</th>
-                        <th>المبلغ</th>
+                        <!-- <th>المبلغ</th> -->
                         <th></th>
                     </tr>
 
@@ -343,15 +343,18 @@
                             <td>{{ item.student_affairs_notes }}</td>
                             <td>{{ item.user? item.user.name : '' }}</td>
                             <td>
-                                <select *ngIf="item.paid != 1" class="w3-round-xxlarge form-control filter-category" name="item.installment_id" [(ngModel)]="item.installment_id">
-                                <option *ngFor="let items of installment_details" value="{{ items.id }}">القسط {{ items.value }}</option>
+                                <!-- <div *ngFor="let item of installment_details">
+                                    <button *ngIf="(item.paid == 0)">{{item.paid}}</button>
+                                </div> -->
+                                <select  class="w3-round-xxlarge form-control filter-category" name="item.installment_id" [(ngModel)]="item.installment_id">
+                                <option *ngFor="let items of installment_details |pipes" value="{{ items.id }}">القسط {{ items.value }}</option>
                               </select>
                                 <span *ngIf="item.paid == 1" class="w3-text-red">{{ item.value | currency: ' جنية ' }}</span>
                             </td>
-                            <td>
+                            <!-- <td>
                                 <input type="number" *ngIf="item.paid != 1" [(ngModel)]="item.value" style="width: 70px">
                                 <span *ngIf="item.paid == 1" class="w3-text-red">{{ item.value | currency: ' جنية ' }}</span>
-                            </td>
+                            </td> -->
                             <td>
                                 <button mat-raised-button class="w3-green" *ngIf="item.paid != 1" (click)="performDiscount(item)">
                  {{ "make_discount" | trans }}

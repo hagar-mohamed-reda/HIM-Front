@@ -14,7 +14,13 @@
         <select style="width: 100px" class="form-control input-sm" (change)="loadAcademicYearExpenses()" [(ngModel)]="level_id" >
           <option *ngFor="let item of levels index as i" value="{{ item.id }}" >{{ item.name }}</option>
         </select>
+
       </td>
+
+
+
+
+
       <!--
       <td>{{ "division" | trans }}</td>
       <td>
@@ -26,6 +32,19 @@
       </td>
       -->
     </tr>
+
+<!-- <tr>
+  
+  <td>{{ "academic year" | trans }}</td>
+  <td>
+    <select style="width: 100px;" name="filter.year_id" (change)="handleYearChange()" class="form-control input-sm" [(ngModel)]="filter.year_id">
+      <option value="">الكل</option>
+      <option *ngFor="let item of applicationService.ACADEMIC_YEARS" value="{{ item.id }}">{{item.name}}</option>
+      </select>
+
+  </td>
+
+</tr> -->
   </table>
   <br>
   <table  class="table table-bordered text-center">

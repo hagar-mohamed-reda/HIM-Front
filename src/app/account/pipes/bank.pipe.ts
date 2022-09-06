@@ -5,7 +5,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class BankPipe implements PipeTransform {
 
-  transform(arr: any, code: any): any {
+  transform(arr: any, code: any): any 
+  {
     if ( code == '' || code == null || code == undefined || code == '0' || arr == [] || arr == undefined || arr == null) {
       return arr;
     } else{

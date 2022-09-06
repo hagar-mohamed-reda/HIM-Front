@@ -19,6 +19,7 @@ import { PermissionComponent } from './components/permission/permission.componen
 import { Auth } from '../shared/auth';
 import { AuthGuestService } from '../shared/middlewares/auth-guest.service';
 import { TermComponent } from './components/term/term.component';
+import { YaerComponent } from './components/yaer/yaer.component';
 
 const routes: Routes = [
   {
@@ -85,6 +86,12 @@ const routes: Routes = [
         canActivate: [AuthGuestService],
         data: {can: Auth.can('registeration_status')},
         component: TermComponent
+      },
+      {
+        path: "year",
+        canActivate: [AuthGuestService],
+        data: {can: Auth.can('registeration_status')},
+        component: YaerComponent
       },
       {
         path: "translations",

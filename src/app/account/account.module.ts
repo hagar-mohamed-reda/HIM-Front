@@ -77,6 +77,7 @@ import { WorkPrivateDepositesComponent } from './components/work-private-deposit
 import { WorkPrivateBankComponent } from './components/work-private-bank/work-private-bank.component';
 import { BankPipe } from './pipes/bank.pipe';
 import { PersonPipe } from './pipes/person.pipe';
+import { PipesPipe } from './pipes.pipe';
 
 @NgModule({
   declarations: [
@@ -144,6 +145,7 @@ import { PersonPipe } from './pipes/person.pipe';
     WorkPrivateBankComponent,
     BankPipe,
     PersonPipe,
+    PipesPipe,
    
 
   ],

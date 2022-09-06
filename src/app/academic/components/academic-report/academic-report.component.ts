@@ -23,6 +23,8 @@ export class AcademicReportComponent implements OnInit {
   $: any = $;
   applicationService: any = ApplicationSettingService;
   levels: any = [];
+  level_id:any;
+
   divisions: any = [];
   courses: any = [];
   groups: any = [];
@@ -32,7 +34,6 @@ export class AcademicReportComponent implements OnInit {
   doc: any = document;
   terms: any = [];
   data:any = [];
-  level_id:any;
   division_id:any;
   term_id:any;
 

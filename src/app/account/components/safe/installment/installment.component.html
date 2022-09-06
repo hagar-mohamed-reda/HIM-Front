@@ -88,7 +88,10 @@
               </thead>
               <tbody>
                 <tr *ngFor="let item of currentInstallment index as i"    >
+                  
+                  
                   <ng-container *ngIf='!item.deleted' >
+                    
                       <td >{{ i + 1 }}</td>
                       <td>
                         <input

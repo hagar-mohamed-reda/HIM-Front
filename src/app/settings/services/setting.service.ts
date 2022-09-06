@@ -31,6 +31,9 @@ export class SettingService {
   public updateTermActive(data: any) {
     return this.http.post(this.baseUrl  + '?api_token=' + Auth.getApiToken(), data);
   }
+  // public updateYearActive(data: any) {
+  //   return this.http.post(this.baseUrl  + '?api_token=' + Auth.getApiToken(), data);
+  // }
   /**
    * store new service
    */
