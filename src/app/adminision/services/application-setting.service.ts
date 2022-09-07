@@ -143,7 +143,9 @@ export class ApplicationSettingService {
   }
 
   public getRegisterationStatusDocuments() {
-    return this.http.get('adminision/get_registeration_status_document?api_token=' + Auth.getApiToken());
+
+    const observable = this.http.get('adminision/get_registeration_status_document?api_token=' + Auth.getApiToken());
+    return observable
   }
 
   public getDepartments() {

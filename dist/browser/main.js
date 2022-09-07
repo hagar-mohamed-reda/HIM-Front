@@ -18296,6 +18296,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var process__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! process */ "./node_modules/process/browser.js");
 /* harmony import */ var process__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(process__WEBPACK_IMPORTED_MODULE_13__);
 /* harmony import */ var _application_helper__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../application-helper */ "./src/app/adminision/components/application/application-helper.ts");
+/* harmony import */ var src_app_shared_services_global_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! src/app/shared/services/global.service */ "./src/app/shared/services/global.service.ts");
+
 
 
 
@@ -18313,12 +18315,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ApplicationCreateComponent = /** @class */ (function () {
-    function ApplicationCreateComponent(applicationService, route, router, applicationSettingService) {
+    function ApplicationCreateComponent(applicationService, route, router, applicationSettingService, globalService) {
         var _this = this;
         this.applicationService = applicationService;
         this.route = route;
         this.router = router;
         this.applicationSettingService = applicationSettingService;
+        this.globalService = globalService;
         this.levels = [];
         this.filter = {};
         this.doc = _app_module__WEBPACK_IMPORTED_MODULE_8__["AppModule"].doc;
@@ -18387,6 +18390,12 @@ var ApplicationCreateComponent = /** @class */ (function () {
             _this.application = res;
             //
             _this.application.qualification_date1 = _this.application.qualification_date;
+            // -----new load registration status documents
+            _this.globalService.get('adminision/get_registeration_status_document').subscribe(function (documents) {
+                _this.applicationSettings.REGSITERATIN_STATUS_DOCUMENTS = documents;
+                _this.validateOnRegisterationStatusDocument(res.registration_status_id);
+            });
+            _this.application = res;
         });
     };
     ApplicationCreateComponent.prototype.validateOnNationalId = function () {
@@ -18481,11 +18490,12 @@ var ApplicationCreateComponent = /** @class */ (function () {
         // console.log(this.application.maxgrade);
         // console.log(total2);
     };
-    ApplicationCreateComponent.prototype.validateOnRegisterationStatusDocument = function () {
+    ApplicationCreateComponent.prototype.validateOnRegisterationStatusDocument = function (registration_status_id) {
         var _this = this;
+        if (registration_status_id === void 0) { registration_status_id = this.application.registration_status_id; }
         this.requiredDocumentList = new _node_modules_angular_hashtable__WEBPACK_IMPORTED_MODULE_10__["HashTable"]();
         this.applicationSettings.REGSITERATIN_STATUS_DOCUMENTS.forEach(function (element) {
-            if (element.registeration_status_id == _this.application.registration_status_id) {
+            if (element.registeration_status_id == registration_status_id) {
                 _this.requiredDocumentList.put(element.required_document_id, 1);
             }
         });
@@ -18760,7 +18770,8 @@ var ApplicationCreateComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_application_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationService"],
             _node_modules_angular_router__WEBPACK_IMPORTED_MODULE_9__["ActivatedRoute"],
             _node_modules_angular_router__WEBPACK_IMPORTED_MODULE_9__["Router"],
-            _services_application_setting_service__WEBPACK_IMPORTED_MODULE_2__["ApplicationSettingService"]])
+            _services_application_setting_service__WEBPACK_IMPORTED_MODULE_2__["ApplicationSettingService"],
+            src_app_shared_services_global_service__WEBPACK_IMPORTED_MODULE_15__["GlobalService"]])
     ], ApplicationCreateComponent);
     return ApplicationCreateComponent;
 }());
@@ -20031,7 +20042,8 @@ var ApplicationSettingService = /** @class */ (function () {
         return this.http.get('commission_types?api_token=' + _shared_auth__WEBPACK_IMPORTED_MODULE_4__["Auth"].getApiToken());
     };
     ApplicationSettingService.prototype.getRegisterationStatusDocuments = function () {
-        return this.http.get('adminision/get_registeration_status_document?api_token=' + _shared_auth__WEBPACK_IMPORTED_MODULE_4__["Auth"].getApiToken());
+        var observable = this.http.get('adminision/get_registeration_status_document?api_token=' + _shared_auth__WEBPACK_IMPORTED_MODULE_4__["Auth"].getApiToken());
+        return observable;
     };
     ApplicationSettingService.prototype.getDepartments = function () {
         return this.http.get('adminision/get_departments?api_token=' + _shared_auth__WEBPACK_IMPORTED_MODULE_4__["Auth"].getApiToken());
@@ -28809,7 +28821,7 @@ var Request = /** @class */ (function () {
                 if (object.times <= 10 || error.status == 429)
                     Request.queue.push(object);
             }, function () {
-                console.log("queue size : " + (Request.queue.length) + ", key : " + object.key + ", times : " + object.times);
+                // console.log("queue size : " + (Request.queue.length) + ", key : " + object.key + ", times : " + object.times);
                 if (!sync)
                     Request.fire(sync);
             });
@@ -29351,6 +29363,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_shared_auth__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! src/app/shared/auth */ "./src/app/shared/auth.ts");
 /* harmony import */ var process__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! process */ "./node_modules/process/browser.js");
 /* harmony import */ var process__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(process__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var src_app_shared_services_global_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! src/app/shared/services/global.service */ "./src/app/shared/services/global.service.ts");
+
 
 
 
@@ -29366,10 +29380,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var StudentCreateComponent = /** @class */ (function () {
-    function StudentCreateComponent(studentService, route) {
+    function StudentCreateComponent(studentService, route, globalService) {
         var _this = this;
         this.studentService = studentService;
         this.route = route;
+        this.globalService = globalService;
         this.doc = _app_module__WEBPACK_IMPORTED_MODULE_6__["AppModule"].doc;
         /**
          * application object
@@ -29414,6 +29429,11 @@ var StudentCreateComponent = /** @class */ (function () {
     StudentCreateComponent.prototype.loadApplication = function (id) {
         var _this = this;
         this.studentService.load(id).subscribe(function (res) {
+            // -----new load registration status documents
+            _this.globalService.get('adminision/get_registeration_status_document').subscribe(function (documents) {
+                _this.applicationSettings.REGSITERATIN_STATUS_DOCUMENTS = documents;
+                _this.validateOnRegisterationStatusDocument(res.registration_status_id);
+            });
             _this.application = res;
         });
     };
@@ -29426,11 +29446,12 @@ var StudentCreateComponent = /** @class */ (function () {
         });
         return valid;
     };
-    StudentCreateComponent.prototype.validateOnRegisterationStatusDocument = function () {
+    StudentCreateComponent.prototype.validateOnRegisterationStatusDocument = function (registration_status_id) {
         var _this = this;
+        if (registration_status_id === void 0) { registration_status_id = this.application.registration_status_id; }
         this.requiredDocumentList = new angular_hashtable__WEBPACK_IMPORTED_MODULE_11__["HashTable"]();
         this.applicationSettings.REGSITERATIN_STATUS_DOCUMENTS.forEach(function (element) {
-            if (element.registeration_status_id == _this.application.registration_status_id) {
+            if (element.registeration_status_id == registration_status_id) {
                 _this.requiredDocumentList.put(element.required_document_id, 1);
             }
         });
@@ -29555,7 +29576,7 @@ var StudentCreateComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./student-create.component.html */ "./src/app/student/components/student/student-create/student-create.component.html"),
             styles: [__webpack_require__(/*! ./student-create.component.scss */ "./src/app/student/components/student/student-create/student-create.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_student_service__WEBPACK_IMPORTED_MODULE_9__["StudentService"], _node_modules_angular_router__WEBPACK_IMPORTED_MODULE_7__["ActivatedRoute"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_student_service__WEBPACK_IMPORTED_MODULE_9__["StudentService"], _node_modules_angular_router__WEBPACK_IMPORTED_MODULE_7__["ActivatedRoute"], src_app_shared_services_global_service__WEBPACK_IMPORTED_MODULE_14__["GlobalService"]])
     ], StudentCreateComponent);
     return StudentCreateComponent;
 }());
@@ -29571,7 +29592,7 @@ var StudentCreateComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-breadcrumb [breadcrumbList]=\"breadcrumbList\"></app-breadcrumb>\r\n\r\n\r\n<div class=\"w3-display-bottomleft w3-padding\" style=\"position: fixed;z-index: 9999\">\r\n    <button mat-fab color=\"primary\" class=\"w3-large\" routerLink=\"/student/create\" style=\"margin: 5px\">\r\n        <span class=\"fa fa-plus\"></span>\r\n    </button>\r\n</div>\r\n\r\n<!--\r\n<div class=\"box box-primary  table-responsive\" >\r\n  <div class=\"box-header\">\r\n\r\n\r\n\r\n    <button *ngIf=\"showRemoveButton\" (click)=\"removeResources()\" class=\"btn btn-danger\" style=\"margin: 5px\"  >\r\n      <span class=\"fa fa-trash\" ></span>\r\n    </button>\r\n  </div>\r\n  <br>\r\n\r\n</div>\r\n    -->\r\n\r\n<button mat-raised-button class=\"w3-green\" (click)=\"$('#importExcelModal').modal('show')\">{{ \"import from excel\" | trans\r\n    }}</button>\r\n\r\n<br>\r\n<div class=\"row\">\r\n    <div class=\"col-md-3\">\r\n        <label for=\"\">{{ \"search\" | trans }}</label>\r\n        <input type=\"text\" class=\"w3-input w3-block form-control\" placeholder=\"{{ 'search' | trans }}\" (change)=\"loadResources()\" [(ngModel)]=\"search.search_key\">\r\n    </div>\r\n\r\n    <div class=\"col-md-3\">\r\n        <label for=\"\">{{ \"level\" | trans }}</label>\r\n        <select class=\"form-control\" (change)=\"loadResources()\" [(ngModel)]=\"search.level_id\">\r\n            <option value=\"\">{{ \"all\" | trans }}</option>\r\n            <option *ngFor=\"let item of levels\" value=\"{{item.id}}\">{{ item.name }}</option>\r\n        </select>\r\n    </div>\r\n\r\n    <div class=\"col-md-3\">\r\n        <label for=\"\">{{ \"division\" | trans }}</label>\r\n        <select class=\"form-control\" (change)=\"loadResources()\" [(ngModel)]=\"search.division_id\">\r\n            <option value=\"\">{{ \"all\" | trans }}</option>\r\n            <option *ngFor=\"let item of applicationSettings.DIVISIONS\" value=\"{{item.id}}\">{{ item.name }}</option>\r\n        </select>\r\n    </div>\r\n\r\n    <div class=\"col-md-3\">\r\n        <label for=\"\">{{ \"case_constraint\" | trans }}</label>\r\n        <select class=\"form-control\" (change)=\"loadResources()\" [(ngModel)]=\"search.case_constraint_id\">\r\n            <option value=\"\">{{ \"all\" | trans }}</option>\r\n            <option *ngFor=\"let item of applicationSettings.CASE_CONSTRAINTS\" value=\"{{item.id}}\">{{ item.name }}\r\n            </option>\r\n        </select>\r\n    </div>\r\n</div>\r\n\r\n<!-- <input type=\"text\" class=\"w3-input w3-block form-control\" placeholder=\"{{ 'search' | trans }}\" (change)=\"loadResources()\" [(ngModel)]=\"search.search_key\"> -->\r\n<br>\r\n\r\n<div class=\"w3-row student-container nicescroll\" style=\"padding: 5px;\">\r\n    <div *ngIf=\"isLoad\" class=\"w3-block text-center w3-padding\">\r\n        <i class=\"fa fa-spin fa-refresh w3-jumbo w3-text-indigo\"></i>\r\n    </div>\r\n    <ng-container *ngFor=\"let item of resources.data\">\r\n        <div class=\"{{ col }} student-list-col\">\r\n            <div class=\"media material-shadow w3-white w3-padding w3-display-container student-list-item w3-round\">\r\n                <div class=\"w3-display-topleft w3-padding\">\r\n                    <div class=\"text-left\">\r\n                        <a href=\"#\" [routerLink]=\"['/student/', item.id]\" style=\"margin: 5px\"><i\r\n                                class=\"material-shadow fa fa-edit btn btn-warning btn-sm\"></i></a>\r\n\r\n                        <a href=\"#\" [routerLink]=\"['/student/show/', item.id]\" style=\"margin: 5px\"><i\r\n                                class=\"material-shadow fa fa-desktop btn btn-success btn-sm\"></i></a>\r\n\r\n                        <button (click)=\"showStudentPayments(item)\" style=\"margin: 5px\" class=\"material-shadow fa fa-money btn w3-indigo btn-sm\"> {{ \"student payments\" | trans }}\r\n                        </button>\r\n\r\n                        <button class=\"btn btn-info btn-sm\">\r\n                            <b>{{ item.paid_value }}</b><b>جنيه</b>\r\n                        </button>\r\n                    </div>\r\n                </div>\r\n\r\n                <div class=\"media-left\">\r\n                    <a>\r\n                        <img class=\"media-object w3-round\" [src]=\"item.image\" style=\"width: 100px;max-height: 210;\">\r\n                    </a>\r\n                </div>\r\n                <div class=\"media-body\">\r\n                    <h5 class=\"media-heading\">{{ item.name }}..</h5>\r\n                    <table class=\"w3-tiny\">\r\n                        <tr>\r\n                            <th>{{ \"code\" | trans }}</th>\r\n                            <td>{{ item.code }}</td>\r\n                        </tr>\r\n                        <tr>\r\n                            <th>{{ \"level\" | trans }}</th>\r\n                            <td>{{ item.level? item.level.name : '' }}</td>\r\n                        </tr>\r\n                        <tr>\r\n                            <th>{{ \"academic_year\" | trans }}</th>\r\n                            <td>{{ item.academic_year? item.academic_year.name : '' }}</td>\r\n                        </tr>\r\n                        <tr>\r\n                            <th>{{ \"department\" | trans }}</th>\r\n                            <td>{{ item.department? item.department.name : '' }}</td>\r\n                        </tr>\r\n                        <tr>\r\n                            <th>{{ \"qualification\" | trans }}</th>\r\n                            <td>{{ item.qualification? item.qualification.name : '' }}</td>\r\n                        </tr>\r\n\r\n                        <tr>\r\n                            <th>{{ \"division\" | trans }}</th>\r\n                            <td>{{ item.division? item.division.name : '' }}</td>\r\n                        </tr>\r\n\r\n                        <tr>\r\n                            <th>{{ \"set number\" | trans }}</th>\r\n                            <td>{{ item.set_number? item.set_number : '' }}</td>\r\n                        </tr>\r\n\r\n                        <tr>\r\n                            <th>{{ \"room\" | trans }}</th>\r\n                            <td>{{ item.commission_id? item.commission.name : '' }}</td>\r\n                        </tr>\r\n\r\n                        <tr>\r\n                            <th>{{ \"theater\" | trans }}</th>\r\n                            <td>{{ item.theater_id? item.theater.name : '' }}</td>\r\n                        </tr>\r\n\r\n                        <tr>\r\n                            <th>{{ \"case_constraint\" | trans }}</th>\r\n                            <td>{{ item.case_constraint? item.case_constraint.name : '' }}</td>\r\n                        </tr>\r\n\r\n\r\n                        <tr>\r\n                            <th>{{ \"registeration_status\" | trans }}</th>\r\n                            <td>{{ item.registeration_status? item.registeration_status.name : '' }}</td>\r\n                        </tr>\r\n\r\n                        <tr>\r\n                            <th>{{ \"notes\" | trans }}</th>\r\n                            <td>{{ item.notes }}</td>\r\n                        </tr>\r\n                        <tr>\r\n                            <th>لقاح كورونا</th>\r\n\r\n                            <td><input (click)='corona(item.id)' type=\"checkbox\" class=\"custom-control-input\" id=\"customSwitch{{item.id}}\" [checked]=\"item.iscorona == 1\"></td>\r\n                        </tr>\r\n                    </table>\r\n\r\n                </div>\r\n            </div>\r\n\r\n        </div>\r\n    </ng-container>\r\n\r\n\r\n\r\n</div>\r\n<br>\r\n<div class=\"text-center w3-center\">\r\n    <nav aria-label=\"Page navigation\">\r\n        <ul class=\"pagination\">\r\n            <li>\r\n                <a class=\"\" [ngClass]=\"{'disabled': !resources.prev_page}\" (click)=\"loadResources(resources.prev_page)\" aria-label=\"Previous\">\r\n                    <span aria-hidden=\"true\">&laquo;</span>\r\n                </a>\r\n            </li>\r\n            <li *ngFor=\"let item of resources.pages_arr\">\r\n                <a class=\"\" [ngClass]=\"{'active': resources.current_page == item}\" (click)=\"loadResources(item)\">{{ item\r\n                    }}</a>\r\n            </li>\r\n            <li>\r\n                <a class=\"\" [ngClass]=\"{'disabled': !resources.next_page}\" (click)=\"loadResources(resources.next_page)\" aria-label=\"Next\">\r\n                    <span aria-hidden=\"true\">&raquo;</span>\r\n                </a>\r\n            </li>\r\n        </ul>\r\n    </nav>\r\n</div>\r\n\r\n\r\n<!-- remove modal -->\r\n<div class=\"w3-modal w3-block\" *ngIf=\"showRemoveModal\" role=\"dialog\">\r\n    <div class=\"modal-dialog\" role=\"document\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <h4 class=\"modal-title\">{{ \"remove applications\" | trans }}</h4>\r\n            </div>\r\n            <div class=\"modal-body text-center\">\r\n                <i class=\"fa fa-spinner fa-spin w3-jumbo w3-text-indigo w3-center\"></i>\r\n                <br> {{ trashList.size() }} - {{ \"removed\" | trans }} {{ trashList.size() + removed.length }}\r\n            </div>\r\n            <div class=\"modal-footer\">\r\n            </div>\r\n        </div>\r\n        <!-- /.modal-content -->\r\n    </div>\r\n    <!-- /.modal-dialog -->\r\n</div>\r\n<!-- /.modal -->\r\n\r\n\r\n<!-- student payments modal -->\r\n<app-student-payment [payments]=\"selectedItem.payment_details? selectedItem.payment_details : []\"></app-student-payment>\r\n\r\n\r\n<app-import-excel [apiUrl]=\"'import-student'\" [action]=\"loadResources\"></app-import-excel>"
+module.exports = "<app-breadcrumb [breadcrumbList]=\"breadcrumbList\"></app-breadcrumb>\r\n\r\n\r\n<div class=\"w3-display-bottomleft w3-padding\" style=\"position: fixed;z-index: 9999\">\r\n    <button mat-fab color=\"primary\" class=\"w3-large\" routerLink=\"/student/create\" style=\"margin: 5px\">\r\n        <span class=\"fa fa-plus\"></span>\r\n    </button>\r\n</div>\r\n\r\n<!--\r\n<div class=\"box box-primary  table-responsive\" >\r\n  <div class=\"box-header\">\r\n\r\n\r\n\r\n    <button *ngIf=\"showRemoveButton\" (click)=\"removeResources()\" class=\"btn btn-danger\" style=\"margin: 5px\"  >\r\n      <span class=\"fa fa-trash\" ></span>\r\n    </button>\r\n  </div>\r\n  <br>\r\n\r\n</div>\r\n    -->\r\n\r\n<button mat-raised-button class=\"w3-green\" (click)=\"$('#importExcelModal').modal('show')\">{{ \"import from excel\" | trans\r\n    }}</button>\r\n\r\n<br>\r\n<div class=\"row\">\r\n    <div class=\"col-md-3\">\r\n        <label for=\"\">{{ \"search\" | trans }}</label>\r\n        <input type=\"text\" class=\"w3-input w3-block form-control\" placeholder=\"{{ 'search' | trans }}\" (change)=\"loadResources()\" [(ngModel)]=\"search.search_key\">\r\n    </div>\r\n\r\n    <div class=\"col-md-3\">\r\n        <label for=\"\">{{ \"level\" | trans }}</label>\r\n        <select class=\"form-control\" (change)=\"loadResources()\" [(ngModel)]=\"search.level_id\">\r\n            <option value=\"\">{{ \"all\" | trans }}</option>\r\n            <option *ngFor=\"let item of levels\" value=\"{{item.id}}\">{{ item.name }}</option>\r\n        </select>\r\n    </div>\r\n\r\n    <div class=\"col-md-3\">\r\n        <label for=\"\">{{ \"division\" | trans }}</label>\r\n        <select class=\"form-control\" (change)=\"loadResources()\" [(ngModel)]=\"search.division_id\">\r\n            <option value=\"\">{{ \"all\" | trans }}</option>\r\n            <option *ngFor=\"let item of applicationSettings.DIVISIONS\" value=\"{{item.id}}\">{{ item.name }}</option>\r\n        </select>\r\n    </div>\r\n\r\n    <div class=\"col-md-3\">\r\n        <label for=\"\">{{ \"case_constraint\" | trans }}</label>\r\n        <select class=\"form-control\" (change)=\"loadResources()\" [(ngModel)]=\"search.case_constraint_id\">\r\n            <option value=\"\">{{ \"all\" | trans }}</option>\r\n            <option *ngFor=\"let item of applicationSettings.CASE_CONSTRAINTS\" value=\"{{item.id}}\">{{ item.name }}\r\n            </option>\r\n        </select>\r\n    </div>\r\n</div>\r\n\r\n<!-- <input type=\"text\" class=\"w3-input w3-block form-control\" placeholder=\"{{ 'search' | trans }}\" (change)=\"loadResources()\" [(ngModel)]=\"search.search_key\"> -->\r\n<br>\r\n\r\n<div class=\"w3-row student-container nicescroll\" style=\"padding: 5px;\">\r\n    <div *ngIf=\"isLoad\" class=\"w3-block text-center w3-padding\">\r\n        <i class=\"fa fa-spin fa-refresh w3-jumbo w3-text-indigo\"></i>\r\n    </div>\r\n    <ng-container *ngFor=\"let item of resources.data\">\r\n        <div class=\"{{ col }} student-list-col\">\r\n            <div class=\"media material-shadow w3-white w3-padding w3-display-container student-list-item w3-round\">\r\n                <div class=\"w3-display-topleft w3-padding\">\r\n                    <div class=\"text-left\">\r\n                        <a href=\"#\" [routerLink]=\"['/student/', item.id]\" style=\"margin: 5px\"><i\r\n                                class=\"material-shadow fa fa-edit btn btn-warning btn-sm\"></i>\r\n                        </a>\r\n\r\n                        <a href=\"#\" [routerLink]=\"['/student/show/', item.id]\" style=\"margin: 5px\"><i\r\n                                class=\"material-shadow fa fa-desktop btn btn-success btn-sm\"></i></a>\r\n\r\n                        <button (click)=\"showStudentPayments(item)\" style=\"margin: 5px\" class=\"material-shadow fa fa-money btn w3-indigo btn-sm\"> {{ \"student payments\" | trans }}\r\n                        </button>\r\n\r\n                        <button class=\"btn btn-info btn-sm\">\r\n                            <b>{{ item.paid_value }}</b><b>جنيه</b>\r\n                        </button>\r\n                    </div>\r\n                </div>\r\n\r\n                <div class=\"media-left\">\r\n                    <a>\r\n                        <img class=\"media-object w3-round\" [src]=\"item.image\" style=\"width: 100px;max-height: 210;\">\r\n                    </a>\r\n                </div>\r\n                <div class=\"media-body\">\r\n                    <h5 class=\"media-heading\">{{ item.name }}..</h5>\r\n                    <table class=\"w3-tiny\">\r\n                        <tr>\r\n                            <th>{{ \"code\" | trans }}</th>\r\n                            <td>{{ item.code }}</td>\r\n                        </tr>\r\n                        <tr>\r\n                            <th>{{ \"level\" | trans }}</th>\r\n                            <td>{{ item.level? item.level.name : '' }}</td>\r\n                        </tr>\r\n                        <tr>\r\n                            <th>{{ \"academic_year\" | trans }}</th>\r\n                            <td>{{ item.academic_year? item.academic_year.name : '' }}</td>\r\n                        </tr>\r\n                        <tr>\r\n                            <th>{{ \"department\" | trans }}</th>\r\n                            <td>{{ item.department? item.department.name : '' }}</td>\r\n                        </tr>\r\n                        <tr>\r\n                            <th>{{ \"qualification\" | trans }}</th>\r\n                            <td>{{ item.qualification? item.qualification.name : '' }}</td>\r\n                        </tr>\r\n\r\n                        <tr>\r\n                            <th>{{ \"division\" | trans }}</th>\r\n                            <td>{{ item.division? item.division.name : '' }}</td>\r\n                        </tr>\r\n\r\n                        <tr>\r\n                            <th>{{ \"set number\" | trans }}</th>\r\n                            <td>{{ item.set_number? item.set_number : '' }}</td>\r\n                        </tr>\r\n\r\n                        <tr>\r\n                            <th>{{ \"room\" | trans }}</th>\r\n                            <td>{{ item.commission_id? item.commission.name : '' }}</td>\r\n                        </tr>\r\n\r\n                        <tr>\r\n                            <th>{{ \"theater\" | trans }}</th>\r\n                            <td>{{ item.theater_id? item.theater.name : '' }}</td>\r\n                        </tr>\r\n\r\n                        <tr>\r\n                            <th>{{ \"case_constraint\" | trans }}</th>\r\n                            <td>{{ item.case_constraint? item.case_constraint.name : '' }}</td>\r\n                        </tr>\r\n\r\n\r\n                        <tr>\r\n                            <th>{{ \"registeration_status\" | trans }}</th>\r\n                            <td>{{ item.registeration_status? item.registeration_status.name : '' }}</td>\r\n                        </tr>\r\n\r\n                        <tr>\r\n                            <th>{{ \"notes\" | trans }}</th>\r\n                            <td>{{ item.notes }}</td>\r\n                        </tr>\r\n                        <tr>\r\n                            <th>لقاح كورونا</th>\r\n\r\n                            <td><input (click)='corona(item.id)' type=\"checkbox\" class=\"custom-control-input\" id=\"customSwitch{{item.id}}\" [checked]=\"item.iscorona == 1\"></td>\r\n                        </tr>\r\n                    </table>\r\n\r\n                </div>\r\n            </div>\r\n\r\n        </div>\r\n    </ng-container>\r\n\r\n\r\n\r\n</div>\r\n<br>\r\n<div class=\"text-center w3-center\">\r\n    <nav aria-label=\"Page navigation\">\r\n        <ul class=\"pagination\">\r\n            <li>\r\n                <a class=\"\" [ngClass]=\"{'disabled': !resources.prev_page}\" (click)=\"loadResources(resources.prev_page)\" aria-label=\"Previous\">\r\n                    <span aria-hidden=\"true\">&laquo;</span>\r\n                </a>\r\n            </li>\r\n            <li *ngFor=\"let item of resources.pages_arr\">\r\n                <a class=\"\" [ngClass]=\"{'active': resources.current_page == item}\" (click)=\"loadResources(item)\">{{ item\r\n                    }}</a>\r\n            </li>\r\n            <li>\r\n                <a class=\"\" [ngClass]=\"{'disabled': !resources.next_page}\" (click)=\"loadResources(resources.next_page)\" aria-label=\"Next\">\r\n                    <span aria-hidden=\"true\">&raquo;</span>\r\n                </a>\r\n            </li>\r\n        </ul>\r\n    </nav>\r\n</div>\r\n\r\n\r\n<!-- remove modal -->\r\n<div class=\"w3-modal w3-block\" *ngIf=\"showRemoveModal\" role=\"dialog\">\r\n    <div class=\"modal-dialog\" role=\"document\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <h4 class=\"modal-title\">{{ \"remove applications\" | trans }}</h4>\r\n            </div>\r\n            <div class=\"modal-body text-center\">\r\n                <i class=\"fa fa-spinner fa-spin w3-jumbo w3-text-indigo w3-center\"></i>\r\n                <br> {{ trashList.size() }} - {{ \"removed\" | trans }} {{ trashList.size() + removed.length }}\r\n            </div>\r\n            <div class=\"modal-footer\">\r\n            </div>\r\n        </div>\r\n        <!-- /.modal-content -->\r\n    </div>\r\n    <!-- /.modal-dialog -->\r\n</div>\r\n<!-- /.modal -->\r\n\r\n\r\n<!-- student payments modal -->\r\n<app-student-payment [payments]=\"selectedItem.payment_details? selectedItem.payment_details : []\"></app-student-payment>\r\n\r\n\r\n<app-import-excel [apiUrl]=\"'import-student'\" [action]=\"loadResources\"></app-import-excel>"
 
 /***/ }),
 

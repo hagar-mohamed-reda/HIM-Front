@@ -13,6 +13,7 @@ import { Auth } from 'src/app/shared/auth';
 import { exit } from 'process';
 import { Router } from '@angular/router';
 import { ApplicationHelper } from '../application-helper';
+import { GlobalService } from 'src/app/shared/services/global.service';
 
 @Component({
   selector: 'app-application-create',
@@ -72,7 +73,9 @@ export class ApplicationCreateComponent implements OnInit {
     private applicationService: ApplicationService,
     private route: ActivatedRoute,
     private router: Router,
-    private applicationSettingService: ApplicationSettingService) {
+    private applicationSettingService: ApplicationSettingService,
+    private globalService : GlobalService
+    ) {
     this.applicationSettingService.queueRequests();
     Request.fire(false, () => {
       this.setDefaultYear();
@@ -111,6 +114,17 @@ export class ApplicationCreateComponent implements OnInit {
       this.application = res;
       //
       this.application.qualification_date1 = this.application.qualification_date;
+    
+    
+      // -----new load registration status documents
+      this.globalService.get('adminision/get_registeration_status_document').subscribe(documents => {
+        this.applicationSettings.REGSITERATIN_STATUS_DOCUMENTS = documents
+        this.validateOnRegisterationStatusDocument(res.registration_status_id)
+      })
+
+      this.application = res;
+    
+    
     });
   }
 
@@ -224,16 +238,20 @@ export class ApplicationCreateComponent implements OnInit {
 
   }
 
-  validateOnRegisterationStatusDocument() {
+  
+
+
+  validateOnRegisterationStatusDocument(registration_status_id=this.application.registration_status_id) {
     this.requiredDocumentList = new HashTable();
-    this.applicationSettings.REGSITERATIN_STATUS_DOCUMENTS.forEach((element: any) => {
-      if (element.registeration_status_id	 == this.application.registration_status_id) {
+    this.applicationSettings.REGSITERATIN_STATUS_DOCUMENTS.forEach(element => {
+      if (element.registeration_status_id	 == registration_status_id) {
         this.requiredDocumentList.put(element.required_document_id, 1);
       }
     });
 
     this.changeIfMakasa();
   }
+
 
   changeIfMakasa() {
     if (this.application.registration_status_id == 4) {

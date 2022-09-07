@@ -191,14 +191,17 @@
                         </select>
                                             </td>
                                         </tr>
+
                                         <tr>
                                             <th>{{ "division" | trans }} *</th>
                                             <td>
-                                                <select class="custom-input form-control input-sm w3-input border-bottom-dashed input-sm" [ngClass]="{'border-bottom-dashed': application.division_id, 'border-bottom-red': !application.division_id}" [(ngModel)]="application.division_id">
-                          <ng-container *ngFor="let item of applicationSettings.DIVISIONS">
-                            <option  value="{{ item.id }}">{{ item.name }}</option>
-                          </ng-container>
-                        </select>
+                                                 <select class="custom-input form-control input-sm w3-input border-bottom-dashed input-sm"
+                                                 [ngClass]="{'border-bottom-dashed': application.division_id, 'border-bottom-red': !application.division_id}"
+                                                 [(ngModel)]="application.division_id">
+                                                 <ng-container *ngFor="let item of applicationSettings.DIVISIONS">
+                                                 <option  value="{{ item.id }}">{{ item.name }}</option>
+                                                 </ng-container>
+                                                 </select>
                                             </td>
                                         </tr>
                                         <!-- <tr>
@@ -224,6 +227,7 @@
                                                 <input type="number" class="custom-input form-control input-sm w3-input border-bottom-dashed input-sm" [(ngModel)]="application.qualification_set_number">
                                             </td>
                                         </tr>
+                                        <!-- تاريخ -->
                                         <tr>
                                             <th>{{ "registeration_date" | trans }}</th>
                                             <td>

@@ -38,7 +38,7 @@ export class Request {
         if (object.times <= 10 || error.status == 429)
           Request.queue.push(object);
       }, ()=>{
-        console.log("queue size : " + (Request.queue.length) + ", key : " + object.key + ", times : " + object.times);
+        // console.log("queue size : " + (Request.queue.length) + ", key : " + object.key + ", times : " + object.times);
         if (!sync)
           Request.fire(sync);
       });

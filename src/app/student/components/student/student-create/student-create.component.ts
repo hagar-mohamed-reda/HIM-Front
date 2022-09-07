@@ -11,6 +11,7 @@ import { DivisionService } from '../../../../account/services/division.service';
 import { HashTable } from 'angular-hashtable';
 import { Auth } from 'src/app/shared/auth';
 import { exit } from 'process';
+import { GlobalService } from 'src/app/shared/services/global.service';
 
 @Component({
   selector: 'app-student-create',
@@ -60,7 +61,7 @@ export class StudentCreateComponent implements OnInit {
 
   public col = "col-lg-10 col-md-10 col-sm-12";
 
-  constructor(private studentService: StudentService, private route: ActivatedRoute) {
+  constructor(private studentService: StudentService, private route: ActivatedRoute , private globalService : GlobalService) {
     const id = this.route.snapshot.params['id'];
     if (id > 0) {
       !Auth.can('student_edit')? exit() : '';
@@ -79,6 +80,14 @@ export class StudentCreateComponent implements OnInit {
 
   loadApplication(id) {
     this.studentService.load(id).subscribe((res: any) => {
+      
+      // -----new load registration status documents
+      this.globalService.get('adminision/get_registeration_status_document').subscribe(documents => {
+        this.applicationSettings.REGSITERATIN_STATUS_DOCUMENTS = documents
+        this.validateOnRegisterationStatusDocument(res.registration_status_id)
+      })
+
+
       this.application = res;
     });
   }
@@ -94,10 +103,10 @@ export class StudentCreateComponent implements OnInit {
     return valid;
   }
 
-  validateOnRegisterationStatusDocument() {
+  validateOnRegisterationStatusDocument(registration_status_id=this.application.registration_status_id) {
     this.requiredDocumentList = new HashTable();
     this.applicationSettings.REGSITERATIN_STATUS_DOCUMENTS.forEach(element => {
-      if (element.registeration_status_id	 == this.application.registration_status_id) {
+      if (element.registeration_status_id	 == registration_status_id) {
         this.requiredDocumentList.put(element.required_document_id, 1);
       }
     });
@@ -142,9 +151,16 @@ export class StudentCreateComponent implements OnInit {
     let data = new FormData();
     for(let key of Object.keys(this.application)) {
       if(this.application[key])
+      // console.log(key , this.application[key]);
+      
         data.append(key, this.application[key]);
     }
+
+    // return console.log(data);
+    
     this.studentService.store(data).subscribe((res)=>{
+      console.log(res);
+      
       const data: any = res;
 
       if (data.status == 1)  {
