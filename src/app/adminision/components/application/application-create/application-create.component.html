@@ -122,7 +122,8 @@
                                             <th>{{ "qualification" | trans }} *</th>
                                             <td>
                                                 <select (change)="watchLevel();emptyData()" class="form-control input-sm" [ngClass]="{'border-bottom-dashed': application.qualification_id>0, 'border-bottom-red': !application.qualification_id}" [(ngModel)]="application.qualification_id">
-                      <option *ngFor="let item of applicationSettings.QUALIFICATIONS" value="{{ item.id }}">{{
+                                                    <option value="" disabled>اختار المؤهل</option>
+                                                    <option *ngFor="let item of applicationSettings.QUALIFICATIONS" value="{{ item.id }}">{{
                         item.name }}</option>
                     </select>
                                             </td>
@@ -205,6 +206,7 @@
                                             <td>
                                                 <select class="custom-input form-control input-sm w3-input  input-sm" (change)="validateOnRegisterationStatusDocument()" [ngClass]="{'border-bottom-dashed': application.registration_status_id>0, 'border-bottom-red': !application.registration_status_id}"
                                                     [(ngModel)]="application.registration_status_id">
+                                                    <option value="" disabled>اختر طريقة التقديم</option>
                       <option *ngFor="let item of applicationSettings.REGISTERATION_STATUS" value="{{ item.id }}">{{
                         item.name }}</option>
                     </select>
@@ -258,7 +260,7 @@
                                                 [ngClass]="{'border-bottom-dashed': application.division_id, 'border-bottom-red': !application.division_id}"
                                                 [(ngModel)]="application.division_id">
                                                 <ng-container *ngFor="let item of applicationSettings.DIVISIONS">
-                                                <option  value="{{ item.id }}">{{ item.name }}</option>
+                                                    <option  value="{{ item.id }}">{{ item.name }}</option>
                                                 </ng-container>
                                                 </select>
                                            </td>
@@ -267,10 +269,10 @@
                                             <th>{{ "department" | trans }} *</th>
                                             <td>
                                                 <select class="custom-input form-control input-sm w3-input border-bottom-dashed input-sm" [ngClass]="{'border-bottom-dashed': application.department_id, 'border-bottom-red': !application.department_id}" [(ngModel)]="application.department_id">
-                        <ng-container *ngFor="let item of applicationSettings.DEPARTMENTS">
-                          <option *ngIf="application.level_id == item.level_id" value="{{ item.id }}" >{{ item.name }}</option>
-                        </ng-container>
-                        </select>
+                                                    <ng-container *ngFor="let item of applicationSettings.DEPARTMENTS">
+                                                    <option *ngIf="application.level_id == item.level_id" value="{{ item.id }}" >{{ item.name }}</option>
+                                                    </ng-container>
+                                                </select>
                                             </td>
                                         </tr>
 
