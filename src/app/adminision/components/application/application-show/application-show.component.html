@@ -154,7 +154,7 @@
                         </td>
                     </tr> -->
 
-                      <tr>
+                    <tr>
                         <th>{{ "registration_status" | trans }} *</th>
                         <td>
                           <select readonly 
@@ -227,7 +227,7 @@
                           <td>
                               <input readonly type="text" readonly
                                   class="custom-input form-control input-sm w3-input border-bottom-dashed input-sm"
-                                  [(ngModel)]="application.division? application.division.name : application.division_id">
+                                  [(ngModel)]="application?.division?.name || application.division_id">
   
                           </td>
                       </tr>

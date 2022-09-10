@@ -5,20 +5,18 @@ export const environment = {
   //  publicUrl   : window.location.origin,
 
   //  NEW him
-   publicUrl: "http://him.him-ma.org",
+  publicUrl: "http://him.him-ma.org",
   //publicUrl: 'http://127.0.0.1:8000',
 
-    apiUrl: "http://him.him-ma.org/api",
+  apiUrl: "http://him.him-ma.org/api",
   //apiUrl: 'http://127.0.0.1:8000/api',
-
-
 
   ////////////////zip tst///////////////
   // publicUrl:'http://himtest.him-ma.org',
   // apiUrl: 'http://himtest.him-ma.org/api',
   //////////////////////////////////////
   //  2adeeem
-   // publicUrl: 'http://him.msa-bns.com',
+  // publicUrl: 'http://him.msa-bns.com',
   //  publicUrl: 'http://127.0.0.1:4200',
   //  https://samsav2.sphinxws.com/public
   //  http://127.0.0.1:8000
@@ -26,11 +24,6 @@ export const environment = {
   //  window.location.hostname
   //  192.168.43.159
   //  apiUrl: window.location.origin + '/api',
-
-  
-
-
-
 
   backEndPublicUrl: "http://localhost:4000/",
   googleApiKey: "AIzaSyAtCTUfmq6JOFrE9Ib_HPEPFhUE9VdwcEs",
