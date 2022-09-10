@@ -5,17 +5,17 @@ export const environment = {
   //  publicUrl   : window.location.origin,
 
   //  NEW him
-  // publicUrl: "http://him.him-ma.org",
+   publicUrl: "http://him.him-ma.org",
   //publicUrl: 'http://127.0.0.1:8000',
 
-  //  apiUrl: "http://him.him-ma.org/api",
+    apiUrl: "http://him.him-ma.org/api",
   //apiUrl: 'http://127.0.0.1:8000/api',
 
 
 
   ////////////////zip tst///////////////
-  publicUrl:'http://himtest.him-ma.org',
-  apiUrl: 'http://himtest.him-ma.org/api',
+  // publicUrl:'http://himtest.him-ma.org',
+  // apiUrl: 'http://himtest.him-ma.org/api',
   //////////////////////////////////////
   //  2adeeem
    // publicUrl: 'http://him.msa-bns.com',

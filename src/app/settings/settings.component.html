@@ -37,13 +37,13 @@
                 {{ "coutries & governments & cities" | trans  }}
               </a>
                         </li>
-                        <li class="list-group-item" *ngIf="auth.can(['academic_year'])">
+                        <li class="list-group-item"  *ngIf="auth.can(['term'])">
                           <a class="active" routerLink="/settings/term"><i class="fa fa-circle-o"></i>
                           {{ "التيرم الحالى"  }}
                           </a>
                         </li>
-                      
-                      <li class="list-group-item" *ngIf="auth.can(['academic_year'])">
+                      <!-- permission="year" permission="term" -->
+                      <li class="list-group-item"  *ngIf="auth.can(['year'])">
                         <a class="active" routerLink="/settings/year"><i class="fa fa-circle-o"></i>
                         {{ "السنه الحاليه   "  }}
                         </a>

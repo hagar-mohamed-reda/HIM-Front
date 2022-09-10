@@ -144,10 +144,16 @@
                                                 </p>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <!-- <tr>
                                             <th>{{ "qualification_date1" | trans }} *</th>
                                             <td>
                                                 <input type="text" autocomplete="none" class="custom-input form-control input-sm w3-input  input-sm" [ngClass]="{'border-bottom-dashed': application.qualification_date1>0, 'border-bottom-red': !application.qualification_date1}" [(ngModel)]="application.qualification_date1">
+                                            </td>
+                                        </tr> -->
+                                        <tr>
+                                            <th>{{ "qualification_date" | trans }} *</th>
+                                            <td>
+                                                <input type="text" class="custom-input form-control input-sm w3-input  input-sm" [ngClass]="{'border-bottom-dashed': application.qualification_date, 'border-bottom-red': !application.qualification_date}" [(ngModel)]="application.qualification_date">
                                             </td>
                                         </tr>
                                         <tr>

@@ -62,7 +62,7 @@ export class ApplicationCreateComponent implements OnInit {
     'academic_years_id',
     'grade',
     // 'maxgrade',
-    'qualification_date1',
+    'qualification_date',
     'qualification_types_id',
     'level_id'
     //'case_constraint_id'
@@ -113,7 +113,7 @@ export class ApplicationCreateComponent implements OnInit {
     this.applicationService.load(id).subscribe((res: any) => {
       this.application = res;
       //
-      this.application.qualification_date1 = this.application.qualification_date;
+      // this.application.qualification_date = this.application.qualification_date;
     
     
       // -----new load registration status documents
@@ -261,7 +261,7 @@ export class ApplicationCreateComponent implements OnInit {
   }
 
   validateOnQualificationDate() {
-    if (!this.application.qualification_date1)
+    if (!this.application.qualification_date)
       return false;
 
     try {
@@ -272,12 +272,13 @@ export class ApplicationCreateComponent implements OnInit {
       });
       // current year
       let currentYear = new Date().getFullYear();
-      let qualificationYear = parseInt(this.application.qualification_date1);//new Date(this.application.qualification_date1).getFullYear();
-      let differentYear = currentYear - qualificationYear;
+      // let qualificationYear = parseInt(this.application.qualification_date);
+      //new Date(this.application.qualification_date).getFullYear();
+      // let differentYear = currentYear - qualificationYear;
 
-      console.log(differentYear);
-      if (differentYear > this.differentYearRequired)
-        return false;
+      // console.log(differentYear);
+      // if (differentYear > this.differentYearRequired)
+      //   return false;
     } catch (error) {
       return false;
     }
@@ -295,8 +296,8 @@ export class ApplicationCreateComponent implements OnInit {
 
 
     var date = new Date();
-    date.setFullYear(this.application.qualification_date1);
-    this.application.qualification_date = date.toISOString().substring(0,10);
+    // date.setFullYear(this.application.qualification_date);
+    // this.application.qualification_date = date.toISOString().substring(0,10);
 
     if (this.isUpdate)
       this.performUpdateApplication();
