@@ -56,15 +56,15 @@ export class ApplicationCreateComponent implements OnInit {
 
   public required_field = [
     'name',
-    'qualification_id',
+    // 'qualification_id',
     'national_id' ,
-    'registration_status_id',
-    'academic_years_id',
-    'grade',
+    // 'registration_status_id',
+    // 'academic_years_id',
+    // 'grade',
     // 'maxgrade',
-    'qualification_date',
-    'qualification_types_id',
-    'level_id'
+    // 'qualification_date',
+    // 'qualification_types_id',
+    // 'level_id'
     //'case_constraint_id'
   ];
 
@@ -291,11 +291,11 @@ export class ApplicationCreateComponent implements OnInit {
       this.setCurrentError(Helper.trans('fill all requird data'));
       return Message.error(Helper.trans('fill all requird data'));
     }
-    if (!this.validateOnQualificationDate())
-      return Message.error(Helper.trans('different year of qualification must be less of equal than ' + this.differentYearRequired));
+    // if (!this.validateOnQualificationDate())
+    //   return Message.error(Helper.trans('different year of qualification must be less of equal than ' + this.differentYearRequired));
 
 
-    var date = new Date();
+    // var date = new Date();
     // date.setFullYear(this.application.qualification_date);
     // this.application.qualification_date = date.toISOString().substring(0,10);
 
