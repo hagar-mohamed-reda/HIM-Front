@@ -38,12 +38,12 @@ import { ServiceComponent } from './report/service/service.component';
     StudentAffairReport14Component,
     StudentAffairReport15Component,
     Report21Component,
-   StudentAffairStudentStatusComponent,
-   RegistrationComponent,
-   PatientsComponent,
-   PatientreportComponent,
-   CreditHoursComponent,
-   ServiceComponent,
+    StudentAffairStudentStatusComponent,
+    RegistrationComponent,
+    PatientsComponent,
+    PatientreportComponent,
+    CreditHoursComponent,
+    ServiceComponent,
     
   ],
   imports: [

@@ -113,6 +113,8 @@ export class StudentIndexComponent implements OnInit {
   loadResources(page=1) {
     this.isLoad = true;
     this.studentService.get(page, this.search).subscribe( (res: any) => {
+      console.log(res);
+      
       this.resources = res;
       this.prePagniation();
       this.isLoad = false;

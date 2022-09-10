@@ -6,7 +6,7 @@ import { StudentCreateComponent } from './components/student/student-create/stud
 import { StudentShowComponent } from './components/student/student-show/student-show.component';
 const routes: Routes = [ 
   {
-    path: '',
+    path: '', 
     component: StudentIndexComponent
   }, 
   {
