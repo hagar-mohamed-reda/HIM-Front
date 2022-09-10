@@ -245,13 +245,23 @@
 
                                         <tr>
                                             <th>{{ "division" | trans }} *</th>
+                                            <!-- <td>
+                                                <select class="custom-input form-control input-sm w3-input border-bottom-dashed input-sm"
+                                                 [(ngModel)]="application.division_id">
+                                                <ng-container *ngFor="let item of applicationSettings.DIVISIONS">
+                                                <option  value="{{ item.id }}">{{ item.name }}</option>
+                                                </ng-container>
+                                                </select>
+                                            </td> -->
                                             <td>
-                                                <select class="custom-input form-control input-sm w3-input border-bottom-dashed input-sm" [(ngModel)]="application.division_id">
-<ng-container *ngFor="let item of applicationSettings.DIVISIONS">
-  <option  value="{{ item.id }}">{{ item.name }}</option>
-</ng-container>
-</select>
-                                            </td>
+                                                <select class="custom-input form-control input-sm w3-input border-bottom-dashed input-sm"
+                                                [ngClass]="{'border-bottom-dashed': application.division_id, 'border-bottom-red': !application.division_id}"
+                                                [(ngModel)]="application.division_id">
+                                                <ng-container *ngFor="let item of applicationSettings.DIVISIONS">
+                                                <option  value="{{ item.id }}">{{ item.name }}</option>
+                                                </ng-container>
+                                                </select>
+                                           </td>
                                         </tr>
                                         <tr>
                                             <th>{{ "department" | trans }} *</th>

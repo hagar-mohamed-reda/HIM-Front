@@ -44,6 +44,8 @@ export class ApplicationShowComponent implements OnInit {
   loadApplication(id) {
     this.applicationService.load(id).subscribe((res: any) => {
       this.application = res;
+      console.log(res);
+      
       this.setLevel();
     });
   }
