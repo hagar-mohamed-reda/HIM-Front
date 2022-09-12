@@ -33,7 +33,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MilitaryAreaComponent", function() { return MilitaryAreaComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var src_app_settings_setting_template__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/settings/setting-template */ "./src/app/settings/setting-template.ts");
 /* harmony import */ var src_app_settings_services_setting_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/settings/services/setting.service */ "./src/app/settings/services/setting.service.ts");
 /* harmony import */ var src_app_adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/adminision/services/application-setting.service */ "./src/app/adminision/services/application-setting.service.ts");
@@ -42,37 +42,33 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var MilitaryAreaComponent = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](MilitaryAreaComponent, _super);
-    function MilitaryAreaComponent(settingService, applicationSettingService) {
-        var _this = _super.call(this, settingService) || this;
-        _this.settingService = settingService;
-        _this.applicationSettingService = applicationSettingService;
-        _this.govers = [];
-        _this.baseUrl = "military_areas";
-        _this.requiredFields = ['name', 'government_id'];
-        _this.get();
-        return _this;
-    }
-    MilitaryAreaComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.applicationSettingService.getGovernments().subscribe(function (res) {
-            _this.govers = res;
-        });
-    };
-    MilitaryAreaComponent.prototype.action = function () {
+let MilitaryAreaComponent = class MilitaryAreaComponent extends src_app_settings_setting_template__WEBPACK_IMPORTED_MODULE_2__["SettingTemplate"] {
+    constructor(settingService, applicationSettingService) {
+        super(settingService);
+        this.settingService = settingService;
+        this.applicationSettingService = applicationSettingService;
+        this.govers = [];
+        this.baseUrl = "military_areas";
+        this.requiredFields = ['name', 'government_id'];
         this.get();
-    };
-    MilitaryAreaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-military-area',
-            template: __webpack_require__(/*! ./military-area.component.html */ "./src/app/military/components/military-area/military-area.component.html"),
-            styles: [__webpack_require__(/*! ./military-area.component.scss */ "./src/app/military/components/military-area/military-area.component.scss")]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_settings_services_setting_service__WEBPACK_IMPORTED_MODULE_3__["SettingService"], src_app_adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_4__["ApplicationSettingService"]])
-    ], MilitaryAreaComponent);
-    return MilitaryAreaComponent;
-}(src_app_settings_setting_template__WEBPACK_IMPORTED_MODULE_2__["SettingTemplate"]));
+    }
+    ngOnInit() {
+        this.applicationSettingService.getGovernments().subscribe((res) => {
+            this.govers = res;
+        });
+    }
+    action() {
+        this.get();
+    }
+};
+MilitaryAreaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-military-area',
+        template: __webpack_require__(/*! ./military-area.component.html */ "./src/app/military/components/military-area/military-area.component.html"),
+        styles: [__webpack_require__(/*! ./military-area.component.scss */ "./src/app/military/components/military-area/military-area.component.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_settings_services_setting_service__WEBPACK_IMPORTED_MODULE_3__["SettingService"], src_app_adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_4__["ApplicationSettingService"]])
+], MilitaryAreaComponent);
 
 
 
@@ -111,38 +107,35 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MilitaryStatusComponent", function() { return MilitaryStatusComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var src_app_settings_services_setting_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/settings/services/setting.service */ "./src/app/settings/services/setting.service.ts");
 /* harmony import */ var src_app_settings_setting_template__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/settings/setting-template */ "./src/app/settings/setting-template.ts");
 
 
 
 
-var MilitaryStatusComponent = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](MilitaryStatusComponent, _super);
-    function MilitaryStatusComponent(settingService) {
-        var _this = _super.call(this, settingService) || this;
-        _this.settingService = settingService;
-        _this.baseUrl = "military_status";
-        _this.requiredFields = ['name'];
-        _this.get();
-        return _this;
-    }
-    MilitaryStatusComponent.prototype.ngOnInit = function () {
-    };
-    MilitaryStatusComponent.prototype.action = function () {
+let MilitaryStatusComponent = class MilitaryStatusComponent extends src_app_settings_setting_template__WEBPACK_IMPORTED_MODULE_3__["SettingTemplate"] {
+    constructor(settingService) {
+        super(settingService);
+        this.settingService = settingService;
+        this.baseUrl = "military_status";
+        this.requiredFields = ['name'];
         this.get();
-    };
-    MilitaryStatusComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-military-status',
-            template: __webpack_require__(/*! ./military-status.component.html */ "./src/app/military/components/military-status/military-status.component.html"),
-            styles: [__webpack_require__(/*! ./military-status.component.scss */ "./src/app/military/components/military-status/military-status.component.scss")]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_settings_services_setting_service__WEBPACK_IMPORTED_MODULE_2__["SettingService"]])
-    ], MilitaryStatusComponent);
-    return MilitaryStatusComponent;
-}(src_app_settings_setting_template__WEBPACK_IMPORTED_MODULE_3__["SettingTemplate"]));
+    }
+    ngOnInit() {
+    }
+    action() {
+        this.get();
+    }
+};
+MilitaryStatusComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-military-status',
+        template: __webpack_require__(/*! ./military-status.component.html */ "./src/app/military/components/military-status/military-status.component.html"),
+        styles: [__webpack_require__(/*! ./military-status.component.scss */ "./src/app/military/components/military-status/military-status.component.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_settings_services_setting_service__WEBPACK_IMPORTED_MODULE_2__["SettingService"]])
+], MilitaryStatusComponent);
 
 
 
@@ -159,8 +152,8 @@ var MilitaryStatusComponent = /** @class */ (function (_super) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MilitaryRoutingModule", function() { return MilitaryRoutingModule; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _military_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./military.component */ "./src/app/military/military.component.ts");
 /* harmony import */ var _components_military_area_military_area_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/military-area/military-area.component */ "./src/app/military/components/military-area/military-area.component.ts");
 /* harmony import */ var _components_military_status_military_status_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/military-status/military-status.component */ "./src/app/military/components/military-status/military-status.component.ts");
@@ -174,7 +167,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var routes = [
+const routes = [
     {
         path: "",
         component: _military_component__WEBPACK_IMPORTED_MODULE_3__["MilitaryComponent"],
@@ -194,17 +187,14 @@ var routes = [
         ]
     }
 ];
-var MilitaryRoutingModule = /** @class */ (function () {
-    function MilitaryRoutingModule() {
-    }
-    MilitaryRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
-            exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
-        })
-    ], MilitaryRoutingModule);
-    return MilitaryRoutingModule;
-}());
+let MilitaryRoutingModule = class MilitaryRoutingModule {
+};
+MilitaryRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
+    })
+], MilitaryRoutingModule);
 
 
 
@@ -243,24 +233,22 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MilitaryComponent", function() { return MilitaryComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 
 
-var MilitaryComponent = /** @class */ (function () {
-    function MilitaryComponent() {
+let MilitaryComponent = class MilitaryComponent {
+    constructor() { }
+    ngOnInit() {
     }
-    MilitaryComponent.prototype.ngOnInit = function () {
-    };
-    MilitaryComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-military',
-            template: __webpack_require__(/*! ./military.component.html */ "./src/app/military/military.component.html"),
-            styles: [__webpack_require__(/*! ./military.component.scss */ "./src/app/military/military.component.scss")]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-    ], MilitaryComponent);
-    return MilitaryComponent;
-}());
+};
+MilitaryComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-military',
+        template: __webpack_require__(/*! ./military.component.html */ "./src/app/military/military.component.html"),
+        styles: [__webpack_require__(/*! ./military.component.scss */ "./src/app/military/military.component.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], MilitaryComponent);
 
 
 
@@ -277,8 +265,8 @@ var MilitaryComponent = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MilitaryModule", function() { return MilitaryModule; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
 /* harmony import */ var _shared_shared_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../shared/shared.module */ "./src/app/shared/shared.module.ts");
 /* harmony import */ var angular_datatables__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! angular-datatables */ "./node_modules/angular-datatables/index.js");
 /* harmony import */ var _military_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./military-routing.module */ "./src/app/military/military-routing.module.ts");
@@ -294,22 +282,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var MilitaryModule = /** @class */ (function () {
-    function MilitaryModule() {
-    }
-    MilitaryModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_military_component__WEBPACK_IMPORTED_MODULE_6__["MilitaryComponent"], _components_military_area_military_area_component__WEBPACK_IMPORTED_MODULE_7__["MilitaryAreaComponent"], _components_military_status_military_status_component__WEBPACK_IMPORTED_MODULE_8__["MilitaryStatusComponent"]],
-            imports: [
-                _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
-                _military_routing_module__WEBPACK_IMPORTED_MODULE_5__["MilitaryRoutingModule"],
-                _shared_shared_module__WEBPACK_IMPORTED_MODULE_3__["SharedModule"],
-                angular_datatables__WEBPACK_IMPORTED_MODULE_4__["DataTablesModule"]
-            ]
-        })
-    ], MilitaryModule);
-    return MilitaryModule;
-}());
+let MilitaryModule = class MilitaryModule {
+};
+MilitaryModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        declarations: [_military_component__WEBPACK_IMPORTED_MODULE_6__["MilitaryComponent"], _components_military_area_military_area_component__WEBPACK_IMPORTED_MODULE_7__["MilitaryAreaComponent"], _components_military_status_military_status_component__WEBPACK_IMPORTED_MODULE_8__["MilitaryStatusComponent"]],
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _military_routing_module__WEBPACK_IMPORTED_MODULE_5__["MilitaryRoutingModule"],
+            _shared_shared_module__WEBPACK_IMPORTED_MODULE_3__["SharedModule"],
+            angular_datatables__WEBPACK_IMPORTED_MODULE_4__["DataTablesModule"]
+        ]
+    })
+], MilitaryModule);
 
 
 

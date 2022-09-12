@@ -493,6 +493,8 @@ export class ApplicationCreateComponent implements OnInit {
     levels.forEach((element: any) => {
       if (element.id  == this.application.level_id)
         this.application.level_name = element.name;
+        this.application.level_id = 1;
+
     });
   }
 
