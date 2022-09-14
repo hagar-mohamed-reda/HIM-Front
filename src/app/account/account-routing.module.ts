@@ -37,6 +37,7 @@ import { WorksheetPrivateComponent } from './components/worksheet-private/worksh
 import { WorkPrivateCheckComponent } from './components/work-private-check/work-private-check.component';
 import { WorkPrivateDepositesComponent } from './components/work-private-deposites/work-private-deposites.component';
 import { WorkPrivateBankComponent } from './components/work-private-bank/work-private-bank.component';
+import { ServiceaffComponent } from './components/serviceaff/serviceaff.component';
 
 
 const routes: Routes = [
@@ -145,6 +146,14 @@ const routes: Routes = [
         data: {can: Auth.can('company')},
         
       },
+      {
+        path: 'serviceaff',
+        component: ServiceaffComponent,
+        canActivate: [AuthGuestService],
+        data: {can: Auth.can('service')},
+        
+      },
+      
       {
         path: 'person',
         component: PersonIndexComponent,

@@ -33,7 +33,7 @@
                 </select>
                               </div>
                           </div>
-                          <div class="col-lg-3 col-md-3">
+                          <!-- <div class="col-lg-3 col-md-3">
                             <div class="form-group">
                                 <label for="">{{ "term" | trans }}</label>
                                 <select class="form-control" [(ngModel)]="filter.term_id">
@@ -41,7 +41,7 @@
                   <option *ngFor="let item of terms" value="{{ item.id }}">{{item.name}}</option>
                 </select>
                             </div>
-                        </div>
+                        </div> -->
                           <div class="col-lg-3 col-md-3">
                             <div class="form-group">
                                 <label for="">{{ "division" | trans }}</label>
@@ -51,7 +51,7 @@
                   </select>
                             </div>
                         </div>
-                          <div style="display: flex;" class="col-lg-3 col-md-3">
+                          <div style="padding: 23px !important;" class="col-lg-3 col-md-3">
                               <button class="btn btn-default w3-round" (click)="load()">{{ "search" | trans }}</button>
                               <button style="margin: 0 5px;" class="btn btn-default w3-round" (click)="printContent()">{{ "print" | trans }}</button>
                               <button class="btn btn-default w3-round" (click)="excel()">{{ "excel" | trans }}</button>

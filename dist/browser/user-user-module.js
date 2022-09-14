@@ -33,8 +33,8 @@ module.exports = ".safe-box {\n  padding: 10px;\n}\n\n.border-bottom-dashed {\n 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PermissionComponent", function() { return PermissionComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var angular_hashtable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! angular-hashtable */ "./node_modules/angular-hashtable/fesm2015/angular-hashtable.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var angular_hashtable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! angular-hashtable */ "./node_modules/angular-hashtable/fesm5/angular-hashtable.js");
 /* harmony import */ var src_app_shared_message__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/shared/message */ "./src/app/shared/message.ts");
 /* harmony import */ var _services_role_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../services/role.service */ "./src/app/user/services/role.service.ts");
 
@@ -42,8 +42,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let PermissionComponent = class PermissionComponent {
-    constructor(service) {
+var PermissionComponent = /** @class */ (function () {
+    function PermissionComponent(service) {
         this.service = service;
         this.role = {};
         this.updateMode = false;
@@ -55,88 +55,94 @@ let PermissionComponent = class PermissionComponent {
         this.groups = [];
         this.isSubmitted = false;
     }
-    setPermission() {
+    PermissionComponent.prototype.setPermission = function () {
+        var _this = this;
         this.permissionId = new angular_hashtable__WEBPACK_IMPORTED_MODULE_2__["HashTable"]();
         if (!this.role)
             return;
         if (!this.role.permissions)
             return;
-        this.role.permissions.forEach(element => {
-            this.permissionId.put(element.id, element.id);
+        this.role.permissions.forEach(function (element) {
+            _this.permissionId.put(element.id, element.id);
         });
-    }
-    updatePermissions() {
+    };
+    PermissionComponent.prototype.updatePermissions = function () {
+        var _this = this;
         this.isSubmitted = true;
-        let data = {
+        var data = {
             permissions: this.permissionId.getKeys()
         };
-        this.service.updatePermission(this.role.id, data).subscribe((res) => {
+        this.service.updatePermission(this.role.id, data).subscribe(function (res) {
             if (res.status == 1) {
                 src_app_shared_message__WEBPACK_IMPORTED_MODULE_3__["Message"].success(res.message);
-                this.loadResources();
+                _this.loadResources();
             }
             else
                 src_app_shared_message__WEBPACK_IMPORTED_MODULE_3__["Message"].error(res.message);
-            this.isSubmitted = false;
+            _this.isSubmitted = false;
         });
-    }
-    togglePermissions(id) {
+    };
+    PermissionComponent.prototype.togglePermissions = function (id) {
         if (this.permissionId.has(id))
             this.permissionId.remove(id);
         else
             this.permissionId.put(id, id);
         this.updatePermissions();
-    }
-    loadPermissions() {
-        this.service.permissions().subscribe((res) => {
-            this.permissions = res;
+    };
+    PermissionComponent.prototype.loadPermissions = function () {
+        var _this = this;
+        this.service.permissions().subscribe(function (res) {
+            _this.permissions = res;
         });
-    }
-    loadGroups() {
-        this.service.groups().subscribe((res) => {
-            this.groups = res;
+    };
+    PermissionComponent.prototype.loadGroups = function () {
+        var _this = this;
+        this.service.groups().subscribe(function (res) {
+            _this.groups = res;
         });
-    }
-    ngOnInit() {
+    };
+    PermissionComponent.prototype.ngOnInit = function () {
         this.loadPermissions();
         this.loadGroups();
-    }
-    ngOnChanges() {
+    };
+    PermissionComponent.prototype.ngOnChanges = function () {
         this.setPermission();
-    }
-    selectAll(group, checked) {
-        group.permissions.forEach(element => {
+    };
+    PermissionComponent.prototype.selectAll = function (group, checked) {
+        var _this = this;
+        group.permissions.forEach(function (element) {
             if (checked)
-                this.permissionId.put(element.id, element.id);
-            else if (this.permissionId.has(element.id))
-                this.permissionId.remove(element.id);
+                _this.permissionId.put(element.id, element.id);
+            else if (_this.permissionId.has(element.id))
+                _this.permissionId.remove(element.id);
         });
         this.updatePermissions();
-    }
-    changeMode() {
+    };
+    PermissionComponent.prototype.changeMode = function () {
         this.updateMode = false;
-    }
-};
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-], PermissionComponent.prototype, "role", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-], PermissionComponent.prototype, "updateMode", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-], PermissionComponent.prototype, "loadResources", void 0);
-PermissionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-permission',
-        template: __webpack_require__(/*! ./permission.component.html */ "./src/app/user/components/role/permission/permission.component.html"),
-        styles: [__webpack_require__(/*! ./permission.component.scss */ "./src/app/user/components/role/permission/permission.component.scss")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_role_service__WEBPACK_IMPORTED_MODULE_4__["RoleService"]])
-], PermissionComponent);
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], PermissionComponent.prototype, "role", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], PermissionComponent.prototype, "updateMode", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], PermissionComponent.prototype, "loadResources", void 0);
+    PermissionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-permission',
+            template: __webpack_require__(/*! ./permission.component.html */ "./src/app/user/components/role/permission/permission.component.html"),
+            styles: [__webpack_require__(/*! ./permission.component.scss */ "./src/app/user/components/role/permission/permission.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_role_service__WEBPACK_IMPORTED_MODULE_4__["RoleService"]])
+    ], PermissionComponent);
+    return PermissionComponent;
+}());
 
 
 
@@ -175,7 +181,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleFormComponent", function() { return RoleFormComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _app_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../app.module */ "./src/app/app.module.ts");
 /* harmony import */ var _services_role_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../services/role.service */ "./src/app/user/services/role.service.ts");
 /* harmony import */ var _shared_message__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../shared/message */ "./src/app/shared/message.ts");
@@ -186,8 +192,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let RoleFormComponent = class RoleFormComponent {
-    constructor(roleService) {
+var RoleFormComponent = /** @class */ (function () {
+    function RoleFormComponent(roleService) {
         this.roleService = roleService;
         this.doc = _app_module__WEBPACK_IMPORTED_MODULE_2__["AppModule"].doc;
         this.isSubmitted = false;
@@ -197,99 +203,104 @@ let RoleFormComponent = class RoleFormComponent {
         this.resource = {};
         this.isUpdate = false;
     }
-    ngOnInit() {
-    }
-    validate() {
-        let valid = true;
-        this.requiredFields.forEach(element => {
-            if (!this.resource[element])
+    RoleFormComponent.prototype.ngOnInit = function () {
+    };
+    RoleFormComponent.prototype.validate = function () {
+        var _this = this;
+        var valid = true;
+        this.requiredFields.forEach(function (element) {
+            if (!_this.resource[element])
                 valid = false;
         });
         return valid;
-    }
-    send() {
+    };
+    RoleFormComponent.prototype.send = function () {
         if (!this.isUpdate)
             this.store();
         else
             this.update();
-    }
-    store() {
+    };
+    RoleFormComponent.prototype.store = function () {
+        var _this = this;
         if (!this.validate())
             return _shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].error(_shared_helper__WEBPACK_IMPORTED_MODULE_5__["Helper"].trans('fill all required data'));
         this.isSubmitted = true;
-        this.roleService.store(this.toFormData()).subscribe((res) => {
-            const data = res;
+        this.roleService.store(this.toFormData()).subscribe(function (res) {
+            var data = res;
             if (data.status == 1) {
                 _shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].success(data.message);
-                this.resource = {};
-                this.updateResources();
+                _this.resource = {};
+                _this.updateResources();
             }
             else
                 _shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].error(data.message);
-            this.isSubmitted = false;
+            _this.isSubmitted = false;
         });
-    }
-    update() {
+    };
+    RoleFormComponent.prototype.update = function () {
+        var _this = this;
         if (!this.validate())
             return _shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].error(_shared_helper__WEBPACK_IMPORTED_MODULE_5__["Helper"].trans('fill all required data'));
         this.isSubmitted = true;
-        this.roleService.update(this.resource.id, this.toFormData()).subscribe((res) => {
-            const data = res;
+        this.roleService.update(this.resource.id, this.toFormData()).subscribe(function (res) {
+            var data = res;
             if (data.status == 1) {
                 _shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].success(data.message);
-                this.updateResources();
+                _this.updateResources();
             }
             else
                 _shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].error(data.message);
-            this.isSubmitted = false;
+            _this.isSubmitted = false;
         });
-    }
+    };
     /**
      * convert object to form data
      *
      */
-    toFormData() {
-        let data = new FormData();
-        for (let key of Object.keys(this.resource)) {
+    RoleFormComponent.prototype.toFormData = function () {
+        var data = new FormData();
+        for (var _i = 0, _a = Object.keys(this.resource); _i < _a.length; _i++) {
+            var key = _a[_i];
             if (this.resource[key])
                 data.append(key, this.resource[key]);
         }
         return data;
-    }
+    };
     /**
      * close modal
      */
-    closeModal() {
-        const id = this.isUpdate ? '#updateModal' : '#createModal';
+    RoleFormComponent.prototype.closeModal = function () {
+        var id = this.isUpdate ? '#updateModal' : '#createModal';
         this.doc.jquery(id).modal('hide');
-    }
+    };
     /**
      * load personal image
      */
-    viewImage(event) {
+    RoleFormComponent.prototype.viewImage = function (event) {
         _shared_helper__WEBPACK_IMPORTED_MODULE_5__["Helper"].loadImage(event, 'image', this.resource);
-    }
-};
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-], RoleFormComponent.prototype, "resource", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-], RoleFormComponent.prototype, "isUpdate", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-], RoleFormComponent.prototype, "updateResources", void 0);
-RoleFormComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-role-form',
-        template: __webpack_require__(/*! ./role-form.component.html */ "./src/app/user/components/role/role-form/role-form.component.html"),
-        styles: [__webpack_require__(/*! ./role-form.component.scss */ "./src/app/user/components/role/role-form/role-form.component.scss")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_role_service__WEBPACK_IMPORTED_MODULE_3__["RoleService"]])
-], RoleFormComponent);
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], RoleFormComponent.prototype, "resource", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], RoleFormComponent.prototype, "isUpdate", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], RoleFormComponent.prototype, "updateResources", void 0);
+    RoleFormComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-role-form',
+            template: __webpack_require__(/*! ./role-form.component.html */ "./src/app/user/components/role/role-form/role-form.component.html"),
+            styles: [__webpack_require__(/*! ./role-form.component.scss */ "./src/app/user/components/role/role-form/role-form.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_role_service__WEBPACK_IMPORTED_MODULE_3__["RoleService"]])
+    ], RoleFormComponent);
+    return RoleFormComponent;
+}());
 
 
 
@@ -328,13 +339,13 @@ module.exports = "table {\n  width: 100%;\n}\n\nth.mat-sort-header-sorted {\n  c
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleIndexComponent", function() { return RoleIndexComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _node_modules_angular_hashtable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/angular-hashtable */ "./node_modules/angular-hashtable/fesm2015/angular-hashtable.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _node_modules_angular_hashtable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/angular-hashtable */ "./node_modules/angular-hashtable/fesm5/angular-hashtable.js");
 /* harmony import */ var _services_role_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../services/role.service */ "./src/app/user/services/role.service.ts");
 /* harmony import */ var _app_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../app.module */ "./src/app/app.module.ts");
-/* harmony import */ var _node_modules_angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../node_modules/@angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _node_modules_angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../node_modules/@angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _shared_helper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../shared/helper */ "./src/app/shared/helper.ts");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var src_app_shared_message__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/shared/message */ "./src/app/shared/message.ts");
 
 
@@ -345,8 +356,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let RoleIndexComponent = class RoleIndexComponent {
-    constructor(roleService, router) {
+var RoleIndexComponent = /** @class */ (function () {
+    function RoleIndexComponent(roleService, router) {
+        var _this = this;
         this.roleService = roleService;
         this.router = router;
         this.doc = _app_module__WEBPACK_IMPORTED_MODULE_4__["AppModule"].doc;
@@ -369,65 +381,67 @@ let RoleIndexComponent = class RoleIndexComponent {
         this.initBreadcrumb();
         this.initDisplayColumns();
         this.initMatDatatable();
-        this.updateResources = () => {
-            this.loadResources();
+        this.updateResources = function () {
+            _this.loadResources();
         };
     }
-    initMatDatatable() {
+    RoleIndexComponent.prototype.initMatDatatable = function () {
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-    }
-    initBreadcrumb() {
+    };
+    RoleIndexComponent.prototype.initBreadcrumb = function () {
         this.breadcrumbList = [
             { name: 'home', url: '/' },
             { name: 'roles' }
         ];
-    }
-    initDisplayColumns() {
+    };
+    RoleIndexComponent.prototype.initDisplayColumns = function () {
         this.displayedColumns = [
             'name', 'action'
         ];
-    }
-    refreshDataSource(data) {
+    };
+    RoleIndexComponent.prototype.refreshDataSource = function (data) {
         this.resources = data;
         this.dataSource.data = data;
-    }
-    destroy(id) {
-        this.doc.swal.confirm(_shared_helper__WEBPACK_IMPORTED_MODULE_6__["Helper"].trans('are you sure'), () => {
-            this.roleService.destroy(id).subscribe((res) => {
+    };
+    RoleIndexComponent.prototype.destroy = function (id) {
+        var _this = this;
+        this.doc.swal.confirm(_shared_helper__WEBPACK_IMPORTED_MODULE_6__["Helper"].trans('are you sure'), function () {
+            _this.roleService.destroy(id).subscribe(function (res) {
                 if (res.status == 1) {
                     src_app_shared_message__WEBPACK_IMPORTED_MODULE_8__["Message"].success(res.message);
-                    this.loadResources();
+                    _this.loadResources();
                 }
                 else
                     src_app_shared_message__WEBPACK_IMPORTED_MODULE_8__["Message"].error(res.message);
             });
         });
-    }
-    loadResources() {
-        this.roleService.get().subscribe((res) => {
-            this.resources = res;
-            this.dataSource.data = res;
+    };
+    RoleIndexComponent.prototype.loadResources = function () {
+        var _this = this;
+        this.roleService.get().subscribe(function (res) {
+            _this.resources = res;
+            _this.dataSource.data = res;
             //
-            this.refreshDataSource(res);
+            _this.refreshDataSource(res);
         });
-    }
-    edit(item) {
+    };
+    RoleIndexComponent.prototype.edit = function (item) {
         this.updateItem = item;
         this.doc.jquery('#updateModal').modal('show');
-    }
-    ngOnInit() {
+    };
+    RoleIndexComponent.prototype.ngOnInit = function () {
         this.loadResources();
         this.searchKey = "";
-    }
-    showUpdateModal(item) {
+    };
+    RoleIndexComponent.prototype.showUpdateModal = function (item) {
         this.updateItem = item;
-    }
-    search(filterValue) {
+    };
+    RoleIndexComponent.prototype.search = function (filterValue) {
         if (this.dataSource)
             this.dataSource.filter = filterValue.trim().toLowerCase();
-    }
-    permission(item) {
+    };
+    RoleIndexComponent.prototype.permission = function (item) {
         this.breadcrumbList2 = [
             { name: 'home', url: '/' },
             { name: 'roles', url: '/users/role' },
@@ -436,24 +450,25 @@ let RoleIndexComponent = class RoleIndexComponent {
         this.updateMode = true;
         this.permissionItem = item;
         this.doc.jquery('#permissionModal').modal('show');
-    }
-};
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_7__["MatPaginator"]),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_7__["MatPaginator"])
-], RoleIndexComponent.prototype, "paginator", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_7__["MatSort"]),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_7__["MatSort"])
-], RoleIndexComponent.prototype, "sort", void 0);
-RoleIndexComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-role-index',
-        template: __webpack_require__(/*! ./role-index.component.html */ "./src/app/user/components/role/role-index/role-index.component.html"),
-        styles: [__webpack_require__(/*! ./role-index.component.scss */ "./src/app/user/components/role/role-index/role-index.component.scss")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_role_service__WEBPACK_IMPORTED_MODULE_3__["RoleService"], _node_modules_angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
-], RoleIndexComponent);
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_7__["MatPaginator"]),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_7__["MatPaginator"])
+    ], RoleIndexComponent.prototype, "paginator", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_7__["MatSort"]),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_7__["MatSort"])
+    ], RoleIndexComponent.prototype, "sort", void 0);
+    RoleIndexComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-role-index',
+            template: __webpack_require__(/*! ./role-index.component.html */ "./src/app/user/components/role/role-index/role-index.component.html"),
+            styles: [__webpack_require__(/*! ./role-index.component.scss */ "./src/app/user/components/role/role-index/role-index.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_role_service__WEBPACK_IMPORTED_MODULE_3__["RoleService"], _node_modules_angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
+    ], RoleIndexComponent);
+    return RoleIndexComponent;
+}());
 
 
 
@@ -492,22 +507,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserHistoryComponent", function() { return UserHistoryComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let UserHistoryComponent = class UserHistoryComponent {
-    constructor() { }
-    ngOnInit() {
+var UserHistoryComponent = /** @class */ (function () {
+    function UserHistoryComponent() {
     }
-};
-UserHistoryComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-user-history',
-        template: __webpack_require__(/*! ./user-history.component.html */ "./src/app/user/components/user-history/user-history.component.html"),
-        styles: [__webpack_require__(/*! ./user-history.component.scss */ "./src/app/user/components/user-history/user-history.component.scss")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], UserHistoryComponent);
+    UserHistoryComponent.prototype.ngOnInit = function () {
+    };
+    UserHistoryComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-user-history',
+            template: __webpack_require__(/*! ./user-history.component.html */ "./src/app/user/components/user-history/user-history.component.html"),
+            styles: [__webpack_require__(/*! ./user-history.component.scss */ "./src/app/user/components/user-history/user-history.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], UserHistoryComponent);
+    return UserHistoryComponent;
+}());
 
 
 
@@ -546,7 +563,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserFormComponent", function() { return UserFormComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _app_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../app.module */ "./src/app/app.module.ts");
 /* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../services/user.service */ "./src/app/user/services/user.service.ts");
 /* harmony import */ var _shared_message__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../shared/message */ "./src/app/shared/message.ts");
@@ -559,8 +576,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let UserFormComponent = class UserFormComponent {
-    constructor(userService, roleService) {
+var UserFormComponent = /** @class */ (function () {
+    function UserFormComponent(userService, roleService) {
         this.userService = userService;
         this.roleService = roleService;
         this.doc = _app_module__WEBPACK_IMPORTED_MODULE_2__["AppModule"].doc;
@@ -572,105 +589,111 @@ let UserFormComponent = class UserFormComponent {
         this.isUpdate = false;
         this.roles = null;
     }
-    ngOnInit() {
+    UserFormComponent.prototype.ngOnInit = function () {
         this.loadRoles();
-    }
-    loadRoles() {
-        this.roleService.get().subscribe((res) => {
-            this.roles = res;
+    };
+    UserFormComponent.prototype.loadRoles = function () {
+        var _this = this;
+        this.roleService.get().subscribe(function (res) {
+            _this.roles = res;
         });
-    }
-    validate() {
-        let valid = true;
-        this.requiredFields.forEach(element => {
-            if (!this.resource[element])
+    };
+    UserFormComponent.prototype.validate = function () {
+        var _this = this;
+        var valid = true;
+        this.requiredFields.forEach(function (element) {
+            if (!_this.resource[element])
                 valid = false;
         });
         return valid;
-    }
-    send() {
+    };
+    UserFormComponent.prototype.send = function () {
         if (!this.isUpdate)
             this.store();
         else
             this.update();
-    }
-    store() {
+    };
+    UserFormComponent.prototype.store = function () {
+        var _this = this;
         if (!this.validate())
             return _shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].error(_shared_helper__WEBPACK_IMPORTED_MODULE_5__["Helper"].trans('fill all required data'));
         this.isSubmitted = true;
-        this.userService.store(this.toFormData()).subscribe((res) => {
-            const data = res;
+        this.userService.store(this.toFormData()).subscribe(function (res) {
+            var data = res;
             if (data.status == 1) {
                 _shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].success(data.message);
-                this.resource = {};
-                this.updateResources();
+                _this.resource = {};
+                _this.updateResources();
             }
             else
                 _shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].error(data.message);
-            this.isSubmitted = false;
+            _this.isSubmitted = false;
         });
-    }
-    update() {
+    };
+    UserFormComponent.prototype.update = function () {
+        var _this = this;
         if (!this.validate())
             return _shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].error(_shared_helper__WEBPACK_IMPORTED_MODULE_5__["Helper"].trans('fill all required data'));
         this.isSubmitted = true;
-        this.userService.update(this.resource.id, this.toFormData()).subscribe((res) => {
-            const data = res;
+        this.userService.update(this.resource.id, this.toFormData()).subscribe(function (res) {
+            var data = res;
             if (data.status == 1) {
                 _shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].success(data.message);
-                this.updateResources();
+                _this.updateResources();
             }
             else
                 _shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].error(data.message);
-            this.isSubmitted = false;
+            _this.isSubmitted = false;
         });
-    }
+    };
     /**
      * convert object to form data
      *
      */
-    toFormData() {
-        let data = new FormData();
-        for (let key of Object.keys(this.resource)) {
+    UserFormComponent.prototype.toFormData = function () {
+        var data = new FormData();
+        for (var _i = 0, _a = Object.keys(this.resource); _i < _a.length; _i++) {
+            var key = _a[_i];
             if (this.resource[key])
                 data.append(key, this.resource[key]);
         }
         return data;
-    }
+    };
     /**
      * close modal
      */
-    closeModal() {
-        const id = this.isUpdate ? '#updateModal' : '#createModal';
+    UserFormComponent.prototype.closeModal = function () {
+        var id = this.isUpdate ? '#updateModal' : '#createModal';
         this.doc.jquery(id).modal('hide');
-    }
+    };
     /**
      * load personal image
      */
-    viewImage(event) {
+    UserFormComponent.prototype.viewImage = function (event) {
         _shared_helper__WEBPACK_IMPORTED_MODULE_5__["Helper"].loadImage(event, 'image', this.resource);
-    }
-};
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-], UserFormComponent.prototype, "resource", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-], UserFormComponent.prototype, "isUpdate", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-], UserFormComponent.prototype, "updateResources", void 0);
-UserFormComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-user-form',
-        template: __webpack_require__(/*! ./user-form.component.html */ "./src/app/user/components/user/user-form/user-form.component.html"),
-        styles: [__webpack_require__(/*! ./user-form.component.scss */ "./src/app/user/components/user/user-form/user-form.component.scss")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"], src_app_user_services_role_service__WEBPACK_IMPORTED_MODULE_6__["RoleService"]])
-], UserFormComponent);
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], UserFormComponent.prototype, "resource", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], UserFormComponent.prototype, "isUpdate", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], UserFormComponent.prototype, "updateResources", void 0);
+    UserFormComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-user-form',
+            template: __webpack_require__(/*! ./user-form.component.html */ "./src/app/user/components/user/user-form/user-form.component.html"),
+            styles: [__webpack_require__(/*! ./user-form.component.scss */ "./src/app/user/components/user/user-form/user-form.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"], src_app_user_services_role_service__WEBPACK_IMPORTED_MODULE_6__["RoleService"]])
+    ], UserFormComponent);
+    return UserFormComponent;
+}());
 
 
 
@@ -709,13 +732,13 @@ module.exports = "table {\n  width: 100%;\n}\n\nth.mat-sort-header-sorted {\n  c
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserIndexComponent", function() { return UserIndexComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _node_modules_angular_hashtable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/angular-hashtable */ "./node_modules/angular-hashtable/fesm2015/angular-hashtable.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _node_modules_angular_hashtable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/angular-hashtable */ "./node_modules/angular-hashtable/fesm5/angular-hashtable.js");
 /* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../services/user.service */ "./src/app/user/services/user.service.ts");
 /* harmony import */ var _app_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../app.module */ "./src/app/app.module.ts");
-/* harmony import */ var _node_modules_angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../node_modules/@angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _node_modules_angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../node_modules/@angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _shared_helper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../shared/helper */ "./src/app/shared/helper.ts");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var src_app_shared_message__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/shared/message */ "./src/app/shared/message.ts");
 
 
@@ -726,8 +749,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let UserIndexComponent = class UserIndexComponent {
-    constructor(userService, router) {
+var UserIndexComponent = /** @class */ (function () {
+    function UserIndexComponent(userService, router) {
+        var _this = this;
         this.userService = userService;
         this.router = router;
         this.doc = _app_module__WEBPACK_IMPORTED_MODULE_4__["AppModule"].doc;
@@ -747,81 +771,84 @@ let UserIndexComponent = class UserIndexComponent {
         this.initBreadcrumb();
         this.initDisplayColumns();
         this.initMatDatatable();
-        this.updateResources = () => {
-            this.loadResources();
+        this.updateResources = function () {
+            _this.loadResources();
         };
     }
-    initMatDatatable() {
+    UserIndexComponent.prototype.initMatDatatable = function () {
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-    }
-    initBreadcrumb() {
+    };
+    UserIndexComponent.prototype.initBreadcrumb = function () {
         this.breadcrumbList = [
             { name: 'home', url: '/' },
             { name: 'users' }
         ];
-    }
-    initDisplayColumns() {
+    };
+    UserIndexComponent.prototype.initDisplayColumns = function () {
         this.displayedColumns = [
             'image', 'name', 'email', 'password', 'username', 'phone', 'role', "action"
         ];
-    }
-    refreshDataSource(data) {
+    };
+    UserIndexComponent.prototype.refreshDataSource = function (data) {
         this.resources = data;
         this.dataSource.data = data;
-    }
-    destroy(id) {
-        this.doc.swal.confirm(_shared_helper__WEBPACK_IMPORTED_MODULE_6__["Helper"].trans('are you sure'), () => {
-            this.userService.destroy(id).subscribe((res) => {
+    };
+    UserIndexComponent.prototype.destroy = function (id) {
+        var _this = this;
+        this.doc.swal.confirm(_shared_helper__WEBPACK_IMPORTED_MODULE_6__["Helper"].trans('are you sure'), function () {
+            _this.userService.destroy(id).subscribe(function (res) {
                 if (res.status == 1) {
                     src_app_shared_message__WEBPACK_IMPORTED_MODULE_8__["Message"].success(res.message);
-                    this.loadResources();
+                    _this.loadResources();
                 }
                 else
                     src_app_shared_message__WEBPACK_IMPORTED_MODULE_8__["Message"].error(res.message);
             });
         });
-    }
-    loadResources() {
-        this.userService.get().subscribe((res) => {
-            this.resources = res;
-            this.dataSource.data = res;
+    };
+    UserIndexComponent.prototype.loadResources = function () {
+        var _this = this;
+        this.userService.get().subscribe(function (res) {
+            _this.resources = res;
+            _this.dataSource.data = res;
             //
-            this.refreshDataSource(res);
+            _this.refreshDataSource(res);
         });
-    }
-    edit(item) {
+    };
+    UserIndexComponent.prototype.edit = function (item) {
         this.updateItem = item;
         this.doc.jquery('#updateModal').modal('show');
-    }
-    ngOnInit() {
+    };
+    UserIndexComponent.prototype.ngOnInit = function () {
         this.loadResources();
         this.searchKey = "";
-    }
-    showUpdateModal(item) {
+    };
+    UserIndexComponent.prototype.showUpdateModal = function (item) {
         this.updateItem = item;
-    }
-    search(filterValue) {
+    };
+    UserIndexComponent.prototype.search = function (filterValue) {
         if (this.dataSource)
             this.dataSource.filter = filterValue.trim().toLowerCase();
-    }
-};
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_7__["MatPaginator"]),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_7__["MatPaginator"])
-], UserIndexComponent.prototype, "paginator", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_7__["MatSort"]),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_7__["MatSort"])
-], UserIndexComponent.prototype, "sort", void 0);
-UserIndexComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-user-index',
-        template: __webpack_require__(/*! ./user-index.component.html */ "./src/app/user/components/user/user-index/user-index.component.html"),
-        styles: [__webpack_require__(/*! ./user-index.component.scss */ "./src/app/user/components/user/user-index/user-index.component.scss")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"], _node_modules_angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
-], UserIndexComponent);
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_7__["MatPaginator"]),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_7__["MatPaginator"])
+    ], UserIndexComponent.prototype, "paginator", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_7__["MatSort"]),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_7__["MatSort"])
+    ], UserIndexComponent.prototype, "sort", void 0);
+    UserIndexComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-user-index',
+            template: __webpack_require__(/*! ./user-index.component.html */ "./src/app/user/components/user/user-index/user-index.component.html"),
+            styles: [__webpack_require__(/*! ./user-index.component.scss */ "./src/app/user/components/user/user-index/user-index.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"], _node_modules_angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
+    ], UserIndexComponent);
+    return UserIndexComponent;
+}());
 
 
 
@@ -838,8 +865,8 @@ UserIndexComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserRoutingModule", function() { return UserRoutingModule; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _shared_auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../shared/auth */ "./src/app/shared/auth.ts");
 /* harmony import */ var _shared_middlewares_auth_guest_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../shared/middlewares/auth-guest.service */ "./src/app/shared/middlewares/auth-guest.service.ts");
 /* harmony import */ var _components_role_role_index_role_index_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/role/role-index/role-index.component */ "./src/app/user/components/role/role-index/role-index.component.ts");
@@ -853,7 +880,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const routes = [
+var routes = [
     {
         path: "",
         component: _user_component__WEBPACK_IMPORTED_MODULE_7__["UserComponent"],
@@ -878,16 +905,19 @@ const routes = [
         pathMatch: 'full'
     }
 ];
-let UserRoutingModule = class UserRoutingModule {
-};
-UserRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        imports: [
-            _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)
-        ],
-        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
-    })
-], UserRoutingModule);
+var UserRoutingModule = /** @class */ (function () {
+    function UserRoutingModule() {
+    }
+    UserRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            imports: [
+                _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)
+            ],
+            exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
+        })
+    ], UserRoutingModule);
+    return UserRoutingModule;
+}());
 
 
 
@@ -926,22 +956,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserComponent", function() { return UserComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let UserComponent = class UserComponent {
-    constructor() { }
-    ngOnInit() {
+var UserComponent = /** @class */ (function () {
+    function UserComponent() {
     }
-};
-UserComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-user',
-        template: __webpack_require__(/*! ./user.component.html */ "./src/app/user/user.component.html"),
-        styles: [__webpack_require__(/*! ./user.component.scss */ "./src/app/user/user.component.scss")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], UserComponent);
+    UserComponent.prototype.ngOnInit = function () {
+    };
+    UserComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-user',
+            template: __webpack_require__(/*! ./user.component.html */ "./src/app/user/user.component.html"),
+            styles: [__webpack_require__(/*! ./user.component.scss */ "./src/app/user/user.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], UserComponent);
+    return UserComponent;
+}());
 
 
 
@@ -958,10 +990,10 @@ UserComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserModule", function() { return UserModule; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _shared_shared_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/shared.module */ "./src/app/shared/shared.module.ts");
 /* harmony import */ var angular_datatables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! angular-datatables */ "./node_modules/angular-datatables/index.js");
-/* harmony import */ var _node_modules_angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../node_modules/@angular/material */ "./node_modules/@angular/material/esm2015/material.js");
+/* harmony import */ var _node_modules_angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../node_modules/@angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var _user_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./user-routing.module */ "./src/app/user/user-routing.module.ts");
 /* harmony import */ var _user_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./user.component */ "./src/app/user/user.component.ts");
 /* harmony import */ var _components_user_user_index_user_index_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/user/user-index/user-index.component */ "./src/app/user/components/user/user-index/user-index.component.ts");
@@ -983,36 +1015,37 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let UserModule = class UserModule {
-    constructor() {
+var UserModule = /** @class */ (function () {
+    function UserModule() {
     }
-};
-UserModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        declarations: [
-            _user_component__WEBPACK_IMPORTED_MODULE_6__["UserComponent"],
-            _components_user_user_index_user_index_component__WEBPACK_IMPORTED_MODULE_7__["UserIndexComponent"],
-            _components_user_user_form_user_form_component__WEBPACK_IMPORTED_MODULE_8__["UserFormComponent"],
-            _components_role_role_index_role_index_component__WEBPACK_IMPORTED_MODULE_9__["RoleIndexComponent"],
-            _components_role_role_form_role_form_component__WEBPACK_IMPORTED_MODULE_10__["RoleFormComponent"],
-            _components_role_permission_permission_component__WEBPACK_IMPORTED_MODULE_11__["PermissionComponent"],
-            _components_user_history_user_history_component__WEBPACK_IMPORTED_MODULE_12__["UserHistoryComponent"]
-        ],
-        imports: [
-            _shared_shared_module__WEBPACK_IMPORTED_MODULE_2__["SharedModule"],
-            _user_routing_module__WEBPACK_IMPORTED_MODULE_5__["UserRoutingModule"],
-            angular_datatables__WEBPACK_IMPORTED_MODULE_3__["DataTablesModule"],
-            _node_modules_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatTableModule"],
-            _node_modules_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatPaginatorModule"],
-            _node_modules_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatSortModule"],
-            _node_modules_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatCheckboxModule"],
-            _node_modules_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatButtonModule"],
-            _node_modules_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatFormFieldModule"],
-            _node_modules_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatSlideToggleModule"]
-        ]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], UserModule);
+    UserModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            declarations: [
+                _user_component__WEBPACK_IMPORTED_MODULE_6__["UserComponent"],
+                _components_user_user_index_user_index_component__WEBPACK_IMPORTED_MODULE_7__["UserIndexComponent"],
+                _components_user_user_form_user_form_component__WEBPACK_IMPORTED_MODULE_8__["UserFormComponent"],
+                _components_role_role_index_role_index_component__WEBPACK_IMPORTED_MODULE_9__["RoleIndexComponent"],
+                _components_role_role_form_role_form_component__WEBPACK_IMPORTED_MODULE_10__["RoleFormComponent"],
+                _components_role_permission_permission_component__WEBPACK_IMPORTED_MODULE_11__["PermissionComponent"],
+                _components_user_history_user_history_component__WEBPACK_IMPORTED_MODULE_12__["UserHistoryComponent"]
+            ],
+            imports: [
+                _shared_shared_module__WEBPACK_IMPORTED_MODULE_2__["SharedModule"],
+                _user_routing_module__WEBPACK_IMPORTED_MODULE_5__["UserRoutingModule"],
+                angular_datatables__WEBPACK_IMPORTED_MODULE_3__["DataTablesModule"],
+                _node_modules_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatTableModule"],
+                _node_modules_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatPaginatorModule"],
+                _node_modules_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatSortModule"],
+                _node_modules_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatCheckboxModule"],
+                _node_modules_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatButtonModule"],
+                _node_modules_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatFormFieldModule"],
+                _node_modules_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatSlideToggleModule"]
+            ]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], UserModule);
+    return UserModule;
+}());
 
 
 

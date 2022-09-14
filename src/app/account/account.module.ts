@@ -78,6 +78,8 @@ import { WorkPrivateBankComponent } from './components/work-private-bank/work-pr
 import { BankPipe } from './pipes/bank.pipe';
 import { PersonPipe } from './pipes/person.pipe';
 import { PipesPipe } from './pipes.pipe';
+import { ServiceaffComponent } from './components/serviceaff/serviceaff.component';
+// import { ServicesComponent } from './components/services/services.component';
 
 @NgModule({
   declarations: [
@@ -146,6 +148,8 @@ import { PipesPipe } from './pipes.pipe';
     BankPipe,
     PersonPipe,
     PipesPipe,
+    ServiceaffComponent,
+    // ServicesComponent,
    
 
   ],

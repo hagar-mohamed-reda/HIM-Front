@@ -42,7 +42,7 @@ export class CreditHoursComponent implements OnInit {
 }
 
 load() {
-  if (!Helper.validator(this.filter, ['level_id' , 'division_id' , 'term_id' , 'year_id' ])) {
+  if (!Helper.validator(this.filter, ['level_id' ,  'year_id' ])) {
     return Message.error(Helper.trans('please choose all filters'));
   }
 

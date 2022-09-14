@@ -33,7 +33,7 @@ module.exports = "#alertNumber {\n  text-align: center;\n  position: fixed;\n  t
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddSeatingNumbers", function() { return AddSeatingNumbers; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_account_services_level_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/account/services/level.service */ "./src/app/account/services/level.service.ts");
 /* harmony import */ var src_app_adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/adminision/services/application-setting.service */ "./src/app/adminision/services/application-setting.service.ts");
 /* harmony import */ var src_app_shared_cache__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/shared/cache */ "./src/app/shared/cache.ts");
@@ -44,8 +44,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let AddSeatingNumbers = class AddSeatingNumbers {
-    constructor(globalService, applicationSettingService) {
+var AddSeatingNumbers = /** @class */ (function () {
+    function AddSeatingNumbers(globalService, applicationSettingService) {
         this.globalService = globalService;
         this.applicationSettingService = applicationSettingService;
         this.filter = {};
@@ -56,19 +56,21 @@ let AddSeatingNumbers = class AddSeatingNumbers {
         this.academicYears = [];
         this.doc = document;
     }
-    calculateCount() {
+    AddSeatingNumbers.prototype.calculateCount = function () {
         this.$('#count').text(this.$('#reportContent tbody tr').length);
-    }
-    load() {
+    };
+    AddSeatingNumbers.prototype.load = function () {
         //if (!Helper.validator(this.filter, ['level_id', 'division_id', 'academic_year_id'])) {
         //  return Message.error(Helper.trans('please choose all filters'));
         //}
-        this.globalService.loadHtml("affair/report3", this.filter).subscribe((res) => {
+        var _this = this;
+        this.globalService.loadHtml("affair/report3", this.filter).subscribe(function (res) {
             $('#reportContent').html(res);
-            this.calculateCount();
+            _this.calculateCount();
         });
-    }
-    sendNumber() {
+    };
+    AddSeatingNumbers.prototype.sendNumber = function () {
+        var _this = this;
         $('#beforeLoading').hide();
         $('#buttonLoading').show();
         var objectSend = { level_id: this.level_id, start_number: this.start_number, division_id: this.division_id };
@@ -77,47 +79,48 @@ let AddSeatingNumbers = class AddSeatingNumbers {
             $('#alertNumber').slideDown(300);
             $('#beforeLoading').show();
             $('#buttonLoading').hide();
-            setTimeout(() => {
+            setTimeout(function () {
                 $('#alertNumber').slideUp(1000);
             }, 1000);
         }
         else {
-            this.applicationSettingService.makeNumber(objectSend).subscribe((res) => {
+            this.applicationSettingService.makeNumber(objectSend).subscribe(function (res) {
                 if (res == 1) {
                     $('#alertNumberSuccess').slideDown(300);
                     $('#beforeLoading').show();
                     $('#buttonLoading').hide();
-                    setTimeout(() => {
+                    setTimeout(function () {
                         $('#alertNumberSuccess').slideUp(1000);
                         $('#closeNumber').trigger('click');
-                        this.level_id = '';
-                        this.start_number = '';
-                        this.division_id = '';
+                        _this.level_id = '';
+                        _this.start_number = '';
+                        _this.division_id = '';
                     }, 1000);
                 }
                 else {
                     $('#alertNumber').slideDown(300);
                     $('#beforeLoading').show();
                     $('#buttonLoading').hide();
-                    setTimeout(() => {
+                    setTimeout(function () {
                         $('#alertNumber').slideUp(1000);
                     }, 1000);
                 }
             });
         }
-    }
-    ngOnInit() {
+    };
+    AddSeatingNumbers.prototype.ngOnInit = function () {
         this.levels = src_app_shared_cache__WEBPACK_IMPORTED_MODULE_4__["Cache"].get(src_app_account_services_level_service__WEBPACK_IMPORTED_MODULE_2__["LevelService"].LEVEL_PREFIX);
-    }
-};
-AddSeatingNumbers = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-add-seating-numbers',
-        template: __webpack_require__(/*! ./add-seating-numbers.component.html */ "./src/app/exams/components/add-seating-numbers/add-seating-numbers.component.html"),
-        styles: [__webpack_require__(/*! ./add-seating-numbers.component.scss */ "./src/app/exams/components/add-seating-numbers/add-seating-numbers.component.scss")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_shared_services_global_service__WEBPACK_IMPORTED_MODULE_5__["GlobalService"], src_app_adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_3__["ApplicationSettingService"]])
-], AddSeatingNumbers);
+    };
+    AddSeatingNumbers = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-add-seating-numbers',
+            template: __webpack_require__(/*! ./add-seating-numbers.component.html */ "./src/app/exams/components/add-seating-numbers/add-seating-numbers.component.html"),
+            styles: [__webpack_require__(/*! ./add-seating-numbers.component.scss */ "./src/app/exams/components/add-seating-numbers/add-seating-numbers.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_shared_services_global_service__WEBPACK_IMPORTED_MODULE_5__["GlobalService"], src_app_adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_3__["ApplicationSettingService"]])
+    ], AddSeatingNumbers);
+    return AddSeatingNumbers;
+}());
 
 
 
@@ -156,7 +159,7 @@ module.exports = "#alertNumber {\n  text-align: center;\n  position: fixed;\n  t
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CommissionsComponent", function() { return CommissionsComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_shared_cache__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/shared/cache */ "./src/app/shared/cache.ts");
 /* harmony import */ var src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/shared/helper */ "./src/app/shared/helper.ts");
 /* harmony import */ var src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/shared/message */ "./src/app/shared/message.ts");
@@ -173,8 +176,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let CommissionsComponent = class CommissionsComponent {
-    constructor(globalService, applicationSettingService) {
+var CommissionsComponent = /** @class */ (function () {
+    function CommissionsComponent(globalService, applicationSettingService) {
+        var _this_1 = this;
         this.globalService = globalService;
         this.applicationSettingService = applicationSettingService;
         this.filter = {};
@@ -187,26 +191,27 @@ let CommissionsComponent = class CommissionsComponent {
         this.doc = document;
         this.applicationSettingService.queueRequests();
         var self = this;
-        src_app_shared_request__WEBPACK_IMPORTED_MODULE_5__["Request"].fire(false, () => {
+        src_app_shared_request__WEBPACK_IMPORTED_MODULE_5__["Request"].fire(false, function () {
         });
-        this.applicationSettingService.commision_types().subscribe((res) => {
-            this.commision_types = res;
+        this.applicationSettingService.commision_types().subscribe(function (res) {
+            _this_1.commision_types = res;
         });
     }
-    createCommission() {
+    CommissionsComponent.prototype.createCommission = function () {
+        var _this_1 = this;
         if (!src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].validator(this.filter, ['level_id', 'division_id', 'theater_id', 'max_num', 'commission_number', 'start_num', 'commission_type_id'])) {
             return src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].error(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].trans('please choose all filters'));
         }
         else {
             $('#beforeLoading').hide();
             $('#buttonLoading').show();
-            this.applicationSettingService.commissionsStore(this.filter).subscribe((res) => {
+            this.applicationSettingService.commissionsStore(this.filter).subscribe(function (res) {
                 if (res == 1) {
                     $('#alertNumberSuccess').slideDown(300);
                     $('#beforeLoading').show();
                     $('#buttonLoading').hide();
-                    this.applicationSettingService.commissions().subscribe((res) => {
-                        this.prevCommissions = res;
+                    _this_1.applicationSettingService.commissions().subscribe(function (res) {
+                        _this_1.prevCommissions = res;
                     });
                     return src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].success(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].trans('done'));
                 }
@@ -217,21 +222,22 @@ let CommissionsComponent = class CommissionsComponent {
                 }
             });
         }
-    }
-    updateCommission() {
+    };
+    CommissionsComponent.prototype.updateCommission = function () {
+        var _this_1 = this;
         if (!src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].validator(this.filterUpdate, ['level_id', 'division_id', 'theater_id', 'max_num', 'name', 'commission_type_id'])) {
             return src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].error(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].trans('please choose all filters'));
         }
         else {
             $('#beforeLoading0').hide();
             $('#buttonLoading0').show();
-            this.applicationSettingService.commissionEdit(this.filterUpdate).subscribe((res) => {
+            this.applicationSettingService.commissionEdit(this.filterUpdate).subscribe(function (res) {
                 if (res == 1) {
                     $('#alertNumberSuccess').slideDown(300);
                     $('#beforeLoading0').show();
                     $('#buttonLoading0').hide();
-                    this.applicationSettingService.commissions().subscribe((res) => {
-                        this.prevCommissions = res;
+                    _this_1.applicationSettingService.commissions().subscribe(function (res) {
+                        _this_1.prevCommissions = res;
                     });
                     return src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].success(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].trans('done'));
                 }
@@ -242,14 +248,15 @@ let CommissionsComponent = class CommissionsComponent {
                 }
             });
         }
-    }
-    destroyCommission(id) {
+    };
+    CommissionsComponent.prototype.destroyCommission = function (id) {
+        var _this_1 = this;
         var _this = this;
-        src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].confirm(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].trans('are you sure'), () => {
-            this.applicationSettingService.commissionDestroy(id).subscribe((res) => {
+        src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].confirm(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].trans('are you sure'), function () {
+            _this_1.applicationSettingService.commissionDestroy(id).subscribe(function (res) {
                 if (res == 1) {
-                    this.applicationSettingService.commissions().subscribe((res) => {
-                        this.prevCommissions = res;
+                    _this_1.applicationSettingService.commissions().subscribe(function (res) {
+                        _this_1.prevCommissions = res;
                     });
                     return src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].success(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].trans('done'));
                 }
@@ -258,35 +265,37 @@ let CommissionsComponent = class CommissionsComponent {
                 }
             });
         });
-    }
-    setCurrent(data) {
+    };
+    CommissionsComponent.prototype.setCurrent = function (data) {
         this.filterUpdate = data;
-    }
-    printContent() {
+    };
+    CommissionsComponent.prototype.printContent = function () {
         this.doc.printJs();
-    }
-    ngOnInit() {
+    };
+    CommissionsComponent.prototype.ngOnInit = function () {
+        var _this_1 = this;
         this.levels = src_app_shared_cache__WEBPACK_IMPORTED_MODULE_2__["Cache"].get(_account_services_level_service__WEBPACK_IMPORTED_MODULE_8__["LevelService"].LEVEL_PREFIX);
         // this.globalService.loadHtml("affair/report4", this.filter).subscribe((res) => {
         //   $('#reportContent').html(res);
         // });
-        this.applicationSettingService.commissions().subscribe((res) => {
-            this.prevCommissions = res;
+        this.applicationSettingService.commissions().subscribe(function (res) {
+            _this_1.prevCommissions = res;
         });
-        this.applicationSettingService.theaters().subscribe((res) => {
-            this.prevTheaters = res;
+        this.applicationSettingService.theaters().subscribe(function (res) {
+            _this_1.prevTheaters = res;
         });
-    }
-};
-CommissionsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-commissions',
-        template: __webpack_require__(/*! ./commissions.component.html */ "./src/app/exams/components/commissions/commissions.component.html"),
-        styles: [__webpack_require__(/*! ./commissions.component.scss */ "./src/app/exams/components/commissions/commissions.component.scss")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_shared_services_global_service__WEBPACK_IMPORTED_MODULE_6__["GlobalService"],
-        _adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_7__["ApplicationSettingService"]])
-], CommissionsComponent);
+    };
+    CommissionsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-commissions',
+            template: __webpack_require__(/*! ./commissions.component.html */ "./src/app/exams/components/commissions/commissions.component.html"),
+            styles: [__webpack_require__(/*! ./commissions.component.scss */ "./src/app/exams/components/commissions/commissions.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_shared_services_global_service__WEBPACK_IMPORTED_MODULE_6__["GlobalService"],
+            _adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_7__["ApplicationSettingService"]])
+    ], CommissionsComponent);
+    return CommissionsComponent;
+}());
 
 
 
@@ -325,7 +334,7 @@ module.exports = "#alertNumber {\n  text-align: center;\n  position: fixed;\n  t
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ManageRoomsMapComponent", function() { return ManageRoomsMapComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_shared_cache__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/shared/cache */ "./src/app/shared/cache.ts");
 /* harmony import */ var src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/shared/helper */ "./src/app/shared/helper.ts");
 /* harmony import */ var src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/shared/message */ "./src/app/shared/message.ts");
@@ -344,8 +353,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let ManageRoomsMapComponent = class ManageRoomsMapComponent {
-    constructor(globalService, applicationSettingService) {
+var ManageRoomsMapComponent = /** @class */ (function () {
+    function ManageRoomsMapComponent(globalService, applicationSettingService) {
+        var _this = this;
         this.globalService = globalService;
         this.applicationSettingService = applicationSettingService;
         this.filter = {};
@@ -358,25 +368,27 @@ let ManageRoomsMapComponent = class ManageRoomsMapComponent {
         this.doc = document;
         this.applicationSettingService.queueRequests();
         var self = this;
-        src_app_shared_request__WEBPACK_IMPORTED_MODULE_5__["Request"].fire(false, () => {
+        src_app_shared_request__WEBPACK_IMPORTED_MODULE_5__["Request"].fire(false, function () {
         });
-        this.applicationSettingService.student_distributions_number().subscribe((res) => {
-            this.student_distributions_number = res;
+        this.applicationSettingService.student_distributions_number().subscribe(function (res) {
+            _this.student_distributions_number = res;
         });
     }
-    calculateCount() {
+    ManageRoomsMapComponent.prototype.calculateCount = function () {
         this.$('#count').text(this.$('#reportContent tbody tr').length);
-    }
-    load() {
+    };
+    ManageRoomsMapComponent.prototype.load = function () {
         //if (!Helper.validator(this.filter, ['level_id', 'division_id', 'academic_year_id'])) {
         //  return Message.error(Helper.trans('please choose all filters'));
         //}
-        this.globalService.loadHtml("affair/report3", this.filter).subscribe((res) => {
+        var _this = this;
+        this.globalService.loadHtml("affair/report3", this.filter).subscribe(function (res) {
             $('#reportContent').html(res);
-            this.calculateCount();
+            _this.calculateCount();
         });
-    }
-    sendNumber() {
+    };
+    ManageRoomsMapComponent.prototype.sendNumber = function () {
+        var _this = this;
         $('#beforeLoading').hide();
         $('#buttonLoading').show();
         var objectSend = { level_id: this.level_id, set_number: this.start_number, theater_id: this.theater_id, term_id: this.term_id, commission_id: this.commission_id, year_id: this.year_id, student_distribution_id: this.student_distribution_id };
@@ -385,50 +397,51 @@ let ManageRoomsMapComponent = class ManageRoomsMapComponent {
             $('#alertNumber').slideDown(300);
             $('#beforeLoading').show();
             $('#buttonLoading').hide();
-            setTimeout(() => {
+            setTimeout(function () {
                 $('#alertNumber').slideUp(1000);
             }, 1000);
         }
         else {
-            this.applicationSettingService.student_distributions(objectSend).subscribe((res) => {
+            this.applicationSettingService.student_distributions(objectSend).subscribe(function (res) {
                 if (res == 1) {
                     $('#alertNumberSuccess').slideDown(300);
                     $('#beforeLoading').show();
                     $('#buttonLoading').hide();
-                    setTimeout(() => {
+                    setTimeout(function () {
                         $('#alertNumberSuccess').slideUp(1000);
                         $('#closeNumber').trigger('click');
-                        this.level_id = '';
-                        this.start_number = '';
-                        this.student_distribution_id = '';
-                        this.year_id = '';
-                        this.commission_id = '';
-                        this.term_id = '';
-                        this.theater_id = '';
+                        _this.level_id = '';
+                        _this.start_number = '';
+                        _this.student_distribution_id = '';
+                        _this.year_id = '';
+                        _this.commission_id = '';
+                        _this.term_id = '';
+                        _this.theater_id = '';
                     }, 1000);
                 }
                 else {
                     $('#alertNumber').slideDown(300);
                     $('#beforeLoading').show();
                     $('#buttonLoading').hide();
-                    setTimeout(() => {
+                    setTimeout(function () {
                         $('#alertNumber').slideUp(1000);
                     }, 1000);
                 }
             });
         }
-    }
-    printContent() {
+    };
+    ManageRoomsMapComponent.prototype.printContent = function () {
         this.doc.printJs();
-    }
-    submitData() {
+    };
+    ManageRoomsMapComponent.prototype.submitData = function () {
+        var _this = this;
         // if (!Helper.validator(this.filter, [ 'year_id' ])) {
         //   return Message.error(Helper.trans('اختر السنه اولا'));
         // }
         // else
         //{
-        src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].confirm(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].trans('are you sure'), () => {
-            this.applicationSettingService.student_distributions(1).subscribe((res) => {
+        src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].confirm(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].trans('are you sure'), function () {
+            _this.applicationSettingService.student_distributions(1).subscribe(function (res) {
                 if (res == 1) {
                     return src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].success(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].trans('done'));
                 }
@@ -438,10 +451,11 @@ let ManageRoomsMapComponent = class ManageRoomsMapComponent {
             });
         });
         // }
-    }
-    submitDataNo() {
-        src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].confirm(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].trans('are you sure'), () => {
-            this.applicationSettingService.student_distributionsNo(1).subscribe((res) => {
+    };
+    ManageRoomsMapComponent.prototype.submitDataNo = function () {
+        var _this = this;
+        src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].confirm(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].trans('are you sure'), function () {
+            _this.applicationSettingService.student_distributionsNo(1).subscribe(function (res) {
                 if (res == 1) {
                     return src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].success(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].trans('done'));
                 }
@@ -450,27 +464,29 @@ let ManageRoomsMapComponent = class ManageRoomsMapComponent {
                 }
             });
         });
-    }
-    ngOnInit() {
+    };
+    ManageRoomsMapComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.levels = src_app_shared_cache__WEBPACK_IMPORTED_MODULE_2__["Cache"].get(_account_services_level_service__WEBPACK_IMPORTED_MODULE_8__["LevelService"].LEVEL_PREFIX);
         this.terms = src_app_shared_cache__WEBPACK_IMPORTED_MODULE_2__["Cache"].get(_account_services_term_service__WEBPACK_IMPORTED_MODULE_9__["TermService"].TERPM_PREFIX);
-        this.applicationSettingService.theaters().subscribe((res) => {
-            this.theatersGet = res;
+        this.applicationSettingService.theaters().subscribe(function (res) {
+            _this.theatersGet = res;
         });
-        this.applicationSettingService.commissions().subscribe((res) => {
-            this.commissionsGet = res;
+        this.applicationSettingService.commissions().subscribe(function (res) {
+            _this.commissionsGet = res;
         });
-    }
-};
-ManageRoomsMapComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-manage-rooms-map',
-        template: __webpack_require__(/*! ./manage-rooms-map.component.html */ "./src/app/exams/components/manage-rooms-map/manage-rooms-map.component.html"),
-        styles: [__webpack_require__(/*! ./manage-rooms-map.component.scss */ "./src/app/exams/components/manage-rooms-map/manage-rooms-map.component.scss")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_shared_services_global_service__WEBPACK_IMPORTED_MODULE_6__["GlobalService"],
-        _adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_7__["ApplicationSettingService"]])
-], ManageRoomsMapComponent);
+    };
+    ManageRoomsMapComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-manage-rooms-map',
+            template: __webpack_require__(/*! ./manage-rooms-map.component.html */ "./src/app/exams/components/manage-rooms-map/manage-rooms-map.component.html"),
+            styles: [__webpack_require__(/*! ./manage-rooms-map.component.scss */ "./src/app/exams/components/manage-rooms-map/manage-rooms-map.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_shared_services_global_service__WEBPACK_IMPORTED_MODULE_6__["GlobalService"],
+            _adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_7__["ApplicationSettingService"]])
+    ], ManageRoomsMapComponent);
+    return ManageRoomsMapComponent;
+}());
 
 
 
@@ -509,22 +525,24 @@ module.exports = ".safe-box {\n  padding: 10px;\n}\n\n.border-bottom-dashed {\n 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ManageSeatingRoomsReportComponent", function() { return ManageSeatingRoomsReportComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let ManageSeatingRoomsReportComponent = class ManageSeatingRoomsReportComponent {
-    constructor() { }
-    ngOnInit() {
+var ManageSeatingRoomsReportComponent = /** @class */ (function () {
+    function ManageSeatingRoomsReportComponent() {
     }
-};
-ManageSeatingRoomsReportComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-manage-seating-rooms-report',
-        template: __webpack_require__(/*! ./manage-seating-rooms-report.component.html */ "./src/app/exams/components/manage-seating-rooms-report/manage-seating-rooms-report.component.html"),
-        styles: [__webpack_require__(/*! ./manage-seating-rooms-report.component.scss */ "./src/app/exams/components/manage-seating-rooms-report/manage-seating-rooms-report.component.scss")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], ManageSeatingRoomsReportComponent);
+    ManageSeatingRoomsReportComponent.prototype.ngOnInit = function () {
+    };
+    ManageSeatingRoomsReportComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-manage-seating-rooms-report',
+            template: __webpack_require__(/*! ./manage-seating-rooms-report.component.html */ "./src/app/exams/components/manage-seating-rooms-report/manage-seating-rooms-report.component.html"),
+            styles: [__webpack_require__(/*! ./manage-seating-rooms-report.component.scss */ "./src/app/exams/components/manage-seating-rooms-report/manage-seating-rooms-report.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], ManageSeatingRoomsReportComponent);
+    return ManageSeatingRoomsReportComponent;
+}());
 
 
 
@@ -563,7 +581,7 @@ module.exports = "@import url(\"https://fonts.googleapis.com/css2?family=Amiri&d
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PrintSeatingNumbersComponent", function() { return PrintSeatingNumbersComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_shared_cache__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/shared/cache */ "./src/app/shared/cache.ts");
 /* harmony import */ var src_app_shared_request__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/shared/request */ "./src/app/shared/request.ts");
 /* harmony import */ var src_app_shared_services_global_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/shared/services/global.service */ "./src/app/shared/services/global.service.ts");
@@ -582,8 +600,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let PrintSeatingNumbersComponent = class PrintSeatingNumbersComponent {
-    constructor(courseService, globalService, applicationSettingService) {
+var PrintSeatingNumbersComponent = /** @class */ (function () {
+    function PrintSeatingNumbersComponent(courseService, globalService, applicationSettingService) {
+        var _this = this;
         this.courseService = courseService;
         this.globalService = globalService;
         this.applicationSettingService = applicationSettingService;
@@ -597,46 +616,48 @@ let PrintSeatingNumbersComponent = class PrintSeatingNumbersComponent {
         this.levels = [];
         this.applicationSettingService.queueRequests();
         var self = this;
-        src_app_shared_request__WEBPACK_IMPORTED_MODULE_3__["Request"].fire(false, () => {
+        src_app_shared_request__WEBPACK_IMPORTED_MODULE_3__["Request"].fire(false, function () {
         });
-        this.courseService.get().subscribe((res) => {
-            this.courses = res;
+        this.courseService.get().subscribe(function (res) {
+            _this.courses = res;
         });
     }
-    load() {
+    PrintSeatingNumbersComponent.prototype.load = function () {
         // if (!Helper.validator(this.filter, ['course_id'])) {
         //   return Message.error(Helper.trans('please choose all filters'));
         // }
-        this.globalService.loadHtml("affair/report8", this.filter).subscribe((res) => {
+        this.globalService.loadHtml("affair/report8", this.filter).subscribe(function (res) {
             $('#reportContent').html(res);
         });
-    }
-    printContent() {
+    };
+    PrintSeatingNumbersComponent.prototype.printContent = function () {
         this.doc.printJs();
-    }
-    ngOnInit() {
+    };
+    PrintSeatingNumbersComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.levels = src_app_shared_cache__WEBPACK_IMPORTED_MODULE_2__["Cache"].get(_account_services_level_service__WEBPACK_IMPORTED_MODULE_6__["LevelService"].LEVEL_PREFIX);
         // set select2
-        setTimeout(() => {
-            this.$('.select2').select2();
+        setTimeout(function () {
+            _this.$('.select2').select2();
         }, 500);
-        this.applicationSettingService.commissions().subscribe((res) => {
-            this.commissionsGet = res;
+        this.applicationSettingService.commissions().subscribe(function (res) {
+            _this.commissionsGet = res;
         });
         this.divisions = src_app_shared_cache__WEBPACK_IMPORTED_MODULE_2__["Cache"].get(src_app_account_services_division_service__WEBPACK_IMPORTED_MODULE_8__["DivisionService"].DIVISION_PREFIX);
         this.terms = src_app_shared_cache__WEBPACK_IMPORTED_MODULE_2__["Cache"].get(src_app_account_services_term_service__WEBPACK_IMPORTED_MODULE_9__["TermService"].TERPM_PREFIX);
-    }
-};
-PrintSeatingNumbersComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-print-seating-numbers',
-        template: __webpack_require__(/*! ./print-seating-numbers.component.html */ "./src/app/exams/components/print-seating-numbers/print-seating-numbers.component.html"),
-        styles: [__webpack_require__(/*! ./print-seating-numbers.component.scss */ "./src/app/exams/components/print-seating-numbers/print-seating-numbers.component.scss")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_academic_services_course_service__WEBPACK_IMPORTED_MODULE_7__["CourseService"],
-        src_app_shared_services_global_service__WEBPACK_IMPORTED_MODULE_4__["GlobalService"],
-        _adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationSettingService"]])
-], PrintSeatingNumbersComponent);
+    };
+    PrintSeatingNumbersComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-print-seating-numbers',
+            template: __webpack_require__(/*! ./print-seating-numbers.component.html */ "./src/app/exams/components/print-seating-numbers/print-seating-numbers.component.html"),
+            styles: [__webpack_require__(/*! ./print-seating-numbers.component.scss */ "./src/app/exams/components/print-seating-numbers/print-seating-numbers.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_academic_services_course_service__WEBPACK_IMPORTED_MODULE_7__["CourseService"],
+            src_app_shared_services_global_service__WEBPACK_IMPORTED_MODULE_4__["GlobalService"],
+            _adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationSettingService"]])
+    ], PrintSeatingNumbersComponent);
+    return PrintSeatingNumbersComponent;
+}());
 
 
 
@@ -675,8 +696,8 @@ module.exports = "#form {\n  display: flex;\n  align-items: center;\n}\n/*# sour
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PrintSignsReportsComponent", function() { return PrintSignsReportsComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var src_app_academic_services_course_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/academic/services/course.service */ "./src/app/academic/services/course.service.ts");
 /* harmony import */ var src_app_account_services_academic_year_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/account/services/academic-year.service */ "./src/app/account/services/academic-year.service.ts");
 /* harmony import */ var src_app_account_services_division_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/account/services/division.service */ "./src/app/account/services/division.service.ts");
@@ -703,8 +724,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // import { CourseService } from '../../services/course.service';
-let PrintSignsReportsComponent = class PrintSignsReportsComponent {
-    constructor(courseService, academicService, termService, titleService, globalService, applicationSettingService) {
+var PrintSignsReportsComponent = /** @class */ (function () {
+    function PrintSignsReportsComponent(courseService, academicService, termService, titleService, globalService, applicationSettingService) {
+        var _this = this;
         this.courseService = courseService;
         this.academicService = academicService;
         this.termService = termService;
@@ -724,68 +746,71 @@ let PrintSignsReportsComponent = class PrintSignsReportsComponent {
         this.doc = document;
         this.terms = [];
         this.data = [];
-        this.groups = this.applicationSettingService.groups().subscribe((res) => {
-            this.groups = res;
+        this.groups = this.applicationSettingService.groups().subscribe(function (res) {
+            _this.groups = res;
         });
-        this.courses = this.courseService.getopenCourses().subscribe((res) => {
-            this.courses = res;
+        this.courses = this.courseService.getopenCourses().subscribe(function (res) {
+            _this.courses = res;
         });
         this.titleService.setTitle("HIM" + " - " + src_app_shared_helper__WEBPACK_IMPORTED_MODULE_10__["Helper"].trans('print result'));
         this.applicationSettingService.queueRequests();
         var self = this;
-        src_app_shared_request__WEBPACK_IMPORTED_MODULE_12__["Request"].fire(false, () => {
+        src_app_shared_request__WEBPACK_IMPORTED_MODULE_12__["Request"].fire(false, function () {
         });
     }
-    load() {
+    PrintSignsReportsComponent.prototype.load = function () {
         console.log(this.filter);
         if (!src_app_shared_helper__WEBPACK_IMPORTED_MODULE_10__["Helper"].validator(this.filter, ['division_id'])) {
             return src_app_shared_message__WEBPACK_IMPORTED_MODULE_11__["Message"].error(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_10__["Helper"].trans('please choose all filters'));
         }
         else {
-            this.globalService.loadHtml("affair/report7", this.filter).subscribe((res) => {
+            this.globalService.loadHtml("affair/report7", this.filter).subscribe(function (res) {
                 $('#reportContent').html(res);
             });
         }
-    }
-    getSections() {
-        this.sections = this.applicationSettingService.sections(this.filter).subscribe((res) => {
-            this.sections = res;
+    };
+    PrintSignsReportsComponent.prototype.getSections = function () {
+        var _this = this;
+        this.sections = this.applicationSettingService.sections(this.filter).subscribe(function (res) {
+            _this.sections = res;
         });
-    }
-    excel() {
+    };
+    PrintSignsReportsComponent.prototype.excel = function () {
         this.doc.exportExcel();
-    }
-    printContent() {
+    };
+    PrintSignsReportsComponent.prototype.printContent = function () {
         this.doc.printJs();
-    }
-    ngOnInit() {
-        $('#division_id').on('change', () => {
-            this.division_id = $('#division_id').val();
+    };
+    PrintSignsReportsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        $('#division_id').on('change', function () {
+            _this.division_id = $('#division_id').val();
         });
-        $('#term_id').on('change', () => {
-            this.term_id = $('#term_id').val();
+        $('#term_id').on('change', function () {
+            _this.term_id = $('#term_id').val();
         });
-        $('#level_id').on('change', () => {
-            this.level_id = $('#level_id').val();
+        $('#level_id').on('change', function () {
+            _this.level_id = $('#level_id').val();
         });
         this.levels = src_app_shared_cache__WEBPACK_IMPORTED_MODULE_9__["Cache"].get(src_app_account_services_level_service__WEBPACK_IMPORTED_MODULE_6__["LevelService"].LEVEL_PREFIX);
         this.divisions = src_app_shared_cache__WEBPACK_IMPORTED_MODULE_9__["Cache"].get(src_app_account_services_division_service__WEBPACK_IMPORTED_MODULE_5__["DivisionService"].DIVISION_PREFIX);
         this.terms = src_app_shared_cache__WEBPACK_IMPORTED_MODULE_9__["Cache"].get(src_app_account_services_term_service__WEBPACK_IMPORTED_MODULE_7__["TermService"].TERPM_PREFIX);
-    }
-};
-PrintSignsReportsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-print-signs-reports',
-        template: __webpack_require__(/*! ./print-signs-reports.component.html */ "./src/app/exams/components/print-signs-reports/print-signs-reports.component.html"),
-        styles: [__webpack_require__(/*! ./print-signs-reports.component.scss */ "./src/app/exams/components/print-signs-reports/print-signs-reports.component.scss")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_academic_services_course_service__WEBPACK_IMPORTED_MODULE_3__["CourseService"],
-        src_app_account_services_academic_year_service__WEBPACK_IMPORTED_MODULE_4__["AcademicYearService"],
-        src_app_account_services_term_service__WEBPACK_IMPORTED_MODULE_7__["TermService"],
-        _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["Title"],
-        src_app_shared_services_global_service__WEBPACK_IMPORTED_MODULE_13__["GlobalService"],
-        src_app_adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_8__["ApplicationSettingService"]])
-], PrintSignsReportsComponent);
+    };
+    PrintSignsReportsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-print-signs-reports',
+            template: __webpack_require__(/*! ./print-signs-reports.component.html */ "./src/app/exams/components/print-signs-reports/print-signs-reports.component.html"),
+            styles: [__webpack_require__(/*! ./print-signs-reports.component.scss */ "./src/app/exams/components/print-signs-reports/print-signs-reports.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_academic_services_course_service__WEBPACK_IMPORTED_MODULE_3__["CourseService"],
+            src_app_account_services_academic_year_service__WEBPACK_IMPORTED_MODULE_4__["AcademicYearService"],
+            src_app_account_services_term_service__WEBPACK_IMPORTED_MODULE_7__["TermService"],
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["Title"],
+            src_app_shared_services_global_service__WEBPACK_IMPORTED_MODULE_13__["GlobalService"],
+            src_app_adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_8__["ApplicationSettingService"]])
+    ], PrintSignsReportsComponent);
+    return PrintSignsReportsComponent;
+}());
 
 
 
@@ -824,22 +849,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PrintStudentsReportComponent", function() { return PrintStudentsReportComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let PrintStudentsReportComponent = class PrintStudentsReportComponent {
-    constructor() { }
-    ngOnInit() {
+var PrintStudentsReportComponent = /** @class */ (function () {
+    function PrintStudentsReportComponent() {
     }
-};
-PrintStudentsReportComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-print-students-report',
-        template: __webpack_require__(/*! ./print-students-report.component.html */ "./src/app/exams/components/print-students-report/print-students-report.component.html"),
-        styles: [__webpack_require__(/*! ./print-students-report.component.scss */ "./src/app/exams/components/print-students-report/print-students-report.component.scss")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], PrintStudentsReportComponent);
+    PrintStudentsReportComponent.prototype.ngOnInit = function () {
+    };
+    PrintStudentsReportComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-print-students-report',
+            template: __webpack_require__(/*! ./print-students-report.component.html */ "./src/app/exams/components/print-students-report/print-students-report.component.html"),
+            styles: [__webpack_require__(/*! ./print-students-report.component.scss */ "./src/app/exams/components/print-students-report/print-students-report.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], PrintStudentsReportComponent);
+    return PrintStudentsReportComponent;
+}());
 
 
 
@@ -878,7 +905,7 @@ module.exports = "#form {\n  display: flex;\n  align-items: center;\n}\n/*# sour
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PrintWallsReportsComponent", function() { return PrintWallsReportsComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_shared_cache__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/shared/cache */ "./src/app/shared/cache.ts");
 /* harmony import */ var src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/shared/helper */ "./src/app/shared/helper.ts");
 /* harmony import */ var src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/shared/message */ "./src/app/shared/message.ts");
@@ -897,8 +924,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let PrintWallsReportsComponent = class PrintWallsReportsComponent {
-    constructor(globalService, applicationSettingService) {
+var PrintWallsReportsComponent = /** @class */ (function () {
+    function PrintWallsReportsComponent(globalService, applicationSettingService) {
         this.globalService = globalService;
         this.applicationSettingService = applicationSettingService;
         this.filter = {};
@@ -910,40 +937,42 @@ let PrintWallsReportsComponent = class PrintWallsReportsComponent {
         this.doc = document;
         this.applicationSettingService.queueRequests();
         var self = this;
-        src_app_shared_request__WEBPACK_IMPORTED_MODULE_5__["Request"].fire(false, () => {
+        src_app_shared_request__WEBPACK_IMPORTED_MODULE_5__["Request"].fire(false, function () {
         });
     }
-    load() {
+    PrintWallsReportsComponent.prototype.load = function () {
         if (!src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].validator(this.filter, ['level_id', 'division_id'])) {
             return src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].error(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].trans('please choose all filters'));
         }
-        this.globalService.loadHtml("affair/report1", this.filter).subscribe((res) => {
+        this.globalService.loadHtml("affair/report1", this.filter).subscribe(function (res) {
             $('#reportContent').html(res);
         });
-    }
-    printContent() {
+    };
+    PrintWallsReportsComponent.prototype.printContent = function () {
         this.doc.printJs();
-    }
-    excel() {
+    };
+    PrintWallsReportsComponent.prototype.excel = function () {
         this.doc.exportExcel();
-    }
-    ngOnInit() {
+    };
+    PrintWallsReportsComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.levels = src_app_shared_cache__WEBPACK_IMPORTED_MODULE_2__["Cache"].get(_account_services_level_service__WEBPACK_IMPORTED_MODULE_8__["LevelService"].LEVEL_PREFIX);
         this.divisions = src_app_shared_cache__WEBPACK_IMPORTED_MODULE_2__["Cache"].get(src_app_account_services_division_service__WEBPACK_IMPORTED_MODULE_9__["DivisionService"].DIVISION_PREFIX);
-        this.applicationSettingService.commissions().subscribe((res) => {
-            this.commissionsGet = res;
+        this.applicationSettingService.commissions().subscribe(function (res) {
+            _this.commissionsGet = res;
         });
-    }
-};
-PrintWallsReportsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-print-walls-reports',
-        template: __webpack_require__(/*! ./print-walls-reports.component.html */ "./src/app/exams/components/print-walls-reports/print-walls-reports.component.html"),
-        styles: [__webpack_require__(/*! ./print-walls-reports.component.scss */ "./src/app/exams/components/print-walls-reports/print-walls-reports.component.scss")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_shared_services_global_service__WEBPACK_IMPORTED_MODULE_6__["GlobalService"],
-        _adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_7__["ApplicationSettingService"]])
-], PrintWallsReportsComponent);
+    };
+    PrintWallsReportsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-print-walls-reports',
+            template: __webpack_require__(/*! ./print-walls-reports.component.html */ "./src/app/exams/components/print-walls-reports/print-walls-reports.component.html"),
+            styles: [__webpack_require__(/*! ./print-walls-reports.component.scss */ "./src/app/exams/components/print-walls-reports/print-walls-reports.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_shared_services_global_service__WEBPACK_IMPORTED_MODULE_6__["GlobalService"],
+            _adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_7__["ApplicationSettingService"]])
+    ], PrintWallsReportsComponent);
+    return PrintWallsReportsComponent;
+}());
 
 
 
@@ -982,7 +1011,7 @@ module.exports = "ul {\n  display: flex;\n  flex-direction: row;\n  justify-cont
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterExamsScheduleComponent", function() { return RegisterExamsScheduleComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_account_services_division_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/account/services/division.service */ "./src/app/account/services/division.service.ts");
 /* harmony import */ var src_app_account_services_level_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/account/services/level.service */ "./src/app/account/services/level.service.ts");
 /* harmony import */ var src_app_shared_cache__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/shared/cache */ "./src/app/shared/cache.ts");
@@ -991,24 +1020,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let RegisterExamsScheduleComponent = class RegisterExamsScheduleComponent {
-    constructor() {
+var RegisterExamsScheduleComponent = /** @class */ (function () {
+    function RegisterExamsScheduleComponent() {
         this.levels = [];
         this.divisions = [];
     }
-    ngOnInit() {
+    RegisterExamsScheduleComponent.prototype.ngOnInit = function () {
         this.levels = src_app_shared_cache__WEBPACK_IMPORTED_MODULE_4__["Cache"].get(src_app_account_services_level_service__WEBPACK_IMPORTED_MODULE_3__["LevelService"].LEVEL_PREFIX);
         this.divisions = src_app_shared_cache__WEBPACK_IMPORTED_MODULE_4__["Cache"].get(src_app_account_services_division_service__WEBPACK_IMPORTED_MODULE_2__["DivisionService"].DIVISION_PREFIX);
-    }
-};
-RegisterExamsScheduleComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-register-exams-schedule',
-        template: __webpack_require__(/*! ./register-exams-schedule.component.html */ "./src/app/exams/components/register-exams-schedule/register-exams-schedule.component.html"),
-        styles: [__webpack_require__(/*! ./register-exams-schedule.component.scss */ "./src/app/exams/components/register-exams-schedule/register-exams-schedule.component.scss")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], RegisterExamsScheduleComponent);
+    };
+    RegisterExamsScheduleComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-register-exams-schedule',
+            template: __webpack_require__(/*! ./register-exams-schedule.component.html */ "./src/app/exams/components/register-exams-schedule/register-exams-schedule.component.html"),
+            styles: [__webpack_require__(/*! ./register-exams-schedule.component.scss */ "./src/app/exams/components/register-exams-schedule/register-exams-schedule.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], RegisterExamsScheduleComponent);
+    return RegisterExamsScheduleComponent;
+}());
 
 
 
@@ -1047,7 +1077,7 @@ module.exports = "#btn {\n  display: flex;\n  justify-content: center;\n}\n/*# s
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SetNumbersNullComponent", function() { return SetNumbersNullComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_account_services_level_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/account/services/level.service */ "./src/app/account/services/level.service.ts");
 /* harmony import */ var src_app_adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/adminision/services/application-setting.service */ "./src/app/adminision/services/application-setting.service.ts");
 /* harmony import */ var src_app_shared_cache__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/shared/cache */ "./src/app/shared/cache.ts");
@@ -1060,16 +1090,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let SetNumbersNullComponent = class SetNumbersNullComponent {
-    constructor(applicationSettingService) {
+var SetNumbersNullComponent = /** @class */ (function () {
+    function SetNumbersNullComponent(applicationSettingService) {
         this.applicationSettingService = applicationSettingService;
         this.filter = {};
         this.levels = [];
     }
-    setNumbersNull() {
+    SetNumbersNullComponent.prototype.setNumbersNull = function () {
+        var _this_1 = this;
         var _this = this;
-        src_app_shared_message__WEBPACK_IMPORTED_MODULE_6__["Message"].confirm(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_5__["Helper"].trans('are you sure'), () => {
-            this.applicationSettingService.setNumbersNull().subscribe((res) => {
+        src_app_shared_message__WEBPACK_IMPORTED_MODULE_6__["Message"].confirm(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_5__["Helper"].trans('are you sure'), function () {
+            _this_1.applicationSettingService.setNumbersNull().subscribe(function (res) {
                 if (res == 1) {
                     return src_app_shared_message__WEBPACK_IMPORTED_MODULE_6__["Message"].success(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_5__["Helper"].trans('done'));
                 }
@@ -1078,22 +1109,24 @@ let SetNumbersNullComponent = class SetNumbersNullComponent {
                 }
             });
         });
-    }
-    ngOnInit() {
-        $('#level_id').on('change', () => {
-            this.level_id = $('#level_id').val();
+    };
+    SetNumbersNullComponent.prototype.ngOnInit = function () {
+        var _this_1 = this;
+        $('#level_id').on('change', function () {
+            _this_1.level_id = $('#level_id').val();
         });
         this.levels = src_app_shared_cache__WEBPACK_IMPORTED_MODULE_4__["Cache"].get(src_app_account_services_level_service__WEBPACK_IMPORTED_MODULE_2__["LevelService"].LEVEL_PREFIX);
-    }
-};
-SetNumbersNullComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-set-numbers-null',
-        template: __webpack_require__(/*! ./set-numbers-null.component.html */ "./src/app/exams/components/set-numbers-null/set-numbers-null.component.html"),
-        styles: [__webpack_require__(/*! ./set-numbers-null.component.scss */ "./src/app/exams/components/set-numbers-null/set-numbers-null.component.scss")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_3__["ApplicationSettingService"]])
-], SetNumbersNullComponent);
+    };
+    SetNumbersNullComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-set-numbers-null',
+            template: __webpack_require__(/*! ./set-numbers-null.component.html */ "./src/app/exams/components/set-numbers-null/set-numbers-null.component.html"),
+            styles: [__webpack_require__(/*! ./set-numbers-null.component.scss */ "./src/app/exams/components/set-numbers-null/set-numbers-null.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_3__["ApplicationSettingService"]])
+    ], SetNumbersNullComponent);
+    return SetNumbersNullComponent;
+}());
 
 
 
@@ -1132,8 +1165,8 @@ module.exports = "#form {\n  display: flex;\n  align-items: center;\n}\n/*# sour
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StudentsRoomsManageReportComponent", function() { return StudentsRoomsManageReportComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var src_app_account_services_division_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/account/services/division.service */ "./src/app/account/services/division.service.ts");
 /* harmony import */ var src_app_account_services_level_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/account/services/level.service */ "./src/app/account/services/level.service.ts");
 /* harmony import */ var src_app_adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/adminision/services/application-setting.service */ "./src/app/adminision/services/application-setting.service.ts");
@@ -1153,8 +1186,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let StudentsRoomsManageReportComponent = class StudentsRoomsManageReportComponent {
-    constructor(titleService, globalService, applicationSettingService) {
+var StudentsRoomsManageReportComponent = /** @class */ (function () {
+    function StudentsRoomsManageReportComponent(titleService, globalService, applicationSettingService) {
         this.titleService = titleService;
         this.globalService = globalService;
         this.applicationSettingService = applicationSettingService;
@@ -1170,43 +1203,45 @@ let StudentsRoomsManageReportComponent = class StudentsRoomsManageReportComponen
         this.titleService.setTitle("HIM" + " - " + src_app_shared_helper__WEBPACK_IMPORTED_MODULE_7__["Helper"].trans('students_rooms_manage_report'));
         this.applicationSettingService.queueRequests();
         var self = this;
-        src_app_shared_request__WEBPACK_IMPORTED_MODULE_9__["Request"].fire(false, () => {
+        src_app_shared_request__WEBPACK_IMPORTED_MODULE_9__["Request"].fire(false, function () {
         });
     }
-    load() {
+    StudentsRoomsManageReportComponent.prototype.load = function () {
         if (!src_app_shared_helper__WEBPACK_IMPORTED_MODULE_7__["Helper"].validator(this.filter, ['level_id', 'division_id', 'distributed'])) {
             return src_app_shared_message__WEBPACK_IMPORTED_MODULE_8__["Message"].error(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_7__["Helper"].trans('please choose all filters'));
         }
         else {
-            this.globalService.loadHtml("affair/report19", this.filter).subscribe((res) => {
+            this.globalService.loadHtml("affair/report19", this.filter).subscribe(function (res) {
                 $('#reportContent').html(res);
             });
         }
-    }
-    excel() {
+    };
+    StudentsRoomsManageReportComponent.prototype.excel = function () {
         this.doc.exportExcel();
-    }
-    printContent() {
+    };
+    StudentsRoomsManageReportComponent.prototype.printContent = function () {
         this.doc.printJs();
-    }
-    ngOnInit() {
+    };
+    StudentsRoomsManageReportComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.levels = src_app_shared_cache__WEBPACK_IMPORTED_MODULE_6__["Cache"].get(src_app_account_services_level_service__WEBPACK_IMPORTED_MODULE_4__["LevelService"].LEVEL_PREFIX);
         this.divisions = src_app_shared_cache__WEBPACK_IMPORTED_MODULE_6__["Cache"].get(src_app_account_services_division_service__WEBPACK_IMPORTED_MODULE_3__["DivisionService"].DIVISION_PREFIX);
-        this.applicationSettingService.commissions().subscribe((res) => {
-            this.commissions = res;
+        this.applicationSettingService.commissions().subscribe(function (res) {
+            _this.commissions = res;
         });
-    }
-};
-StudentsRoomsManageReportComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-students-rooms-manage-report',
-        template: __webpack_require__(/*! ./students-rooms-manage-report.component.html */ "./src/app/exams/components/students-rooms-manage-report/students-rooms-manage-report.component.html"),
-        styles: [__webpack_require__(/*! ./students-rooms-manage-report.component.scss */ "./src/app/exams/components/students-rooms-manage-report/students-rooms-manage-report.component.scss")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["Title"],
-        src_app_shared_services_global_service__WEBPACK_IMPORTED_MODULE_10__["GlobalService"],
-        src_app_adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationSettingService"]])
-], StudentsRoomsManageReportComponent);
+    };
+    StudentsRoomsManageReportComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-students-rooms-manage-report',
+            template: __webpack_require__(/*! ./students-rooms-manage-report.component.html */ "./src/app/exams/components/students-rooms-manage-report/students-rooms-manage-report.component.html"),
+            styles: [__webpack_require__(/*! ./students-rooms-manage-report.component.scss */ "./src/app/exams/components/students-rooms-manage-report/students-rooms-manage-report.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["Title"],
+            src_app_shared_services_global_service__WEBPACK_IMPORTED_MODULE_10__["GlobalService"],
+            src_app_adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationSettingService"]])
+    ], StudentsRoomsManageReportComponent);
+    return StudentsRoomsManageReportComponent;
+}());
 
 
 
@@ -1245,7 +1280,7 @@ module.exports = "#alertNumber {\n  text-align: center;\n  position: fixed;\n  t
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TheatersComponent", function() { return TheatersComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_shared_cache__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/shared/cache */ "./src/app/shared/cache.ts");
 /* harmony import */ var src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/shared/helper */ "./src/app/shared/helper.ts");
 /* harmony import */ var src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/shared/message */ "./src/app/shared/message.ts");
@@ -1262,8 +1297,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let TheatersComponent = class TheatersComponent {
-    constructor(globalService, applicationSettingService) {
+var TheatersComponent = /** @class */ (function () {
+    function TheatersComponent(globalService, applicationSettingService) {
         this.globalService = globalService;
         this.applicationSettingService = applicationSettingService;
         this.filter = {};
@@ -1275,18 +1310,19 @@ let TheatersComponent = class TheatersComponent {
         this.doc = document;
         this.applicationSettingService.queueRequests();
         var self = this;
-        src_app_shared_request__WEBPACK_IMPORTED_MODULE_5__["Request"].fire(false, () => {
+        src_app_shared_request__WEBPACK_IMPORTED_MODULE_5__["Request"].fire(false, function () {
         });
     }
-    load() {
+    TheatersComponent.prototype.load = function () {
         if (!src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].validator(this.filter, ['level_id', 'division_id', 'academic_year_id'])) {
             return src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].error(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].trans('please choose all filters'));
         }
-        this.globalService.loadHtml("affair/report4", this.filter).subscribe((res) => {
+        this.globalService.loadHtml("affair/report4", this.filter).subscribe(function (res) {
             $('#reportContent').html(res);
         });
-    }
-    createTheater() {
+    };
+    TheatersComponent.prototype.createTheater = function () {
+        var _this_1 = this;
         $('#beforeLoading').hide();
         $('#buttonLoading').show();
         var objectSend = { name: this.theater };
@@ -1295,24 +1331,24 @@ let TheatersComponent = class TheatersComponent {
             $('#alertNumber').slideDown(300);
             $('#beforeLoading').show();
             $('#buttonLoading').hide();
-            setTimeout(() => {
+            setTimeout(function () {
                 $('#alertNumber').slideUp(1000);
             }, 1000);
             return src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].error(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].trans('fill all required data'));
         }
         else {
-            this.applicationSettingService.theaterStore(objectSend).subscribe((res) => {
+            this.applicationSettingService.theaterStore(objectSend).subscribe(function (res) {
                 if (res == 1) {
                     $('#alertNumberSuccess').slideDown(300);
                     $('#beforeLoading').show();
                     $('#buttonLoading').hide();
-                    setTimeout(() => {
+                    setTimeout(function () {
                         $('#alertNumberSuccess').slideUp(1000);
                         $('#closeNumber1').trigger('click');
-                        this.theater = '';
+                        _this_1.theater = '';
                     }, 1000);
-                    this.applicationSettingService.theaters().subscribe((res) => {
-                        this.prevTheaters = res;
+                    _this_1.applicationSettingService.theaters().subscribe(function (res) {
+                        _this_1.prevTheaters = res;
                     });
                     return src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].success(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].trans('done'));
                 }
@@ -1320,19 +1356,20 @@ let TheatersComponent = class TheatersComponent {
                     $('#alertNumber').slideDown(300);
                     $('#beforeLoading').show();
                     $('#buttonLoading').hide();
-                    setTimeout(() => {
+                    setTimeout(function () {
                         $('#alertNumber').slideUp(1000);
                     }, 1000);
                     return src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].error(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].trans('failed'));
                 }
             });
         }
-    }
-    setCurrent(name, id) {
+    };
+    TheatersComponent.prototype.setCurrent = function (name, id) {
         this.currentTheaterName = name;
         this.currentTheaterId = id;
-    }
-    updateTheater(name, id) {
+    };
+    TheatersComponent.prototype.updateTheater = function (name, id) {
+        var _this_1 = this;
         console.log(name);
         console.log(id);
         $('#beforeLoading').hide();
@@ -1343,24 +1380,24 @@ let TheatersComponent = class TheatersComponent {
             $('#alertNumber').slideDown(300);
             $('#beforeLoading').show();
             $('#buttonLoading').hide();
-            setTimeout(() => {
+            setTimeout(function () {
                 $('#alertNumber').slideUp(1000);
             }, 1000);
             return src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].error(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].trans('fill all required data'));
         }
         else {
-            this.applicationSettingService.theaterEdit(objectSend).subscribe((res) => {
+            this.applicationSettingService.theaterEdit(objectSend).subscribe(function (res) {
                 if (res == 1) {
                     $('#alertNumberSuccess').slideDown(300);
                     $('#beforeLoading').show();
                     $('#buttonLoading').hide();
-                    setTimeout(() => {
+                    setTimeout(function () {
                         $('#alertNumberSuccess').slideUp(1000);
                         $('#closeNumber2').trigger('click');
-                        this.theater = '';
+                        _this_1.theater = '';
                     }, 1000);
-                    this.applicationSettingService.theaters().subscribe((res) => {
-                        this.prevTheaters = res;
+                    _this_1.applicationSettingService.theaters().subscribe(function (res) {
+                        _this_1.prevTheaters = res;
                     });
                     return src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].success(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].trans('done'));
                 }
@@ -1368,19 +1405,20 @@ let TheatersComponent = class TheatersComponent {
                     $('#alertNumber').slideDown(300);
                     $('#beforeLoading').show();
                     $('#buttonLoading').hide();
-                    setTimeout(() => {
+                    setTimeout(function () {
                         $('#alertNumber').slideUp(1000);
                     }, 1000);
                     return src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].error(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].trans('failed'));
                 }
             });
         }
-    }
-    destroyTheater(id) {
+    };
+    TheatersComponent.prototype.destroyTheater = function (id) {
+        var _this_1 = this;
         // console.log(id);
         var _this = this;
-        src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].confirm(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].trans('are you sure'), () => {
-            this.applicationSettingService.theaterDestroy(id).subscribe((res) => {
+        src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].confirm(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].trans('are you sure'), function () {
+            _this_1.applicationSettingService.theaterDestroy(id).subscribe(function (res) {
                 if (res == 1) {
                     return src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].success(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].trans('done'));
                 }
@@ -1388,36 +1426,38 @@ let TheatersComponent = class TheatersComponent {
                     return src_app_shared_message__WEBPACK_IMPORTED_MODULE_4__["Message"].error(src_app_shared_helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].trans('failed'));
                 }
             });
-            this.applicationSettingService.theaters().subscribe((res) => {
-                this.prevTheaters = res;
+            _this_1.applicationSettingService.theaters().subscribe(function (res) {
+                _this_1.prevTheaters = res;
             });
         });
-        this.applicationSettingService.theaters().subscribe((res) => {
-            this.prevTheaters = res;
+        this.applicationSettingService.theaters().subscribe(function (res) {
+            _this_1.prevTheaters = res;
         });
-    }
-    printContent() {
+    };
+    TheatersComponent.prototype.printContent = function () {
         this.doc.printJs();
-    }
-    ngOnInit() {
+    };
+    TheatersComponent.prototype.ngOnInit = function () {
+        var _this_1 = this;
         this.levels = src_app_shared_cache__WEBPACK_IMPORTED_MODULE_2__["Cache"].get(_account_services_level_service__WEBPACK_IMPORTED_MODULE_8__["LevelService"].LEVEL_PREFIX);
         // this.globalService.loadHtml("affair/report6", this.filter).subscribe((res) => {
         //   $('#reportContent').html(res);
         // });
-        this.applicationSettingService.theaters().subscribe((res) => {
-            this.prevTheaters = res;
+        this.applicationSettingService.theaters().subscribe(function (res) {
+            _this_1.prevTheaters = res;
         });
-    }
-};
-TheatersComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-theaters',
-        template: __webpack_require__(/*! ./theaters.component.html */ "./src/app/exams/components/theaters/theaters.component.html"),
-        styles: [__webpack_require__(/*! ./theaters.component.scss */ "./src/app/exams/components/theaters/theaters.component.scss")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_shared_services_global_service__WEBPACK_IMPORTED_MODULE_6__["GlobalService"],
-        _adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_7__["ApplicationSettingService"]])
-], TheatersComponent);
+    };
+    TheatersComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-theaters',
+            template: __webpack_require__(/*! ./theaters.component.html */ "./src/app/exams/components/theaters/theaters.component.html"),
+            styles: [__webpack_require__(/*! ./theaters.component.scss */ "./src/app/exams/components/theaters/theaters.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_shared_services_global_service__WEBPACK_IMPORTED_MODULE_6__["GlobalService"],
+            _adminision_services_application_setting_service__WEBPACK_IMPORTED_MODULE_7__["ApplicationSettingService"]])
+    ], TheatersComponent);
+    return TheatersComponent;
+}());
 
 
 
@@ -1434,8 +1474,8 @@ TheatersComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ExamsRoutingModule", function() { return ExamsRoutingModule; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _components_commissions_commissions_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/commissions/commissions.component */ "./src/app/exams/components/commissions/commissions.component.ts");
 /* harmony import */ var _components_add_seating_numbers_add_seating_numbers_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/add-seating-numbers/add-seating-numbers.component */ "./src/app/exams/components/add-seating-numbers/add-seating-numbers.component.ts");
 /* harmony import */ var _components_manage_rooms_map_manage_rooms_map_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/manage-rooms-map/manage-rooms-map.component */ "./src/app/exams/components/manage-rooms-map/manage-rooms-map.component.ts");
@@ -1465,7 +1505,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const routes = [
+var routes = [
     {
         path: '',
         component: _exams_component__WEBPACK_IMPORTED_MODULE_13__["ExamsComponent"]
@@ -1524,14 +1564,17 @@ const routes = [
         pathMatch: 'full'
     }
 ];
-let ExamsRoutingModule = class ExamsRoutingModule {
-};
-ExamsRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
-        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
-    })
-], ExamsRoutingModule);
+var ExamsRoutingModule = /** @class */ (function () {
+    function ExamsRoutingModule() {
+    }
+    ExamsRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
+            exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
+        })
+    ], ExamsRoutingModule);
+    return ExamsRoutingModule;
+}());
 
 
 
@@ -1570,22 +1613,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ExamsComponent", function() { return ExamsComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let ExamsComponent = class ExamsComponent {
-    constructor() { }
-    ngOnInit() {
+var ExamsComponent = /** @class */ (function () {
+    function ExamsComponent() {
     }
-};
-ExamsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-exams',
-        template: __webpack_require__(/*! ./exams.component.html */ "./src/app/exams/exams.component.html"),
-        styles: [__webpack_require__(/*! ./exams.component.scss */ "./src/app/exams/exams.component.scss")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], ExamsComponent);
+    ExamsComponent.prototype.ngOnInit = function () {
+    };
+    ExamsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-exams',
+            template: __webpack_require__(/*! ./exams.component.html */ "./src/app/exams/exams.component.html"),
+            styles: [__webpack_require__(/*! ./exams.component.scss */ "./src/app/exams/exams.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], ExamsComponent);
+    return ExamsComponent;
+}());
 
 
 
@@ -1602,8 +1647,8 @@ ExamsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ExamsModule", function() { return ExamsModule; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _exams_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./exams-routing.module */ "./src/app/exams/exams-routing.module.ts");
 /* harmony import */ var _components_manage_rooms_map_manage_rooms_map_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/manage-rooms-map/manage-rooms-map.component */ "./src/app/exams/components/manage-rooms-map/manage-rooms-map.component.ts");
 /* harmony import */ var _components_manage_seating_rooms_report_manage_seating_rooms_report_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/manage-seating-rooms-report/manage-seating-rooms-report.component */ "./src/app/exams/components/manage-seating-rooms-report/manage-seating-rooms-report.component.ts");
@@ -1637,17 +1682,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let ExamsModule = class ExamsModule {
-};
-ExamsModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        declarations: [_components_manage_rooms_map_manage_rooms_map_component__WEBPACK_IMPORTED_MODULE_4__["ManageRoomsMapComponent"], _components_manage_seating_rooms_report_manage_seating_rooms_report_component__WEBPACK_IMPORTED_MODULE_5__["ManageSeatingRoomsReportComponent"], _components_print_seating_numbers_print_seating_numbers_component__WEBPACK_IMPORTED_MODULE_6__["PrintSeatingNumbersComponent"], _components_print_students_report_print_students_report_component__WEBPACK_IMPORTED_MODULE_7__["PrintStudentsReportComponent"], _components_register_exams_schedule_register_exams_schedule_component__WEBPACK_IMPORTED_MODULE_8__["RegisterExamsScheduleComponent"], _exams_component__WEBPACK_IMPORTED_MODULE_9__["ExamsComponent"], _components_theaters_theaters_component__WEBPACK_IMPORTED_MODULE_11__["TheatersComponent"], _components_commissions_commissions_component__WEBPACK_IMPORTED_MODULE_12__["CommissionsComponent"], _components_print_walls_reports_print_walls_reports_component__WEBPACK_IMPORTED_MODULE_13__["PrintWallsReportsComponent"], _components_print_signs_reports_print_signs_reports_component__WEBPACK_IMPORTED_MODULE_14__["PrintSignsReportsComponent"], _components_add_seating_numbers_add_seating_numbers_component__WEBPACK_IMPORTED_MODULE_15__["AddSeatingNumbers"], _components_set_numbers_null_set_numbers_null_component__WEBPACK_IMPORTED_MODULE_16__["SetNumbersNullComponent"], _components_students_rooms_manage_report_students_rooms_manage_report_component__WEBPACK_IMPORTED_MODULE_17__["StudentsRoomsManageReportComponent"]],
-        imports: [
-            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
-            _exams_routing_module__WEBPACK_IMPORTED_MODULE_3__["ExamsRoutingModule"], _shared_shared_module__WEBPACK_IMPORTED_MODULE_10__["SharedModule"]
-        ]
-    })
-], ExamsModule);
+var ExamsModule = /** @class */ (function () {
+    function ExamsModule() {
+    }
+    ExamsModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            declarations: [_components_manage_rooms_map_manage_rooms_map_component__WEBPACK_IMPORTED_MODULE_4__["ManageRoomsMapComponent"], _components_manage_seating_rooms_report_manage_seating_rooms_report_component__WEBPACK_IMPORTED_MODULE_5__["ManageSeatingRoomsReportComponent"], _components_print_seating_numbers_print_seating_numbers_component__WEBPACK_IMPORTED_MODULE_6__["PrintSeatingNumbersComponent"], _components_print_students_report_print_students_report_component__WEBPACK_IMPORTED_MODULE_7__["PrintStudentsReportComponent"], _components_register_exams_schedule_register_exams_schedule_component__WEBPACK_IMPORTED_MODULE_8__["RegisterExamsScheduleComponent"], _exams_component__WEBPACK_IMPORTED_MODULE_9__["ExamsComponent"], _components_theaters_theaters_component__WEBPACK_IMPORTED_MODULE_11__["TheatersComponent"], _components_commissions_commissions_component__WEBPACK_IMPORTED_MODULE_12__["CommissionsComponent"], _components_print_walls_reports_print_walls_reports_component__WEBPACK_IMPORTED_MODULE_13__["PrintWallsReportsComponent"], _components_print_signs_reports_print_signs_reports_component__WEBPACK_IMPORTED_MODULE_14__["PrintSignsReportsComponent"], _components_add_seating_numbers_add_seating_numbers_component__WEBPACK_IMPORTED_MODULE_15__["AddSeatingNumbers"], _components_set_numbers_null_set_numbers_null_component__WEBPACK_IMPORTED_MODULE_16__["SetNumbersNullComponent"], _components_students_rooms_manage_report_students_rooms_manage_report_component__WEBPACK_IMPORTED_MODULE_17__["StudentsRoomsManageReportComponent"]],
+            imports: [
+                _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+                _exams_routing_module__WEBPACK_IMPORTED_MODULE_3__["ExamsRoutingModule"], _shared_shared_module__WEBPACK_IMPORTED_MODULE_10__["SharedModule"]
+            ]
+        })
+    ], ExamsModule);
+    return ExamsModule;
+}());
 
 
 

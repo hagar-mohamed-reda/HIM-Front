@@ -11,24 +11,27 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthRoutingModule", function() { return AuthRoutingModule; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _components_login_login_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/login/login.component */ "./src/app/auth/components/login/login.component.ts");
 
 
 
 
-const routes = [
+var routes = [
     { path: 'login', component: _components_login_login_component__WEBPACK_IMPORTED_MODULE_3__["LoginComponent"] }
 ];
-let AuthRoutingModule = class AuthRoutingModule {
-};
-AuthRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
-        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
-    })
-], AuthRoutingModule);
+var AuthRoutingModule = /** @class */ (function () {
+    function AuthRoutingModule() {
+    }
+    AuthRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
+            exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
+        })
+    ], AuthRoutingModule);
+    return AuthRoutingModule;
+}());
 
 
 
@@ -45,7 +48,7 @@ AuthRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthModule", function() { return AuthModule; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _auth_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auth-routing.module */ "./src/app/auth/auth-routing.module.ts");
 /* harmony import */ var _components_login_login_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/login/login.component */ "./src/app/auth/components/login/login.component.ts");
 /* harmony import */ var _shared_shared_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../shared/shared.module */ "./src/app/shared/shared.module.ts");
@@ -54,19 +57,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let AuthModule = class AuthModule {
-};
-AuthModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        declarations: [
-            _components_login_login_component__WEBPACK_IMPORTED_MODULE_3__["LoginComponent"]
-        ],
-        imports: [
-            _shared_shared_module__WEBPACK_IMPORTED_MODULE_4__["SharedModule"],
-            _auth_routing_module__WEBPACK_IMPORTED_MODULE_2__["AuthRoutingModule"]
-        ]
-    })
-], AuthModule);
+var AuthModule = /** @class */ (function () {
+    function AuthModule() {
+    }
+    AuthModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            declarations: [
+                _components_login_login_component__WEBPACK_IMPORTED_MODULE_3__["LoginComponent"]
+            ],
+            imports: [
+                _shared_shared_module__WEBPACK_IMPORTED_MODULE_4__["SharedModule"],
+                _auth_routing_module__WEBPACK_IMPORTED_MODULE_2__["AuthRoutingModule"]
+            ]
+        })
+    ], AuthModule);
+    return AuthModule;
+}());
 
 
 
@@ -105,8 +111,8 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _shared_services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../shared/services/auth.service */ "./src/app/shared/services/auth.service.ts");
 /* harmony import */ var _shared_cache__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../shared/cache */ "./src/app/shared/cache.ts");
 /* harmony import */ var _shared_message__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../shared/message */ "./src/app/shared/message.ts");
@@ -120,8 +126,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let LoginComponent = class LoginComponent {
-    constructor(authService, route, router) {
+var LoginComponent = /** @class */ (function () {
+    function LoginComponent(authService, route, router) {
         this.authService = authService;
         this.route = route;
         this.router = router;
@@ -130,44 +136,46 @@ let LoginComponent = class LoginComponent {
         this.env = src_environments_environment__WEBPACK_IMPORTED_MODULE_7__["environment"];
         this.isSubmitted = false;
     }
-    ngOnInit() {
+    LoginComponent.prototype.ngOnInit = function () {
         this.doc.jquery('body').addClass('login-background');
-        this.route.queryParams.subscribe((params) => {
+        this.route.queryParams.subscribe(function (params) {
             // noinspection TsLint
         });
-    }
-    login() {
+    };
+    LoginComponent.prototype.login = function () {
+        var _this = this;
         this.isSubmitted = true;
-        this.authService.login(this.userAuth).subscribe((result) => {
-            const data = result;
+        this.authService.login(this.userAuth).subscribe(function (result) {
+            var data = result;
             if (data.status == 1) {
                 // cache user
                 _shared_cache__WEBPACK_IMPORTED_MODULE_4__["Cache"].set(_shared_services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"].USER_PRFIX, data.data);
                 // cache api token
                 _shared_cache__WEBPACK_IMPORTED_MODULE_4__["Cache"].set(_shared_services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"].API_TOKEN_PRFIX, data.data.api_token);
-                this.router.navigate(['/']).then().catch();
+                _this.router.navigate(['/']).then().catch();
                 window.location.href = "/";
             }
             else {
                 _shared_message__WEBPACK_IMPORTED_MODULE_5__["Message"].error(data.message);
             }
-            this.isSubmitted = false;
-        }, (e) => {
+            _this.isSubmitted = false;
+        }, function (e) {
             _shared_message__WEBPACK_IMPORTED_MODULE_5__["Message"].error(e);
-            this.isSubmitted = false;
+            _this.isSubmitted = false;
         });
-    }
-};
-LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-login',
-        template: __webpack_require__(/*! ./login.component.html */ "./src/app/auth/components/login/login.component.html"),
-        styles: [__webpack_require__(/*! ./login.component.scss */ "./src/app/auth/components/login/login.component.scss")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_shared_services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"],
-        _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
-        _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
-], LoginComponent);
+    };
+    LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-login',
+            template: __webpack_require__(/*! ./login.component.html */ "./src/app/auth/components/login/login.component.html"),
+            styles: [__webpack_require__(/*! ./login.component.scss */ "./src/app/auth/components/login/login.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_shared_services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    ], LoginComponent);
+    return LoginComponent;
+}());
 
 
 

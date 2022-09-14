@@ -20,6 +20,7 @@ import { TermService } from 'src/app/account/services/term.service';
 export class StudentAffairReport3Component implements OnInit {
 
   $: any = $;
+  case_constraint_id:any;
   doc: any = document;
   isSubmitted = false;
   canShowResult = false;
@@ -38,6 +39,7 @@ export class StudentAffairReport3Component implements OnInit {
   academicYears: any = [];
   start_number: any;
   level_id: any;
+  public studentSettings = ApplicationSettingService;
 
   selectedDivisions = new HashTable();
   selectedLevels = new HashTable();
@@ -80,6 +82,9 @@ export class StudentAffairReport3Component implements OnInit {
     // }
 
     this.globalService.loadHtml("affair/report3", this.filter).subscribe((res) => {
+      // case_constraint_id: this.student.case_constraint_id,
+      console.log(this.case_constraint_id);
+      
       $('#reportContent').html(res);
       this.calculateCount();
     });
