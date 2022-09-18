@@ -52,7 +52,7 @@ export class ToptenComponent implements OnInit {
     }
   else
   {
-    this.globalService.loadHtml("affair/report25", this.filter).subscribe((res) => {
+    this.globalService.loadHtml("academic/report25", this.filter).subscribe((res) => {
       $('#reportContent').html(res);
     });
   }

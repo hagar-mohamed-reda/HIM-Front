@@ -21,7 +21,6 @@ import { DatePipe } from '@angular/common';
 
 export class StudentAffairStudentStatusComponent implements OnInit {
   $: any = $;
-  
   doc: any = document;
   isSubmitted = false;
   canShowResult = false;
@@ -80,13 +79,11 @@ export class StudentAffairStudentStatusComponent implements OnInit {
     if(! this.response) return []
     return this.response.registerCourses.filter(c => c.term_id == term)
   }
-
   getTermGpa(term){
     if(! this.response) return 0
     var gpa = this.response.student_gpa_fasly.filter(g => g.term_id == term)[0].gpa
     return gpa
   }
-
   getStdCode(){
     if(! this.response) return 0
     var code  = this.response.studentInfo[0].code
@@ -107,7 +104,6 @@ export class StudentAffairStudentStatusComponent implements OnInit {
       });
     }});
   }
-
   loadSettings() {
     this.levels = Cache.get(LevelService.LEVEL_PREFIX);
     Request.fire();

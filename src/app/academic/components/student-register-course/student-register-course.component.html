@@ -99,17 +99,27 @@
                                         <tr>
                                             <td>
                                                 <b>{{ "available hours" | trans }}</b> : {{ requiredHours }}
-                                                <b *ngIf="moreHours > 0"> + ({{ "graduation hours" | trans }}): {{ moreHours}} = {{  (requiredHours) + (moreHours) }}</b>
+                                                <b *ngIf="moreHours > 0">  ({{ "graduation hours" | trans }}): {{ moreHours}} <br> 
+                                                      {{  +requiredHours + +moreHours }}
+                                                </b>
                                             </td>
                                             <td>
                                                 <b>{{ "available courses" | trans }}</b> : {{ courses.length }}
                                             </td>
                                             <td>
-                                                <b>{{ "register hours" | trans }}</b> : {{ getRegisterHours() }}
+                                                <b>{{ "الساعات المسجله فى التيرم "  }}</b> : {{ getRegisterHours() }}
                                             </td>
                                             <td>
-                                                <b>{{ "student register courses" | trans }}</b> : {{ registerCourses.getKeys().length }}
-                                            </td>
+                                                <b>{{ "المقررات المسجله فى التيرم  "  }}</b> : {{ registerCourses.getKeys().length }}
+                                            </td> 
+                                       <tr>
+                                        <td>
+                                            <b>{{ "الساعات المسجله"  }}</b> : {{ student.actual_register_hours }}
+                                        </td> 
+                                         <td>
+                                            <b>{{ " الساعات التى اجتازها "  }}</b> : {{ student.register_hours }}
+                                        </td>
+                                       </tr>
                                     </table>
                                 </div>
 

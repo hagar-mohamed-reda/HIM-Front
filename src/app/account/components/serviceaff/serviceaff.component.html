@@ -5,8 +5,59 @@
       </div>
       <div class="border-bottom-dashed"></div>
       <br>
-
       <div class="">
+     <!-- بحث -->
+     <div class="custom-panel w3-display-container w3-round application-panel student-info-panel">
+        <div class="custom-panel-title">{{ "student search" | trans }}</div>
+        <div class="custom-panel-body w3-display-container">
+            <input class="w3-round-xxlarge w3-white w3-input border-gray search-input "
+                style="width: 50%!important" (keyup)="searchInputEvent()"
+                placeholder="{{ 'search with student name code national_id' | trans }}" [(ngModel)]="searchKey">
+
+            <div class="w3-display-topleft w3-padding" (click)="selectStudent({})" *ngIf="searchKey
+                    && !studentSearchDialogLoader" style="top: 12px;left:30%;z-index:10;">
+                <span class="fa fa-close w3-text-red"></span>
+            </div>
+
+            <div class="w3-display-topleft w3-padding" *ngIf="studentSearchDialogLoader"
+                style="top: 12px;left:30%;z-index:10;">
+                <span class="fa fa-spin fa-spinner w3-text-indigo"></span>
+            </div>
+
+
+            <div class="w3-display-topright w3-white material-shadow" *ngIf="studentSearchDialogShow"
+                style="top: 47px;right:11px;z-index:10;width: 100%">
+                <div class="w3-display-conitainer">
+                    <span class="w3-display-topright w3-button fa fa-close"
+                        (click)="studentSearchDialogShow=false"></span>
+                    <br>
+                    <ul class="w3-ul">
+                        <li *ngFor="let item of students" style="cursor: pointer;"
+                            class="w3-hover-light-gray w3-block text-right">
+                            <div class="media" (click)="selectStudent(item)">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img [src]="item.image" style="width: 30px;height: 30px;"
+                                            class="w3-circle" alt="">
+
+                                        <span class="fa fa-user-circle w3-text-indigo w3-large"></span>
+
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading" [innerHTML]="item.name"></h4>
+                                    <span [innerHTML]="item.code" class="w3-large"></span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+     </div>
+    <!-- بحث -->
+
 
           <div class="">
               <div class="custom-panel w3-display-container w3-round application-panel student-info-panel">
@@ -42,6 +93,7 @@
                 </select>
                             </div>
                         </div>
+                   
                          <!-- <div class="col-lg-3 col-md-3">
                             <div class="form-group">
                                 <label for="">{{ "division" | trans }}</label>
@@ -72,11 +124,6 @@
                   </div>
               </div>
           </div>
-
-
-
       </div>
-
-
   </div>
 </div>

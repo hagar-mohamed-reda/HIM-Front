@@ -2,7 +2,7 @@
   <div class="{{ col }}">
     <div class="w3-white material-shadow safe-box">
       <div class="safe-box-header w3-xlarge">
-        {{ "create application" | trans }}
+        {{ isUpdate ? "تعديل ملف التقديم" :  "create application" | trans }}
       </div>
       <br />
       <div class="border-bottom-dashed"></div>
@@ -170,8 +170,9 @@
                     <tr>
                       <th>{{ "academic_years" | trans }} *</th>
                       <td>
+                        <!-- (change)="watchLevel() -->
                         <select
-                          (change)="watchLevel()"
+                        (change)="watchLevel()"
                           class="custom-input form-control input-sm w3-input input-sm"
                           [ngClass]="{
                             'border-bottom-dashed':
@@ -180,11 +181,13 @@
                           }"
                           [(ngModel)]="application.academic_years_id"
                         >
+                        <option value="" selected> اختر السنه الدراسيه </option>
+
                           <option
                             *ngFor="
                               let item of applicationSettings.ACADEMIC_YEARS
                             "
-                            value="{{ item.id }}"
+                            value="{{ item.id }}"selected
                           >
                             {{ item.name }}
                           </option>
@@ -204,7 +207,7 @@
                           }"
                           [(ngModel)]="application.qualification_id"
                         >
-                          <option value="" disabled>اختار المؤهل</option>
+                          <option value="" selected>اختار المؤهل</option>
                           <option
                             *ngFor="
                               let item of applicationSettings.QUALIFICATIONS
@@ -237,6 +240,7 @@
                               let item of applicationSettings.QUALIFICATION_TYPES
                             "
                           >
+
                             <option
                               *ngIf="
                                 item.qualification_id ==
@@ -385,7 +389,7 @@
                           }"
                           [(ngModel)]="application.registration_status_id"
                         >
-                          <option value="" disabled>اختر طريقة التقديم</option>
+                          <option value="" selected>اختر طريقة التقديم</option>
                           <option
                             *ngFor="
                               let item of applicationSettings.REGISTERATION_STATUS
@@ -412,7 +416,7 @@
                         />
                       </td> -->
                          <td>
-                        <select
+                          <select
                           class="custom-input form-control input-sm w3-input input-sm"
                           [ngClass]="{
                             'border-bottom-dashed': application.level_id,
@@ -486,6 +490,8 @@
                           <ng-container
                             *ngFor="let item of applicationSettings.DIVISIONS"
                           >
+                          <!-- <option value="" selected>اختار القسم</option> -->
+
                             <option value="{{ item.id }}">
                               {{ item.name }}
                             </option>
@@ -504,19 +510,15 @@
                           }"
                           [(ngModel)]="application.department_id"
                         >
-                          <ng-container
-                            *ngFor="let item of applicationSettings.DEPARTMENTS"
-                          >
-                            <option
-                              *ngIf="application.level_id == item.level_id"
-                              value="{{ item.id }}"
-                            >
-                              {{ item.name }}
-                            </option>
-                          </ng-container>
+                        <!-- <option value="" selected>اختار التخصص</option>
+                        <option *ngFor="let item of applicationSettings.DEPARTMENTS"  value="{{ item.id }}">{{ item.name }} </option> -->
+                      <ng-container *ngFor="let item of applicationSettings.DEPARTMENTS" >
+                      <option *ngIf="application.level_id == item.level_id" value="{{ item.id }}">{{ item.name }} </option>
+                      </ng-container>
                         </select>
                       </td>
                     </tr>
+                             <!-- <option value="" selected>اختار التخصص</option> -->
 
                     <!-- <tr>
                                           <th>{{ "stage" | trans }} *</th>
@@ -566,6 +568,8 @@
                           class="custom-input form-control input-sm w3-input border-bottom-dashed input-sm"
                           [(ngModel)]="application.registration_method_id"
                         >
+                        <option value="" selected>اختار وسيله التعارف </option>
+
                           <option
                             *ngFor="
                               let item of applicationSettings.REGISTERATION_METHODS
@@ -656,6 +660,7 @@
                           class="custom-input form-control input-sm w3-input border-bottom-dashed input-sm"
                           [(ngModel)]="application.military_status_id"
                         >
+                        <option value="" selected>اختار حاله التجنيد </option>
                           <option
                             *ngFor="
                               let item of applicationSettings.MILITARY_STATUS
@@ -674,6 +679,8 @@
                           class="custom-input form-control input-sm w3-input border-bottom-dashed input-sm"
                           [(ngModel)]="application.military_area_id"
                         >
+                        <option value="1" selected >اختار منطقه التجنيد</option>
+
                           <option
                             *ngFor="
                               let item of applicationSettings.MILITARY_AREAS
@@ -787,6 +794,8 @@
                           class="custom-input form-control input-sm w3-input border-bottom-dashed input-sm"
                           [(ngModel)]="application.parent_job_id"
                         >
+                        <option value="" selected>اختار وظيفه الاب </option>
+
                           <option
                             *ngFor="let item of applicationSettings.PARENT_JOBS"
                             value="{{ item.id }}"
@@ -803,6 +812,8 @@
                           class="custom-input form-control input-sm w3-input border-bottom-dashed input-sm"
                           [(ngModel)]="application.relative_relation_id"
                         >
+                        <option value="" selected>اختر صله القارب</option>
+
                           <option
                             *ngFor="
                               let item of applicationSettings.RELATIVE_RELATIONS
@@ -838,6 +849,8 @@
                           class="custom-input form-control input-sm w3-input border-bottom-dashed input-sm"
                           [(ngModel)]="application.nationality_id"
                         >
+                        <option value="" selected>اختار الجنسيه </option>
+
                           <option
                             *ngFor="
                               let item of applicationSettings.NATIONALITIES
@@ -856,6 +869,8 @@
                           class="custom-input form-control input-sm w3-input border-bottom-dashed input-sm"
                           [(ngModel)]="application.language_1_id"
                         >
+                        <option value="" selected>اختار اللغه الاولى</option>
+
                           <option
                             *ngFor="let item of applicationSettings.LANGUAGES"
                             value="{{ item.id }}"
@@ -872,6 +887,8 @@
                           class="custom-input form-control input-sm w3-input border-bottom-dashed input-sm"
                           [(ngModel)]="application.language_2_id"
                         >
+                        <option value="" selected>اختر اللغه التانيه</option>
+
                           <option
                             *ngFor="let item of applicationSettings.LANGUAGES"
                             value="{{ item.id }}"
@@ -888,6 +905,8 @@
                           class="custom-input form-control input-sm w3-input border-bottom-dashed input-sm"
                           [(ngModel)]="application.country_id"
                         >
+                        <option value="" selected>اختر الدوله</option>
+
                           <option
                             *ngFor="let item of applicationSettings.COUNTRIES"
                             value="{{ item.id }}"

@@ -64,6 +64,8 @@
                                     class="form-control"
                                     [(ngModel)]="filter.case_constraint_id"
                                   >
+                                  <option value="">{{ "all" | trans }}</option>
+
                                     <option
                                       *ngFor="let item of studentSettings.CASE_CONSTRAINTS"
                                       value="{{ item.id }}"
