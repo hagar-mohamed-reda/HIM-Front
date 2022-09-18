@@ -6,6 +6,7 @@ import { Message } from '../../../../shared/message';
 import { ActivatedRoute } from '@angular/router';
 import { Auth } from 'src/app/shared/auth';
 import { exit } from 'process';
+import { Helper } from 'src/app/shared/helper';
 
 @Component({
   selector: 'app-application-index',
@@ -66,6 +67,20 @@ export class ApplicationIndexComponent implements OnInit {
       this.showRemoveButton = true;
     else
       this.showRemoveButton = false;
+  }
+
+
+  destroy(id) {
+    this.doc.swal.confirm(Helper.trans('are you sure'), () => {
+      this.applicationService.destroy(id).subscribe((res: any) => {
+        if (res.status == 1) {
+          Message.success(res.message);
+          this.loadResources()
+        }
+        else
+          Message.error(res.message);
+      });
+    });
   }
 
   removeResources() {

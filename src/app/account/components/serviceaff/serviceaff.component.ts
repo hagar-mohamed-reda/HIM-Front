@@ -90,7 +90,7 @@ selectStudent(student) {
   if (student) {
     this.searchData.student_id = student.id;
     this.searchKey = student.name;
-    this.filter.student_id = student.id;
+    this.filter.student_id = student.id
     // this.loadStudentInfo(student.id);
   }
   this.studentSearchDialogShow = false;
