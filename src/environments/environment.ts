@@ -4,8 +4,8 @@ export const environment = {
   //  backEndPublicUrl   : 'http://41.41.86.210:4000/',
   //  publicUrl   : window.location.origin,
   //  NEW him online
-      publicUrl: "http://him.him-ma.org",
-      apiUrl: "http://him.him-ma.org/api",
+  //  publicUrl: "http://him.him-ma.org",
+  //  apiUrl: "http://him.him-ma.org/api",
   //  old him online
   //  publicUrl: 'http://him.msa-bns.com',
   //  publicUrl: 'http://127.0.0.1:4200',
@@ -13,8 +13,8 @@ export const environment = {
   //  publicUrl: "http://himsys.him-ma.org",
   //  apiUrl: "http://himsys.him-ma.org/api",
   //  old him test
-  //  publicUrl:'http://himtest.him-ma.org',
-  //  apiUrl: 'http://himtest.him-ma.org/api',
+      publicUrl:'http://himtest.him-ma.org',
+      apiUrl: 'http://himtest.him-ma.org/api',
   //  him ofline
   //  publicUrl: 'http://127.0.0.1:8000',
   //  apiUrl: 'http://127.0.0.1:8000/api',

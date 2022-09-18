@@ -11,11 +11,14 @@
             <div class="custom-panel w3-display-container w3-round ">
 
                 <div class="custom-panel-body table-responsive w3-padding w3-center">
-                    <a [routerLink]="['/academic/student-result']" role="button" class="btn-margin-bottom btn btn-default w3-block small-shadow" [queryParams]="{col: 'col-lg-12'}">
-                        <b>{{ "control" | trans }}</b>
-                        <a class="pull-left">
+                    <a [routerLink]="['/academic/student-result']" 
+                     role="button" 
+                     class="btn-margin-bottom btn btn-default w3-block small-shadow"
+                     [queryParams]="{col: 'col-lg-12'}">
+                    <b>{{ "control" | trans }}</b>
+                    <a class="pull-left">
                             <i class="fa fa-newspaper-o"></i>
-                        </a>
+                    </a>
                     </a>
                     <a [routerLink]="['/academic/result-stats']" role="button" class="btn-margin-bottom btn btn-default w3-block small-shadow" [queryParams]="{col: 'col-lg-12'}">
                         <b>احصائيات النتيجة</b>
