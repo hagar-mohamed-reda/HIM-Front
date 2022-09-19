@@ -36,9 +36,9 @@
                           <div class="col-lg-3 col-md-3">
                               <div class="form-group">
                                   <label for="">{{ "term" | trans }}</label>
-                                  <select id="term_id" class="form-control" [(ngModel)]="filter.term_id">
+                                  <select id="term_id" class="form-control" (change)="filter.course_id = ''" [(ngModel)]="filter.term_id">
                               <option value="">{{ "term" | trans }}</option>
-                              <option *ngFor="let item of terms" value="{{ item.id }}">{{item.name}}</option>
+                              <option  *ngFor="let item of terms" value="{{ item.id }}" >{{item.name}}</option>
                             </select>
                               </div>
                           </div>
@@ -47,7 +47,7 @@
                                   <label for="">الماده</label>
                                   <select class="form-control" id="course_id" name="filter.course_id" [(ngModel)]="filter.course_id">
                     <option value="0">الكل</option>
-              <option *ngFor="let item of courses|level:level_id|term:term_id|division:division_id" value="{{ item.id }}">{{item.name}}</option>
+              <option *ngFor="let item of courses|level:filter.level_id|term:filter.term_id|division:filter.division_id" value="{{ item.id }}">{{item.name}} (التيرم : {{item.term}} )</option>
             </select>
                               </div>
                           </div>
