@@ -103,7 +103,7 @@ import { StudentsResultsComponent } from './students-results/students-results.co
 })
 export class AppModule {
 
-  public static doc: any = document;
+  public static doc: Document = document;
 
   constructor(
     private router: Router,
