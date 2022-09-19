@@ -88,14 +88,17 @@ export class ServiceaffComponent implements OnInit {
 }
 selectStudent(student) {
   if (student) {
+    
     this.searchData.student_id = student.id;
     this.searchKey = student.name;
-    this.filter.student_id = student.id
+    this.filter.student_id = student.id || -1
     // this.loadStudentInfo(student.id);
   }
   this.studentSearchDialogShow = false;
 }
 load() {
+  console.log(this.filter);
+  
   if (!Helper.validator(this.filter, ['level_id' , 'year_id' ])) {
     return Message.error(Helper.trans('please choose all filters'));
   }
@@ -124,7 +127,7 @@ this.globalService.get('account/services').subscribe(res => {
 
 searchInputEvent() {
   if (!this.searchKey)
-    return;
+    return this.filter.student_id = -1;
 
   this.students = [];
   this.studentSearchDialogLoader = true;
