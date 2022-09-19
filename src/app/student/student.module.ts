@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import {SharedModule} from '../shared/shared.module';
 import { DataTablesModule } from 'angular-datatables';
 import { StudentRoutingModule } from './student-routing.module';

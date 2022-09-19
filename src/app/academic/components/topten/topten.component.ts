@@ -28,6 +28,7 @@ export class ToptenComponent implements OnInit {
   term_id:any;
   governments: any = [];
   degreeMaps: any = [];
+  loading : Boolean = false
   constructor(
 
     private academicService: AcademicYearService,
@@ -52,7 +53,10 @@ export class ToptenComponent implements OnInit {
     }
   else
   {
+    this.loading = true
+
     this.globalService.loadHtml("academic/report25", this.filter).subscribe((res) => {
+      this.loading = false
       $('#reportContent').html(res);
     });
   }
