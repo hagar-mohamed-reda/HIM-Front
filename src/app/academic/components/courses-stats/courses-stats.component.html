@@ -64,8 +64,8 @@
                                 <div class="form-group">
                                     <label for="">التقديرات</label>
                                     <select class="form-control" [(ngModel)]="filter.degree_id">
-                  <option value="">التقدير</option>
-                  <option value="">الكل</option>
+                  <option value="1">التقدير</option>
+                  <!-- <option value="">الكل</option> -->
             <option *ngFor="let item of degreeMaps" value="{{ item.id }}">{{item.key}}</option>
           </select>
                                 </div>
