@@ -19,33 +19,35 @@
                     <a class="pull-left">
                             <i class="fa fa-newspaper-o"></i>
                     </a>
+                  
                     </a>
+                    <a [routerLink]="['/academic/control-report']" role="button" class="btn-margin-bottom btn btn-default w3-block small-shadow" [queryParams]="{col: 'col-lg-12'}">
+                        <b>{{ "control report" | trans }}</b>
+                        <a class="pull-left">
+                            <i class="fa fa-newspaper-o"></i>
+                        </a>
+                    </a>
+                  
                     <a [routerLink]="['/academic/result-stats']" role="button" class="btn-margin-bottom btn btn-default w3-block small-shadow" [queryParams]="{col: 'col-lg-12'}">
-                        <b>احصائيات النتيجة</b>
-                        <a class="pull-left">
-                            <i class="fa fa-newspaper-o"></i>
-                        </a>
-                    </a>
-                    <a [routerLink]="['/academic/courses-stats']" role="button" class="btn-margin-bottom btn btn-default w3-block small-shadow" [queryParams]="{col: 'col-lg-12'}">
-                        <b>احصائيات المواد</b>
-                        <a class="pull-left">
-                            <i class="fa fa-newspaper-o"></i>
-                        </a>
-                    </a>
-                    <a [routerLink]="['/academic/student-results']" role="button" class="btn-margin-bottom btn btn-default w3-block small-shadow" [queryParams]="{col: 'col-lg-12'}">
-                        <b>طباعة نتائج طالب</b>
-                        <a class="pull-left">
-                            <i class="fa fa-newspaper-o"></i>
-                        </a>
-                    </a>
-                    <a [routerLink]="['/academic/students-results']" role="button" class="btn-margin-bottom btn btn-default w3-block small-shadow" [queryParams]="{col: 'col-lg-12'}">
-                        <b>طباعة نتائج الطلاب</b>
+                        <b> تقرير احصائيات النتيجة  </b>
                         <a class="pull-left">
                             <i class="fa fa-newspaper-o"></i>
                         </a>
                     </a>
                     <a [routerLink]="['/academic/publisher-result']" role="button" class="btn-margin-bottom btn btn-default w3-block small-shadow" [queryParams]="{col: 'col-lg-12'}">
-                        <b>طباعة النتيجة</b>
+                        <b> تقرير طباعه النتيجه </b>
+                        <a class="pull-left">
+                            <i class="fa fa-newspaper-o"></i>
+                        </a>
+                    </a>
+                    <a [routerLink]="['/academic/students-results']" role="button" class="btn-margin-bottom btn btn-default w3-block small-shadow" [queryParams]="{col: 'col-lg-12'}">
+                        <b> تقرير طباعة نتائج الطلاب</b>
+                        <a class="pull-left">
+                            <i class="fa fa-newspaper-o"></i>
+                        </a>
+                    </a>
+                    <a [routerLink]="['/academic/student-results']" role="button" class="btn-margin-bottom btn btn-default w3-block small-shadow" [queryParams]="{col: 'col-lg-12'}">
+                        <b> تقرير طباعة نتائج طالب </b>
                         <a class="pull-left">
                             <i class="fa fa-newspaper-o"></i>
                         </a>
@@ -56,26 +58,15 @@
                             <i class="fa fa-newspaper-o"></i>
                         </a>
                     </a>
-                    <a [routerLink]="['/academic/control-report']" role="button" class="btn-margin-bottom btn btn-default w3-block small-shadow" [queryParams]="{col: 'col-lg-12'}">
-                        <b>{{ "control report" | trans }}</b>
+                    <a [routerLink]="['/academic/courses-stats']" role="button" class="btn-margin-bottom btn btn-default w3-block small-shadow" [queryParams]="{col: 'col-lg-12'}">
+                        <b> تقرير احصائيات المواد</b>
                         <a class="pull-left">
                             <i class="fa fa-newspaper-o"></i>
                         </a>
                     </a>
-                    <a [routerLink]="['/academic/attendance-report']" role="button" class="btn-margin-bottom btn btn-default w3-block small-shadow" [queryParams]="{col: 'col-lg-12'}">
-                        <b>{{ "attendance report" | trans }}</b>
-                        <a class="pull-left">
-                            <i class="fa fa-newspaper-o"></i>
-                        </a>
-                    </a>
+                   
                     <a [routerLink]="['/academic/ministry-cumulative-report']" role="button" class="btn-margin-bottom btn btn-default w3-block small-shadow" [queryParams]="{col: 'col-lg-12'}">
-                        <b>تقرير التراكمي للوزارة</b>
-                        <a class="pull-left">
-                            <i class="fa fa-newspaper-o"></i>
-                        </a>
-                    </a>
-                    <a [routerLink]="['/academic/grade']" role="button" class="btn-margin-bottom btn btn-default w3-block small-shadow" [queryParams]="{col: 'col-lg-12'}">
-                        <b>تقرير تقديرات الطلبه</b>
+                        <b> التقرير التراكمي للوزارة</b>
                         <a class="pull-left">
                             <i class="fa fa-newspaper-o"></i>
                         </a>
@@ -86,12 +77,14 @@
                             <i class="fa fa-newspaper-o"></i>
                         </a>
                     </a>
-                    <a [routerLink]="['/academic/medterm']" role="button" class="btn-margin-bottom btn btn-default w3-block small-shadow" [queryParams]="{col: 'col-lg-12'}">
-                        <b>   الطلبه المتخلفه عن الميد</b>
+                    <a [routerLink]="['/academic/grade']" role="button" class="btn-margin-bottom btn btn-default w3-block small-shadow" [queryParams]="{col: 'col-lg-12'}">
+                        <b>تقرير تقديرات الطلبه</b>
                         <a class="pull-left">
                             <i class="fa fa-newspaper-o"></i>
                         </a>
                     </a>
+                  
+                   
                     <a [routerLink]="['/academic/topten']" role="button" class="btn-margin-bottom btn btn-default w3-block small-shadow" [queryParams]="{col: 'col-lg-12'}">
                         <b>  تقرير الطلبه الاوائل </b>
                         <a class="pull-left">
@@ -104,7 +97,18 @@
                             <i class="fa fa-newspaper-o"></i>
                         </a>
                     </a>
-                    
+                    <a [routerLink]="['/academic/attendance-report']" role="button" class="btn-margin-bottom btn btn-default w3-block small-shadow" [queryParams]="{col: 'col-lg-12'}">
+                        <b>{{ "attendance report" | trans }}</b>
+                        <a class="pull-left">
+                            <i class="fa fa-newspaper-o"></i>
+                        </a>
+                    </a>
+                    <a [routerLink]="['/academic/medterm']" role="button" class="btn-margin-bottom btn btn-default w3-block small-shadow" [queryParams]="{col: 'col-lg-12'}">
+                        <b>     تقرير غياب الميد تيرم</b>
+                        <a class="pull-left">
+                            <i class="fa fa-newspaper-o"></i>
+                        </a>
+                    </a>
                 </div>
             </div>
         </div>

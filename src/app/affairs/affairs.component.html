@@ -57,26 +57,7 @@
                 <i class="fa fa-user-circle"></i>
               </a>
             </a>
-            <a
-              routerLink="/affairs/registrationtype"
-              class="btn-margin-bottom btn btn-default w3-block small-shadow"
-              [queryParams]="{ col: 'col-lg-12' }"
-            >
-              <b>{{ "تعديل نوع القيد" }}</b>
-              <a href="#" class="pull-left">
-                <i class="fa fa-newspaper-o"></i>
-              </a>
-            </a>
-            <a
-              routerLink="/affairs/registrationreport"
-              class="btn-margin-bottom btn btn-default w3-block small-shadow"
-              [queryParams]="{ col: 'col-lg-12' }"
-            >
-              <b>{{ "تقرير نوع القيد" }}</b>
-              <a href="#" class="pull-left">
-                <i class="fa fa-newspaper-o"></i>
-              </a>
-            </a>
+           
 
             <a
               routerLink="/affairs/required_documents"
@@ -112,49 +93,29 @@
               </a>
             </a>
             <a
-              routerLink="/affairs/report/report1"
-              role="button"
-              permission="student_affair_report1"
-              class="btn-margin-bottom btn btn-default w3-block small-shadow"
-            >
-              <b>{{ "student_affair_repor1" | trans }}</b>
-              <a class="pull-left">
-                <i class="fa fa-line-chart"></i>
-              </a>
+            routerLink="/affairs/report/report21"
+            role="button"
+            permission="student_affair_report11"
+            class="btn-margin-bottom btn btn-default w3-block small-shadow"
+          >
+            <b>سجل تجنيد الوزارة</b>
+            <a class="pull-left">
+              <i class="fa fa-print"></i>
             </a>
-            <a
-              routerLink="/affairs/report/report2"
-              role="button"
-              permission="student_affair_report2"
-              class="btn-margin-bottom btn btn-default w3-block small-shadow"
-            >
-              <b>{{ "student_affair_repor2" | trans }}</b>
-              <a class="pull-left">
-                <i class="fa fa-print"></i>
-              </a>
+          </a>
+          <a
+            routerLink="/affairs/report/report5"
+            role="button"
+            permission="student_affair_report5"
+            class="btn-margin-bottom btn btn-default w3-block small-shadow"
+          >
+            <b>{{ "student_affair_repor5" | trans }}</b>
+            <a class="pull-left">
+              <i class="fa fa-print"></i>
             </a>
-            <a
-              routerLink="/affairs/report/report3"
-              role="button"
-              permission="student_affair_report3"
-              class="btn-margin-bottom btn btn-default w3-block small-shadow"
-            >
-              <b>{{ "student_affair_repor3" | trans }}</b>
-              <a class="pull-left">
-                <i class="fa fa-print"></i>
-              </a>
-            </a>
-            <a
-              routerLink="/affairs/report/report4"
-              role="button"
-              permission="student_affair_report5"
-              class="btn-margin-bottom btn btn-default w3-block small-shadow"
-            >
-              <b>{{ "student_affair_repor4" | trans }}</b>
-              <a class="pull-left">
-                <i class="fa fa-check-square"></i>
-              </a>
-            </a>
+          </a>
+         
+        
             <a
               routerLink="/affairs/report/report11"
               role="button"
@@ -178,27 +139,50 @@
               </a>
             </a>
             <a
-              routerLink="/affairs/report/report21"
-              role="button"
-              permission="student_affair_report11"
-              class="btn-margin-bottom btn btn-default w3-block small-shadow"
-            >
-              <b>سجل تجنيد الوزارة</b>
-              <a class="pull-left">
-                <i class="fa fa-print"></i>
-              </a>
+            routerLink="/affairs/report/report1"
+            role="button"
+            permission="student_affair_report1"
+            class="btn-margin-bottom btn btn-default w3-block small-shadow"
+          >
+            <b>{{ "student_affair_repor1" | trans }}</b>
+            <a class="pull-left">
+              <i class="fa fa-line-chart"></i>
             </a>
+          </a>
             <a
-              routerLink="/affairs/report/report5"
-              role="button"
-              permission="student_affair_report5"
-              class="btn-margin-bottom btn btn-default w3-block small-shadow"
-            >
-              <b>{{ "student_affair_repor5" | trans }}</b>
-              <a class="pull-left">
-                <i class="fa fa-print"></i>
-              </a>
+            routerLink="/affairs/report/report2"
+            role="button"
+            permission="student_affair_report2"
+            class="btn-margin-bottom btn btn-default w3-block small-shadow"
+          >
+            <b>{{ "student_affair_repor2" | trans }}</b>
+            <a class="pull-left">
+              <i class="fa fa-print"></i>
             </a>
+          </a>
+        
+          <a
+            routerLink="/affairs/report/report4"
+            role="button"
+            permission="student_affair_report5"
+            class="btn-margin-bottom btn btn-default w3-block small-shadow"
+          >
+            <b>{{ "student_affair_repor4" | trans }}</b>
+            <a class="pull-left">
+              <i class="fa fa-check-square"></i>
+            </a>
+          </a>
+            <a
+            routerLink="/affairs/report/report3"
+            role="button"
+            permission="student_affair_report3"
+            class="btn-margin-bottom btn btn-default w3-block small-shadow"
+          >
+            <b>{{ "student_affair_repor3" | trans }}</b>
+            <a class="pull-left">
+              <i class="fa fa-print"></i>
+            </a>
+          </a>
             <a
               routerLink="/affairs/report/report10"
               role="button"
@@ -247,7 +231,7 @@
               role="button"
               class="btn-margin-bottom btn btn-default w3-block small-shadow"
             >
-              <b> الحالات المرضيه</b>
+              <b>تقرير الحالات المرضيه </b>
               <a class="pull-left">
                 <i class="fa fa-check-square"></i>
               </a>
@@ -262,6 +246,26 @@
               <i class="fa fa-check-square"></i>
             </a>
           </a>
+          <a
+          routerLink="/affairs/registrationtype"
+          class="btn-margin-bottom btn btn-default w3-block small-shadow"
+          [queryParams]="{ col: 'col-lg-12' }"
+        >
+          <b>{{ "تعديل نوع القيد" }}</b>
+          <a href="#" class="pull-left">
+            <i class="fa fa-newspaper-o"></i>
+          </a>
+        </a>
+        <a
+          routerLink="/affairs/registrationreport"
+          class="btn-margin-bottom btn btn-default w3-block small-shadow"
+          [queryParams]="{ col: 'col-lg-12' }"
+        >
+          <b>{{ "تقرير نوع القيد" }}</b>
+          <a href="#" class="pull-left">
+            <i class="fa fa-newspaper-o"></i>
+          </a>
+        </a>
           <!-- <a
           routerLink="/affairs/report/service"
           role="button"
