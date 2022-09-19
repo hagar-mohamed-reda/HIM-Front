@@ -5,7 +5,7 @@
     "ng": "ng",
     "build:prod": "ng build --prod --build-optimizer true --vendor-chunk false --source-map false",
     "serve:test": "ng serve --prod --port 3009 --host 41.41.86.210 --vendor-chunk false --source-map false",
-    "start": "ng serve",
+    "start": "ng serve --o",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

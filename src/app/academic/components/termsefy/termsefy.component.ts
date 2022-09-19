@@ -42,7 +42,7 @@ export class TermsefyComponent implements OnInit {
     private titleService: Title,
     private globalService: GlobalService,
     private applicationSettingService: ApplicationSettingService) {
-      this.courses = this.courseService.get().subscribe((res: any) => {
+      this.courses = this.courseService.getHistory().subscribe((res: any) => {
         this.courses = res;
       })
     this.titleService.setTitle("HIM"+ " - " + Helper.trans('students manage report'))
@@ -54,12 +54,11 @@ export class TermsefyComponent implements OnInit {
 }
 
 load() {
-  console.log(this.filter);
 
-  if (!Helper.validator(this.filter, ['term_id','course_id'])) {
+  if (!Helper.validator(this.filter, [])) {
     return Message.error(Helper.trans('please choose all filters'));
   }else{
-    this.globalService.loadHtml("affair/get-result-absence", this.filter).subscribe((res) => {
+    this.globalService.loadHtml("affair/termsefy", this.filter).subscribe((res) => {
       $('#reportContent').html(res);
     });
   }

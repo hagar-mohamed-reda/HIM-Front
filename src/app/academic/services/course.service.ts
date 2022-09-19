@@ -19,6 +19,12 @@ export class CourseService {
   public get() {
     return this.http.get('academic/courses?api_token=' + Auth.getApiToken());
   }
+
+
+  public getHistory() {
+    return this.http.get('academic/courses_history?api_token=' + Auth.getApiToken());
+  }
+
   public getopenCourses() {
     return this.http.get('academic/all_open_courses?api_token=' + Auth.getApiToken());
   }

@@ -7,7 +7,8 @@ export class TermPipe implements PipeTransform {
 
   transform(arr: any, code: any): any 
   {
-    if ( code == '' || code == null || code == undefined || code == '0'  || arr == undefined || arr == null)
+    
+    if ( code == '' || code == null || code == undefined || code == '0' || arr == [] || arr == undefined || arr == null)
      {
       return arr;
      }
