@@ -53,6 +53,8 @@ export class TermsefyComponent implements OnInit {
 
 }
 
+
+
 load() {
 
   if (!Helper.validator(this.filter, [])) {
