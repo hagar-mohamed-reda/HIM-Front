@@ -13,8 +13,6 @@
 
                     <div class="custom-panel-body table-responsive w3-padding">
 
-                        <div class="row">
-
                             <div class="col-lg-3 col-md-3">
                                 <div class="form-group">
                                     <label>{{ "level" | trans }}</label>
@@ -118,16 +116,6 @@
                             </div> -->
                             <div class="col-lg-3 col-md-3">
                                 <div class="form-group">
-                                    <label>نوع التقرير</label>
-                                    <select class="form-control" [(ngModel)]="filter.created_at">
-                              <option value="">{{ "all" | trans }}</option>
-                        <option value="1">اليومي</option>
-                      </select>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-md-3">
-                                <div class="form-group">
                                     <label>لقاح كورونا</label>
                                     <select class="form-control" [(ngModel)]="filter.isVaccinated">
                             <option value="">{{ "all" | trans }}</option>
@@ -136,7 +124,7 @@
                     </select>
                                 </div>
                             </div>
-                          </div>    
+                        
                             <div class="col-lg-3 col-md-3">
                             <div class="form-group">
                                 <label>تاريخ التسجيل من </label>
@@ -160,10 +148,6 @@
                                   <label>الي مواليد</label>
                                   <input class="form-control" type="date" [(ngModel)]="filter.to_date">
                               </div>
-                       
-                         
-                         
-
 
                         </div>
                          <div class="col-lg-3 col-md-3" >
@@ -173,7 +157,7 @@
                             <button class="btn btn-default w3-round " (click)="excel()" >{{ "excel" | trans }}</button>
                             
                         </div>
-                        <div class="col-lg-3 col-md-3">
+                        <div class="col-lg-6 col-md-6">
                             <span class="w3-xlarge w3-text-green" id="count">
 
                           </span>طالب
