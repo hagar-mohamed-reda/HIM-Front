@@ -16,8 +16,8 @@ export const environment = {
       // publicUrl:'http://himtest.him-ma.org',
       // apiUrl: 'http://himtest.him-ma.org/api',
   //  him ofline
-  //  publicUrl: 'http://127.0.0.1:8000',
-  //  apiUrl: 'http://127.0.0.1:8000/api',
+   publicUrl: 'http://127.0.0.1:8000',
+   apiUrl: 'http://127.0.0.1:8000/api',
   //  https://samsav2.sphinxws.com/public
   //  http://127.0.0.1:8000
   //  http://localhost/samsa-backend/public
