@@ -42,4 +42,10 @@ export class AcademicSettingService {
     return this.http.get('academic/get_student_academic?api_token=' + Auth.getApiToken() + "&student_id=" + id);
   }
 
+  public getAcademicPaymentSettings(){
+    return this.http.get('academic/payment_settings?api_token=' + Auth.getApiToken());
+  }
+  public updatePaymentSettings(settings){
+    return this.http.post('academic/update/payment_settings?api_token=' + Auth.getApiToken(), {paymentSettings : settings});
+  }
 }
