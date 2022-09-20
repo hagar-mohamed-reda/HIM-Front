@@ -35,10 +35,10 @@ import { YearworkComponent } from "./components/yearwork/yearwork.component";
 import { AcademicNewComponent } from "./components/academic-new/academic-new.component";
 import { AcademicComponent } from "./academic.component";
 const routes: Routes = [
-  {
-    path: "",
-    component: AcademicComponent,
-    children: [
+  // {
+    // path: "",
+    // component: AcademicComponent,
+    // children: [
       {
         path: "plan",
         canActivate: [AuthGuestService],
@@ -279,8 +279,8 @@ const routes: Routes = [
         redirectTo: "/",
         pathMatch: "full",
       },
-    ],
-  },
+    // ],
+  // },
 ];
 
 @NgModule({

@@ -106,7 +106,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-3 col-md-3">
+                            <!-- <div class="col-lg-3 col-md-3">
                                 <div class="form-group">
                                     <label>نوع الطالب</label>
                                     <select class="form-control" [(ngModel)]="filter.is_application">
@@ -115,7 +115,7 @@
                             <option value="0">طالب</option>
                           </select>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-lg-3 col-md-3">
                                 <div class="form-group">
                                     <label>نوع التقرير</label>
@@ -136,18 +136,31 @@
                     </select>
                                 </div>
                             </div>
+                          </div>    
                             <div class="col-lg-3 col-md-3">
-                                <div class="form-group">
-                                    <label>من مواليد</label>
-                                    <input class="form-control" type="date" [(ngModel)]="filter.from_date">
-                                </div>
+                            <div class="form-group">
+                                <label>تاريخ التسجيل من </label>
+                                <input class="form-control" type="date" [(ngModel)]="filter.registration_date_from">
                             </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label> تاريخ التسجيل الي </label>
+                                <input class="form-control" type="date" [(ngModel)]="filter.registration_date_to">
+                            </div>
+                        </div>
                             <div class="col-lg-3 col-md-3">
-                                <div class="form-group">
-                                    <label>الي مواليد</label>
-                                    <input class="form-control" type="date" [(ngModel)]="filter.to_date">
-                                </div>
-                            </div>
+                              <div class="form-group">
+                                  <label>من مواليد</label>
+                                  <input class="form-control" type="date" [(ngModel)]="filter.from_date">
+                              </div>
+                          </div>
+                          <div class="col-lg-3 col-md-3">
+                              <div class="form-group">
+                                  <label>الي مواليد</label>
+                                  <input class="form-control" type="date" [(ngModel)]="filter.to_date">
+                              </div>
+                       
                          
                          
 

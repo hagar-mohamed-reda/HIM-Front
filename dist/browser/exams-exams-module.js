@@ -854,8 +854,17 @@ __webpack_require__.r(__webpack_exports__);
 
 var PrintStudentsReportComponent = /** @class */ (function () {
     function PrintStudentsReportComponent() {
+        this.$ = $;
+        this.doc = document;
     }
     PrintStudentsReportComponent.prototype.ngOnInit = function () {
+        var self = this;
+        setTimeout(function () {
+            var height = window.innerHeight - 60;
+            self.$('.student-affair-container').css('height', height + "px");
+            //
+            console.log(height);
+        }, 500);
     };
     PrintStudentsReportComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
