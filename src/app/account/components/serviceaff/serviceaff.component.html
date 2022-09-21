@@ -65,7 +65,7 @@
                   <div class="custom-panel-body table-responsive w3-padding">
 
                       <div id="form" class="row">
-                        <div class="col-lg-3 col-md-3">
+                        <div class="col-lg-4 col-md-3">
                           <div class="form-group">
                               <label for="">{{ "academic year" | trans }}</label>
                               <select class="form-control" [(ngModel)]="filter.year_id">
@@ -74,7 +74,7 @@
             </select>
                           </div>
                       </div>
-                          <div class="col-lg-3 col-md-3">
+                          <div class="col-lg-4 col-md-3">
                               <div class="form-group">
                                   <label>{{ "level" | trans }}</label>
                                   <select class="form-control" [(ngModel)]="filter.level_id">
@@ -84,7 +84,7 @@
                               </div>
                           </div>
                         
-                           <div class="col-lg-3 col-md-3">
+                           <div class="col-lg-4 col-md-3">
                             <div class="form-group">
                                 <label for="">{{ "الخدمات"  }}</label>
                                 <select class="form-control" [(ngModel)]="filter.service_id">
@@ -93,7 +93,19 @@
                 </select>
                             </div>
                         </div>
-                   
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label> تاريخ من</label>
+                                <input class="form-control" type="date" [(ngModel)]="filter.date_from">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label> تاريخ إلى</label>
+                                <input class="form-control" type="date" [(ngModel)]="filter.date_to">
+                            </div>
+
+                      </div>
                          <!-- <div class="col-lg-3 col-md-3">
                             <div class="form-group">
                                 <label for="">{{ "division" | trans }}</label>

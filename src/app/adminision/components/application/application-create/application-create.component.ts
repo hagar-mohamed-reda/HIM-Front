@@ -100,7 +100,7 @@ export class ApplicationCreateComponent implements OnInit {
   }
 
   setDefaultYear() {
-    this.application.academic_years_id = 8;
+    this.application.academic_years_id = 9;
     this.watchLevel();
     /*ApplicationSettingService.ACADEMIC_YEARS.forEach(element => {
       if (element.id == 8) {
