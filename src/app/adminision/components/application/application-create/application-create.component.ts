@@ -272,6 +272,8 @@ export class ApplicationCreateComponent implements OnInit {
       });
       // current year
       let currentYear = new Date().getFullYear();
+      console.log(currentYear);
+      
       // let qualificationYear = parseInt(this.application.qualification_date);
       //new Date(this.application.qualification_date).getFullYear();
       // let differentYear = currentYear - qualificationYear;
@@ -291,6 +293,8 @@ export class ApplicationCreateComponent implements OnInit {
       this.setCurrentError(Helper.trans('fill all requird data'));
       return Message.error(Helper.trans('fill all requird data'));
     }
+    //  let currentYear = new Date().getFullYear();
+    //   console.log(currentYear);
     // if (!this.validateOnQualificationDate())
     //   return Message.error(Helper.trans('different year of qualification must be less of equal than ' + this.differentYearRequired));
 

@@ -487,15 +487,16 @@
                           }"
                           [(ngModel)]="application.division_id"
                         >
-                          <ng-container
-                            *ngFor="let item of applicationSettings.DIVISIONS"
-                          >
-                          <!-- <option value="" selected>اختار القسم</option> -->
 
-                            <option value="{{ item.id }}">
+                          <!-- <ng-container
+                            
+                          > -->
+                        <option value="1" selected disabled>اختار التخصص</option>
+
+                            <option *ngFor="let item of applicationSettings.DIVISIONS" value="{{ item.id }}">
                               {{ item.name }}
                             </option>
-                          </ng-container>
+                          <!-- </ng-container> -->
                         </select>
                       </td>
                     </tr>
