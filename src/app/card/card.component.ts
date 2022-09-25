@@ -128,6 +128,7 @@ export class CardComponent implements OnInit {
     this.preCardSrc();
     this.isExportSubmitted = true;
     this.cardService.exportCard(data).subscribe((res: any) => {
+
       if (res.status == 1) {
         Message.success(res.message);
         Helper.openWindow(this.preCardSrc());

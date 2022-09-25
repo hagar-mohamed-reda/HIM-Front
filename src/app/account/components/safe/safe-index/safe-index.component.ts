@@ -17,6 +17,7 @@ import { SafeAlerter } from '../../../helpers/safe-alerter';
 })
 export class SafeIndexComponent implements OnInit {
 
+  
   // init document
   public doc: any = document;
 
@@ -63,6 +64,7 @@ export class SafeIndexComponent implements OnInit {
     this.safeObject.constraint_status = {};
     this.safeObject.paid_value = 0;
     this.safeObject.division = {};
+    this.safeObject.payment_details = []
   }
 
   searchInputEvent() {
@@ -101,6 +103,16 @@ export class SafeIndexComponent implements OnInit {
     if (!id)
       return Message.error('search about student first');
     this.studentAcountService.getStudentAccount(id).subscribe((r: any) => {
+      // get student payments details
+      console.log(r.payments);
+      
+      r.payments.forEach(p => {
+          this.safeObject.payment_details.push(p)
+      });
+      
+
+    
+      
       if (this.safeObject.id != r.id)
         this.isStudentSayed = false;
 
@@ -186,6 +198,7 @@ export class SafeIndexComponent implements OnInit {
     }
   }
 
+ 
   ngOnInit() {
   }
 

@@ -230,6 +230,31 @@
                             </div>
 
                         </div>
+
+                        <div permission="safe_student_payment" class="custom-panel w3-display-container w3-round">
+                            <div class="custom-panel-title">{{ "payment info" | trans }}</div>
+
+                            <div class="custom-panel-body">
+                                <div class="row" style="padding: 10px 20px" >
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>القيمة</th>
+                                                <th>السنة</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let payment of safeObject.payments">
+                                                <td>{{payment.value}}</td>
+                                                <td>{{payment.academic_year?.name}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    
+                                </div>
+                            </div>
+
+                        </div>
                         <div class="custom-panel w3-display-container w3-round">
                             <div class="custom-panel-body">
                                 <button permission="safe_student_payment" class="btn btn-default small-shadow w3-margin-left" [disabled]="!studentSearchId || safeObject.paid_value < 0 || !safeObject.paid_value && safeObject.payment_type != 'service'" (click)="performPay()">{{ "save & print" | trans }}</button>

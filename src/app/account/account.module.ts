@@ -79,6 +79,7 @@ import { BankPipe } from './pipes/bank.pipe';
 import { PersonPipe } from './pipes/person.pipe';
 import { PipesPipe } from './pipes.pipe';
 import { ServiceaffComponent } from './components/serviceaff/serviceaff.component';
+import { ObjectValuesPipe } from './pipes/object-values.pipe';
 // import { ServicesComponent } from './components/services/services.component';
 
 @NgModule({
@@ -141,6 +142,7 @@ import { ServiceaffComponent } from './components/serviceaff/serviceaff.componen
     PersonFormComponent,
     PersonIndexComponent,
     CheckPipe,
+    ObjectValuesPipe,
     WorksheetPrivateComponent,
     WorkPrivateCheckComponent,
     WorkPrivateDepositesComponent,
