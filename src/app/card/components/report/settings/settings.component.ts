@@ -35,13 +35,10 @@ export class SettingsComponent implements OnInit {
     private cardService: CardService,
     private systemSettingService: SystemSettingService
   ) {}
-  ngOnInit() {
-    $("#term_id").on("change", () => {
-      this.term_id = $("#term_id").val();
-    });
-    this.terms = Cache.get(TermService.TERPM_PREFIX);
+  ngOnInit(){
 
-    this.loadLevels();
+    this.loadGlobalSettings();
+    this.filter.year_id = this.applicationService.cue
   }
 
   loadLevels() {
@@ -61,8 +58,8 @@ export class SettingsComponent implements OnInit {
     this.valuesHash.getKeys().forEach(key => this.valuesHash.remove(key))
   }
   loadSettings(
-    year_id = this.globalSetting.current_academic_year.id,
-    term_id = this.globalSetting.current_term.id
+    year_id ,
+    term_id
   ) {
     this.initSettingsValues()
     this.cardService.getSettings({ year_id, term_id }).subscribe((res: any) => {
@@ -76,11 +73,14 @@ export class SettingsComponent implements OnInit {
       });
 
       this.settings = [
+        // مقيد
         this.getSettingObject(2, 1, 1),
         this.getSettingObject(2, 2, 2),
         this.getSettingObject(2, 3, 3),
         this.getSettingObject(2, 4, 4),
         this.getSettingObject(2, 5, 5),
+
+        // غير مقيد
         this.getSettingObject(3, 6, 1),
         this.getSettingObject(3, 7, 2),
         this.getSettingObject(3, 8, 3),
@@ -93,14 +93,12 @@ export class SettingsComponent implements OnInit {
   loadGlobalSettings() {
     this.systemSettingService.getSystemSetting().subscribe((res: any) => {
       this.globalSetting = res;
+      this.filter.year_id = res.current_academic_year.id
+      this.filter.term_id = res.current_term.id
       this.loadSettings(this.filter.year_id, this.filter.term_id);
     });
   }
 
-  load() {
-    if(! this.filter.year_id || !this.filter.term_id) return Message.error("من فضلك ادخل جميع البيانات")
-    this.loadGlobalSettings();
-  }
 
   updateSetting(){
     
