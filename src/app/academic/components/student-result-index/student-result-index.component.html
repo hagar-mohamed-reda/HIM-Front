@@ -11,28 +11,28 @@
             <div class="custom-panel w3-display-container w3-round application-panel student-info-panel">
                 <div class="custom-panel-body table-responsive w3-padding">
 
-                    <div class="col-lg-2">
+                    <div class="col-lg-3">
                         <label for="">{{ "level" | trans }}</label>
                         <select id="level_id" class="form-control input-sm select2 level_id" [(ngModel)]="level_id">
                           <option value="">{{ "level" | trans }}</option>
-                    <option *ngFor="let item of levels" value="{{ item.id }}">{{item.name}}</option>
-                  </select>
+                       <option *ngFor="let item of levels" value="{{ item.id }}">{{item.name}}</option>
+                      </select>
                     </div>
 
-                    <div class="col-lg-2">
+                    <div class="col-lg-3">
                         <label for="">{{ "division" | trans }}</label>
                         <select id="division_id" class="form-control input-sm select2 division_id" [(ngModel)]="division_id">
                         <option value="">{{ "division" | trans }}</option>
-                  <option *ngFor="let item of divisions" value="{{ item.id }}">{{item.name}}</option>
-                </select>
+                       <option *ngFor="let item of divisions" value="{{ item.id }}">{{item.name}}</option>
+                       </select>
                     </div>
 
-                    <div class="col-lg-2">
+                    <div class="col-lg-3">
                         <label for="">السنة الدراسية</label>
                         <select id='year_id' class="form-control input-sm select2" [(ngModel)]="year_id">
                         <option value="">السنة الدراسية</option>
-                  <option *ngFor="let item of applicationService.ACADEMIC_YEARS" value="{{ item.id }}">{{item.name}}</option>
-                </select>
+                      <option *ngFor="let item of applicationService.ACADEMIC_YEARS" value="{{ item.id }}">{{item.name}}</option>
+                     </select>
                     </div>
 
                     <div class="col-lg-3">
@@ -42,7 +42,7 @@
                         <option value="1">الفصل الدراسي الأول</option>
                         <option value="2">الفصل الدراسي الثاني</option>
                         <option value="3">الفصل الدراسي الصيفي</option>
-                </select>
+                     </select>
                     </div>
 
                     <div class="col-lg-3">
@@ -53,36 +53,40 @@
                 </select>
                     </div>
 
-                    <div class="col-sm-12">
-
-                        <button id='getResult' mat-raised-button color="primary" class="w3-green" [disabled]="isLoading" (click)="loadResult()" style="margin: 5px">
-                    <i *ngIf="isLoading" class="fa fa-spin fa-spinner"></i>
-                    <span *ngIf="!isLoading">{{ "search" | trans }} </span>
-                  </button>
-
-                        <button id='all' mat-raised-button color="primary" class="w3-green" (click)="(this.course_id == null ) ? $('#eceGo').trigger('click')  : $('#importExcelModal').modal('show')" style="margin: 5px">
-
-                    <span  >رفع جميع الدرجات</span>
-                  </button>
-                        <button id='final' mat-raised-button color="primary" class="w3-green" (click)="(this.course_id == null ) ? $('#eceGo').trigger('click')  : $('#importExcelModal').modal('show')" style="margin: 5px">
-
-                    <span  >رفع درجات الفاينل </span>
-                  </button>
-                        <button id='mid' mat-raised-button color="primary" class="w3-green" (click)="(this.course_id == null ) ? $('#eceGo').trigger('click')  : $('#importExcelModal').modal('show')" style="margin: 5px">
-
-                    <span  >رفع درجات الميدترم </span>
-                  </button>
-                        <button id='a3mal' mat-raised-button color="primary" class="w3-green" (click)="(this.course_id == null ) ? $('#eceGo').trigger('click')  : $('#importExcelModal').modal('show')" style="margin: 5px">
-
-                    <span  >رفع درجات أعمال السنة </span>
-                  </button>
-                        <button id='a3mal' mat-raised-button color="primary" class="w3-green" (click)="exportExcel()" style="margin: 5px">
-
-                    <span  >  اكسيل </span>
-                  </button>
-                        <button style="display: none;" id="eceGo" (click)='excel()'></button>
-                        <button type="button" class="w3-black" mat-raised-button (click)="print()" style="margin: 5px;">طباعة</button>
+                    <div class="col-lg-2">
+                        <button id='all' mat-raised-button color="primary" class="w3-green" (click)="(this.course_id == null ) ? $('#eceGo').trigger('click')  : $('#importExcelModal').modal('show')" style="margin-top: 25px!important;">
+                            <span  >رفع جميع الدرجات</span>
+                            </button>
                     </div>
+                       
+                        <div class="col-lg-2">
+                            <button id='final' mat-raised-button color="primary" class="w3-green" (click)="(this.course_id == null ) ? $('#eceGo').trigger('click')  : $('#importExcelModal').modal('show')" style="margin-top: 25px!important;">
+                                <span  >رفع درجات الفاينل </span>
+                                </button>
+                        </div>
+                        
+                        <div class="col-lg-2">
+                            <button id='mid' mat-raised-button color="primary" class="w3-green" (click)="(this.course_id == null ) ? $('#eceGo').trigger('click')  : $('#importExcelModal').modal('show')" style="margin-top: 25px!important;">
+                                <span  >رفع درجات الميدترم </span>
+                                </button>
+                        </div>
+                       
+                        <div class="col-lg-2">
+                            <button id='a3mal' mat-raised-button color="primary" class="w3-green" (click)="(this.course_id == null ) ? $('#eceGo').trigger('click')  : $('#importExcelModal').modal('show')" style="margin-top: 25px!important;">
+                                <span  >رفع درجات أعمال السنة </span>
+                                </button>
+                        </div>
+                      
+
+                        <div class="col-sm-12">
+                        <button style="margin: 5px;" type="button" class="w3-black" mat-raised-button (click)='exportExcel()'>اكسيل</button>
+                        <button type="button" class="w3-black" mat-raised-button (click)="print()" style="margin: 5px;">طباعة</button>
+                        <button id='getResult' mat-raised-button  class="w3-black" [disabled]="isLoading" (click)="loadResult()" style="margin: 5px">
+                            <i *ngIf="isLoading" class="fa fa-spin fa-spinner"></i>
+                            <span *ngIf="!isLoading">{{ "search" | trans }} </span>
+                        </button>
+                        </div>
+                 
                 </div>
             </div>
 
