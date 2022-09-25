@@ -12,9 +12,10 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatSliderModule, MatSlideToggleModule } from '@angular/material';
 import { StudentAccountService } from '../account/services/student-account.service';
 import { CardExportReportComponent } from './components/report/card-export-report/card-export-report.component';
+import { SettingsComponent } from './components/report/settings/settings.component';
 
 @NgModule({
-  declarations: [CardComponent, CardExportReportComponent],
+  declarations: [CardComponent, CardExportReportComponent, SettingsComponent],
   imports: [
     CommonModule,
     SharedModule,
