@@ -42,4 +42,12 @@ export class CardService {
   public exportCard(data) {
     return this.http.post('card/export_card?api_token=' + Auth.getApiToken(), data);
   }
+
+  public getSettings(data){
+    return this.http.get(`card/card_exports_settings?api_token=${Auth.getApiToken()}&year_id=${data.year_id}&term_id=${data.term_id}`);
+  }
+
+  public updateSettings(data){
+    return this.http.post(`card/card_exports_settings?api_token=${Auth.getApiToken()}` , data);
+  }
 }
