@@ -18,29 +18,20 @@
           <option *ngFor="let item of applicationService.ACADEMIC_YEARS"  value="{{ item.id }}">{{ item.name }}</option>
         </select>
           </div>
-      </div>
-      <div col-md-3ol-md-3">
-        <label for="">{{ "الفصل الدراسى"}}</label>
-        <select style='height: 32px !important; width: 100% !important;' id="term_id" name="filter.term_id" class="" [(ngModel)]="filter.term_id">
-            <option *ngFor="let item of terms" value="{{ item.id }}">{{item.name}}</option>
-        </select>
-    </div>
-    <button class="btn btn-default w3-round" (click)="load()">{{ "تحديث" }}</button>
-
+        </div>
+        <div class=" col-lg-3 col-md-3">
+          <label for="">{{ "الفصل الدراسى"}}</label>
+          <select style='height: 32px !important; width: 100% !important;' id="term_id" name="filter.term_id" class="" [(ngModel)]="filter.term_id">
+              <option *ngFor="let item of terms" value="{{ item.id }}">{{item.name}}</option>
+          </select>
+        </div>
+        <button class="btn btn-default w3-round" (click)="load()">{{ "تحديث" }}</button>
         <div class="safe-box-body row" *ngIf="settings.length > 0">
-
-         
-      
-
-
          <div class="col-12" style="text-align: center;">&nbsp;</div>
          <div style="text-align: center ; font-size: 18px;width: 100%;">إعدادات الكارنيهات</div>
-
          <div style="display: grid;grid-template-columns: repeat(2, minmax(0, 1fr));width : 100%;gap : 1rem;padding: 1rem;">
-
-          <div style="margin : 10px 0">
+         <div style="margin : 10px 0">
           <!-- setting panel -->
-
           <div class="custom-panel w3-display-container w3-round application-panel student-info-panel">
            <div class="custom-panel-body table-responsive"  >
              <table class="w3-table w3-block text-right table-right" >
@@ -84,11 +75,9 @@
            
              </table>
            </div>
-         </div>
+          </div>
          <br>
          </div>
-         
-         
          <div style="margin : 10px 0">
           <!-- setting panel -->
           <div class="custom-panel w3-display-container w3-round application-panel student-info-panel">
@@ -128,7 +117,10 @@
                  <th> الخريجين </th>
                  <td>
                    <input type="number" class="input-setting" [(ngModel)]="settings[9].value" >
-</div>
+                  </td>
+                </tr>
+              </table>
+           </div>
             <!-- setting panel -->
             <div class="custom-panel w3-display-container w3-round application-panel student-info-panel">
              <div class="custom-panel-body table-responsive"  >
@@ -142,7 +134,7 @@
              </div>
            </div>
            <br>
-         </div>
+          </div>
          
         </div>
 
