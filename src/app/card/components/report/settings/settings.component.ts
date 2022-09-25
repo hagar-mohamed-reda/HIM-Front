@@ -107,5 +107,4 @@ export class SettingsComponent implements OnInit {
     this.cardService.updateSettings({settings: this.settings}).subscribe(res => {
       Message.success("تم الحفظ")
     })
-  }
-}
+  }}

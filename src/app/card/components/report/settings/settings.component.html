@@ -5,7 +5,7 @@
         <div class="safe-box-header w3-large" style="padding: 5px!important">
           {{ "وحده إصدار الكارنيهات "  }}
         </div>
-
+       
       
 
 
@@ -19,7 +19,7 @@
         </select>
           </div>
       </div>
-      <div class="col-md-3">
+      <div col-md-3ol-md-3">
         <label for="">{{ "الفصل الدراسى"}}</label>
         <select style='height: 32px !important; width: 100% !important;' id="term_id" name="filter.term_id" class="" [(ngModel)]="filter.term_id">
             <option *ngFor="let item of terms" value="{{ item.id }}">{{item.name}}</option>
@@ -128,17 +128,7 @@
                  <th> الخريجين </th>
                  <td>
                    <input type="number" class="input-setting" [(ngModel)]="settings[9].value" >
-                 </td>
-               </tr>
-             
-             </table>
-           </div>
-         </div>
-         <br>
-         </div>
-
-        </div>
-          <div class="col-lg-12 col-md-12 col-sm-12">
+</div>
             <!-- setting panel -->
             <div class="custom-panel w3-display-container w3-round application-panel student-info-panel">
              <div class="custom-panel-body table-responsive"  >
