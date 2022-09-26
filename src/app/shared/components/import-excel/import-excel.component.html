@@ -5,6 +5,8 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">{{ "import excel file" | trans }}</h4>
       </div>
+      <h5 style="border: solid 1px black; color: rgb(229, 113, 113); border-radius: 10px;" > من فضلك إختار السنه الدراسيه والتيرم المحددين من الاعدادات قبل رفع الملفات</h5>
+
       <div class="modal-body w3-border-0">
         <button mat-raised-button style="border-radius: 5em;" (click)="$(importFile).click()" >{{ "upload file" | trans }}</button>
         <br>
