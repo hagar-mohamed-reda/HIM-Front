@@ -361,6 +361,7 @@ export class ApplicationCreateComponent implements OnInit {
 
   reset() {
     this.application = {};
+    this.application.registeration_date = new Date().toISOString().substring(0, 10);
     this.currentError = '';
   }
 
@@ -532,12 +533,12 @@ export class ApplicationCreateComponent implements OnInit {
       }
   }
 
-  emptyData() {
-    this.application.qualification_types_id = null;
-    this.application.level_id = null;
-    this.application.level_name = null;
-    this.application.grade = 0;
-  }
+  // emptyData() {
+  //   this.application.qualification_types_id = null;
+  //   this.application.level_id = null;
+  //   this.application.level_name = null;
+  //   this.application.grade = 0;
+  // }
 
   filterDataBaisedOnGender() {
     if (this.application.gender == 'female') {
