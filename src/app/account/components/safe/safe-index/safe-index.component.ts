@@ -24,6 +24,7 @@ export class SafeIndexComponent implements OnInit {
   public safeObject: any = {};
   public payment: Payment;
   public searchKey: string;
+  totalPayments : number = 0;
   public studentSearchId;
   public availableServices: any;
 
@@ -106,10 +107,12 @@ export class SafeIndexComponent implements OnInit {
       // get student payments details
       console.log(r.payments);
       
+      console.log(r.payments);
+      
       r.payments.forEach(p => {
           this.safeObject.payment_details.push(p)
       });
-      
+       this.totalPayments = r.payments.reduce((total,item) => total + item.value, 0)
 
     
       
