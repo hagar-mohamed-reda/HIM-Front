@@ -11,7 +11,7 @@
             <div class="custom-panel w3-display-container w3-round application-panel student-info-panel">
                 <div class="custom-panel-body table-responsive w3-padding">
 
-                    <div class="col-lg-3">
+                    <div class="col-lg-2">
                         <label for="">{{ "level" | trans }}</label>
                         <select id="level_id" class="form-control input-sm select2 level_id" [(ngModel)]="level_id">
                           <option value="">{{ "level" | trans }}</option>
@@ -19,7 +19,7 @@
                   </select>
                     </div>
 
-                    <div class="col-lg-3">
+                    <div class="col-lg-2">
                         <label for="">{{ "division" | trans }}</label>
                         <select id="division_id" class="form-control input-sm select2 division_id" [(ngModel)]="division_id">
                         <option value="">{{ "division" | trans }}</option>
@@ -27,7 +27,7 @@
                 </select>
                     </div>
 
-                    <div class="col-lg-3">
+                    <div class="col-lg-2">
                         <label for="">السنة الدراسية</label>
                         <select id='year_id' class="form-control input-sm select2" [(ngModel)]="year_id">
                         <option value="">السنة الدراسية</option>
@@ -52,31 +52,37 @@
                   <option *ngFor="let item of courses|level:level_id|term:term_id|division:division_id|year:year_id" value="{{ item.course_id }}">{{item.course_name}}</option>
                 </select>
                     </div>
-                    <div class="col-lg-3" style="margin-top: 22px!important;">
-                        <button id='getResult' mat-raised-button color="primary" class="w3-green" [disabled]="isLoading" (click)="loadResult()" >
-                            <i *ngIf="isLoading" class="fa fa-spin fa-spinner"></i>
-                            <span *ngIf="!isLoading">{{ "search" | trans }} </span>
-                          </button>
+
+                    <div class="col-sm-12">
+
+                        <button id='getResult' mat-raised-button color="primary" class="w3-green" [disabled]="isLoading" (click)="loadResult()" style="margin: 5px">
+                    <i *ngIf="isLoading" class="fa fa-spin fa-spinner"></i>
+                    <span *ngIf="!isLoading">{{ "search" | trans }} </span>
+                  </button>
+
+                        <button id='all' mat-raised-button color="primary" class="w3-green" (click)="(this.course_id == null ) ? $('#eceGo').trigger('click')  : $('#importExcelModal').modal('show')" style="margin: 5px">
+
+                    <span  >رفع جميع الدرجات</span>
+                  </button>
+                        <button id='final' mat-raised-button color="primary" class="w3-green" (click)="(this.course_id == null ) ? $('#eceGo').trigger('click')  : $('#importExcelModal').modal('show')" style="margin: 5px">
+
+                    <span  >رفع درجات الفاينل </span>
+                  </button>
+                        <button id='mid' mat-raised-button color="primary" class="w3-green" (click)="(this.course_id == null ) ? $('#eceGo').trigger('click')  : $('#importExcelModal').modal('show')" style="margin: 5px">
+
+                    <span  >رفع درجات الميدترم </span>
+                  </button>
+                        <button id='a3mal' mat-raised-button color="primary" class="w3-green" (click)="(this.course_id == null ) ? $('#eceGo').trigger('click')  : $('#importExcelModal').modal('show')" style="margin: 5px">
+
+                    <span  >رفع درجات أعمال السنة </span>
+                  </button>
+                        <button id='a3mal' mat-raised-button color="primary" class="w3-green" (click)="exportExcel()" style="margin: 5px">
+
+                    <span  >  اكسيل </span>
+                  </button>
+                        <button style="display: none;" id="eceGo" (click)='excel()'></button>
+                        <button type="button" class="w3-black" mat-raised-button (click)="print()" style="margin: 5px;">طباعة</button>
                     </div>
-                <div class="col-sm-12" style="margin-top: 8px !important;">
-                  <button id='all' mat-raised-button color="primary" class="w3-green" (click)="(this.course_id == null ) ? $('#eceGo').trigger('click')  : $('#importExcelModal').modal('show')" style="margin: 5px">
-                  <span  >رفع جميع الدرجات</span>
-                  </button>
-                  <button id='final' mat-raised-button color="primary" class="w3-green" (click)="(this.course_id == null ) ? $('#eceGo').trigger('click')  : $('#importExcelModal').modal('show')" style="margin: 5px">
-                  <span  >رفع درجات الفاينل </span>
-                  </button>
-                  <button id='mid' mat-raised-button color="primary" class="w3-green" (click)="(this.course_id == null ) ? $('#eceGo').trigger('click')  : $('#importExcelModal').modal('show')" style="margin: 5px">
-                  <span  >رفع درجات الميدترم </span>
-                  </button>
-                  <button id='a3mal' mat-raised-button color="primary" class="w3-green" (click)="(this.course_id == null ) ? $('#eceGo').trigger('click')  : $('#importExcelModal').modal('show')" style="margin: 5px">
-                  <span  >رفع درجات أعمال السنة </span>
-                  </button>
-                 
-                    <button  type="button" class="w3-black" mat-raised-button (click)="exportExcel()"><span  >  اكسيل </span>
-                    </button>
-                    <button  type="button" class="w3-black" mat-raised-button (click)="print()" style="margin: 5px;">طباعة</button>
-                 </div>
-               
                 </div>
             </div>
 

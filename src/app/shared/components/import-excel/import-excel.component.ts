@@ -45,6 +45,7 @@ export class ImportExcelComponent implements OnInit {
 
 
   sendFile() {
+    if(this.excelRows.length == 0) return Message.error("اختار الملف اولا")
     this.isSubmitted = true;
     if(this.course_id != null){
       this.resource.course_id = this.course_id;
@@ -67,7 +68,7 @@ export class ImportExcelComponent implements OnInit {
         if (this.action)
           this.action();
       } else {
-        Message.error(res.message);
+        Message.error("ارفع الملف أولا");
       }
       this.isSubmitted = false;
     });

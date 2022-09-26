@@ -120,9 +120,6 @@ export class StudentResultIndexComponent implements OnInit {
   loadCourses() {
     this.courseService.getopenCourses().subscribe((res) => {
       this.courses = res;
-   
-      
-
       console.log(res);
       
     });

@@ -43,9 +43,12 @@ export class CoursesStatsComponent implements OnInit {
       var self = this;
       Request.fire(false, () => {
       });
-      this.courseService.get().subscribe((res: any) => {
+      this.courses = this.courseService.getopenCourses().subscribe((res: any) => {
         this.courses = res;
       })
+      // this.courseService.get().subscribe((res: any) => {
+      //   this.courses = res;
+      // })
       this.degreeMapService.get().subscribe((res) => {
         this.degreeMaps = res;
       });
