@@ -15,7 +15,8 @@ import { GlobalService } from 'src/app/shared/services/global.service';
   styleUrls: ['./check-index.component.scss']
 })
 export class CheckIndexComponent implements OnInit {
-
+  companies: any =[];
+  persons: any =[];
   public doc: any = AppModule.doc;
 
   // services list
@@ -72,7 +73,7 @@ export class CheckIndexComponent implements OnInit {
       'date',
       'number',
       'person',
-      // 'person_id',
+      // 'company_id',
       'notes',
       'value',
       'is_paid',
@@ -117,6 +118,8 @@ export class CheckIndexComponent implements OnInit {
   loadResources() {
     this.globalService.get("account/checks").subscribe( (res: any) => {
       this.refreshDataSource(res);
+      console.log(res);
+      
     });
   }
 
@@ -132,6 +135,16 @@ export class CheckIndexComponent implements OnInit {
   ngOnInit() {
     this.initMatDatatable();
     this.loadResources();
+    this.globalService.get('account/companies').subscribe((res) => {
+      this.companies = res;    
+      console.log(res);
+  
+    });
+    this.globalService.get('account/persons').subscribe((res) => {
+      this.persons = res;    
+      console.log(res);
+        
+    });
   }
 
 }

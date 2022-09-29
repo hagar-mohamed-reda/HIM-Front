@@ -47,7 +47,7 @@
           <tr>
             <th>{{ "الشخص "  }} </th>
             <td>
-              <select class="form-control input-sm select2 person_id" [(ngModel)]="item.person_id">
+              <select class="form-control input-sm  " [(ngModel)]="item.person_id">
                 <option *ngFor="let row of persons" value="{{ row.id }}">{{ row.name }}</option>
               </select>
             </td>
@@ -55,7 +55,7 @@
           <tr>
             <th>{{ "الشركه "  }} </th>
             <td>
-              <select class="form-control input-sm select2 company_id" [(ngModel)]="item.company_id">
+              <select class="form-control input-sm " [(ngModel)]="item.company_id">
                 <option *ngFor="let row of companies" value="{{ row.id }}">{{ row.name }}</option>
               </select>
             </td>

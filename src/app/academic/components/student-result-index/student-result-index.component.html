@@ -35,7 +35,7 @@
                 </select>
                     </div>
 
-                    <div class="col-lg-3">
+                    <div class="col-lg-2">
                         <label for="">الترم</label>
                         <select id="term_id" class="form-control input-sm select2 term_id" [(ngModel)]="term_id">
                         <option value="">الترم</option>
@@ -52,19 +52,22 @@
                   <option *ngFor="let item of courses|level:level_id|term:term_id|division:division_id|year:year_id" value="{{ item.course_id }}">{{item.course_name}}</option>
                 </select>
                     </div>
-
+<div class="col-lg-1" style="margin-top: 22px!important;">
+    <button id='getResult' mat-raised-button color="primary" class="w3-green" [disabled]="isLoading" (click)="loadResult()" >
+        <i *ngIf="isLoading" class="fa fa-spin fa-spinner"></i>
+        <span *ngIf="!isLoading">{{ "search" | trans }} </span>
+      </button>
+</div>
                     <div class="col-sm-12">
 
-                        <button id='getResult' mat-raised-button color="primary" class="w3-green" [disabled]="isLoading" (click)="loadResult()" style="margin: 5px">
-                    <i *ngIf="isLoading" class="fa fa-spin fa-spinner"></i>
-                    <span *ngIf="!isLoading">{{ "search" | trans }} </span>
-                  </button>
+                     
 
                         <button id='all' mat-raised-button color="primary" class="w3-green" (click)="(this.course_id == null ) ? $('#eceGo').trigger('click')  : $('#importExcelModal').modal('show')" style="margin: 5px">
 
                     <span  >رفع جميع الدرجات</span>
                   </button>
-                        <button id='final' mat-raised-button color="primary" class="w3-green" (click)="(this.course_id == null ) ? $('#eceGo').trigger('click')  : $('#importExcelModal').modal('show')" style="margin: 5px">
+
+                        <!-- <button id='final' mat-raised-button color="primary" class="w3-green" (click)="(this.course_id == null ) ? $('#eceGo').trigger('click')  : $('#importExcelModal').modal('show')" style="margin: 5px">
 
                     <span  >رفع درجات الفاينل </span>
                   </button>
@@ -75,7 +78,7 @@
                         <button id='a3mal' mat-raised-button color="primary" class="w3-green" (click)="(this.course_id == null ) ? $('#eceGo').trigger('click')  : $('#importExcelModal').modal('show')" style="margin: 5px">
 
                     <span  >رفع درجات أعمال السنة </span>
-                  </button>
+                  </button> -->
                         <button id='a3mal' mat-raised-button color="primary" class="w3-green" (click)="exportExcel()" style="margin: 5px">
 
                     <span  >  اكسيل </span>
@@ -139,7 +142,7 @@
                                     <ng-container *ngIf="excelClick2">{{item.mid_degree}}</ng-container>
                                 </td>
                                 <td>
-                                    <ng-container *ngIf="excelClick"><input id="work_year_degree{{item.id}}" type="number" [(ngModel)]="item.work_year_degree" (keyup.enter)="calculate(item.id)" max="{{item.large_degree }}" class="form-control input-sm"></ng-container>
+                                    <ng-container *ngIf="excelClick"><input id="work_year_degree{{item.id}}" type="number" [(ngModel)]="item.work_year_degree" (keyup)="calculate(item.id)" max="{{item.large_degree }}" class="form-control input-sm"></ng-container>
                                     <!-- <input id="work_year_degree{{item.id}}" type="number" [(ngModel)]="item.work_year_degree" max="{{item.large_degree }}" class="form-control input-sm"> -->
                                     <ng-container *ngIf="excelClick2">{{item.work_year_degree}}</ng-container>
                                 </td>

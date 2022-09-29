@@ -22,6 +22,9 @@ export class StudentShowComponent implements OnInit {
   public student: any = {};
 
   public studentSettings = ApplicationSettingService;
+  public applicationSettings = ApplicationSettingService;
+
+
 
   public defaultImage: string = '/assets/img/avatar.png';
 

@@ -362,6 +362,7 @@ export class ApplicationCreateComponent implements OnInit {
   reset() {
     this.application = {};
     this.application.registeration_date = new Date().toISOString().substring(0, 10);
+    this.setLevel();
     this.currentError = '';
   }
 

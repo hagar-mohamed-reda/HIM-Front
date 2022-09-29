@@ -22,6 +22,8 @@ export class ApplicationShowComponent implements OnInit {
   public application: any = {};
 
   public applicationSettings = ApplicationSettingService;
+  public studentSettings = ApplicationSettingService;
+
 
   public defaultImage: string = '/assets/img/avatar.png';
 

@@ -89,9 +89,12 @@ export class WorkPrivateDepositesComponent implements OnInit {
   create(text=null) {
     this.data.push({
       notes: text,//? text : Helper.trans('new resource')
-      type: 'store_to_bank',
+      // type: 'store_to_bank',
+      type: 'bank_to_store',
       store_id: this.filter.store_id
+
     });
+
   }
 
   remove(object: any, index) {
@@ -115,6 +118,7 @@ export class WorkPrivateDepositesComponent implements OnInit {
     this.data.forEach(element => {
       this.total += element.value;
     });
+    
   }
 
 }

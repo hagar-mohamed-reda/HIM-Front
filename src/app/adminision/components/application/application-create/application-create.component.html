@@ -427,7 +427,7 @@
                           }"
                           [(ngModel)]="application.level_id"
                         >
-                        <option value="1" disabled >اختار المستوى</option>
+                        <option value="" disabled >اختار المستوى</option>
 
                           <option
                             *ngFor="let item of levels"
@@ -494,7 +494,7 @@
                           <!-- <ng-container
                             
                           > -->
-                        <option value="1" selected >اختار التخصص</option>
+                        <option value="" selected >اختار التخصص</option>
 
                             <option *ngFor="let item of applicationSettings.DIVISIONS" value="{{ item.id }}">
                               {{ item.name }}

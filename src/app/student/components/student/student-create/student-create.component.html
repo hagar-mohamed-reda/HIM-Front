@@ -759,7 +759,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <th>{{ "language_1" | trans }}</th>
+                      <!-- <th>{{ "language_1" | trans }}</th>
                       <td>
                         <select
                           class="custom-input form-control input-sm w3-input border-bottom-dashed input-sm"
@@ -767,6 +767,22 @@
                         >
                           <option
                             *ngFor="let item of applicationSettings.LANGUAGUES"
+                            value="{{ item.id }}"
+                          >
+                            {{ item.name }}
+                          </option>
+                        </select>
+                      </td> -->
+                      <th>{{ "language_1" | trans }}</th>
+                      <td>
+                        <select
+                          class="custom-input form-control input-sm w3-input border-bottom-dashed input-sm"
+                          [(ngModel)]="application.language_1_id"
+                        >
+                        <option value="" selected>اختار اللغه الاولى</option>
+
+                          <option
+                            *ngFor="let item of applicationSettings.LANGUAGES"
                             value="{{ item.id }}"
                           >
                             {{ item.name }}
@@ -781,8 +797,9 @@
                           class="custom-input form-control input-sm w3-input border-bottom-dashed input-sm"
                           [(ngModel)]="application.language_2_id"
                         >
+                        <option value="" selected>اختر اللغه التانيه</option>
                           <option
-                            *ngFor="let item of applicationSettings.LANGUAGUES"
+                            *ngFor="let item of applicationSettings.LANGUAGES"
                             value="{{ item.id }}"
                           >
                             {{ item.name }}

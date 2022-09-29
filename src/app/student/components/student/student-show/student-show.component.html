@@ -534,8 +534,12 @@
                                                 <select readonly
                                                     class="custom-input form-control input-sm w3-input border-bottom-dashed input-sm"
                                                     [(ngModel)]="student.language_1_id">
-                                                    <option *ngFor="let item of studentSettings.LANGUAGUES"
-                                                        value="{{ item.id }}">{{ item.name }}</option>
+                                                    <option
+                                                    *ngFor="let item of applicationSettings.LANGUAGES"
+                                                    value="{{ item.id }}"
+                                                  >
+                                                    {{ item.name }}
+                                                  </option>
                                                 </select>
                                             </td>
                                         </tr>
@@ -545,8 +549,12 @@
                                                 <select readonly
                                                     class="custom-input form-control input-sm w3-input border-bottom-dashed input-sm"
                                                     [(ngModel)]="student.language_2_id">
-                                                    <option *ngFor="let item of studentSettings.LANGUAGUES"
-                                                        value="{{ item.id }}">{{ item.name }}</option>
+                                                    <option
+                                                    *ngFor="let item of applicationSettings.LANGUAGES"
+                                                    value="{{ item.id }}"
+                                                  >
+                                                    {{ item.name }}
+                                                  </option>
                                                 </select>
                                             </td>
                                         </tr>

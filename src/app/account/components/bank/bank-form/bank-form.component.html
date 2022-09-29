@@ -5,8 +5,8 @@
         <button type="button" class="close" data-dismiss="modal" 
         onclick="document.getElementById('createModal').style.display='none'"  aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">
-          <b *ngIf="!updateMode" >{{ "add discount type" | trans }}</b>
-          <b *ngIf="updateMode" >{{ "update discount type" | trans }}</b>
+          <b *ngIf="!updateMode" >{{ "إضافه بنك"  }}</b>
+          <b *ngIf="updateMode" >{{ "تعديل البنك" }}</b>
         </h4>
       </div>
       <div class="modal-body">
@@ -21,6 +21,17 @@
               <th>{{ "account_number" | trans }} *</th>
               <td>
                 <input type="text" class="form-control input-sm"  [(ngModel)]="item.account_number" >
+              </td>
+            </tr>
+            <tr>
+              <th>{{ "نوع الإيداع "  }} *</th>
+              <td>
+                <select class="form-control" name="" id="" [(ngModel)]="item.type_user_id">
+                  <option value="0">أختر البنك </option>
+                  <option value="1">بنك اساسى</option>
+                  <option value="2">تمويل خارجى</option>
+
+                </select>
               </td>
             </tr>
             <tr>
