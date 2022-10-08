@@ -3,6 +3,9 @@ import jexcel from "jexcel";
 import { Helper } from 'src/app/shared/helper';
 import { Message } from 'src/app/shared/message';
 import { GlobalService } from 'src/app/shared/services/global.service';
+import { DivisionService } from 'src/app/account/services/division.service';
+import { LevelService } from 'src/app/account/services/level.service';
+import { Cache } from 'src/app/shared/cache';
 
 @Component({
   selector: 'app-income-sheet',
@@ -19,6 +22,8 @@ export class IncomeSheetComponent implements OnInit {
   total = 0;
   dataLength: any
   page: Number
+  levels: any;
+  divisions: any;
 
   constructor(private globalService: GlobalService) {
     this.filter.store_id = 0;
@@ -29,6 +34,8 @@ export class IncomeSheetComponent implements OnInit {
       this.stores = res;
     });
     this.loadData();
+    this.levels = Cache.get(LevelService.LEVEL_PREFIX);
+    this.divisions = Cache.get(DivisionService.DIVISION_PREFIX);
   }
 
   loadData() {

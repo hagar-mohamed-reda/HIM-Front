@@ -53,6 +53,9 @@ export class ServiceaffComponent implements OnInit {
   today = new Date();
   changedDate = '';
   birthdaytime:any;
+  public isLoad = false;
+  level_id: any;
+  public academicYearExpense: any = {};
 
   selectedDivisions = new HashTable();
   selectedLevels = new HashTable();
@@ -217,6 +220,15 @@ excel() {
 
 printContent() {
   this.doc.printJs();
+}
+loadAcademicYearExpenses() {
+  let data = {level_id: this.filter.level_id}
+  this.academicService.get(data).subscribe( (res: any) => {
+    console.log(res);
+    this.academicYearExpense = res;
+    this.isLoad = false;
+    console.log(this.academicYearExpense.details);
+  });
 }
   ngOnInit() {
     this.levels = Cache.get(LevelService.LEVEL_PREFIX);

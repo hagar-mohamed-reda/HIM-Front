@@ -267,7 +267,7 @@ export class StudentRegisterCourseComponent implements OnInit {
     this.student.payments.forEach(element => {
       value = value + element.value;
     });
-    if(value < 7300 ) {
+    if(value < this.student.academic_setting_payment ) {
 
 
       Message.confirm('هذا الطالب لم يسدد المصروفات الدراسية', () => {

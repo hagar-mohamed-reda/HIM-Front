@@ -115,7 +115,6 @@ export class AcademicSettingComponent implements OnInit {
     });
 
     this.academicSettingService.updatePaymentSettings(paymentSettings).subscribe(res => {
-       alert("done") 
     })
   }
 
