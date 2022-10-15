@@ -99,7 +99,7 @@
                                         <tr>
                                             <td>
                                                 <b>{{ "available hours" | trans }}</b> : {{ requiredHours }}
-                                                <b *ngIf="moreHours > 0">  ({{ "graduation hours" | trans }}): {{ moreHours}} <br> 
+                                                <b *ngIf="moreHours > 0">  ({{ "graduation hours" | trans }}): {{ moreHours}} <br>
                                                       {{  +requiredHours + +moreHours }}
                                                 </b>
                                             </td>
@@ -111,15 +111,15 @@
                                             </td>
                                             <td>
                                                 <b>{{ "المقررات المسجله فى التيرم  "  }}</b> : {{ registerCourses.getKeys().length }}
-                                            </td> 
-                                       <tr>
-                                        <td>
-                                            <b>{{ "الساعات المسجله"  }}</b> : {{ student.actual_register_hours }}
-                                        </td> 
-                                         <td>
-                                            <b>{{ " الساعات التى اجتازها "  }}</b> : {{ student.register_hours }}
-                                        </td>
-                                       </tr>
+                                            </td>
+                                            <tr>
+                                                <td>
+                                                    <b>{{ "الساعات المسجله"  }}</b> : {{ student.actual_register_hours }}
+                                                </td>
+                                                <td>
+                                                    <b>{{ " الساعات التى اجتازها "  }}</b> : {{ student.register_hours }}
+                                                </td>
+                                            </tr>
                                     </table>
                                 </div>
 
@@ -360,7 +360,7 @@
                                         <td>
                                             <select class="form-control sectionClass" value="{{course.section_id}}" name="{{course.section_id}}" [(ngModel)]="course.section_id" id="courseSection{{course.id}}" (change)="putsection($('#courseSection' + course.id).val() , counter , $('#coursegroup' + course.id).val() , course.id , course.section )">
                                           <option value="">لا يوجد</option>
-                                      <option *ngFor='let item of course.section|group:course.group_id' value="{{item.id}}">سكشن {{item.name}} المتاح {{item.std_num - item.register}}</option>
+                                      <option *ngFor='let item of course.section|group:course.group_id ' value="{{item.id}}">سكشن {{item.name}} المتاح {{item.std_num - item.register}}</option>
                                     </select>
                                         </td>
                                         <td>

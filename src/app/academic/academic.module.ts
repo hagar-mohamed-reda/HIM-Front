@@ -42,6 +42,7 @@ import { TaqderComponent } from './components/taqder/taqder.component';
 import { ToptenComponent } from './components/topten/topten.component';
 import { YearworkComponent } from './components/yearwork/yearwork.component';
 import { AcademicNewComponent } from './components/academic-new/academic-new.component';
+import { FaildStudentComponent } from './components/faild-student/faild-student.component';
 
 
 
@@ -86,6 +87,7 @@ import { AcademicNewComponent } from './components/academic-new/academic-new.com
     ToptenComponent,
     YearworkComponent,
     AcademicNewComponent,
+    FaildStudentComponent,
 
   ],
   imports: [

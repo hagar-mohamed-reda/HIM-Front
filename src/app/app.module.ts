@@ -55,7 +55,7 @@ import { StudentsResultsComponent } from './students-results/students-results.co
     UserProfileComponent,
     SystemLabelComponent,
     StudentsResultsComponent,
-    
+
   ],
   imports: [
     NgxPaginationModule,

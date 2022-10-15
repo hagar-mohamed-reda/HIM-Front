@@ -28,6 +28,7 @@ import { MinistryCumulativeReportComponent } from "./components/ministry-cumulat
 import { StudentResultsComponent } from "./components/student-results/student-results.component";
 import { PrerequsiteComponent } from "./components/prerequsite/prerequsite.component";
 import { MedtermComponent } from "./components/medterm/medterm.component";
+import { FaildStudentComponent } from "./components/faild-student/faild-student.component";
 import { TermsefyComponent } from "./components/termsefy/termsefy.component";
 import { TaqderComponent } from "./components/taqder/taqder.component";
 import { ToptenComponent } from "./components/topten/topten.component";
@@ -164,6 +165,12 @@ const routes: Routes = [
         canActivate: [AuthGuestService],
         data: { can: Auth.can("control_report") },
         component: MedtermComponent,
+      },
+      {
+        path: "faild_student",
+        canActivate: [AuthGuestService],
+        data: { can: Auth.can("control_report") },
+        component: FaildStudentComponent,
       },
       {
         path: "topten",

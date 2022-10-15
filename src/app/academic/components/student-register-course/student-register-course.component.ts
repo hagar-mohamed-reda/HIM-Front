@@ -47,6 +47,7 @@ export class StudentRegisterCourseComponent implements OnInit {
   levelFilter: any = 0;
   groups: any =[];
   user: any;
+  x: any = 0;
   //
   public searchKey: string;
   public studentSearchDialogShow = false;
@@ -239,16 +240,22 @@ export class StudentRegisterCourseComponent implements OnInit {
         check = check + array[i].service_count;
       }
     }
-    if(this.registerCourses.getAll().length < check) {
+    // if(this.registerCourses.getAll().length < check && this.x == 0 ) {
+      if(this.student.academic_year_expense_total_current_year >= this.student.academic_setting_payment ) {
       this.registerCourses.put(course.id, course);
     } else {
-      let password = prompt("يجب تسديد مبلغ الخدمة  للأستثناء ادخل الرقم السري : ");
+      if(this.x == 0){
+        let password = prompt("يجب تسديد مبلغ الخدمة  للأستثناء ادخل الرقم السري : ");
       if (password == '556677') {
+        this.x = 1;
         this.registerCourses.put(course.id, course);
       } else {
-        alert('الرقم السري غير صحيح');
+        return Message.error("الرقم السري غير صحيح");
       }
       // return Message.error("الطالب لم يسدد رسوم هذة المادة");
+      } else {
+        this.registerCourses.put(course.id, course);
+      }
 
     }
     }
@@ -263,11 +270,7 @@ export class StudentRegisterCourseComponent implements OnInit {
   }
 
   performUpdateRegisterCourses() {
-    var value = 0;
-    this.student.payments.forEach(element => {
-      value = value + element.value;
-    });
-    if(value < this.student.academic_setting_payment ) {
+    if(this.student.academic_year_expense_total_current_year < this.student.academic_setting_payment ) {
 
 
       Message.confirm('هذا الطالب لم يسدد المصروفات الدراسية', () => {

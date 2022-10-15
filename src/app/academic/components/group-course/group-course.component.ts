@@ -105,7 +105,7 @@ export class GroupCourseComponent implements OnInit {
 
     $('#beforeLoading').hide();
     $('#buttonLoading').show();
-    var objectSend = { name: this.filterUpdate.name, id: this.currentgroupId , term_id: this.filterUpdate.term_id , level_id: this.filterUpdate['level_id'] , year_id: this.filterUpdate.academic_id };
+    var objectSend = { name: this.filterUpdate.name, id: this.currentgroupId , term_id: this.filterUpdate.term_id , level_id: this.filterUpdate['level_id'] , year_id: this.filterUpdate.year_id };
 
     console.log(objectSend)
     if (this.filterUpdate.name == undefined || this.currentgroupId == undefined || this.filterUpdate.name == null || this.currentgroupId == null || this.filterUpdate.name == '' || this.currentgroupId == '' ) {

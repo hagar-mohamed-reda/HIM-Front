@@ -18,6 +18,7 @@ import { DivisionService } from 'src/app/account/services/division.service';
 export class SectionCourseComponent implements OnInit {
 
   filter: any = {};
+  level_id_filter: any;
   filter_search: any = {};
   $: any = $;
   applicationService: any = ApplicationSettingService;
@@ -101,7 +102,7 @@ export class SectionCourseComponent implements OnInit {
           this.filter_search.division_id = this.filter.division_id;
           this.filter_search.level_id = this.filter.level_id;
 
-          this.load();
+          // this.load();
 
           return Message.success(Helper.trans('done'));
         } else {
@@ -222,6 +223,9 @@ export class SectionCourseComponent implements OnInit {
     $('#level_id_search').on('change' , ()=>{
       this.level_id = $('#level_id_search').val();
     })
+    $('#level_id').on('change' , ()=>{
+      this.level_id_filter = $('#level_id').val();
+    })
     $('#term_id').on('change' , ()=>{
       this.term_id = $('#term_id').val();
     })
@@ -230,6 +234,6 @@ export class SectionCourseComponent implements OnInit {
     })
     this.levels = Cache.get(LevelService.LEVEL_PREFIX);
     this.divisions = Cache.get(DivisionService.DIVISION_PREFIX);
-    this.terms = Cache.get(TermService.TERPM_PREFIX); 
+    this.terms = Cache.get(TermService.TERPM_PREFIX);
   }
 }
